@@ -13,32 +13,30 @@
 
     <script src="chartist-js-master/dist/chartist.min.js"></script>
 	<script>
+	
 	    $(document).ready(function() {
-	        //$.getJSON("GraphData.php", function (result) {
-	         //   
-	          //  $.each(result, function (key, value) {
-	           //     alert(value);
-	            //});
-	        //});
-	        //});
+			var xAxis=[];
 
 	        $.ajax({
 	            dataType: "json",
 	            url: "GraphData.php",
 	            success: function (result) {
-	                var parRes = $.parseJSON(result),
+					var xlab =[];
 	                $.each(result, function (key, value) {
-	                    //console.log(value)
-	                    //$('Div1').innerHTML = value;
-	                    //console.log(key)
-	                    $.each(value, function (index, data) {
-	                        console.log(data)
-	                    })
-	                    
+						var label = value.itName;
+						xlab.push({xlabel: label});
+	                    //console.log(value.itName)
 	                })
+					xAxis = xlab;
+					//return xAxis;
+					
 	            }
 	        });
-	    });
+			console.log(xAxis);
+			
+	});		
+	  
+		
 		var data = {
 		  // A labels array that can contain any sort of values
 		  labels: ['Sprint 1', 'Sprint 2', 'Sprint 3', 'Sprint 4', 'Sprint 5'],
