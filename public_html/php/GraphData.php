@@ -12,6 +12,13 @@
       die("Connection failed: " . $conn->connect_error);
   } 
 
+  // Storing form values into PHP variables
+  //$emailAddress = $_POST["emailAddress"]; // Since method="post" in the form
+  //$emailAddress = $_POST["postemail"];
+  //$emailAddress=mysql_real_escape_string($emailAddress);
+  
+
+  // Inserting these values into the MySQL table
   $query = 
 	"SELECT a.iteration_id, iteration_name, SUM( PBI_effort ) as 'effort'
 	FROM  backlog_items a
@@ -30,13 +37,28 @@
 		$grapharray[] = array(
 		//$row
 			'itName' => $row['iteration_name'],
-			'effComp' => $row['effort']
+			'effCom' => $row['effort']
 		  );
 	}
 
 
 	
 	echo json_encode($grapharray);
+	
+	
+  //if ($result->num_rows > 0) {
+     // output data of each row
+		//var_dump(mysql_fetch_assoc($result));
+	//	while($row = $result->fetch_assoc()) {
+	//		var_dump($row);}
+		//	echo "<br> id: ". $row["a.iteration_id"]. " - Name: ". $row["iteration_name"]. " " . $row["SUM( PBI_effort )"] . "<br>";}
+	//} 
+	//else {
+	//	echo "0 results";
+	//}
+  
+	  //header("Location: http://www.wearezeus.co.uk/index.html");
+
 
   $conn->close();
 ?>

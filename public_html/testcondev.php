@@ -19,14 +19,14 @@
   
 
   // Inserting these values into the MySQL table
-  $query = "insert into InterestedEmailAds (EmailAddress) values ('$emailAddress')";
+  $query = "insert into interested_emails_ads (email_address) values ('$emailAddress')";
   
   if ($conn->query($query) === TRUE) {
-      //echo "New record created successfully"
-	  header("Location: http://www.wearezeus.co.uk/indexdev.html");
+      echo "New record created successfully";
+	  //header("Location: http://www.wearezeus.co.uk/indexdev.html");
   } else {
-      //echo "Error: " . $query . "<br>" . $conn->error;
-	  header("Location: http://www.wearezeus.co.uk/indexdev.html");
+      echo "Error: " . $query . "<br>" . $conn->error;
+	  //header("Location: http://www.wearezeus.co.uk/indexdev.html");
   }
 
   $conn->close();

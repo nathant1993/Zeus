@@ -37,13 +37,13 @@
       // ajax request to post email address to the database using DBCon PHP file.
 	  $.ajax({
 		type: "POST",
-		url: "DBCon.php",
+		url: "./php/DBCon.php",
 		data: {postemail:email},
 		success: function() {
 			console.log('success');
 			status.innerHTML = "Thanks for your support, we'll let you know how we're getting on!";
 			status.style.opacity = 1;
-			emailfield.value = " ";
+			//emailfield.value = " ";
 		},
 		error: function() {
 			console.log('error')
