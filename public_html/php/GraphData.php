@@ -19,11 +19,16 @@
   
 
   // Inserting these values into the MySQL table
-  $query = 
+  $query = "SELECT a.iteration_id, iteration_name, SUM( PBI_effort ) as 'effort', starting_effort, (starting_effort - (SUM(pbi_effort))) as 'remaining_effort'
+	FROM  backlog_items a
+	Inner join iteration b on b.iteration_ID = a.iteration_ID
+	GROUP BY iteration_id, iteration_name";
+  /*
 	"SELECT a.iteration_id, iteration_name, SUM( PBI_effort ) as 'effort'
 	FROM  backlog_items a
 	Inner join iteration b on b.iteration_ID = a.iteration_ID
 	GROUP BY iteration_id, iteration_name";
+  */
   $result = $conn->query($query);
 
   //create an array
@@ -37,7 +42,9 @@
 		$grapharray[] = array(
 		//$row
 			'itName' => $row['iteration_name'],
-			'effCom' => $row['effort']
+			'effCom' => $row['effort'],
+      'effTot' => $row['starting_effort'],
+      'effRem' => $row['remaining_effort'],
 		  );
 	}
 

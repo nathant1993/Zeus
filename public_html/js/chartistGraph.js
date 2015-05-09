@@ -11,20 +11,30 @@
 	});		
 	  
 	    function createGraph(phpArray) {
+            
             var xlab = [];
+            var totalEffort = []; 
+            
 	        $.each(phpArray, function (key, value) {
 			    var label = value.itName;
                 xlab.push(label);                
 	            });
-                console.log(xlab);
-           
+                //console.log(xlab);
+            
+           $.each(phpArray, function (key, value) {
+			    var tEff = value.effTot;
+                totalEffort.push(tEff);                
+	            });
+                console.log(totalEffort);
+                
 	        var data = {
 	            // A labels array that can contain any sort of values
 	            //labels: ['Sprint 1', 'Sprint 2', 'Sprint 3', 'Sprint 4', 'Sprint 5'],
                 labels: xlab,
 	            // Our series array that contains series objects or in this case series data arrays
 	            series: [
-                  [10, 10, 13, 13, 18],
+                  //[10, 10, 13, 13, 18],
+                  totalEffort,
                   [5, 2, 4, 2, 0]
 	            ]
 	        };
