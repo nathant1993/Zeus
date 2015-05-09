@@ -8,10 +8,11 @@
 				    var xlab = [];
 	                $.each(result, function (key, value) {
 						var label = value.itName;
-						xlab.push({xlabel: label});
+						//xlab.push({xlabel: label});
+                        xlab.push(label);
 	                   
 	                });
-                    console.log(xlab);
+                    //console.log(xlab);
 	                createGraph(xlab);
 				}            
 	        });
@@ -19,9 +20,17 @@
 	  
 	    function createGraph(phpArray) {
 	       //console.log(phpArray);
+           //var xLabels= [];
+           //$.each(phpArray, function (key, value){
+           //    var A = value.xlabel;
+           //    xLabels.push({xlabel2:A});
+           //});
+           //console.log(xLabels);
+           
 	        var data = {
 	            // A labels array that can contain any sort of values
-	            labels: ['Sprint 1', 'Sprint 2', 'Sprint 3', 'Sprint 4', 'Sprint 5'],
+	            //labels: ['Sprint 1', 'Sprint 2', 'Sprint 3', 'Sprint 4', 'Sprint 5'],
+                labels: phpArray,
 	            // Our series array that contains series objects or in this case series data arrays
 	            series: [
                   [10, 10, 13, 13, 18],
