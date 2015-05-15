@@ -622,3 +622,11 @@ h1, h2, h3
 	-webkit-animation-iteration-count: 1;
 	-webkit-animation-timing-function: linear;
 	}
+	
+	
+/* ==================================================
+   Line graph - options
+================================================== */	
+	.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-point, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
+   stroke: #29abe2; 
+}

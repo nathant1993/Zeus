@@ -19,17 +19,30 @@
   
 
   // Inserting these values into the MySQL table
-  $query = "SELECT a.iteration_id, iteration_name, SUM( PBI_effort ) as 'effort', starting_effort, (starting_effort - (SUM(pbi_effort))) as 'remaining_effort'
+  $query = "SELECT b.iteration_id, iteration_name, SUM( PBI_effort ) as 'effort', starting_effort, CalcEffRemaining(b.iteration_id) as 'effort_done_to_date', (starting_effort - CalcEffRemaining(b.iteration_id)) as 'remaining_effort'
+	FROM  backlog_items a
+	right outer join iteration b on b.iteration_ID = a.iteration_ID
+    where b.iteration_start_date <= sysdate()
+    and a.state_id=4
+	GROUP BY iteration_id, iteration_name, CalcEffRemaining(a.iteration_id), (starting_effort - CalcEffRemaining(a.iteration_id))";
+  /*
+  "SELECT a.iteration_id, iteration_name, SUM( PBI_effort ) as 'effort', starting_effort, CalcEffRemaining(a.iteration_id) as 'effort_done_to_date', (starting_effort - CalcEffRemaining(a.iteration_id)) as 'remaining_effort'
 	FROM  backlog_items a
 	Inner join iteration b on b.iteration_ID = a.iteration_ID
-	GROUP BY iteration_id, iteration_name";
+	GROUP BY iteration_id, iteration_name, CalcEffRemaining(a.iteration_id), (starting_effort - CalcEffRemaining(a.iteration_id))";
+  */
   /*
+  "SELECT a.iteration_id, iteration_name, SUM( PBI_effort ) as 'effort', starting_effort, (starting_effort - (SUM(pbi_effort))) as 'remaining_effort'
+	FROM  backlog_items a
+	Inner join iteration b on b.iteration_ID = a.iteration_ID
+	GROUP BY iteration_id, iteration_name";*/
+/*
 	"SELECT a.iteration_id, iteration_name, SUM( PBI_effort ) as 'effort'
 	FROM  backlog_items a
 	Inner join iteration b on b.iteration_ID = a.iteration_ID
 	GROUP BY iteration_id, iteration_name";
   */
-  $result = $conn->query($query);
+  $result = $conn->query($query) or exit("Error code ({$conn->errno}): {$conn->error}");
 
   //create an array
     //$grapharray[] = array();
@@ -44,12 +57,11 @@
 			'itName' => $row['iteration_name'],
 			'effCom' => $row['effort'],
       'effTot' => $row['starting_effort'],
+      'effDone'=> $row['effort_done_to_date'],
       'effRem' => $row['remaining_effort'],
 		  );
 	}
 
-
-	
 	echo json_encode($grapharray);
 	
 	

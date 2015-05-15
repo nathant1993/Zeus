@@ -6,6 +6,7 @@
 	            url: "./php/GraphData.php",
 				success: function createArray (result) {
                     createGraph(result);
+                    //console.log(result);
 				}            
 	        });
 	});		
@@ -14,6 +15,7 @@
             
             var xlab = [];
             var totalEffort = []; 
+            var remainingEffort = [];
             
 	        $.each(phpArray, function (key, value) {
 			    var label = value.itName;
@@ -22,10 +24,24 @@
                 //console.log(xlab);
             
            $.each(phpArray, function (key, value) {
-			    var tEff = value.effTot;
-                totalEffort.push(tEff);                
+               if (!value.effTot) {   
+               }
+               else{
+                   var tEff = value.effTot;
+                    totalEffort.push(tEff);
+                }                   
 	            });
                 console.log(totalEffort);
+                
+           $.each(phpArray, function (key, value) {
+               if (!value.effRem) {   
+               }
+               else{
+    			    var rEff = value.effRem;
+                    remainingEffort.push(rEff);
+               }                
+	           });
+                console.log(remainingEffort);
                 
 	        var data = {
 	            // A labels array that can contain any sort of values
@@ -34,15 +50,19 @@
 	            // Our series array that contains series objects or in this case series data arrays
 	            series: [
                   //[10, 10, 13, 13, 18],
+                  //[5, 2, 4, 2, 0]
                   totalEffort,
-                  [5, 2, 4, 2, 0]
+                  remainingEffort
 	            ]
 	        };
 
 	        // As options we currently only set a static size of 300x200 px. We can also omit this and use aspect ratio containers
 	        // as you saw in the previous example
 	        var options = {
-	            low: 0
+	            low: 0,
+                axisY: {
+                   onlyInteger: true,
+                }
 	        };
 
 	        var responsiveOptions = [
@@ -69,8 +89,8 @@
 	        var chart = new Chartist.Line('.ct-chart', data, options, responsiveOptions);
 
 	        var seq = 0,
-          delays = 80,
-          durations = 500;
+            delays = 10,
+            durations = 1500;
 
 	        // Once the chart is fully created we reset the sequence
 	        chart.on('created', function () {
@@ -111,7 +131,7 @@
 	                    x: {
 	                        begin: seq * delays,
 	                        dur: durations,
-	                        from: data.x - 100,
+	                        from: data.x - 50,
 	                        to: data.x,
 	                        easing: 'easeOutQuart'
 	                    }
@@ -121,14 +141,14 @@
 	                    x1: {
 	                        begin: seq * delays,
 	                        dur: durations,
-	                        from: data.x - 10,
+	                        from: data.x - 50,
 	                        to: data.x,
 	                        easing: 'easeOutQuart'
 	                    },
 	                    x2: {
 	                        begin: seq * delays,
 	                        dur: durations,
-	                        from: data.x - 10,
+	                        from: data.x - 50,
 	                        to: data.x,
 	                        easing: 'easeOutQuart'
 	                    },
@@ -140,7 +160,7 @@
 	                        easing: 'easeOutQuart'
 	                    }
 	                });
-	            } else if (data.type === 'grid') {
+	            } /*else if (data.type === 'grid') {
 	                // Using data.axis we get x or y which we can use to construct our animation definition objects
 	                var pos1Animation = {
 	                    begin: seq * delays,
@@ -170,15 +190,31 @@
 	                };
 
 	                data.element.animate(animations);
-	            }
+	            }*/
 	        });
-
-	        // For the sake of the example we update the chart every time it's created with a delay of 10 seconds
-	        //chart.on('created', function() {
-	        //  if(window.__exampleAnimateTimeout) {
-	        //    clearTimeout(window.__exampleAnimateTimeout);
-	        //    window.__exampleAnimateTimeout = null;
-	        //  }
-	        //  window.__exampleAnimateTimeout = setTimeout(chart.update.bind(chart), 12000);
-	        //});
+            /*
+            var $chart = $('.ct-chart');
+            
+            var $toolTip = $chart
+              .append('<div class="tooltip"></div>')
+              .find('.tooltip')
+              .hide();
+            
+            $chart.on('mouseenter', '.ct-point', function() {
+              var $point = $(this),
+                value = $point.attr('ct:value'),
+                seriesName = $point.parent().attr('ct:series-name');
+              $toolTip.html(seriesName + '<br>' + value).show();
+            });
+            
+            $chart.on('mouseleave', '.ct-point', function() {
+              $toolTip.hide();
+            });
+            
+            $chart.on('mousemove', function(event) {
+              $toolTip.css({
+                left: (event.offsetX || event.originalEvent.layerX) - $toolTip.width() / 2 - 10,
+                top: (event.offsetY || event.originalEvent.layerY) - $toolTip.height() - 40
+              });
+            });*/
 	    };
