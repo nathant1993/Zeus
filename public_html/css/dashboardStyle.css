@@ -47,7 +47,7 @@ body
 	font-weight: 300;
 	color: #999;
 	background: #FFF;
-	
+	/*transform: translate3d(0,0,0);*/
 	text-rendering: optimizeLegibility;
 	vertical-align: baseline;
 }
@@ -249,7 +249,7 @@ h1, h2, h3
 	
 #leftNav{
 	background:#bdbdbd;
-	height:500px;
+	height:750px;
 	width:17.5%;
 	padding:30px 30px;
 	float:left;
@@ -360,6 +360,10 @@ h1, h2, h3
 				{
 					background: #ff6700;
 				}
+
+.graph-container{
+	width:50%;
+}
 			
 #contentTitle{
 	background:#bdbdbd;
@@ -367,11 +371,13 @@ h1, h2, h3
 }
 
 #content1{
-	background:#29abe2;
+	background:#fff;
 }
 
 #content2{
-	background:#fff;
+	
+	background:#29abe2;
+	height:500px;
 }
 
 #quotecont
@@ -456,7 +462,7 @@ h1, h2, h3
    Responsive Media Queries - Tablets
 ================================================== */
 
-@media screen and (max-width: 768px)
+@media screen and (max-width: 1024px)
 {
 
 	body
@@ -485,7 +491,11 @@ h1, h2, h3
 	#maincont{
 		width:100%;
 	}
-		
+
+	.graph-container{
+		width:50%;
+	}
+			
 	#footercont
 	{
 		font-size: 19px;
@@ -507,6 +517,16 @@ h1, h2, h3
 		{
 			float: none;
 		}
+		
+	/*Top graph line*/
+	.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-point, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
+		stroke-width: 2.5px;
+	}
+
+	/*bottom graph line*/
+	.ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-point, .ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
+		stroke-width: 2.5px;
+	}
 	
 }
 
@@ -540,6 +560,10 @@ h1, h2, h3
 		width:100%;
 
 	}
+	
+	.graph-container{
+		width:100%;
+	}
 		
 	#maincont #signupform
 	{
@@ -562,6 +586,20 @@ h1, h2, h3
 		}
 	.fullwidth{
 		padding:10px 5px;
+	}
+	
+	#contentTitle{
+	padding:10px 5px;
+	}
+	
+	/*Top graph line*/
+	.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-point, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
+		stroke-width: 1.5px;
+	}
+
+	/*bottom graph line*/
+	.ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-point, .ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
+		stroke-width: 1.5px;
 	}
 }
 
@@ -609,8 +647,34 @@ h1, h2, h3
 /*bottom graph line*/
 .ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-point, .ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
   stroke: #ff6700;
+  box-shadow: 10px;
 }
 
-.ct-chart.ct-golden-section{
+/*.ct-chart.ct-golden-section{
 	width:75%;
+}*/
+
+.ct-chart.ct-perfect-fourth{
+	width:75%;
+}
+
+.ct-chart.ct-major-second{
+	width:75%;
+}
+
+
+.ct-chart .ct-grid {
+	stroke-dasharray: none;
+	stroke:#B0B0B0;
+	stroke-width: 0.5px;
+}
+
+.ct-chart .ct-label, .ct-chart .ct-label.ct-horizontal{
+	fill:#666666;
+	color:#666666;
+}
+
+.ct-chart .ct-label.ct-vertical{
+	fill:#666666;
+	color:#666666;
 }
