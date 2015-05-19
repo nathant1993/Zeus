@@ -11,15 +11,13 @@
 <link rel="stylesheet" href="chartist-js-master/dist/chartist.min.css">
 <link rel="stylesheet" href="css/dashboardStyle.css">  
   
-<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>--></script>
-<script src="js/jquery.js"></script>
-<script src="js/countdown.js"></script>
+<!--<script src="js/scripts.js"></script></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="js/uikit.scrollspy.js"></script>
-<script src="js/scripts.js"></script>
+<script src="./js/scroll.js"></script>
 <script src="js/ajax.js"></script>
 <script src="js/velocity.js"></script>
 <script src="js/velocity.ui.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="chartist-js-master/dist/chartist.min.js"></script>
 <script src="./js/chartistGraph.js"></script> 
 
@@ -33,6 +31,15 @@
   ga('send', 'pageview');
 </script>
 
+<!--<script>
+  function scrolltofoot(){
+  $("#footer").velocity("scroll", { 
+    duration: 800,
+    delay: 500
+  });
+}
+</script>-->
+
 </head>
 
 <body>
@@ -40,7 +47,7 @@
   <div id="wrapper" class="fullwidth clearfix">
     
     <div id="topNav" class="fullwidth clearfix">
-    	<span><img src="images/ZeusLogo.jpg" alt="Zeus agile project management logo"></span>
+    	<span><img src="images/ZeusLogo.jpg" alt="Zeus agile project management logo" id="cloudicon"></span>
         <h1>Zeus Dashboard</h1>
     </div>
     
@@ -56,12 +63,13 @@
       
       <div id ="content1" class="fullwidth clearfix">
       	<p> content1 </p>
-        
+        <div class="graph-container">
+          <div class="ct-chart ct-golden-section" ></div> 
+        </div> 
       </div>
       
       <div id="content2" class="fullwidth clearfix">
-      	<p> content2</p>
-        <div class="ct-chart ct-golden-section" ></div> 
+      	<p> content2</p> 
       </div>
       
     </div>
