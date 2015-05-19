@@ -22,7 +22,7 @@ $(document).ready(function() {
         // scroll to each target
         $(target).velocity("scroll", {
             duration: 500,
-            offset: -40,
+            offset: 40,
             easing: "ease-in-out"
         });
     });
