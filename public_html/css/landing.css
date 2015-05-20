@@ -1,6 +1,6 @@
 header {
     width: 100%;
-    height: 150px;
+    height: 100px;
     overflow: hidden;
     position: fixed;
     top: 0;
@@ -15,13 +15,13 @@ header {
 }
 header h1#logo {
     display: inline-block;
-    height: 150px;
-    line-height: 150px;
+    height: 100px;
+    line-height: 100px;
     float: left;
-    font-family: "Oswald", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 60px;
     color: white;
-    font-weight: 400;
+    font-weight: 300;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     -ms-transition: all 0.3s;
@@ -31,12 +31,13 @@ header h1#logo {
 header nav {
     display: inline-block;
     float: right;
+    font-family: "Roboto", sans-serif;
 }
 header nav a {
-    line-height: 150px;
+    line-height: 100px;
     margin-left: 20px;
-    color: #9fdbfc;
-    font-weight: 700;
+    color: white;
+    font-weight: 400;
     font-size: 18px;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
@@ -45,22 +46,22 @@ header nav a {
     transition: all 0.3s;
 }
 header nav a:hover {
-    color: white;
+    color: #ff6700;
 }
 
 
 header.smaller {
-    height: 75px;
+    height: 50px;
     background-color: dodgerblue;
 }
 header.smaller h1#logo {
     width: 150px;
-    height: 75px;
-    line-height: 75px;
+    height: 50px;
+    line-height: 50px;
     font-size: 30px;
 }
 header.smaller nav a {
-    line-height: 75px;
+    line-height: 50px;
 }
 
 @media all and (max-width: 660px) {
@@ -84,7 +85,7 @@ header.smaller nav a {
         margin: 0 10px;
     }
     header.smaller {
-        height: 75px;
+        height: 50px;
     }
     header.smaller h1#logo {
         height: 40px;
@@ -154,7 +155,7 @@ a img {
 body {
   background-color: #3cb5f9;
   color: #505050;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Open sans", sans-serif;
   font-weight: 300;
   font-size: 16px;
   line-height: 1.8; }
@@ -183,3 +184,11 @@ a:hover {
   clear: both;
   height: 0; }
 
+#hero{
+  background: url(images/blue-sky1.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+}
