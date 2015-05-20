@@ -1,3 +1,7 @@
+html, body{
+  height:100%;
+  
+}
 #hero{
     background: url("../images/blue-sky1.jpg") no-repeat center center; 
     -webkit-background-size: cover;
