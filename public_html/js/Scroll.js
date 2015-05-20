@@ -24,9 +24,8 @@ $(document).ready(function() {
             duration: 500,
             offset: 40,
             easing: "ease-out"
-        });
-        
-        $(this).addClass(".underline");
+        });   
+        $(this).addClass("underline");
     });
   
 });
