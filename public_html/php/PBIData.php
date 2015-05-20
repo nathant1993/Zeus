@@ -13,7 +13,7 @@
   } 
   
   // Inserting these values into the MySQL table
-  $query = "SELECT pbi_id, pbi_title, pbi_description, pbi_effort, c.description as 'priority', d.state_name, b.iteration_name, e.project_name
+  $query = "SELECT pbi_id, pbi_title, pbi_description, pbi_effort, c.description as 'priority', d.state_name 'state', b.iteration_name 'itName', e.project_name 'projName'
             FROM  backlog_items a
             right outer join iteration b on b.iteration_ID = a.iteration_ID
             inner join priority c on c.priority_id = a.priority_id
@@ -33,9 +33,9 @@
       'pbiDesc' => $row['pbi_description'],
       'pbiEff' => $row['pbi_effort'],
       'priority'=> $row['priority'],
-      'state' => $row['d.state_name'],
-      'itId' => $row['b.iteration_name'],
-      'project' => $row['e.project_name'],
+      'state' => $row['state'],
+      'itName' => $row['itName'],
+      'project' => $row['projName'],
 		  );
 	}
 

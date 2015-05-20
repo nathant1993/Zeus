@@ -363,6 +363,7 @@ h1, h2, h3
 
 .graph-container{
 	width:50%;
+	float:left;
 }
 			
 #contentTitle{
