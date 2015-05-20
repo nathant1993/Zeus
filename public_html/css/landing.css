@@ -208,3 +208,9 @@ a:hover {
   border-bottom: 2px solid #ff6700;
   
 }
+#hero .container h1 {
+  text-align: center;
+  line-height:1.25; 
+  padding-top: 40%;
+  color: white;
+}
