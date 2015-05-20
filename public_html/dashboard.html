@@ -47,7 +47,7 @@
   <div id="wrapper" class="fullwidth clearfix">
     
     <div id="topNav" class="fullwidth clearfix">
-    	<span><img src="images/ZeusLogo.jpg" alt="Zeus agile project management logo" id="cloudicon"></span>
+    	<span id="cloudicon"><img src="images/ZeusLogo.jpg" alt="Zeus agile project management logo" ></span>
         <h1>Zeus Dashboard</h1>
     </div>
     
@@ -57,15 +57,20 @@
     
     <div id="maincont">
     
-      <div id="contentTitle" class="fullwidth clearfix">
+      <!--<div id="contentTitle" class="fullwidth clearfix">
       	<p>Dashboard</p>
-      </div>
+      </div>-->
       
       <div id ="content1" class="fullwidth clearfix">
-      	<p> content1 </p>
+      	<!--<p> content1 </p>-->
         <div class="graph-container">
-          <div class="ct-chart ct-golden-section" ></div> 
+          <p>Project Burndown</p>
+          <div class="ct-chart ct-golden-section" id="chart1"></div> 
         </div> 
+        <div class="graph-container">
+          <p>Effort Done per Sprint</p>
+          <div class="ct-chart ct-golden-section" id="chart2"></div> 
+        </div>
       </div>
       
       <div id="content2" class="fullwidth clearfix">

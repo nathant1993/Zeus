@@ -23,7 +23,7 @@ $(document).ready(function() {
         $(target).velocity("scroll", {
             duration: 500,
             offset: 40,
-            easing: "ease-in-out"
+            easing: "ease-out"
         });
     });
   

@@ -16,6 +16,7 @@
             var xlab = [];
             var totalEffort = []; 
             var remainingEffort = [];
+            var effortcommitted =[];
             
 	        $.each(phpArray, function (key, value) {
 			    var label = value.itName;
@@ -31,7 +32,7 @@
                     totalEffort.push(tEff);
                 }                   
 	            });
-                console.log(totalEffort);
+                //console.log(totalEffort);
                 
            $.each(phpArray, function (key, value) {
                if (!value.effRem) {   
@@ -41,8 +42,14 @@
                     remainingEffort.push(rEff);
                }                
 	           });
-                console.log(remainingEffort);
+                //console.log(remainingEffort);
                 
+            $.each(phpArray, function (key, value) {
+                var comeff = value.effCom;
+                effortcommitted.push(comeff);                
+	            });
+                 //console.log(effortcommitted);
+                   
 	        var data = {
 	            // A labels array that can contain any sort of values
 	            //labels: ['Sprint 1', 'Sprint 2', 'Sprint 3', 'Sprint 4', 'Sprint 5'],
@@ -62,7 +69,7 @@
 	            low: 0,
                 axisY: {
                    onlyInteger: true,
-                }
+                  }
 	        };
 
 	        var responsiveOptions = [
@@ -86,7 +93,7 @@
               }]
 	        ];
 
-	        var chart = new Chartist.Line('.ct-chart', data, options, responsiveOptions);
+	        var chart = new Chartist.Line('#chart1', data, options, responsiveOptions);
 
 	        var seq = 0,
             delays = 10,
@@ -179,8 +186,8 @@
 	                };
 
 	                var animations = {};
-	                animations[data.axis.units.pos + '1'] = pos1Animation;
-	                animations[data.axis.units.pos + '2'] = pos2Animation;
+	               //animations[data.axis.units.pos + '1'] = pos1Animation;
+	               // animations[data.axis.units.pos + '2'] = pos2Animation;
 	                animations['opacity'] = {
 	                    begin: seq * delays,
 	                    dur: durations,
@@ -189,6 +196,18 @@
 	                    easing: 'easeOutQuart'
 	                };
 
+	                data.element.animate(animations);
+	            }*/
+                //fades in graph lines
+                /*else if (data.type === 'grid') {
+	                var animations = {};
+	                animations['opacity'] = {
+	                    begin: seq * delays,
+	                    dur: durations,
+	                    from: 0,
+	                    to: 1,
+	                    easing: 'easeOutQuart'
+	                };
 	                data.element.animate(animations);
 	            }*/
 	        });
@@ -217,4 +236,43 @@
                 top: (event.offsetY || event.originalEvent.layerY) - $toolTip.height() - 40
               });
             });*/
+            
+            
+            var barchart = new Chartist.Bar('#chart2', {
+              labels: xlab,
+              series: [effortcommitted]
+            },options, responsiveOptions);
+
+	        // Once the chart is fully created we reset the sequence
+	        barchart.on('created', function () {
+	            seq = 0;
+	        });
+
+	        // On each drawn element by Chartist we use the Chartist.Svg API to trigger SMIL animations
+	        barchart.on('draw', function (data) {
+	            seq++;
+
+	            if (data.type === 'bar') {
+	                // If the drawn element is a bar we do a simple opacity fade in. This could also be achieved using CSS3 animations.
+	                data.element.animate({
+	                    opacity: {
+	                        // The delay when we like to start the animation
+	                        begin: seq * delays,
+	                        // Duration of the animation
+	                        dur: 1000,
+	                        // The value where the animation should start
+	                        from: 0,
+	                        // The value where it should end
+	                        to: 1
+	                    },
+                        /*y1: {
+	                        begin: seq * delays,
+	                        dur: durations,
+	                        from: data.y -10,
+	                        to: data.y,
+	                        easing: 'easeOutQuart'
+	                    }*/
+	                });
+	            }
+                });
 	    };
