@@ -19,6 +19,7 @@ $(document).ready(function() {
         e.stopPropagation();
         // set target to anchor's "href" attribute
         var target = $(this).attr("href");
+        $(this).addClass(underline);
         // scroll to each target
         $(target).velocity("scroll", {
             duration: 500,
