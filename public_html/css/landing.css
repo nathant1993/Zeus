@@ -206,6 +206,7 @@ a:hover {
 
 .underline{
   border-bottom: 2px solid #ff6700;
+<<<<<<< Updated upstream
   padding-bottom: 3px;
   
 }
@@ -368,3 +369,6 @@ ul.features li{
     max-height: 100%;
 }
 
+=======
+}
+>>>>>>> Stashed changes

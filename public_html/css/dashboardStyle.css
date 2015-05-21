@@ -187,7 +187,7 @@ h1, h2, h3
 .fullwidth
 {
 	width: 100%;
-	padding: 60px 30px;
+	padding: 30px 30px;
 	min-width: 280px;
 }
 
@@ -200,13 +200,15 @@ h1, h2, h3
 	}
 	
 #wrapper{
-	padding:0px;	
+	padding:0px;
+	height:100%;	
 }
 	
 #topNav
 {
 	display:inline-block;
 	padding: 0px 30px;
+	border-bottom: 1px solid #eee;
 }
 
 	#topNav h1
@@ -248,11 +250,11 @@ h1, h2, h3
 	}
 	
 #leftNav{
-	background:#bdbdbd;
-	height:750px;
+	height:100%;
 	width:17.5%;
 	padding:30px 30px;
 	float:left;
+	border-right: 1px solid #eee;
 }
 
 		
@@ -363,22 +365,29 @@ h1, h2, h3
 
 .graph-container{
 	width:50%;
-	float:left;
+	Float:left;
+	padding-right: 20px;
 }
 			
 #contentTitle{
-	background:#bdbdbd;
-	padding:30px 30px;
+	background:#fff;
+	padding:30px 30px 0px 30px;
+	
 }
+	#contentTitle p{
+		border-bottom: 1px solid #eee;
+		font-size: 150%;
+	}	
 
 #content1{
 	background:#fff;
+	border-bottom: 1px solid #eee;
 }
 
 #content2{
 	
-	background:#29abe2;
-	height:500px;
+	background:#fff;
+	border-bottom: 1px solid #eee;
 }
 
 #quotecont
@@ -458,6 +467,17 @@ h1, h2, h3
 				{
 					top: 2px;
 				}
+				
+table, th, td {
+   border: 1px solid #B0B0B0;
+   padding: 5px;
+   font-size: 90%;
+   text-align: center;
+}
+
+ th {
+   background-color: #eee;
+}
 
 /* ==================================================
    Responsive Media Queries - Tablets
@@ -602,6 +622,12 @@ h1, h2, h3
 	.ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-point, .ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
 		stroke-width: 1.5px;
 	}
+	
+	table, th, td {
+	   border: 1px solid #B0B0B0;
+	   padding: 2px;
+	   font-size: 75%;
+	}
 }
 
 @-webkit-keyframes thumb {
@@ -679,3 +705,4 @@ h1, h2, h3
 	fill:#666666;
 	color:#666666;
 }
+
