@@ -208,9 +208,19 @@ a:hover {
   border-bottom: 2px solid #ff6700;
   
 }
+#hero .container {
+  display: table;
+  height: 100%;
+  width:980px;
+}
+
 #hero .container h1 {
+  display: table-cell;
+  vertical-align: middle;
   text-align: center;
   line-height:1.25; 
-  padding-top: 40%;
+  font-size: 2.5em;
+  font-weight: 100;
   color: white;
+  text-shadow: -2px 2px 2px rgba(150, 150, 150, 0.39)
 }
