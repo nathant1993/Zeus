@@ -215,18 +215,48 @@ a:hover {
   width:980px;
 }
 
-#hero .container h1 {
+#hero .container .copy {
   display: table-cell;
   vertical-align: middle;
+ 
+}
+#hero .container h1 {
   text-align: center;
   line-height:1.25; 
   font-size: 2.5em;
-  font-weight: 200;
+  font-weight: 300;
   color: white;
-  text-shadow: -2px 2px 2px rgba(150, 150, 150, 0.39)
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.40);
+  margin-bottom: 40px;
 }
 
-#why{
+#hero .container a {
+  width:200px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #ff8533; 
+  color: white;
+  font-size: 1.2em;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+}
+#hero .container a:hover {
+  background-color: #ff6700;
+}
+#hero .container img {
+  max-width:150px;
+  padding-bottom: 20px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+  #why{
   height:900px;
   width: 100%;
   background-color: white;
@@ -283,8 +313,8 @@ img{
   background-color: white;
 }
 
-#features{
-    background: url("../images/startup.jpg") no-repeat center center; 
+#contact{
+    background: url("../images/contact.jpg") no-repeat center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -292,4 +322,8 @@ img{
     height: 100%;
     max-width: 100%;
     max-height: 100%;
+}
+.cta_btn{
+  display:block;
+  background-color: #ff8533;
 }
