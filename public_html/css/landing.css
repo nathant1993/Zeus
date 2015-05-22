@@ -226,11 +226,21 @@ a:hover {
 #hero .container h1 {
   text-align: center;
   line-height:1.25; 
-  font-size: 2.5em;
+  font-size: 3em;
   font-weight: 300;
   color: white;
   text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.40);
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+  font-family: "Open sans", sans-serif;
+}
+#hero .container h2 {
+  text-align: center;
+  line-height:1.25; 
+  font-size: 2em;
+  font-weight: 300;
+  color: white;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.40);
+  margin-bottom: 50px;
 }
 
 #hero .container a {
@@ -347,12 +357,22 @@ ul.features {
   text-align: center;
 }
 ul.features li{
-  font-size: 1.25em;
+  font-size: 1.5em;
   color:white;
   display: inline-block;
-  width: 30%;
+  width: 45%;
   min-height: 100px;
   font-family: "Open sans", sans-serif;
+}
+ul.features li p{
+  font-size: 0.9em;
+  line-height: 1.25;
+  font-family: "Roboto", sans-serif;
+  padding-bottom:10px;
+}
+ul.features li p img{
+  width:75px;
+  padding-top: 60px;
 }
 #who{
   height:900px;
