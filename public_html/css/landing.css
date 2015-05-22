@@ -206,9 +206,7 @@ a:hover {
 
 .underline{
   border-bottom: 2px solid #ff6700;
-<<<<<<< Updated upstream
   padding-bottom: 3px;
-  
 }
 #hero .container {
   display: table;
@@ -271,8 +269,6 @@ a:hover {
   max-width:980px;
   height: 100%;
 }
-
-
 
 #why .container h2 {
   text-align: center;
@@ -369,6 +365,76 @@ ul.features li{
     max-height: 100%;
 }
 
-=======
+/*Top graph line*/
+.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-point, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
+	stroke: #29abe2; 
 }
->>>>>>> Stashed changes
+
+/*bottom graph line*/
+.ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-point, .ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
+  stroke: #ff6700;
+  box-shadow: 10px;
+}
+
+/*.ct-chart.ct-golden-section{
+	width:75%;
+}*/
+
+.ct-chart.ct-perfect-fourth{
+	width:75%;
+}
+
+.ct-chart.ct-major-second{
+	width:75%;
+}
+
+
+.ct-chart .ct-grid {
+	stroke-dasharray: none;
+	stroke:#B0B0B0;
+	stroke-width: 0.5px;
+}
+
+.ct-chart .ct-label, .ct-chart .ct-label.ct-horizontal{
+	fill:#666666;
+	color:#666666;
+}
+
+.ct-chart .ct-label.ct-vertical{
+	fill:#666666;
+	color:#666666;
+}
+
+.graph-container{
+	width:50%;
+	Float:left;
+	padding-right: 20px;
+}
+			
+#contentTitle{
+	background:#fff;
+	padding:30px 30px 0px 30px;
+	
+}
+	#contentTitle p{
+		border-bottom: 1px solid #eee;
+		font-size: 150%;
+	}	
+
+#content1{
+	background:#fff;
+	border-bottom: 1px solid #eee;
+}
+
+#content2{
+	
+	background:#fff;
+	border-bottom: 1px solid #eee;
+}
+
+.fullwidth
+{
+	width: 100%;
+	padding: 30px 30px;
+	min-width: 280px;
+}
