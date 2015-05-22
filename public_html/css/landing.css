@@ -336,9 +336,9 @@ img{
   font-family: "Roboto", sans-serif;
 }
 #features .container h1 {
-   margin: 0 auto;
+  margin: 0 auto;
   text-align: center;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   color: white;
   font-family: "Open sans", sans-serif;
 }
@@ -371,6 +371,7 @@ ul.features li p img{
   width:75px;
   padding-top: 60px;
 }
+
 #who{
   height:900px;
   width: 100%;
