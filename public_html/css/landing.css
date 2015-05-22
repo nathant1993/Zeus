@@ -193,7 +193,8 @@ a:hover {
   color: #0793e2; }
 
 .container {
-  width: 980px;
+  max-width: 980px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 30px; }
 
@@ -212,7 +213,9 @@ a:hover {
 #hero .container {
   display: table;
   height: 100%;
-  width:980px;
+  max-width:980px;
+  width: 100%;
+  padding: 10px;
 }
 
 #hero .container .copy {
