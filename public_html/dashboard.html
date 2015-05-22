@@ -31,16 +31,6 @@
   ga('create', 'UA-60923636-1', 'auto');
   ga('send', 'pageview');
 </script>
-
-<!--<script>
-  function scrolltofoot(){
-  $("#footer").velocity("scroll", { 
-    duration: 800,
-    delay: 500
-  });
-}
-</script>-->
-
 </head>
 
 <body>
@@ -75,10 +65,19 @@
       </div>
       
       <div id="content2" class="fullwidth clearfix">
-      	<p> content2</p> 
+      	<p> PBI's This Sprint</p> 
         <!--<ul class ="mylist"></ul>-->
         <div id="test">
-          <table ></table>
+          <table id="testtable" style="width:100%;">
+            <tr>
+              <th>ID</th>
+              <th>PBI Title</th>
+              <th>Description</th>
+              <th>Effort</th>
+              <th>Priority</th>
+              <th>State</th>
+            </tr>
+          </table>
         </div>   
       </div>
       

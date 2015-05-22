@@ -1,9 +1,11 @@
 /// <reference path="jquery.d.ts"/>
-   
+        // on document run an AJAX call to retrieve Graph data
         $(document).ready(function() {
 	        $.ajax({
 	            dataType: "json",
 	            url: "./php/GraphData.php",
+                //if the ajax call is successful run the function createarray - 
+                //this contains everything else in this JS file
 				success: function createArray (result) {
                     createGraph(result);
                     //console.log(result);
@@ -18,12 +20,15 @@
             var remainingEffort = [];
             var effortcommitted =[];
             
+            //Get each iteration name out of the JSON array
 	        $.each(phpArray, function (key, value) {
 			    var label = value.itName;
                 xlab.push(label);                
 	            });
                 //console.log(xlab);
-            
+           
+           //get each iteration effort total from the JSON array and check for nulls.
+           //nulls will skew graph data 
            $.each(phpArray, function (key, value) {
                if (!value.effTot) {   
                }
@@ -34,6 +39,8 @@
 	            });
                 //console.log(totalEffort);
                 
+           //get each iteration effort remaining from the JSON array and check for nulls.
+           //nulls will skew graph data     
            $.each(phpArray, function (key, value) {
                if (!value.effRem) {   
                }
@@ -43,7 +50,8 @@
                }                
 	           });
                 //console.log(remainingEffort);
-                
+            
+            //get each iteration effort done from the JSON array.
             $.each(phpArray, function (key, value) {
                 var comeff = value.effCom;
                 effortcommitted.push(comeff);                
@@ -52,12 +60,9 @@
                    
 	        var data = {
 	            // A labels array that can contain any sort of values
-	            //labels: ['Sprint 1', 'Sprint 2', 'Sprint 3', 'Sprint 4', 'Sprint 5'],
                 labels: xlab,
-	            // Our series array that contains series objects or in this case series data arrays
+	            // Our series' array that contains series objects or in this case series data arrays
 	            series: [
-                  //[10, 10, 13, 13, 18],
-                  //[5, 2, 4, 2, 0]
                   totalEffort,
                   remainingEffort
 	            ]
@@ -71,7 +76,8 @@
                    onlyInteger: true,
                   }
 	        };
-
+            
+            //options to use when with smaller screens    
 	        var responsiveOptions = [
               ['screen and (min-width: 641px) and (max-width: 1024px)', {
                   showPoint: false,
@@ -92,7 +98,8 @@
                   }
               }]
 	        ];
-
+            
+            //create the burndown line graph
 	        var chart = new Chartist.Line('#chart1', data, options, responsiveOptions);
 
 	        var seq = 0,
@@ -237,7 +244,7 @@
               });
             });*/
             
-            
+            //create the bar chart for effort done per sprint
             var barchart = new Chartist.Bar('#chart2', {
               labels: xlab,
               series: [effortcommitted]
