@@ -540,13 +540,20 @@ table, th, td {
 		}
 		
 	/*Top graph line*/
-	.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-point, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
-		stroke-width: 2.5px;
+	.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
+		stroke-width: 3px;
+	}
+	.ct-chart .ct-point{
+		stroke-width: 8px;
 	}
 
 	/*bottom graph line*/
-	.ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-point, .ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
-		stroke-width: 2.5px;
+	.ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
+		stroke-width: 3px;
+	}
+	
+	.ct-chart .ct-point{
+		stroke-width: 8px;
 	}
 	
 }
@@ -613,14 +620,20 @@ table, th, td {
 	padding:10px 5px;
 	}
 	
-	/*Top graph line*/
-	.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-point, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
-		stroke-width: 1.5px;
+	.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
+		stroke-width: 2px;
+	}
+	.ct-chart .ct-point{
+		stroke-width: 8px;
 	}
 
 	/*bottom graph line*/
-	.ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-point, .ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
-		stroke-width: 1.5px;
+	.ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
+		stroke-width: 2px;
+	}
+	
+	.ct-chart .ct-point{
+		stroke-width: 8px;
 	}
 	
 	table, th, td {
