@@ -97,7 +97,7 @@
             //options to use when with smaller screens    
 	        var responsiveOptions = [
               ['screen and (min-width: 641px) and (max-width: 1024px)', {
-                  showPoint: false,
+                  //showPoint: false,
                   axisX: {
                       labelInterpolationFnc: function (value) {
                           // Will return Mon, Tue, Wed etc. on medium screens
