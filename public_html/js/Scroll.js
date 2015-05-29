@@ -48,7 +48,7 @@ $(document).ready(function() {
         }   
         
     });
-    
+/*    
 	   $("div").mouseenter(function(){
 	   	 var id = $(this).attr('id');
        if (id != "hero"){
@@ -56,5 +56,5 @@ $(document).ready(function() {
   	   	 $("[href=#"+id+"]").addClass('underline');
        }
 	   });
-  
+ */ 
 });
