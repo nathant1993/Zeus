@@ -1,0 +1,123 @@
+/*================================================================================================================
+/*================================================================================================================
+/*STUFF NEEDED TO ADD GRAPHS TO FRONT PAGE
+/*================================================================================================================
+/*================================================================================================================
+
+/*Top graph line*/
+.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-point, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
+	stroke: #29abe2; 
+}
+
+/*bottom graph line*/
+.ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-point, .ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
+  stroke: #ff6700;
+  box-shadow: 10px;
+}
+
+/*.ct-chart.ct-golden-section{
+	width:75%;
+}*/
+
+.ct-chart.ct-perfect-fourth{
+	width:75%;
+}
+
+.ct-chart.ct-major-second{
+	width:75%;
+}
+
+.ct-chart.ct-golden-section {
+   margin-right:auto;
+   margin-left:auto;
+}
+
+.ct-chart .ct-grid {
+	stroke-dasharray: none;
+	stroke:#B0B0B0;
+	stroke-width: 0.5px;
+}
+
+.ct-chart .ct-label, .ct-chart .ct-label.ct-horizontal{
+	fill:#666666;
+	color:#666666;
+}
+
+.ct-chart .ct-label.ct-vertical{
+	fill:#666666;
+	color:#666666;
+}
+
+.graph-container{
+	width:75%;
+	Float:left;
+	padding-right: 20px;
+  margin:0 auto;
+}
+			
+#contentTitle{
+	background:#fff;
+	padding:30px 30px 0px 30px;
+	
+}
+	#contentTitle p{
+		border-bottom: 1px solid #eee;
+		font-size: 150%;
+	}	
+
+#content1{
+	background:#fff;
+	border-bottom: 1px solid #eee;
+}
+
+#content2{
+	
+	background:#fff;
+	border-bottom: 1px solid #eee;
+}
+
+.fullwidth
+{
+	width: 100%;
+	padding: 30px 30px;
+	min-width: 280px;
+  margin: 0 auto;
+}
+
+.fullwidth .bodycontainer
+	{
+		margin: 0 auto;
+		width: 100%;
+		max-width: 1000px;
+		text-align: center;
+	}
+
+.tooltip {
+  position: absolute;
+  display: inline-block;
+  min-width: 5em;
+  padding: 0.5em;
+  background: #fff;
+  opacity:.8;
+  border:1px solid #29abe2;
+  color: #666;
+  font-weight: 700;
+  text-align: center;
+  pointer-events: none;
+  z-index: 1;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 300;
+}
+.tooltip:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    margin-left: -15px;
+    border: 15px solid transparent;
+    border-top-color: #29abe2;
+  }

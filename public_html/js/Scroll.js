@@ -48,5 +48,13 @@ $(document).ready(function() {
         }   
         
     });
-  
+ /*   
+	   $("div").mouseenter(function(){
+	   	 var id = $(this).attr('href');
+       if (id != "#hero"){
+  	   	 $('a').removeClass('underline');
+  	   	 $("[href=#"+id+"]").addClass('underline');
+       }
+	   });
+ */ 
 });

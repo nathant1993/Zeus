@@ -679,22 +679,22 @@ table, th, td {
    Line graph - options
 ================================================== */	
 
-/*Top graph line*/
+/*Top graph line
 .ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-point, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
 	stroke: #29abe2; 
-}
+}*/
 
-/*bottom graph line*/
+/*bottom graph line
 .ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-point, .ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
   stroke: #ff6700;
   box-shadow: 10px;
-}
+}*/
 
 /*.ct-chart.ct-golden-section{
 	width:75%;
 }*/
 
-.ct-chart.ct-perfect-fourth{
+/*.ct-chart.ct-perfect-fourth{
 	width:75%;
 }
 
@@ -746,4 +746,4 @@ table, th, td {
     margin-left: -15px;
     border: 15px solid transparent;
     border-top-color: #29abe2;
-  }
+  }*/

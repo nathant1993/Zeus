@@ -13,11 +13,14 @@
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72.png">
 <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57.png">
-<link rel="shortcut icon" href="images/ico/favicon.png">
+<link rel="shortcut icon" href="images/ico/favicon.ico">
 	
 <!--[if IE]><![endif]-->
 <link rel="stylesheet" href="chartist-js-master/dist/chartist.min.css">
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>	
 <link rel="stylesheet" href="css/landing.css">
+<link rel="stylesheet" href="css/graphstyle.css"></link>
+<link rel="stylesheet" href="css/signup.css"></link>	
 <!--<link rel="stylesheet" href="css/style.css">-->
 	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -34,7 +37,7 @@
     function init() {
         window.addEventListener('scroll', function(e){
             var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-                shrinkOn = 300,
+                shrinkOn = 100,
                 header = document.querySelector("header");
             if (distanceY > shrinkOn) {
                 classie.add(header,"smaller");
@@ -108,31 +111,57 @@
 			</ul>
 		</div>			
 	</div>
+	
 	<div id="who">
 		<div class="container clearfix">
-		
-		<div id ="content1" class="fullwidth clearfix">
-		      	<!--<p> content1 </p>-->
-		        <div class="graph-container">
-		          	<p>Dynamic Burndown Graphs</p>
-		        	<div class="ct-chart ct-golden-section" id="chart1"></div> 
-		        </div> 
-		        <div class="graph-container">
-		          	<p>Velocity Graphs</p>
-		         	<div class="ct-chart ct-golden-section" id="chart2"></div> 
-		        </div>
-	      	</div>
-			
+			<div class="fullwidth clearfix">
+				<div id="maincont" class="bodycontainer clearfix">
+			      	<!--<p> content1 </p>-->
+				        <div class="graph-container" style="float:none">
+				          	<p>Dynamic Burndown Graphs</p>
+				        	<div class="ct-chart ct-golden-section" id="chart1"></div> 
+				        </div> 
+				        <div class="graph-container" style="float:none">
+				          	<p>Velocity Graphs</p>
+				         	<div class="ct-chart ct-golden-section" id="chart2"></div> 
+		     		</div>
+				</div>		
+			</div>	
 		</div>		
 	</div>
+	
 	<div id="contact">
 		<div class="container clearfix">
-			
+			<div class="fullwidth clearfix">
+				<div id="maincont" class="bodycontainer clearfix">
+					<h2>Sign up below and we'll let you know when we launch</h2>
+					<div id="signupform" class="sb-search clearfix">
+							<input class="sb-search-input" id="emailAddress" name="emailAddress" placeholder="Enter email ..." type="email" value="" required>
+			                <input class="sb-search-submit" value="">
+			                <button class="formbutton" id="SubmitForm" >Submit</button>
+					</div>
+					<div id="success" class="status clearfix" style="opacity:1; transition: opacity 1s;"></div>
+				</div>
+			</div>		
 		</div>
 	</div>
 		
-	<footer>
-			
+	<footer id="footer">
+		<div class="container clearfix">
+			<div class="fullwidth clearfix">
+				<div id="footercont" class="bodycontainer clearfix">	
+					<div id="socialmedia" class="clearfix">
+							<ul>
+								<li><a title="Facebook Link" href="https://www.facebook.com/ZeusAgileManagement" rel="external"><span class="fa fa-facebook"></span></a></li>
+								<li><a title="Twitter Link" href="http://twitter.com/WeAre_Zeus" rel="external"><span class="fa fa-twitter"></span></a></li>
+								<li><a title="Google plus link" href="https://plus.google.com/u/0/109510486498245850222/posts" rel="external"><span class="fa fa-google-plus"></span></a></li>
+								<li><a title="Linkedin link" href="https://uk.linkedin.com/pub/zeus-agile-project-management/b3/a28/82b" rel="external"><span class="fa fa-linkedin"></span></a></li>
+								<li><a title="Pinterest link" href="https://www.pinterest.com/zeusagile/" rel="external"><span class="fa fa-pinterest"></span></a></li>
+							</ul>
+					</div>
+				</div>
+			</div>
+		</div>	
 	</footer>
 </body>
 <!--<div class="fullwidth clearfix">
