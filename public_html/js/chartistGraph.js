@@ -1,4 +1,4 @@
-/// <reference path="jquery.d.ts"/>
+/// <reference path="../js/jquery.d.ts"/>
 /*================================================================================================================*/
 /*================================================================================================================*/
 // JavaScript to create the Chartist graphs
@@ -100,8 +100,17 @@
                   //showPoint: false,
                   axisX: {
                       labelInterpolationFnc: function (value) {
-                          // Will return Mon, Tue, Wed etc. on medium screens
-                          return value.slice(0, 3);
+                          // Will return just the sprint number on medium screens
+                          //return value.slice(0, 3);
+                          //find the position of the last instance of a t in the x axis label
+                          var tInString = value.lastIndexOf('t');
+                          
+                          //find the position of the end of the string - this is important once we get into double figures
+                          var endofString = value.length;
+                          
+                          //return the slice of the x axis label between the 't' of sprint and the end of the string
+                          var sprintNo = value.slice(tInString+1,endofString); 
+                          return sprintNo;
                       }
                   }
               }],
@@ -109,8 +118,13 @@
                   showPoint: false,
                   axisX: {
                       labelInterpolationFnc: function (value) {
-                          // Will return M, T, W etc. on small screens
-                          return value[0];
+                          // Will return just the sprint number on small screens
+                          //return value[0];
+                          //this code is the same as the above.
+                          var tInString = value.lastIndexOf('t');
+                          var endofString = value.length;
+                          var sprintNo = value.slice(tInString+1,endofString);
+                          return sprintNo;
                       }
                   }
               }]
