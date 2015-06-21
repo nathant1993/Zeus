@@ -1,0 +1,25 @@
+
+AddType x-httpd-php54 .php
+
+# Block Russian Referrer Spam
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} ^http://.*ilovevitaly\.com/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*ilovevitaly.\.ru/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*ilovevitaly\.org/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*ilovevitaly\.info/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*iloveitaly\.ru/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*econom\.co/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*savetubevideo\.com/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*kambasoft\.com/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*buttons\-for\-website\.com/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*free-share-buttons.com/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*pornhub-forum.uni.me/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*site3.free-share-buttons.com/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*site2.free-share-buttons.com/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*pornhub-forum.ga/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*event-tracking.com/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*Get-Free-Traffic-Now.com/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*generalporn.org/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*semalt\.com/ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://.*darodar\.com/ [NC]
+RewriteRule ^(.*)$ – [F,L]
