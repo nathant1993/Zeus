@@ -18,7 +18,7 @@
 				}            
 	        });
 	});		
-
+        
 /*================================================================================================================*/
 /*================================================================================================================*/
 //This function gets called on the success callback of the AJAX call
@@ -96,7 +96,7 @@
             
             //options to use when with smaller screens    
 	        var responsiveOptions = [
-              ['screen and (min-width: 641px) and (max-width: 1024px)', {
+              ['screen and (min-width: 501px) and (max-width: 1024px)', {
                   //showPoint: false,
                   axisX: {
                       labelInterpolationFnc: function (value) {
@@ -114,8 +114,9 @@
                       }
                   }
               }],
-              ['screen and (max-width: 640px)', {
-                  showPoint: false,
+              
+              ['screen and (max-width: 500px)', {
+                  //showPoint: false,
                   axisX: {
                       labelInterpolationFnc: function (value) {
                           // Will return just the sprint number on small screens

@@ -559,6 +559,94 @@ table, th, td {
 }
 
 /* ==================================================
+   Responsive Media Queries - Landscape Mobiles
+================================================== */
+
+@media screen and (max-width: 670px)
+{	
+
+	body
+	{
+		font-size: 21px;
+		line-height: 27px;
+	}
+	
+	#topcontainer h1
+	{
+		font-size: 36px;
+		line-height: 36px;
+		
+	}
+
+		#topcontainer h1 span
+		{
+			font-size: 50px;
+			line-height: 50px;
+		}
+	
+	#maincont{
+		width:100%;
+
+	}
+	
+	.graph-container{
+		width:75%;
+		float: none;
+		margin: 0 auto;
+	}
+		
+	#maincont #signupform
+	{
+		margin: 0 auto 20px auto;
+		width: 100%;
+	}
+	
+	#leftNav{
+		display:none;	
+	}
+	
+	#footercont #socialmedia ul li
+	{
+		margin: 0 5px;
+	}
+	
+		#footercont #socialmedia ul li a
+		{
+			font-size: 28px;
+		}
+	.fullwidth{
+		padding:10px 5px;
+	}
+	
+	#contentTitle{
+	padding:10px 5px;
+	}
+	
+	.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
+		stroke-width: 3.5px;
+	}
+	.ct-chart .ct-point{
+		stroke-width: 12px;
+	}
+
+	/*bottom graph line*/
+	.ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
+		stroke-width: 3.5px;
+	}
+	
+	.ct-chart .ct-point{
+		stroke-width: 12px;
+	}
+	
+	table, th, td {
+	   border: 1px solid #B0B0B0;
+	   padding: 2px;
+	   font-size: 75%;
+	}
+}
+
+
+/* ==================================================
    Responsive Media Queries - Mobiles
 ================================================== */
 
