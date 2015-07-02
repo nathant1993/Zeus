@@ -30,6 +30,7 @@
 <script src="js/velocity.js"></script>
 <script src="js/velocity.ui.js"></script>
 <script src="js/classie.js"></script>
+<script src="js/countUp.js"></script>
 <script src="chartist-js-master/dist/chartist.min.js"></script>
 <script src="./js/chartistGraph.js"></script> 
 <script src="./js/pbiData.js"></script>
@@ -73,7 +74,7 @@
 	        <nav>
 	            <a href="#why">Why Zeus</a>
 			    <a href="#features">Features</a>
-			    <a href="#who">Who we are</a>
+			    <a href="#who">Graph examples</a>
 			    <a href="#contact">Contact us</a>
 	        </nav>
     	</div>		
@@ -97,10 +98,17 @@
 			<img src="./images/desk.jpg"> 
 		</div>		
 	</div>
+	<div id="cta-1">
+		<div class="container clearfix">
+			<h2>Need a new way to manage your project?</h2>	
+			<a href="#contact">Get in touch</a>	
+		</div>		
+	</div>
 	<div id="features">
 		<div class="container clearfix">
 			<h2>Features</h2>
-			<h1>Everything you need to control your projects and business</h1>	
+			<h1>Everything you need to control your projects and business</h1>
+			<h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h3>
 			<ul class="features">
 				<li><p><img src="./images/ruler.svg"></p>Responsive<p>Work across all your devices</p></li>
 				<li><p><img src="./images/presentation.svg"></p>Metrics<p>Simple straight forward metrics</p></li>
@@ -111,47 +119,62 @@
 			</ul>
 		</div>			
 	</div>
-	
+	<div id="cta-2">
+		<div class="container clearfix">
+			<ul class="counters">
+				<li><h1>10,897</h1><p>Lines of code</p></li>
+				<li><h1>372</h1><p>Project hours</p></li>
+				<li><h1>25</h1><p>Group meetings</p></li>	
+			</ul>	
+		</div>		
+	</div>
 	<div id="who">
 		<div class="container clearfix">
+			<h2>Graph examples</h2>
+			<h1>Detailed graphs giving you the metrics you need</h1>
+			<h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h3>
 			<div class="fullwidth clearfix">
 				<div id="maincont" class="bodycontainer clearfix">
-			      	<!--<p> content1 </p>-->
-				        <div class="graph-container" style="float:none">
-				          	<p>Dynamic Burndown Graphs</p>
-				        	<div class="ct-chart ct-golden-section" id="chart1"></div> 
-				        </div> 
-				        <div class="graph-container" style="float:none">
-				          	<p>Velocity Graphs</p>
-				         	<div class="ct-chart ct-golden-section" id="chart2"></div> 
+		      	<!--<p> content1 </p>-->
+			        <div class="graph-container" style="float:none">
+			          	<p>Dynamic Burndown Graphs</p>
+			        	<div class="ct-chart ct-golden-section" id="chart1"></div> 
+			        </div> 
+			        <div class="graph-container" style="float:none">
+			          	<p>Velocity Graphs</p>
+			         	<div class="ct-chart ct-golden-section" id="chart2"></div> 
 		     		</div>
 				</div>		
 			</div>	
 		</div>		
 	</div>
-	
+	<div id="cta-3">
+		<div class="container clearfix">
+			<h1>Zeus allowed me to maximise my project resources and keep everything under control.</h1>
+			<h2>Joe Bloggs - Lorem Ltd</h2>
+		</div>		
+	</div>
 	<div id="contact">
 		<div class="container clearfix">
-			<div class="fullwidth clearfix">
-				<div id="maincont" class="bodycontainer clearfix">
-					<h2>Sign up below and we'll let you know when we launch</h2>
-					<div id="signupform" class="sb-search clearfix">
-							<input class="sb-search-input" id="emailAddress" name="emailAddress" placeholder="Enter email ..." type="email" value="" required>
-			                <input class="sb-search-submit" value="">
-			                <button class="formbutton" id="SubmitForm" >Submit</button>
-					</div>
-					<div id="success" class="status clearfix" style="opacity:1; transition: opacity 1s;"></div>
-				</div>
-				<div id="socialmedia" class="clearfix">
-							<ul>
-								<li><a title="Facebook Link" href="https://www.facebook.com/ZeusAgileManagement" rel="external"><span class="fa fa-facebook"></span></a></li>
-								<li><a title="Twitter Link" href="http://twitter.com/WeAre_Zeus" rel="external"><span class="fa fa-twitter"></span></a></li>
-								<li><a title="Google plus link" href="https://plus.google.com/u/0/109510486498245850222/posts" rel="external"><span class="fa fa-google-plus"></span></a></li>
-								<li><a title="Linkedin link" href="https://uk.linkedin.com/pub/zeus-agile-project-management/b3/a28/82b" rel="external"><span class="fa fa-linkedin"></span></a></li>
-								<li><a title="Pinterest link" href="https://www.pinterest.com/zeusagile/" rel="external"><span class="fa fa-pinterest"></span></a></li>
-							</ul>
-				</div>
-			</div>		
+			<h2>Contact us</h2>
+			<h1>Sign up below and we'll let you know when we launch</h1>
+			<h3>We're just getting started but this is going to be powerful!</h3>
+			<div id="signupform" class="sb-search clearfix">
+				<input class="sb-search-input" id="emailAddress" name="emailAddress" placeholder="Enter email ..." type="email" value="" required>
+                <input class="sb-search-submit" value="">
+                <button class="formbutton" id="SubmitForm" >Submit</button>
+			</div>
+			<div id="success" class="status clearfix" style="opacity:1; transition: opacity 1s;">
+			</div>
+			<div id="socialmedia" class="clearfix">
+				<ul>
+					<li><a title="Facebook Link" href="https://www.facebook.com/ZeusAgileManagement" rel="external"><span class="fa fa-facebook"></span></a></li>
+					<li><a title="Twitter Link" href="http://twitter.com/WeAre_Zeus" rel="external"><span class="fa fa-twitter"></span></a></li>
+					<li><a title="Google plus link" href="https://plus.google.com/u/0/109510486498245850222/posts" rel="external"><span class="fa fa-google-plus"></span></a></li>
+					<li><a title="Linkedin link" href="https://uk.linkedin.com/pub/zeus-agile-project-management/b3/a28/82b" rel="external"><span class="fa fa-linkedin"></span></a></li>
+					<li><a title="Pinterest link" href="https://www.pinterest.com/zeusagile/" rel="external"><span class="fa fa-pinterest"></span></a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 		
