@@ -469,13 +469,9 @@ ul.counters li p{
   font-family: "Roboto", sans-serif;
   padding-bottom:10px;
 }
-span .number{
-  height:100px;
-  width:100%;
-  
-}
+
 #who{
-  height:950px;
+  height:1180px;
   width: 100%;
   background-color: white;
 }
@@ -672,11 +668,12 @@ span .number{
   height:670px;
   width: 100%;
   background-color: white;
+  
   }
   
   #why .container h2 {
     text-align: center;
-    line-height:1.25; 
+    line-height:1.5; 
     font-size: 1.5em;
     font-weight: 300;
     color: #505050;
@@ -686,27 +683,65 @@ span .number{
   }
   
   /* ==================================================
+   cta-1 div
+  ================================================== */
+  #cta-1 {
+    text-align: center;
+    display: block;
+    
+  }
+  
+  #cta-1 .container {
+    text-align: center;
+  }
+  
+  #cta-1 .container h2 {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    
+    
+  }
+  
+  #cta-1 .container a {
+    text-align: center;
+    margin: 0 auto;
+    width: 150px;
+    display: block;
+    
+    margin-top:30px;
+    padding: 5px;
+    background-color: #ff8533;
+    border-bottom:1px solid #D55900; 
+    color: white;
+    font-weight: 400;
+    font-size: 1.2em;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  /* ==================================================
    Features div
   ================================================== */
   
   #features{
-    background: url("../images/startup.jpg") no-repeat center center; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height: 1670px;
-    max-width: 100%;
-   
+  height: 1950px;
+  max-width: 100%;
+  background-color: white;
   }
   
   #features .container h2 {
     margin: 0 auto;
     text-align: center;
-    line-height:1.25; 
+    line-height:1.5; 
     font-size: 1.5em;
     font-weight: 300;
-    color: white;
+    color: #505050;
     padding-top: 50px;
     padding-bottom: 30px;
     font-family: "Roboto", sans-serif;
@@ -724,7 +759,7 @@ span .number{
   }
   ul.features li{
     font-size: 1.75em;
-    color:white;
+    color:#505050;
     display: inline-block;
     width: 90%;
     min-height: 100px;
@@ -740,8 +775,43 @@ span .number{
     width:75px;
     padding-top: 30px;
   }  
-    
+   
+   /* ==================================================
+   cta-2 div
+  ================================================== */ 
   
+  #cta-2{
+    background: url("../images/contact.jpg") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 520px;
+    max-width: 100%;
+   
+}
+  ul.counters {
+    margin: 0 auto;
+    text-align: center;
+    
+  }
+  
+  ul.counters li{
+    margin-top: 60px;
+    font-size: 1.5em;
+    color:white;
+    display: inline-block;
+    width: 80%;
+    min-height: 100px;
+    font-family: "Open sans", sans-serif;
+  }
+  
+  ul.counters li p{
+    font-size: 0.9em;
+    line-height: 1.25;
+    font-family: "Roboto", sans-serif;
+    padding-bottom:10px;
+  } 
 }
 
 
