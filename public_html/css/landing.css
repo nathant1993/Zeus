@@ -183,7 +183,7 @@ a img {
   box-sizing: border-box; }
 
 body {
-  background-color: #3cb5f9;
+  background-color: white;
   color: #505050;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
@@ -351,7 +351,7 @@ img{
 
 #cta-1 .container h2 {
   margin: 0 auto;
-  text-align: right;
+  text-align: center;
   margin-top: 84px;
   color: white;
   font-family: "Roboto", sans-serif;
@@ -579,22 +579,30 @@ ul.counters li p{
    Responsive Media Queries - Tablets
 ================================================== */
 
-@media screen and (max-width: 1024px)
-{
-    
-  
-}
+
   
   
 /* ==================================================
    Responsive Media Queries - Landscape Mobiles
 ================================================== */
 
-@media screen and (max-width: 670px)
-{	
+@media screen and (max-width: 768px)
+{
+  
+   #cta-2{
+    height: 520px;
+   }   
 
-
+   ul.counters li{
+    width: 80%;
+  }  
+  
+  #cta-3{
+    height: 250px;
+  }
 }
+
+
 
 /* ==================================================
    Responsive Media Queries - Mobiles
@@ -608,12 +616,6 @@ ul.counters li p{
   ================================================== */
   
   #hero{
-    background: url("../images/blue-sky1.jpg") no-repeat center center; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    max-width: 100%;
     min-height: 670px;
   }
   
@@ -812,6 +814,56 @@ ul.counters li p{
     font-family: "Roboto", sans-serif;
     padding-bottom:10px;
   } 
+     
+
+
+  /* ==================================================
+     cta-3 div
+    ================================================== */ 
+    
+  #cta-3{
+    background: url("../images/handshake.jpg") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 250px;
+    max-width: 100%;
+   
+}
+    
+  #cta-3 .container h1 {
+    font-size: 1.25em;
+    line-height: 1.25;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 10px;
+    color: white;
+    font-family: "Open sans", sans-serif;
+    max-width: 100%;
+  }
+  
+  #cta-3 .container h2 {
+    margin: 0 auto;
+    text-align: center;
+    line-height:1.25; 
+    font-size: 1em;
+    font-weight: 300;
+    color: white;
+    padding-bottom: 30px;
+    font-family: "Roboto", sans-serif;     
+  }
+  
+  /* ==================================================
+       cta-3 div
+      ================================================== */ 
+  #contact{
+    height:570px;
+    width: 100%;
+    background-color: white;
+  }
+
 }
 
 

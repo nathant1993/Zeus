@@ -101,3 +101,16 @@
     font-family: "Roboto", sans-serif;
     text-align: center;
 }
+
+/* ==================================================
+   Responsive Media Queries - Mobiles
+================================================== */
+
+@media screen and (max-width: 480px)
+{	
+#signupform
+	{
+		margin: 50px auto 20px auto;
+		width: 100%;
+	}
+}
