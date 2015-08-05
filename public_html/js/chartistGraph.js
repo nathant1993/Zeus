@@ -268,8 +268,20 @@
             //when the mouse enters the point on the chart  show the tooltip
             $chart.on('mouseenter', '.ct-point', function() {
               var $point = $(this),
-                value = $point.attr('ct:value'),
-                seriesName = $point.parent().attr('ct:series-name');
+                value = $point.attr('ct:value')
+                //seriesName = $point.parent().attr('ct:series-name');
+                //if the line is the top line it will have a class ending in a therefore we know we can rename this to total effort
+                if ($point.parent().attr('class')=='ct-series ct-series-a'){
+                    seriesName = 'Total Effort';
+                }
+                //very similar to the above the 2nd line's class ends in b therefore we can rename this to remaining effort
+                else if ($point.parent().attr('class')=='ct-series ct-series-b') {
+                    seriesName = 'Remaining Effort';
+                } 
+                //if neither of these are present then fall back to the word effort
+                else {
+                    seriesName = 'Effort';
+                }
               $toolTip.html(seriesName + '<br>' + value).show();
             });
             

@@ -121,3 +121,62 @@
     border: 15px solid transparent;
     border-top-color: #29abe2;
   }
+
+
+/* ==================================================
+   Responsive Media Queries - Landscape Mobiles
+================================================== */
+
+@media screen and (max-width: 670px)
+{	
+	.graph-container{
+		width:75%;
+		float: none;
+		margin: 0 auto;
+	}
+
+	.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
+		stroke-width: 3.5px;
+	}
+	.ct-chart .ct-point{
+		stroke-width: 12px;
+	}
+
+	/*bottom graph line*/
+	.ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
+		stroke-width: 3.5px;
+	}
+	
+	.ct-chart .ct-point{
+		stroke-width: 12px;
+	}	
+}
+
+/* ==================================================
+   Responsive Media Queries - Mobiles
+================================================== */
+
+@media screen and (max-width: 480px)
+{	
+	.graph-container{
+		width:100%;
+		margin-top:30px;
+		padding-right:0px;
+	}
+	
+	.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
+		stroke-width: 2px;
+	}
+	.ct-chart .ct-point{
+		stroke-width: 8px;
+	}
+
+	/*bottom graph line*/
+	.ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
+		stroke-width: 2px;
+	}
+	
+	.ct-chart .ct-point{
+		stroke-width: 8px;
+	}
+}
