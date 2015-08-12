@@ -6,24 +6,27 @@
 <head>
 <!-- Website Template designed by www.downloadwebsitetemplates.co.uk -->
 <meta charset="UTF-8">
-<title>Zeus coming soon page</title>
-<meta name="description" content="Zeus project management">
-<meta name="keywords" content="agile">
+<title>Zeus - Agile Project Management</title>
+<meta name="Description" content="Zeus Agile Project Management Dashboard - Zeus is a cloud based project management tool. Zeus is primarily focussed on agile project management but no matter how you work Zeus can help.">
+<meta name="keywords" content="Zeus agile project management.">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72.png">
 <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57.png">
-<link rel="shortcut icon" href="images/ico/favicon.png">
+<link rel="shortcut icon" href="images/ico/favicon.ico">
 <!--[if IE]><![endif]-->
 <link rel="stylesheet" href="css/style.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="js/jquery.js"></script>
 <script src="js/countdown.js"></script>
-<script src="js/owlcarousel.js"></script>
 <script src="js/uikit.scrollspy.js"></script>
 <script src="js/scripts.js"></script>
-<!-- Google Analytics code, need to add this to all pages!-->
+<script src="js/ajax.js"></script>
+<script src="js/velocity.js"></script>
+<script src="js/velocity.ui.js"></script>
 
+<!-- Google Analytics code, need to add this to all pages!-->
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -33,28 +36,6 @@
   ga('send', 'pageview');
 </script>
 
-<script>
-	function submitForm()
-	{
-		{
-    if (str.length == 0) { 
-        document.getElementById("emailAddress").innerHTML = "";
-        return;
-    } else {
-        //var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                //document.getElementById("emailAddress").innerHTML = xmlhttp.responseText;
-				xmlhttp.open("POST", "testcon.php", true);
-        		xmlhttp.send();
-            }
-        }
-        //xmlhttp.open("GET", "gethint.php?q=" + str, true);
-        //xmlhttp.send();
-    }
-}
-	};
-</script>
 <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body id="backtotop">
@@ -62,8 +43,7 @@
 <div class="fullwidth clearfix">
 	<div id="topcontainer" class="bodycontainer clearfix" data-uk-scrollspy="{cls:'uk-animation-fade', delay: 300, repeat: true}">
 		
-		<p><span class="fa fa-signal"></span></p>
-        <!--<p><span><img src="images/lightningBolt.jpg" style="width:18%;"></span></p>-->
+        <span><img src="images/ZeusLogo.jpg" style="width:18%;" alt="Zeus agile project management logo"></span>
 		<h1><span>Zeus</span><br />is coming soon</h1>
 		<p>We're just getting started but this is going to be powerful!</p>
 		
@@ -107,15 +87,15 @@
         <h2>Sign up below and we'll let you know when we launch</h2>
         
 		<div id="signupform" class="sb-search clearfix">
-			<form action="testcon.php" method="post" id="contact" class="clearfix">
-            <!--<form id="contact" method="post" class="clearfix">-->
-				<input class="sb-search-input" id="emailAddress" name="emailAddress" placeholder="Enter email ..." type="text" value="">
-				<input class="sb-search-submit" value="" type="submit">
-				<!--<button class="formbutton" type="submit">submit<span class="fa fa-search"></span></button>-->
-                <button class="formbutton" type="submit" >Submit</button>
-                <!--<button class="formbutton" onClick="submitForm">Submit</button>-->
-			</form>
+			<!--<form action="testcondev.php" method="POST" id="contact" class="clearfix">-->
+            <!-- <form id="contact" class="clearfix"> -->
+				<input class="sb-search-input" id="emailAddress" name="emailAddress" placeholder="Enter email ..." type="email" value="" required>
+                <input class="sb-search-submit" value="">
+				<!--<input class="sb-search-submit" value="" type="submit">-->
+                <button class="formbutton" id="SubmitForm" >Submit</button>
+            <!-- </form> -->
 		</div>
+		<div id="success" class="status clearfix" style="opacity:1; transition: opacity 1s;"></div>
 	
 	</div>
 </div>
@@ -148,17 +128,15 @@
 <div class="fullwidth clearfix">
 	<div id="footercont" class="bodycontainer clearfix" data-uk-scrollspy="{cls:'uk-animation-fade', delay: 300, repeat: true}">
 
-		<p class="backtotop"><a title="" href="#backtotop"><span class="fa fa-angle-double-up"></span></a></p>
 		<div id="socialmedia" class="clearfix">
 			<ul>
-				<li><a title="" href="#" rel="external"><span class="fa fa-facebook"></span></a></li>
-				<li><a title="" href="#" rel="external"><span class="fa fa-twitter"></span></a></li>
-				<li><a title="" href="#" rel="external"><span class="fa fa-google-plus"></span></a></li>
-				<li><a title="" href="#" rel="external"><span class="fa fa-linkedin"></span></a></li>
-				<li><a title="" href="#" rel="external"><span class="fa fa-pinterest"></span></a></li>
+				<li><a title="Facebook Link" href="https://www.facebook.com/ZeusAgileManagement" rel="external"><span class="fa fa-facebook"></span></a></li>
+				<li><a title="Twitter Link" href="http://twitter.com/WeAre_Zeus" rel="external"><span class="fa fa-twitter"></span></a></li>
+				<li><a title="Google plus link" href="https://plus.google.com/u/0/109510486498245850222/posts" rel="external"><span class="fa fa-google-plus"></span></a></li>
+				<li><a title="Linkedin link" href="https://uk.linkedin.com/pub/zeus-agile-project-management/b3/a28/82b" rel="external"><span class="fa fa-linkedin"></span></a></li>
+				<li><a title="Pinterest link" href="https://www.pinterest.com/zeusagile/" rel="external"><span class="fa fa-pinterest"></span></a></li>
 			</ul>
 		</div>
-		<p>Free Responsive Website Template by <a title="download website templates" href="http://www.downloadwebsitetemplates.co.uk" rel="external">Download Website Templates</a> - Icons by <a title="" href="http://fortawesome.github.io/Font-Awesome/" rel="external">Font Awesome</a></p>
 	</div>
 </div>
    
