@@ -73,8 +73,8 @@ $(document).ready(function() {
 
 					 $("#greyOut").velocity("transition.fadeIn")
 					 .velocity({opacity:0.9});
-					 $("#popupContact").velocity("transition.bounceUpIn", {delay:200})
-					 .velocity({opacity:1});
+					 $("#popupContact").velocity("transition.bounceUpIn")
+					 .velocity({opacity:1});;
 				 });
 				 
 				 //Close

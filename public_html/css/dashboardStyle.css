@@ -140,7 +140,7 @@ h1, h2, h3
    Separator Arrows
 ================================================== */
 
-.arrow-separator
+/*.arrow-separator
 {
 	position: relative;
 }
@@ -162,8 +162,8 @@ h1, h2, h3
 	
 		.arrow-white:after
 		{
-			border-color: #FFF rgba(255,255,255,0) rgba(255,255,255,0) rgba(255,255,255,0); /** Using RGB to remove dark line in Firefox **/
-		}
+			border-color: #FFF rgba(255,255,255,0) rgba(255,255,255,0) rgba(255,255,255,0); /** Using RGB to remove dark line in Firefox **/ 
+		/*}
 		
 		.arrow-theme:after
 		{
@@ -178,7 +178,7 @@ h1, h2, h3
 		.arrow-grey:after
 		{
 			border-color: #EEE rgba(238,238,238,0) rgba(238,238,238,0) rgba(238,238,238,0);
-		}
+		}*/
 
 /* ==================================================
    General Layout Styles
@@ -261,8 +261,8 @@ h1, h2, h3
 #maincont
 {
 	color: #F00;
-	width:82.5%;
-	float:left;
+	width:90%;
+	margin:0 auto;
 }
 
 	#maincont a

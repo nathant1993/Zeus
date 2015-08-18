@@ -20,7 +20,8 @@
             inner join states d on d.state_id = a.state_id
             inner join project e on e.project_id = a.project_id
             where b.iteration_start_date <= sysdate() 
-            and b.iteration_end_date >= sysdate()";
+            and b.iteration_end_date >= sysdate()
+            ORDER BY a.state_id";
 
   $result = $conn->query($query) or exit("Error code ({$conn->errno}): {$conn->error}");
 

@@ -30,11 +30,13 @@
             var totalEffort = []; 
             var remainingEffort = [];
             var effortcommitted =[];
+            var noOfSprints = 0;
             
             //Get each iteration name out of the JSON array
 	        $.each(phpArray, function (key, value) {
 			    var label = value.itName;
-                xlab.push(label);                
+                xlab.push(label); 
+                noOfSprints++ ;               
 	            });
                 //console.log(xlab);
            
@@ -68,7 +70,7 @@
                 effortcommitted.push(comeff);                
 	            });
                  //console.log(effortcommitted);
-
+                 console.log(noOfSprints);
 /*================================================================================================================*/
 /*================================================================================================================*/
 //Create the line graph
@@ -131,8 +133,52 @@
               }]
 	        ];
             
+            //options to use when with smaller screens    
+	        var responsiveOptionsForMoreThanTenSprints = [
+              ['screen and (min-width: 501px) and (max-width: 5000px)', {
+                  //showPoint: false,
+                  axisX: {
+                      labelInterpolationFnc: function (value) {
+                          // Will return just the sprint number on medium screens
+                          //return value.slice(0, 3);
+                          //find the position of the last instance of a t in the x axis label
+                          var tInString = value.lastIndexOf('t');
+                          
+                          //find the position of the end of the string - this is important once we get into double figures
+                          var endofString = value.length;
+                          
+                          //return the slice of the x axis label between the 't' of sprint and the end of the string
+                          var sprintNo = 'S ' + value.slice(tInString+1,endofString); 
+                          return sprintNo;
+                      }
+                  }
+              }],
+              
+              ['screen and (max-width: 500px)', {
+                  //showPoint: false,
+                  axisX: {
+                      labelInterpolationFnc: function (value) {
+                          // Will return just the sprint number on small screens
+                          //return value[0];
+                          //this code is the same as the above.
+                          var tInString = value.lastIndexOf('t');
+                          var endofString = value.length;
+                          var sprintNo = value.slice(tInString+1,endofString);
+                          return sprintNo;
+                      }
+                  }
+              }]
+	        ];
+            
             //create the burndown line graph
-	        var chart = new Chartist.Line('#chart1', data, options, responsiveOptions);
+            //find out how many labels there are on the x-axis, if there are more than 10 use a different set of options to create the graph
+            if(noOfSprints >10){
+                var chart = new Chartist.Line('#chart1', data, options, responsiveOptionsForMoreThanTenSprints);
+            }
+            else{
+                var chart = new Chartist.Line('#chart1', data, options, responsiveOptions);
+            }
+	        
 
 	        var seq = 0,
             delays = 10,
@@ -306,10 +352,20 @@
 /*================================================================================================================*/
             
             //create the bar chart for effort done per sprint
-            var barchart = new Chartist.Bar('#chart2', {
-              labels: xlab,
-              series: [effortcommitted]
-            },options, responsiveOptions);
+            //find out how many labels there are on the x-axis, if there are more than 10 use a different set of options to create the graph
+             if(noOfSprints >10){
+                var barchart = new Chartist.Bar('#chart2', {
+                labels: xlab,
+                series: [effortcommitted]
+                },options, responsiveOptionsForMoreThanTenSprints);  
+             }
+             else{
+                 var barchart = new Chartist.Bar('#chart2', {
+                labels: xlab,
+                series: [effortcommitted]
+                },options, responsiveOptions); 
+             }
+            
 
 	        // Once the chart is fully created we reset the sequence
 	        barchart.on('created', function () {
