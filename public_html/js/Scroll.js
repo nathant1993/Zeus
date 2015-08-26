@@ -35,11 +35,13 @@ $(document).ready(function() {
             $(lastlink).removeClass("underline"); 
            }
         // scroll to each target
-        $(target).velocity("scroll", {
-            duration: 500,
-            offset: 0,
-            easing: "ease-out"
-        });
+         $(target).velocity("scroll", {
+             easing: [300,28],
+             duration: 1000,
+             //offset: 1000
+         });
+        
+        //$(target).velocity("scroll", {easing:'easeInOutExpo', duration:300});
         //Add the css class underline to the most recently 
         //navigated to link unless navigating to the top of the page
         if (target != "#hero") {

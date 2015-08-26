@@ -13,32 +13,23 @@
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72.png">
 <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57.png">
-<link rel="shortcut icon" href="images/ico/favicon.ico">
+<link rel="shortcut icon" href="images/ico/favicon.png">
 	
 <!--[if IE]><![endif]-->
-<link rel="stylesheet" href="chartist-js-master/dist/chartist.min.css">
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>	
 <link rel="stylesheet" href="css/landing.css">
-<link rel="stylesheet" href="css/graphstyle.css"></link>
-<link rel="stylesheet" href="css/signup.css"></link>	
-<!--<link rel="stylesheet" href="css/style.css">-->
-	
+<link rel="stylesheet" href="css/sty le.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="js/uikit.scrollspy.js"></script>
-<script src="./js/Scroll.js"></script>
+<script src="./js/scroll.js"></script>
 <script src="js/ajax.js"></script>
 <script src="js/velocity.js"></script>
 <script src="js/velocity.ui.js"></script>
 <script src="js/classie.js"></script>
-<script src="js/countUp.js"></script>
-<script src="chartist-js-master/dist/chartist.min.js"></script>
-<script src="./js/chartistGraph.js"></script> 
-<script src="./js/pbiData.js"></script>
 <script>
     function init() {
         window.addEventListener('scroll', function(e){
             var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-                shrinkOn = 100,
+                shrinkOn = 300,
                 header = document.querySelector("header");
             if (distanceY > shrinkOn) {
                 classie.add(header,"smaller");
@@ -69,118 +60,60 @@
 	<header>
 		<div class="container clearfix">
 	        <h1 id="logo">
-	            <a href="#hero">Zeus</a>
+	            <a href="#hero">ZEUS</a>
 	        </h1>
 	        <nav>
-	            <a href="#why">Why Zeus</a>
+	            <a href="#why">Why Zeus?</a>
 			    <a href="#features">Features</a>
-			    <a href="#who">Graph examples</a>
+			    <a href="#who">Who we are</a>
 			    <a href="#contact">Contact us</a>
 	        </nav>
     	</div>		
 	</header>
-	<div id="hero">
-		<div class="container clearfix">
-			<div class="copy">
-				<img src="./images/Zeus_Cloud_logo_ thick_white.png">
-				<h1>Burndown from the cloud</h1>
-				<h2>Cloud based project management for you and your business. Provding simple, powerful metrics for accurately measuring how your projects run.</h2>
-				<a href="#why">Learn more</a>
-			</div>	
-		</div>			
-	</div>
-	<div id="why">
-		<div class="container clearfix">
-			<h2>Why Zeus</h2>
-			<h1>Zeus is a free online project management tool</h1>
-			<h3>Zeus is aimed at small to medium software businesses. It will provide you with straight forward project metrics so you can maximise your success. 
-				Zeus will help whether you work in agile ways or not, we think agile is a great way to work but we recognise it isn't suited to everyone.</h3>
-			<img src="./images/desk.jpg"> 
-		</div>		
-	</div>
-	<div id="cta-1">
-		<div class="container clearfix">
-			<h2>Need a new way to manage your project?</h2>	
-			<a href="#contact">Get in touch</a>	
+		<div id="hero">
+			<div class="content">
+				<h1>Zeus is a free online project management tool aimed at small to medium software businesses. It will provide you with straight forward project metrics so you can maximise your success. Zeus will help whether you work in agile ways or not, we think agile is a great way to work but we recognise it isn't suited to everyone.</h1>	
+			</div>			
+		</div>
+	<div id="why" style="width:100%; height:1000px; background-color:blue;">
+		<div class="content">
+			
 		</div>		
 	</div>
 	<div id="features">
-		<div class="container clearfix">
-			<h2>Features</h2>
-			<h1>Everything you need to control your projects and business</h1>
-			<h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h3>
-			<ul class="features">
-				<li><p><img src="./images/ruler.svg"></p>Responsive<p>Work across all your devices</p></li>
-				<li><p><img src="./images/presentation.svg"></p>Metrics<p>Simple straight forward metrics</p></li>
-				<li><p><img src="./images/cloud.svg"></p>Cloud Based<p>Access your metrics anywhere</p></li>
-				<li><p><img src="./images/feather.svg"></p>Lightweight<p>Delivering your metrics with ease</p></li>
-				<li><p><img src="./images/moneybag.svg"></p>Free<p>Core functionality to get you started</p></li>
-				<li><p><img src="./images/shipping.svg"></p>Powerful<p>Maximise the work you take on</p></li>
-			</ul>
+		<div class="content" style="width:100%; height:1000px; background-color:black;">
+			
 		</div>			
 	</div>
-	<div id="cta-2">
-		<div class="container clearfix">
-			<ul class="counters">
-				<li><h1>10,897</h1><p>Lines of code</p></li>
-				<li><h1>372</h1><p>Project hours</p></li>
-				<li><h1>25</h1><p>Group meetings</p></li>	
-			</ul>	
+	<div id="who" style="width:100%; height:1000px; background-color:red;">
+		<div class="content">
+			
 		</div>		
 	</div>
-	<div id="who">
-		<div class="container clearfix">
-			<h2>Graph examples</h2>
-			<h1>Detailed graphs giving you the metrics you need</h1>
-			<h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h3>
-			<div class="fullwidth clearfix">
-				<div id="maincont" class="bodycontainer clearfix">
-		      	<!--<p> content1 </p>-->
-			        <div class="graph-container" style="float:none">
-			          	<p>Dynamic Burndown Graphs</p>
-			        	<div class="ct-chart ct-golden-section" id="chart1"></div> 
-			        </div> 
-			        <div class="graph-container" style="float:none">
-			          	<p>Velocity Graphs</p>
-			         	<div class="ct-chart ct-golden-section" id="chart2"></div> 
-		     		</div>
-				</div>		
-			</div>	
-		</div>		
-	</div>
-	<div id="cta-3">
-		<div class="container clearfix">
-			<h1>Zeus allowed me to maximise my project resources and keep everything under control.</h1>
-			<h2>Joe Bloggs - Lorem Ltd</h2>
-		</div>		
-	</div>
-	<div id="contact">
-		<div class="container clearfix">
-			<h2>Contact us</h2>
-			<h1>Sign up below and we'll let you know when we launch</h1>
-			<h3>We're just getting started but this is going to be powerful!</h3>
-			<div id="signupform" class="sb-search clearfix">
-				<input class="sb-search-input" id="emailAddress" name="emailAddress" placeholder="Enter email ..." type="email" value="" required>
-                <input class="sb-search-submit" value="">
-                <button class="formbutton" id="SubmitForm" >Submit</button>
-			</div>
-			<div id="success" class="status clearfix" style="opacity:1; transition: opacity 1s;">
-			</div>
-			<div id="socialmedia" class="clearfix">
-				<ul>
-					<li><a title="Facebook Link" href="https://www.facebook.com/ZeusAgileManagement" rel="external"><span class="fa fa-facebook"></span></a></li>
-					<li><a title="Twitter Link" href="http://twitter.com/WeAre_Zeus" rel="external"><span class="fa fa-twitter"></span></a></li>
-					<li><a title="Google plus link" href="https://plus.google.com/u/0/109510486498245850222/posts" rel="external"><span class="fa fa-google-plus"></span></a></li>
-					<li><a title="Linkedin link" href="https://uk.linkedin.com/pub/zeus-agile-project-management/b3/a28/82b" rel="external"><span class="fa fa-linkedin"></span></a></li>
-					<li><a title="Pinterest link" href="https://www.pinterest.com/zeusagile/" rel="external"><span class="fa fa-pinterest"></span></a></li>
-				</ul>
-			</div>
-		</div>
+	<div id="contact" style="width:100%; height:1000px; background-color:yellow;">
+		<div class="content">
+			
+		</div>	
 	</div>
 		
-	<footer id="footer">
+	<footer>
 			
 	</footer>
+			
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </body>
 <!--<div class="fullwidth clearfix">
 	<div id="topcontainer" class="bodycontainer clearfix" data-uk-scrollspy="{cls:'uk-animation-fade', delay: 300, repeat: false}">
