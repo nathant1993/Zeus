@@ -98,10 +98,15 @@ h1, h2, h3
 {
 	font-size: 60px;
 	line-height: 60px;
-	margin: 0 0 20px 0;
-	letter-spacing: -1px;
-	font-weight: 300;
-	text-transform: uppercase;
+	margin: 0 0 10px 0;
+	font-weight: 200;
+	padding-left: 10px;
+	font-size:30px;
+	letter-spacing: -1.5px;
+	color: #999;
+	font-weight: 200;
+	display:inline-block;
+	vertical-align:middle;
 }
 
 	h2
@@ -203,7 +208,9 @@ h1, h2, h3
 	padding:0px;
 	height:100%;	
 }
-	
+
+/*CSS for Dashboard Navigation Bar*/
+/*There are three divs one wrapper div and two child divs LeftNav and RightNav*/	
 #topNav
 {
 	display:inline-block;
@@ -251,16 +258,93 @@ h1, h2, h3
 	
 #leftNav{
 	height:100%;
-	width:17.5%;
-	padding:30px 30px;
+	padding:0px 30px;
 	float:left;
-	border-right: 1px solid #eee;
+	/*border-right: 1px solid #eee;*/
 }
 
+#rightNav{
+	height:100%;
+	padding:0px 30px;
+	float:left;
+	/*border-right: 1px solid #eee;*/
+}
+
+ul{
+	display: inline;
+}
+
+#rightNav li{
+	margin-left:75px;
+	margin-bottom: 10px;
+	font-size:30px;
+	letter-spacing: -1.5px;
+	color: #999;
+	font-weight: 200;
+	cursor: pointer;
+	display:inline-block;
+	vertical-align:middle;
+	text-transform:none;	
+	line-height: 60px;
+	position: relative;
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-ms-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+#rightNav ul li:hover {
+  
+}
+
+#rightNav ul li ul {
+  padding: 0;
+  position: absolute;
+  top: 55px;
+  left: 0;
+  width: 175px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transiton: opacity 0.25s;
+  -moz-transition: opacity 0.25s;
+  -ms-transition: opacity 0.25s;
+  -o-transition: opacity 0.25s;
+  transition: opacity 0.25s;
+  /*Important to stop the browser redrawing stuff it doesnt need to*/
+  -webkit-transform: translate3d(0,0,0); 
+}
+#rightNav ul li ul li { 
+  background: rgba(167, 167, 167,1); 
+  display: block; 
+  color: #fff;
+  letter-spacing: -1px;
+  font-size: 25px;
+  line-height: 40px;
+  text-align: center;
+  margin: 0px;
+  border-bottom: 2px solid #a7a7a7;
+  -webkit-transiton: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+}
+#rightNav ul li ul li:hover { 
+	border-bottom: 2px solid #ff6700; 
+}
+
+#rightNav ul li:hover ul {
+  opacity: 1;
+  visibility: visible;
+}
 		
 #maincont
 {
-	color: #F00;
+	color: #ff8533;
 	width:90%;
 	margin:0 auto;
 }
@@ -362,32 +446,72 @@ h1, h2, h3
 				{
 					background: #ff6700;
 				}
-
-.graph-container{
-	width:50%;
-	Float:left;
-	padding-right: 20px;
-}
 			
 #contentTitle{
 	background:#fff;
-	padding:30px 30px 0px 30px;
+	padding:0px 0px;
+	border-bottom: 1px solid #a7a7a7;
+}
+	
+#searchBar{
+	background:#eee;
+	padding:30px 0px;
 	
 }
-	#contentTitle p{
-		border-bottom: 1px solid #eee;
-		font-size: 150%;
-	}	
 
+#projectSearch{
+		float:left;
+}
+
+	#projectSearch p {
+	display: inline-block;
+	margin: 0 0 0 20px;
+	color:#ff8533;
+	}
+	
+	#projectSearch button{
+		display:inline-block;
+		position: relative;
+		vertical-align: middle; 
+		margin: 0 0 0 20px;
+	}
+
+select{
+	border-radius: 0px;
+	width: 100px;
+	vertical-align: middle;
+	font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+	font-weight: 300;
+	font-size: 15px; 
+}
+	
 #content1{
 	background:#fff;
 	border-bottom: 1px solid #eee;
+	padding: 30px 0px 0px 0px;
 }
 
 #content2{
 	
 	background:#fff;
 	border-bottom: 1px solid #eee;
+	padding: 30px 0px 0px 0px;
+}
+
+.graph-container{
+	width:50%;
+	Float:left;
+	padding-right: 20px;
+}
+
+.oneThirdWidth{
+	width:33%;
+	Float:left;
+}
+
+.twoThirdsWidth{
+	width:67%;
+	Float:left;
 }
 
 #quotecont
@@ -505,8 +629,22 @@ table, th, td {
 			line-height: 70px;
 		}
 	
+	/*#topNav{
+		padding:0;
+	}
+	
 	#leftNav{
-		display:none;	
+		float: none;
+		width: 100%
+	}*/
+	
+	#rightNav{
+		padding:0;
+		margin:0 auto;	
+	}
+	
+	#rightNav li{
+		margin-left: 50px;	
 	}
 	
 	#maincont{
@@ -601,8 +739,17 @@ table, th, td {
 		width: 100%;
 	}
 	
-	#leftNav{
+	#topNav{
+		padding:0;
+	}
+	
+	#rightNav{
 		display:none;	
+	}
+	
+	#leftNav{
+		float: none;
+		width: 100%
 	}
 	
 	#footercont #socialmedia ul li
@@ -614,12 +761,28 @@ table, th, td {
 		{
 			font-size: 28px;
 		}
+		
 	.fullwidth{
 		padding:10px 5px;
 	}
 	
 	#contentTitle{
 	padding:10px 5px;
+	}
+	
+	#contentTitle{
+	padding:10px 5px;
+	}
+	
+	.oneThirdWidth{
+		width: 100%;
+		Float: none;
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+	
+	#projectSearch button{
+		display:block;
 	}
 	
 	.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
@@ -687,8 +850,17 @@ table, th, td {
 		width: 100%;
 	}
 	
-	#leftNav{
+	#topNav{
+		padding:0;
+	}
+	
+	#rightNav{
 		display:none;	
+	}
+	
+	#leftNav{
+		float: none;
+		width: 100%
 	}
 	
 	#footercont #socialmedia ul li
@@ -700,12 +872,40 @@ table, th, td {
 		{
 			font-size: 28px;
 		}
+		
 	.fullwidth{
 		padding:10px 5px;
 	}
 	
 	#contentTitle{
 	padding:10px 5px;
+	}
+	
+	.oneThirdWidth{
+		width: 100%;
+		Float: none;
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+
+	.twoThirdsWidth{
+		width: 100%;
+		Float: none;
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+	
+	#projectSearch p{
+		margin-bottom: 15px;
+	}
+	
+	select{
+		float: right;
+		margin-right: 20px;
+	}
+	
+	#projectSearch button{
+		display:block;
 	}
 	
 	.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {

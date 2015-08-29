@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Zeus Agile Project Management - The Dashboard</title>
+<meta name="Description" content="Zeus Agile Project Management Dashboard - The dashboard is where you can see your project metrics. Burndown Graphs, Velocity Graphs and any add in's that you purchased">
+<meta name="keywords" content="Zeus agile project management.">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+<link rel="shortcut icon" href="../images/ico/favicon.ico">
+<link rel="stylesheet" href="../chartist-js-master/dist/chartist.min.css">
+<!--<link rel="stylesheet" href="../chartist-js-master/site/styles/main.scss">-->
+<link rel="stylesheet" href="../css/popupstyle.css">
+<link rel="stylesheet" href="../css/graphstyle.css"></link>
+<link rel="stylesheet" href="../css/signup.css"></link>	 
+<link rel="stylesheet" href="../css/dashboardStyle.css">
+
+    
+<!--<script src="js/scripts.js"></script></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<!--<script src="js/uikit.scrollspy.js"></script>-->
+<script src="../js/scroll.js"></script>
+<script src="../js/searchPBIs.js"></script>
+<!--<script src="js/ajax.js"></script>-->
+<script src="../js/velocity.js"></script>
+<script src="../js/velocity.ui.js"></script>
+<!--<script src="chartist-js-master/dist/chartist.min.js"></script>-->
+<!--<script src="./js/chartistGraph.js"></script>--> 
+<!--<script src="../js/pbiDataSmall.js"></script>-->
+<!--<script src="./js/all.js"></script>  -->
+
+<!-- Google Analytics code, need to add this to all pages!-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60923636-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</head>
+
+<body>
+
+  <div id="wrapper" class="fullwidth clearfix">
+    
+    <div id="topNav" class="fullwidth clearfix">
+      <div id="leftNav">
+        <a href ="../dashboard.html">  
+          <span id="cloudicon"><img src="../images/ZeusLogo.jpg" alt="Zeus agile project management logo" ></span>
+            <h1>Zeus Dashboard</h1>
+        </a>    
+      </div>
+      <div id="rightNav">
+        <ul>
+          <li>Projects
+            <ul>
+              <li>Zeus</li>
+              <li>Project Atlas</li>
+              <li>All Projects</li>
+            </ul>
+          </li>  
+          <li>Sprints
+            <ul>
+              <li>Zeus - Sprint 14</li>
+              <li>Atlas - Sprint 5</li>
+              <li>All Sprints</li>
+            </ul>
+          </li>  
+          <li>Backlog
+            <ul>
+              <li>Zeus - PBI 112</li>
+              <li>Atlas - PBI 74</li>
+              <li><a href ="../dashboard/backlog.html">Product Backlog</a></li>
+            </ul>
+          </li>
+          <li>Tasks
+            <ul>
+                <li>Atlas - Task 32</li>
+                <li>Zeus - Task 8</li>
+                <li>All Tasks</li>
+              </ul>
+          </li>
+        </ul>
+      </div>
+        
+    </div>
+    
+    <div id="maincont">
+    
+      <div id="contentTitle" class="fullwidth clearfix">
+      	<h1>Product Backlog Items</h1>
+      </div>
+      <div id="searchBar" class="fullwidth clearfix">
+        <form id="projectSearch" method="post" action="../js/searchPBIs">
+		      <!--<input list="projectList" id="projects" name ="projectList">-->
+            <p>Choose a project:</p>
+            <select id="projects">
+              <option value="Any">Any</option>
+              <option value="Zeus">Zeus</option>
+              <option value="Atlas">Atlas</option>
+              <option value="Hades">Hades</option>
+              <option value="Poseidon">Poseidon</option>
+            </select>
+            
+            <!--<input list="Sprint" id="sprints" name ="Sprint">-->
+            <p>Choose a sprint:</p>
+            <select id="sprints">
+              <option value="Any">Any</option>
+              <option value="Sprint 14">Sprint 14</option>
+              <option value="Sprint 13">Sprint 13</option>
+              <option value="Sprint 12">Sprint 12</option>
+              <option value="Sprint 11">Sprint 11</option>
+            </select> 
+             
+            <!--<input list="priority" id="pbiPriority" name ="priority">-->
+            <p>Choose a priority:</p>
+            <select id="pbiPriority">
+              <option value="Any">Any</option>
+              <option value="Critical">Critical</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+            
+            <!--<input list="state" id="pbiState" name ="state">-->
+            <p>Choose a state:</p>
+            <select id="pbiState">
+              <option value="Any">Any</option>
+              <option value="New">New</option>
+              <option value="In Progress">In Progress</option>
+              <option value="In Review">In Review</option>
+              <option value="Done">Done</option>
+              <option value="Reopened">Reopened</option>
+              <option value="Closed">Closed</option>
+            </select>
+
+          <button type="submit" value="Update" class="formbutton">Update</button>
+		    </form>
+      </div>
+     
+     <div id ="content1" class="fullwidth clearfix">
+      	<!--<p> content1 </p>-->
+       
+      </div>
+      
+      <div id="content2" class="fullwidth clearfix">
+      	<div class="oneThirdWidth">
+          <!--<ul class ="mylist"></ul>-->
+          <div id="test">
+            <table id="testtable" style="width:100%;">
+              <tr>
+                <th>ID</th>
+                <th>PBI Title</th>
+              </tr>
+            </table>
+          </div>
+      	</div>      
+      </div>
+      
+      <div class="twoThirdsWidth">
+      </div>
+      
+    </div>
+    
+
+    <div id="footer" class="fullwidth clearfix">
+    	<p> footer</div>
+    </div>
+  
+  </div>
+
+</body>
+</html>
