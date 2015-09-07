@@ -20,6 +20,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <!--<script src="js/uikit.scrollspy.js"></script>-->
 <script src="../js/scroll.js"></script>
+<script src="../js/ClickOnClass.js"></script>
 <script src="../js/searchPBIs.js"></script>
 <!--<script src="js/ajax.js"></script>-->
 <script src="../js/velocity.js"></script>
@@ -91,6 +92,7 @@
       <div id="contentTitle" class="fullwidth clearfix">
       	<h1>Product Backlog Items</h1>
       </div>
+      <!-- Bar across the screen that holds four drop down menus to add filters to a search for PBI's-->'
       <div id="searchBar" class="fullwidth clearfix">
         <form id="projectSearch" method="post" action="../js/searchPBIs">
 		      <!--<input list="projectList" id="projects" name ="projectList">-->
@@ -146,20 +148,34 @@
       
       <div id="content2" class="fullwidth clearfix">
       	<div class="oneThirdWidth">
-          <!--<ul class ="mylist"></ul>-->
+          <!--Table of results populated by searching for PBI's based on filters applied from the search bar above-->
           <div id="test">
-            <table id="testtable" style="width:100%;">
+            <table id="pBIResultstable" style="width:100%;">
               <tr>
                 <th>ID</th>
                 <th>PBI Title</th>
               </tr>
             </table>
           </div>
-      	</div>      
+      	</div>
+        
+        <!-- A div containing more in depth information about a selected PBI -->
+        <div class = "twoThirdsWidth">
+        <form id = "pbiDetails" method="post" action="../js/searchPBIs">
+          <input id = "pbiID">
+          <input id = "pbiTitle">
+          <input id = "pbiDescription">
+          <input id = "pbiEffort">  
+          <input id = "pbiDetailPriority">
+          <input id = "pbiDetailState">
+          <input id = "pbiIteration">
+          <input id = "pbiProject">
+        </form>
+        </div>
+              
       </div>
       
-      <div class="twoThirdsWidth">
-      </div>
+      
       
     </div>
     
