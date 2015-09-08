@@ -504,14 +504,35 @@ select{
 }
 
 .oneThirdWidth{
-	width:33%;
+	width:30%;
 	Float:left;
+	margin-right: 20px;
 }
 
 .twoThirdsWidth{
 	width:67%;
 	Float:left;
 }
+
+.pbiDetailsForm input{
+	width:150px;
+	font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+	font-weight: 300;
+	font-size: 15px;
+}
+
+.pbiDetailsForm textarea{
+	font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+	font-weight: 300;
+	font-size: 15px;
+}
+
+.twoThirdsWidth button{
+		display:inline-block;
+		position: relative;
+		vertical-align: middle; 
+		margin: 0 0 0 20px;
+	}
 
 #quotecont
 {

@@ -2,7 +2,7 @@ $(function () {
 	
 	/*populate the results table based on parameters in drop down box*/
 	
-    $(".formbutton").click(function(e) {
+    $("#pbiSearch").click(function(e) {
         e.preventDefault();
 		
 	  // Variables 

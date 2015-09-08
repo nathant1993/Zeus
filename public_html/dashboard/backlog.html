@@ -8,9 +8,9 @@
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
 <link rel="shortcut icon" href="../images/ico/favicon.ico">
-<link rel="stylesheet" href="../chartist-js-master/dist/chartist.min.css">
+<!--<link rel="stylesheet" href="../chartist-js-master/dist/chartist.min.css">-->
 <!--<link rel="stylesheet" href="../chartist-js-master/site/styles/main.scss">-->
-<link rel="stylesheet" href="../css/popupstyle.css">
+<!--<link rel="stylesheet" href="../css/popupstyle.css">-->
 <link rel="stylesheet" href="../css/graphstyle.css"></link>
 <link rel="stylesheet" href="../css/signup.css"></link>	 
 <link rel="stylesheet" href="../css/dashboardStyle.css">
@@ -22,6 +22,7 @@
 <script src="../js/scroll.js"></script>
 <script src="../js/ClickOnClass.js"></script>
 <script src="../js/searchPBIs.js"></script>
+<script src="../js/updatePBIs.js"></script>
 <!--<script src="js/ajax.js"></script>-->
 <script src="../js/velocity.js"></script>
 <script src="../js/velocity.ui.js"></script>
@@ -137,7 +138,7 @@
               <option value="Closed">Closed</option>
             </select>
 
-          <button type="submit" value="Update" class="formbutton">Update</button>
+          <button type="submit" id="pbiSearch" value="Update" class="formbutton">Update</button>
 		    </form>
       </div>
      
@@ -148,6 +149,7 @@
       
       <div id="content2" class="fullwidth clearfix">
       	<div class="oneThirdWidth">
+          <h1>Results</h1>
           <!--Table of results populated by searching for PBI's based on filters applied from the search bar above-->
           <div id="test">
             <table id="pBIResultstable" style="width:100%;">
@@ -161,16 +163,35 @@
         
         <!-- A div containing more in depth information about a selected PBI -->
         <div class = "twoThirdsWidth">
-        <form id = "pbiDetails" method="post" action="../js/searchPBIs">
-          <input id = "pbiID">
-          <input id = "pbiTitle">
-          <input id = "pbiDescription">
-          <input id = "pbiEffort">  
-          <input id = "pbiDetailPriority">
-          <input id = "pbiDetailState">
-          <input id = "pbiIteration">
-          <input id = "pbiProject">
-        </form>
+          <h1>PBI Details</h1>
+          <form id="pbiDetails" class="pbiDetailsForm" method="post" action="../js/updatePBIs">
+            <label for="pbiID">ID</label>
+            <input id = "pbiID">
+            
+            <label for="pbiTitle">Title</label>
+            <input id = "pbiTitle" title="PBI Title">
+            
+            <label for="pbiDescription">Description</label>
+            <textarea id = "pbiDescription"></textarea>
+            
+            <label for="pbiEffort">Effort</label>
+            <input id = "pbiEffort">  
+            
+            <label for="pbiDetailPriority">Priority</label>
+            <input id = "pbiDetailPriority">
+            
+            <label for="pbiDetailState">State</label>
+            <input id = "pbiDetailState">
+            
+            <label for="pbiIteration">Iteration</label>
+            <input id = "pbiIteration">
+            
+            <label for="pbiProject">Project Name</label>
+            <input id = "pbiProject">
+            
+            <button type="submit" id="pbiDetailsButton" value="Update" class="formbutton">Update</button>
+            
+          </form>
         </div>
               
       </div>
