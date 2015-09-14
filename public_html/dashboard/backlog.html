@@ -8,9 +8,9 @@
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
 <link rel="shortcut icon" href="../images/ico/favicon.ico">
-<!--<link rel="stylesheet" href="../chartist-js-master/dist/chartist.min.css">-->
+<link rel="stylesheet" href="../chartist-js-master/dist/chartist.min.css">
 <!--<link rel="stylesheet" href="../chartist-js-master/site/styles/main.scss">-->
-<!--<link rel="stylesheet" href="../css/popupstyle.css">-->
+<link rel="stylesheet" href="../css/popupstyle.css">
 <link rel="stylesheet" href="../css/graphstyle.css"></link>
 <link rel="stylesheet" href="../css/signup.css"></link>	 
 <link rel="stylesheet" href="../css/dashboardStyle.css">
@@ -93,49 +93,28 @@
       <div id="contentTitle" class="fullwidth clearfix">
       	<h1>Product Backlog Items</h1>
       </div>
-      <!-- Bar across the screen that holds four drop down menus to add filters to a search for PBI's-->'
+      <!-- Bar across the screen that holds four drop down menus to add filters to a search for PBI's-->
       <div id="searchBar" class="fullwidth clearfix">
         <form id="projectSearch" method="post" action="../js/searchPBIs">
-		      <!--<input list="projectList" id="projects" name ="projectList">-->
+
             <p>Choose a project:</p>
             <select id="projects">
               <option value="Any">Any</option>
-              <option value="Zeus">Zeus</option>
-              <option value="Atlas">Atlas</option>
-              <option value="Hades">Hades</option>
-              <option value="Poseidon">Poseidon</option>
             </select>
             
-            <!--<input list="Sprint" id="sprints" name ="Sprint">-->
             <p>Choose a sprint:</p>
             <select id="sprints">
               <option value="Any">Any</option>
-              <option value="Sprint 14">Sprint 14</option>
-              <option value="Sprint 13">Sprint 13</option>
-              <option value="Sprint 12">Sprint 12</option>
-              <option value="Sprint 11">Sprint 11</option>
             </select> 
              
-            <!--<input list="priority" id="pbiPriority" name ="priority">-->
             <p>Choose a priority:</p>
             <select id="pbiPriority">
               <option value="Any">Any</option>
-              <option value="Critical">Critical</option>
-              <option value="High">High</option>
-              <option value="Medium">Medium</option>
-              <option value="Low">Low</option>
             </select>
             
-            <!--<input list="state" id="pbiState" name ="state">-->
             <p>Choose a state:</p>
             <select id="pbiState">
               <option value="Any">Any</option>
-              <option value="New">New</option>
-              <option value="In Progress">In Progress</option>
-              <option value="In Review">In Review</option>
-              <option value="Done">Done</option>
-              <option value="Reopened">Reopened</option>
-              <option value="Closed">Closed</option>
             </select>
 
           <button type="submit" id="pbiSearch" value="Update" class="formbutton">Update</button>
@@ -166,7 +145,7 @@
           <h1>PBI Details</h1>
           <form id="pbiDetails" class="pbiDetailsForm" method="post" action="../js/updatePBIs">
             <label for="pbiID">ID</label>
-            <input id = "pbiID">
+            <input id = "pbiID" readonly required>
             
             <label for="pbiTitle">Title</label>
             <input id = "pbiTitle" title="PBI Title">
@@ -189,9 +168,13 @@
             <label for="pbiProject">Project Name</label>
             <input id = "pbiProject">
             
-            <button type="submit" id="pbiDetailsButton" value="Update" class="formbutton">Update</button>
-            
+            <button type="submit" id="pbiDetailsButton" value="Update" class="formbutton">Update</button>  
+            <button type="reset" id="pbiDetailsResetButton" value="Cancel" class="formbutton">Cancel</button> 
           </form>
+          
+          <div id="UpdateStatus" style="opacity:0;">
+          </div>
+          
         </div>
               
       </div>

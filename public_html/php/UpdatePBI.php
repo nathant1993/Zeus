@@ -1,4 +1,7 @@
 <?php
+  
+  //PHP file to update PBI values
+  
   // Connecting to the MySQL server
   $host="10.168.1.92";
   $user_name="wearezeu_phpserv";
@@ -22,7 +25,7 @@
   $pbiIteration = $_POST["postedIteration"];
   $pbiProject = $_POST["postedProject"];
 
-  // Inserting these values into the MySQL table
+  //Query to update a PBI based on the ID of that PBI
   $query = 
     "update backlog_items
     SET pbi_title = '$pbiTitle',
@@ -34,13 +37,12 @@
     project_id = (select project_id from project where project_name = '$pbiProject')
     where pbi_id = '$pbiId'";
   
-  if ($conn->query($query) === TRUE) {
-      echo "PBI Updated successfully";
-	  //header("Location: http://www.wearezeus.co.uk/indexdev.html");
-  } else {
-      echo "Error: " . $query . "<br>" . $conn->error;
-	  //header("Location: http://www.wearezeus.co.uk/indexdev.html");
-  }
+  //Run the query and provide feedback on how the update went
+   if ($conn->query($query) === TRUE) {
+  //     echo "PBI Updated successfully";
+   } else {
+  //     echo "Error: " . $query . "<br>" . $conn->error;
+   }
 
   $conn->close();
 ?>

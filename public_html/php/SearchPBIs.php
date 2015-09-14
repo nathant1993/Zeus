@@ -1,4 +1,7 @@
 <?php
+  
+  //PHP file to search for PBIs based on values in drop down filter boxes
+  
   // Connecting to the MySQL server
   $host="10.168.1.92";
   $user_name="wearezeu_phpserv";
@@ -18,10 +21,6 @@
   $priority = $_POST["postedPriority"];
   $state = $_POST["postedState"];
   
-  //  $project = 'Zeus';
-  //  $sprint = 'Sprint 13';
-  // $priority = 'Medium';
-  // $state = 4;
   
   //Check if the incoming variables are equal to 'Any' or are empty and form their respective sql where clauses appropriately
   if ($project == 'Any' || empty($project)){
@@ -62,20 +61,12 @@
        And priority_id".$priorityWhere."
        And state_id".$stateWhere;    
     
-  // if ($conn->query($query) === TRUE) {
-  //     //echo "New record created successfully"
-	//   //header("Location: http://www.wearezeus.co.uk/indexdev.html");
-  // } else {
-  //     //echo "Error: " . $query . "<br>" . $conn->error;
-	//   //header("Location: http://www.wearezeus.co.uk/indexdev.html");
-  // }
-  
+  //Run the query or exit neatly with an error code
   $result = $conn->query($query) or exit("Error code ({$conn->errno}): {$conn->error}");
 
-
+  //Put the query results into an array and pass it to the JavaScript
 	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 		$shortPBIData[] = array(
-		//$row
 			'pbiId' => $row['pbi_id'],
 			'pbiTitle' => $row['pbi_title'],
 		  );
