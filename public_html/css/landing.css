@@ -65,13 +65,16 @@ header nav a {
     transition: all 0.4s;
 }
 header nav a:hover {
-    color: #ff6700;
+    color: #c5684f;
 }
 
 
 header.smaller {
     height: 50px;
-    background-color: white;
+    background-color: #ec704e;
+    -webkit-box-shadow: 0px 5px 23px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 5px 23px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 23px 0px rgba(0,0,0,0.2);
 }
 header.smaller h1#logo {
     width: 150px;
@@ -81,15 +84,15 @@ header.smaller h1#logo {
 }
 
 header.smaller h1 a{
-    color:#3cb5f9;
+    color:white;
 }
 
 header.smaller nav a {
     line-height: 50px;
-    color: #505050;
+    color: white;
 }
 header.smaller nav a:hover {
-    color: #ff6700;
+    color: #505050;
 }
 
 
@@ -97,10 +100,9 @@ header.smaller nav a:hover {
     header h1#logo {
         display: block;
         float: none;
-        margin: 0 auto;
         height: 100px;
         line-height: 100px;
-        text-align: center;
+        text-align: left;
     }
     header nav {
         display: block;
@@ -116,11 +118,7 @@ header.smaller nav a:hover {
     header.smaller {
         height: 50px;
     }
-    header.smaller h1#logo {
-        height: 40px;
-        line-height: 40px;
-        font-size: 30px;
-    }
+    
     header.smaller nav {
         height: 35px;
     }
@@ -216,7 +214,7 @@ a:hover {
   height: 0; }
 
 .underline{
-  border-bottom: 2px solid #ff6700;
+  border-bottom: 2px solid #c5684f;
   padding-bottom: 3px;
 }
 
@@ -248,11 +246,11 @@ a:hover {
   text-align: center;
   line-height:1.25; 
   font-size: 3em;
-  font-weight: 300;
+  font-weight: 500;
   color: white;
   text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.40);
   margin-bottom: 30px;
-  font-family: "Open sans", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 #hero .container h2 {
   text-align: center;
@@ -270,8 +268,8 @@ a:hover {
   display: block;
   margin: 0 auto;
   padding: 5px;
-  background-color: #ff8533;
-  border-bottom:1px solid #D55900; 
+  background-color: #ec704e;
+  border-bottom:1px solid #c5684f; 
   color: white;
   font-weight: 400;
   font-size: 1.2em;
@@ -283,7 +281,7 @@ a:hover {
   /*border: none;*/
 }
 #hero .container a:hover {
-  background-color: #ff6700;
+  background-color: #c5684f;
 }
 #hero .container img {
   max-width:150px;
@@ -317,10 +315,11 @@ a:hover {
   font-family: "Roboto", sans-serif;
 }
 #why .container h1 {
-   margin: 0 auto;
+  margin: 0 auto;
+  font-weight: 500;
   text-align: center;
   padding-bottom: 30px;
-  font-family: "Open sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   
   
 }
@@ -354,6 +353,7 @@ img{
   text-align: center;
   margin-top: 84px;
   color: white;
+  font-weight: 500;
   font-family: "Roboto", sans-serif;
   width:60%;
   float: left;
@@ -367,8 +367,8 @@ img{
   margin-right: 130px;
   margin-top: 74px;
   padding: 5px;
-  background-color: #ff8533;
-  border-bottom:1px solid #D55900; 
+  background-color: #ec704e;
+  border-bottom:1px solid #c5684f; 
   color: white;
   font-weight: 400;
   font-size: 1.2em;
@@ -380,7 +380,7 @@ img{
 }
 
 #cta-1 .container a:hover {
-  background-color: #ff6700;
+  background-color: #c5684f;
 }
 #features{
   height: 1080px;
@@ -403,7 +403,8 @@ img{
   text-align: center;
   padding-bottom: 30px;
   color: #505050;
-  font-family: "Open sans", sans-serif;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
 }
 
 #features .container h3 {
@@ -422,14 +423,16 @@ ul.features li{
   color:#505050;
   display: inline-block;
   width: 45%;
+  font-weight: 500;
   min-height: 100px;
-  font-family: "Open sans", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 ul.features li p{
   font-size: 0.9em;
   line-height: 1.25;
   font-family: "Roboto", sans-serif;
   padding-bottom:10px;
+  font-weight: 300;
 }
 ul.features li p img{
   width:75px;
@@ -460,13 +463,15 @@ ul.counters li{
   display: inline-block;
   width: 33%;
   min-height: 100px;
-  font-family: "Open sans", sans-serif;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
 }
 
 ul.counters li p{
   font-size: 0.9em;
   line-height: 1.25;
   font-family: "Roboto", sans-serif;
+  font-weight: 300;
   padding-bottom:10px;
 }
 
@@ -492,7 +497,8 @@ ul.counters li p{
   text-align: center;
   padding-bottom: 30px;
   color: #505050;
-  font-family: "Open sans", sans-serif;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
 }
 
 #who .container h3 {
@@ -521,6 +527,7 @@ ul.counters li p{
   font-weight: 300;
   color: white;
   padding-bottom: 30px;
+  font-weight: 300;
   font-family: "Roboto", sans-serif;
 }
 #cta-3 .container h1 {
@@ -529,7 +536,8 @@ ul.counters li p{
   padding-top: 50px;
   padding-bottom: 10px;
   color: white;
-  font-family: "Open sans", sans-serif;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
   max-width: 80%;
 }
 #contact{
@@ -559,7 +567,8 @@ ul.counters li p{
   text-align: center;
   padding-bottom: 30px;
   color: #505050;
-  font-family: "Open sans", sans-serif;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
 }
 
 #contact .container h3 {
@@ -569,11 +578,11 @@ ul.counters li p{
   font-family: "Roboto", sans-serif;
 }
 #contact .container #socialmedia a{
-  color:#ff8533;
+  color:#ec704e;
 }
 
 #contact .container #socialmedia a:hover{
-  color:#ff6700;
+  color:#c5684f;
 }
 /* ==================================================
    Responsive Media Queries - Tablets
@@ -608,7 +617,7 @@ ul.counters li p{
    Responsive Media Queries - Mobiles
 ================================================== */
 
-@media screen and (max-width: 480px)
+@media screen and (max-width: 667px)
 {	
   
   /* ==================================================
@@ -637,11 +646,11 @@ ul.counters li p{
     text-align: center;
     line-height:1.25; 
     font-size: 2em;
-    font-weight: 300;
+    font-weight: 500;
     color: white;
     text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.40);
     margin-bottom: 30px;
-    font-family: "Open sans", sans-serif;
+    font-family: "Roboto", sans-serif;
   }
   
   #hero .container h2 {
@@ -716,7 +725,7 @@ ul.counters li p{
     margin-top:30px;
     padding: 5px;
     background-color: #ff8533;
-    border-bottom:1px solid #D55900; 
+    border-bottom:1px solid #c5684f; 
     color: white;
     font-weight: 400;
     font-size: 1.2em;
@@ -760,14 +769,16 @@ ul.counters li p{
   }
   ul.features li{
     font-size: 1.75em;
+    font-weight: 500;
     color:#505050;
     display: inline-block;
     width: 90%;
     min-height: 100px;
-    font-family: "Open sans", sans-serif;
+    font-family: "Roboto", sans-serif;
   }
   ul.features li p{
     font-size: 0.8em;
+    font-weight: 300;
     line-height: 1.25;
     font-family: "Roboto", sans-serif;
     padding-bottom:10px;
@@ -804,7 +815,7 @@ ul.counters li p{
     display: inline-block;
     width: 80%;
     min-height: 100px;
-    font-family: "Open sans", sans-serif;
+    font-family: "Roboto", sans-serif;
   }
   
   ul.counters li p{
@@ -839,7 +850,7 @@ ul.counters li p{
     padding-top: 60px;
     padding-bottom: 10px;
     color: white;
-    font-family: "Open sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     max-width: 100%;
   }
   
@@ -848,7 +859,7 @@ ul.counters li p{
     text-align: center;
     line-height:1.25; 
     font-size: 1em;
-    font-weight: 300;
+    font-weight: 100;
     color: white;
     padding-bottom: 30px;
     font-family: "Roboto", sans-serif;     
@@ -1125,7 +1136,7 @@ ul.counters li p{
 		
  #socialmedia ul li a:hover
 			{
-				color: #ff6700;
+				color: #c5684f;
 			}
   
 /* ==================================================

@@ -25,7 +25,7 @@
 				position: absolute;
 				top: 0;
 				right: 0;
-				border: #ff8533 2px solid;
+				border: #ec704e 2px solid;
 				outline: none;
 				background: #FFF;
 				
@@ -74,7 +74,7 @@
 			button.formbutton
 			{
 				color: #FFF;
-				background: #ff8533;
+				background: #ec704e;
 				z-index: 90;
 				border: 0;
 				height: 50px;
@@ -87,7 +87,7 @@
 			
 				button.formbutton:hover
 				{
-					background: #ff6700;
+					background: #c5684f;
 				}  
   
   .status
