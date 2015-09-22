@@ -24,26 +24,31 @@
   $pbiState = $_POST["postedState"];
   $pbiIteration = $_POST["postedIteration"];
   $pbiProject = $_POST["postedProject"];
-
-  //Query to update a PBI based on the ID of that PBI
-  $query = 
-    "update backlog_items
-    SET pbi_title = '$pbiTitle',
-    pbi_description = '$pbiDesc',
-    pbi_effort = $pbiEffort,
-    priority_id = (select priority_id from priority where description = '$pbiPriority'),
-    state_id = (select state_id from states where state_name = '$pbiState' and state_type = 'PBI'),
-    iteration_id = (select iteration_id from iteration where iteration_name = '$pbiIteration'),
-    project_id = (select project_id from project where project_name = '$pbiProject')
-    where pbi_id = '$pbiId'";
   
-  //Run the query and provide feedback on how the update went
-   if ($conn->query($query) === TRUE) {
-  //     echo "PBI Updated successfully";
-   } else {
-  //     echo "Error: " . $query . "<br>" . $conn->error;
-   }
-
+  //Check for a Null pbiID coming from the front end and throw and error 
+  if($pbiId == null || $pbiId == ""){ 
+    exit("Error: PBI ID is null or empty");
+  }
+  else{
+  //Query to update a PBI based on the ID of that PBI
+    $query = 
+      "update backlog_items
+      SET pbi_title = '$pbiTitle',
+      pbi_description = '$pbiDesc',
+      pbi_effort = $pbiEffort,
+      priority_id = (select priority_id from priority where description = '$pbiPriority'),
+      state_id = (select state_id from states where state_name = '$pbiState' and state_type = 'PBI'),
+      iteration_id = (select iteration_id from iteration where iteration_name = '$pbiIteration'),
+      project_id = (select project_id from project where project_name = '$pbiProject')
+      where pbi_id = '$pbiId'";
+    
+    //Run the query and provide feedback on how the update went
+    if ($conn->query($query) === TRUE) {
+    //     echo "PBI Updated successfully";
+    } else {
+    //     echo "Error: " . $query . "<br>" . $conn->error;
+    }
+  }
   $conn->close();
 ?>
 

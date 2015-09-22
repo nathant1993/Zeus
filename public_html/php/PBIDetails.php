@@ -14,7 +14,8 @@
 
   // Storing form values into PHP variables
   $PBIID = $_POST["postedPBIID"];
-
+  //$PBIID = (int) '1';
+  //echo $PBIID;
   $query = 
      "SELECT pbi_id, pbi_title, pbi_description, pbi_effort, c.description as 'priority', d.state_name 'state', b.iteration_name 'itName', e.project_name 'projName'
             FROM  backlog_items a
