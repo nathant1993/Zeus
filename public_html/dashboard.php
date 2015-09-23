@@ -1,3 +1,8 @@
+<?php
+	//require_once($_SERVER['DOCUMENT_ROOT'] . '/login_system/auth.php' );
+  require_once('login_system/auth.php');
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -67,8 +72,8 @@
           <li>Backlog
             <ul>
               <li>Zeus - PBI 112</li>
-              <li>Atlas - PBI 74</li>
-              <li><a href ="../dashboard/backlog.html">Product Backlog</a></li>
+              <li><a href ="../dashboard/backlog.html">Atlas - PBI 74</li>
+              <li><a href ="../dashboard/backlog.php">Product Backlog</a></li>
             </ul>
           </li>
           <li>Tasks
