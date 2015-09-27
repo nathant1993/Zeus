@@ -46,7 +46,7 @@
             </form>
             
             <div class="login-help">
-                <a href="register-form.php">Register</a> • <a href="forgot.html">Forgot Password</a>
+                <!--<a href="register-form.php">Register</a> • <a href="forgot.html">Forgot Password</a>-->
             </div>
         </div>  	
 			</div>	
