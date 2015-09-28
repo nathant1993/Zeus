@@ -156,7 +156,11 @@ function populateDropDowns(results) {
 				var pbiStateField = document.getElementById("pbiDetailState");
 				var pbiIterationField = document.getElementById("pbiIteration");
 				var pbiProjectField = document.getElementById("pbiProject");
-
+				
+				$('#pbiDetails').velocity({opacity:1}, {duration:200});
+				$('#createPBI').velocity({opacity:0}, {duration:50});
+				$('#pbiDetailsButton').velocity({opacity:1}, {duration:200});
+				
 				//Apply the results of the query based on the ID selected from above to the fields in the PBI form on the right hand side of the page.
 				$.each(results, function(key,value){
 					pbiIDField.value = value.pbiId;

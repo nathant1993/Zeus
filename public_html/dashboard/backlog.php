@@ -27,6 +27,7 @@
 <script src="../js/scroll.js"></script>
 <script src="../js/ClickOnClass.js"></script>
 <script src="../js/searchPBIs.js"></script>
+<script src="../js/createPBI.js"></script>
 <script src="../js/updatePBIs.js"></script>
 <!--<script src="js/ajax.js"></script>-->
 <script src="../js/velocity.js"></script>
@@ -148,6 +149,7 @@
         <!-- A div containing more in depth information about a selected PBI -->
         <div class = "twoThirdsWidth">
           <h1>PBI Details</h1>
+          <button id ="showCreatePBIForm" class="formbutton">+</button>
           <form id="pbiDetails" class="pbiDetailsForm" method="post" action="../js/updatePBIs">
             <label for="pbiID">ID</label>
             <input id = "pbiID" readonly required>
@@ -173,6 +175,7 @@
             <label for="pbiProject">Project Name</label>
             <input id = "pbiProject">
             
+            <button type="submit" id="createPBI" value="Update" class="formbutton">Create</button>
             <button type="submit" id="pbiDetailsButton" value="Update" class="formbutton">Update</button>  
             <button type="reset" id="pbiDetailsResetButton" value="Cancel" class="formbutton">Cancel</button> 
           </form>

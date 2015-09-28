@@ -514,6 +514,17 @@ select{
 	Float:left;
 }
 
+#pbiDetails{
+	opacity: 0;
+	-webkit-transiton: opacity 0.25s;
+	-moz-transition: opacity 0.25s;
+	-ms-transition: opacity 0.25s;
+	-o-transition: opacity 0.25s;
+	transition: opacity 0.25s;
+	/*Important to stop the browser redrawing stuff it doesnt need to*/
+	-webkit-transform: translate3d(0,0,0);	
+}
+
 .pbiDetailsForm input{
 	width:150px;
 	font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
@@ -525,6 +536,28 @@ select{
 	font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
 	font-weight: 300;
 	font-size: 15px;
+}
+
+#createPBI {
+	opacity: 0;
+	-webkit-transiton: opacity 0.25s;
+	-moz-transition: opacity 0.25s;
+	-ms-transition: opacity 0.25s;
+	-o-transition: opacity 0.25s;
+	transition: opacity 0.25s;
+	/*Important to stop the browser redrawing stuff it doesnt need to*/
+	-webkit-transform: translate3d(0,0,0);
+}
+
+#pbiDetailsButton{
+	opacity: 0;
+	-webkit-transiton: opacity 0.25s;
+	-moz-transition: opacity 0.25s;
+	-ms-transition: opacity 0.25s;
+	-o-transition: opacity 0.25s;
+	transition: opacity 0.25s;
+	/*Important to stop the browser redrawing stuff it doesnt need to*/
+	-webkit-transform: translate3d(0,0,0);
 }
 
 .twoThirdsWidth button{
