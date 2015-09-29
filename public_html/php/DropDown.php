@@ -21,14 +21,20 @@
        from project
        order by project_name";
    
-   //Query for returning Sprints - currently limits you to seeing the sprints that you are in or are in the past     
+   //Query for returning Sprints - commented query limits you to seeing the sprints that you are in or are in the past
+   //This was removed so you can use Zeus to plan for the future.     
    $sprintQuery =
     "Select Iteration_name 
        from iteration 
        where Iteration_name <> 'Sprint 0'
-       and iteration_start_date <=DATE_FORMAT(sysdate(), '%Y-%m-%d')
        Order by Iteration_id DESC  
-       ";  
+       ";
+       // "Select Iteration_name 
+       // from iteration 
+       // where Iteration_name <> 'Sprint 0'
+       // and iteration_start_date <=DATE_FORMAT(sysdate(), '%Y-%m-%d')
+       // Order by Iteration_id DESC  
+       // ";   
    
    //Query to return the priorities in the database    
    $priorityQuery =

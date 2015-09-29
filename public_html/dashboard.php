@@ -24,13 +24,13 @@
 <!--<script src="js/scripts.js"></script></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="js/uikit.scrollspy.js"></script>
-<script src="./js/scroll.js"></script>
+<script src="js/scroll.js"></script>
 <script src="js/ajax.js"></script>
 <script src="js/velocity.js"></script>
 <script src="js/velocity.ui.js"></script>
 <script src="chartist-js-master/dist/chartist.min.js"></script>
-<script src="./js/chartistGraph.js"></script> 
-<script src="./js/pbiData.js"></script>
+<script src="js/chartistGraph.js"></script> 
+<script src="js/pbiData.js"></script>
 <!--<script src="./js/all.js"></script>  -->
 
 <!-- Google Analytics code, need to add this to all pages!-->
@@ -72,7 +72,7 @@
           <li>Backlog
             <ul>
               <li>Zeus - PBI 112</li>
-              <li><a href ="../dashboard/backlog.html">Atlas - PBI 74</li>
+              <li>Atlas - PBI 74</li>
               <li><a href ="../dashboard/backlog.php">Product Backlog</a></li>
             </ul>
           </li>

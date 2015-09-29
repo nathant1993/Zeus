@@ -39,25 +39,47 @@ function populateDropDowns(results) {
 		phpStateValues = value[3];
 	});
 	
-	//Now get the values out of the child array variables and append the values to the search filter boxes	
-	//First child variable
+	//Get the values out of the child array variables and append the values to the search filter boxes
+	//And to the Pbi detail form to aid user choice when creating a PBI through the Zeus UI
+		
+	//Populate the first child variable with project values
 	$.each(phpProjectValues,function(key,value){
 		project.append('<option value="'+ value.projectName +'">' + value.projectName +'</option>')
 	})
 	
-	//Second child variable
+	//Populate the PBI form project drop down with project values
+	$.each(phpProjectValues,function(key,value){
+		$("#pbiProject").append('<option value="'+ value.projectName +'">' + value.projectName +'</option>')
+	})
+	
+	//Populate the second child variable with Sprint name values
 	$.each(phpSprintValues,function(key,value){
 		sprint.append('<option value="'+ value.IterationName +'">' + value.IterationName +'</option>')
 	})
 	
-	//Third child variable
+	//Populate the PBI form Iteration drop down with Sprint name values
+	$.each(phpSprintValues,function(key,value){
+		$("#pbiIteration").append('<option value="'+ value.IterationName +'">' + value.IterationName +'</option>')
+	})
+	
+	//Populate the third child variable with priority values
 	$.each(phpPriorityValues,function(key,value){
 		priority.append('<option value="'+ value.Priority +'">' + value.Priority +'</option>')
 	})
 	
-	//Fourth child variable
+	//Populate the PBI form priority drop down with priority values
+	$.each(phpPriorityValues,function(key,value){
+		$("#pbiDetailPriority").append('<option value="'+ value.Priority +'">' + value.Priority +'</option>')
+	})
+	
+	//Populate the fourth child variable with state values
 	$.each(phpStateValues,function(key,value){
 		state.append('<option value="'+ value.State +'">' + value.State +'</option>')
+	})
+	
+	//Populate the PBI form State drop down with state values
+	$.each(phpStateValues,function(key,value){
+		$("#pbiDetailState").append('<option value="'+ value.State +'">' + value.State +'</option>')
 	})
 	
 	//perform another AJAX request to populate the results table based on parameters in drop down boxes	
@@ -157,9 +179,19 @@ function populateDropDowns(results) {
 				var pbiIterationField = document.getElementById("pbiIteration");
 				var pbiProjectField = document.getElementById("pbiProject");
 				
+				//Show the pbiDetails form and show the update and delete button
 				$('#pbiDetails').velocity({opacity:1}, {duration:200});
-				$('#createPBI').velocity({opacity:0}, {duration:50});
-				$('#pbiDetailsButton').velocity({opacity:1}, {duration:200});
+				$('#pbiDetailsButton').show();
+				$('#pbiDetailsButton').css("visibility","visible");
+				$('#pbiDetailsButton').velocity({opacity:1}, {duration:0});
+				$('#deletePbiButton').show();
+				$('#deletePbiButton').css("visibility","visible");
+				$('#deletePbiButton').velocity({opacity:1}, {duration:0});
+				
+				//Make sure the create button is not shown
+				$('#createPBI').hide();
+				$('#createPBI').css("visibility","hidden");
+	 			$('#createPBI').velocity({opacity:0}, {duration:0});
 				
 				//Apply the results of the query based on the ID selected from above to the fields in the PBI form on the right hand side of the page.
 				$.each(results, function(key,value){

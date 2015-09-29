@@ -24,13 +24,15 @@
 	  //Check if the ID field is empty before submitting - if it is then do not submit the data
 	  //And provide a suitable error message
 	  if (updateID == null || updateID == ""){
-		  status.innerHTML = "Could not update this PBI, the ID field is empty.";
-		  $("#UpdateStatus")
-			.velocity({opacity:1}, {duration:200})
-			.velocity("callout.shake")
-			.velocity({opacity:1}, {duration:3000})
-			.velocity({opacity:0}, {duration:1000});
-		  $("UpdateStatus").velocity("callout.shake")
+		  $("#greyOut").velocity("transition.fadeIn")
+			.velocity({opacity:0.95}, {duration:2000})
+			.velocity("transition.fadeOut");
+			
+			$("#popupContact").html("Sorry we could not update this PBI, the ID field is empty.")
+			
+			$("#popupContact").velocity("transition.bounceUpIn")
+			.velocity({opacity:1}, {duration:2000})
+			.velocity("transition.fadeOut");
 		  return false;
 	  }
 	  //If the ID isn't Null then submit the update
@@ -51,21 +53,34 @@
 			},
 			success: function(results) {
 				//style a status div to provide feedback on how the update went
-				status.innerHTML = "Pbi successfully updated!";
-				$("#UpdateStatus")
-					.velocity({opacity:1}, {duration:200})
-					.velocity({opacity:1}, {duration:3000})
-					.velocity({opacity:0}, {duration:1000});
+				// status.innerHTML = "Pbi successfully updated!";
+				// $("#UpdateStatus")
+				// 	.velocity({opacity:1}, {duration:200})
+				// 	.velocity({opacity:1}, {duration:3000})
+				// 	.velocity({opacity:0}, {duration:1000});
+				
+				e.preventDefault();
+				$("#greyOut").velocity("transition.fadeIn")
+				.velocity({opacity:0.95}, {duration:2000})
+				.velocity("transition.fadeOut");
+				
+				$("#popupContact").html("Your PBI was successfully updated!")
+				
+				$("#popupContact").velocity("transition.bounceUpIn")
+				.velocity({opacity:1}, {duration:2000})
+				.velocity("transition.fadeOut");
 			},
 			error: function(results) {
 				//style a status div to provide feedback on how the update went	
-				status.innerHTML = "Pbi update was unsuccessful.";
-				$("#UpdateStatus")
-					.velocity({opacity:1}, {duration:200})
-					.velocity("callout.shake")
-					.velocity({opacity:1}, {duration:3000})
-					.velocity({opacity:0}, {duration:1000});
-				$("UpdateStatus").velocity("callout.shake")
+				$("#greyOut").velocity("transition.fadeIn")
+				.velocity({opacity:0.95}, {duration:2000})
+				.velocity("transition.fadeOut");
+				
+				$("#popupContact").html("Sorry we couldn't update your PBI.")
+				
+				$("#popupContact").velocity("transition.bounceUpIn")
+				.velocity({opacity:1}, {duration:2000})
+				.velocity("transition.fadeOut");
 			}
 		});
 	  }

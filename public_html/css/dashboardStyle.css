@@ -33,7 +33,6 @@ html
 {
 	height: 100%;
 	overflow: auto;
-	
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
@@ -41,10 +40,10 @@ html
 
 body
 {
-	font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+	font-family: "Roboto", sans-serif;
 	font-size: 20px;
 	line-height: 32px;
-	font-weight: 300;
+	font-weight: 100;
 	color: #999;
 	background: #FFF;
 	/*transform: translate3d(0,0,0);*/
@@ -96,13 +95,11 @@ em
 
 h1, h2, h3
 {
-	font-size: 60px;
-	line-height: 60px;
+	line-height: 40px;
 	margin: 0 0 10px 0;
-	font-weight: 200;
+	font-weight: 100;
 	padding-left: 10px;
-	font-size:30px;
-	letter-spacing: -1.5px;
+	font-size:20px;
 	color: #999;
 	font-weight: 200;
 	display:inline-block;
@@ -111,13 +108,13 @@ h1, h2, h3
 
 	h2
 	{
-		font-size: 38px;
+		font-size: 20px;
 		line-height: 38px;
 	}
 		
 	h3
 	{
-		font-size: 32px;
+		font-size: 20px;
 		line-height: 32px;
 	}
 
@@ -139,51 +136,6 @@ h1, h2, h3
 {
 	background: #EEE;
 }
-
-
-/* ==================================================
-   Separator Arrows
-================================================== */
-
-/*.arrow-separator
-{
-	position: relative;
-}
-
-	.arrow-separator:after
-	{
-		top: 100%;
-		border: solid transparent;
-		content: " ";
-		height: 0;
-		width: 0;
-		position: absolute;
-		pointer-events: none;
-		border-width: 12px;
-		left: 50%;
-		margin-left: -12px;
-		z-index: 11;
-	}
-	
-		.arrow-white:after
-		{
-			border-color: #FFF rgba(255,255,255,0) rgba(255,255,255,0) rgba(255,255,255,0); /** Using RGB to remove dark line in Firefox **/ 
-		/*}
-		
-		.arrow-theme:after
-		{
-			border-color: #29abe2 rgba(22,160,133,0) rgba(22,160,133,0) rgba(22,160,133,0);
-		}
-		
-		.arrow-themelight:after
-		{
-			border-color: #666666 rgba(26,188,156,0) rgba(26,188,156,0) rgba(26,188,156,0);
-		}
-
-		.arrow-grey:after
-		{
-			border-color: #EEE rgba(238,238,238,0) rgba(238,238,238,0) rgba(238,238,238,0);
-		}*/
 
 /* ==================================================
    General Layout Styles
@@ -216,16 +168,16 @@ h1, h2, h3
 	display:inline-block;
 	padding: 0px 30px;
 	border-bottom: 1px solid #eee;
+	background-color: #ec704e;
 }
 
 	#topNav h1
 	{
 		padding-left: 10px;
 		margin-bottom: 10px;
-		font-size:30px;
-		letter-spacing: -1.5px;
-		color: #999;
-		font-weight: 200;
+		font-size:20px;
+		color: #fff;
+		font-weight: 100;
 		display:inline-block;
 		vertical-align:middle;
 		text-transform:none;
@@ -233,17 +185,16 @@ h1, h2, h3
 	
 		#topNav h1 span
 		{
-			font-size: 70px;
+			font-size: 20px;
 			line-height: 70px;
-			letter-spacing: -1.4px;
-			font-weight: 300;
+			font-weight: 100;
 		}
 
 	#topNav p
 	{
 		display:inline-block;
 		margin-bottom: 0;
-		color: #999;
+		color: #fff;
 	}
 
 	#topNav span
@@ -258,14 +209,14 @@ h1, h2, h3
 	
 #leftNav{
 	height:100%;
-	padding:0px 30px;
+	padding:0px 0px 0px 30px;
 	float:left;
 	/*border-right: 1px solid #eee;*/
 }
 
 #rightNav{
 	height:100%;
-	padding:0px 30px;
+	padding:0px;
 	float:left;
 	/*border-right: 1px solid #eee;*/
 }
@@ -275,17 +226,16 @@ ul{
 }
 
 #rightNav li{
-	margin-left:75px;
+	margin-left:30px;
 	margin-bottom: 10px;
-	font-size:30px;
-	letter-spacing: -1.5px;
-	color: #999;
-	font-weight: 200;
+	font-size:20px;
+	color: #fff;
+	font-weight: 100;
 	cursor: pointer;
 	display:inline-block;
 	vertical-align:middle;
 	text-transform:none;	
-	line-height: 60px;
+	line-height: 40px;
 	position: relative;
 	-webkit-transition: all 0.2s;
 	-moz-transition: all 0.2s;
@@ -321,8 +271,7 @@ ul{
   background: #eee; 
   display: block; 
   color: #505050;
-  letter-spacing: -1px;
-  font-size: 25px;
+  font-size: 20px;
   line-height: 40px;
   text-align: center;
   margin: 0px;
@@ -342,32 +291,27 @@ ul{
   visibility: visible;
 }
 		
-#maincont
-{
+#maincont{
 	color: #505050;
 	width:90%;
 	margin:0 auto;
 }
 
-	#maincont a
-	{
+	#maincont a{
 		color: #FFF;
 		opacity: 0.6;
 	}
 	
-		#maincont a:hover
-		{
+		#maincont a:hover{
 			opacity: 1;
 		}
 	
-	#maincont #signupform
-	{
+	#maincont #signupform{
 		margin: 0 auto 20px auto;
 		width: 80%;
 	}
 
-		.sb-search
-		{
+		.sb-search{
 			position: relative;
 			width: 100%;
 			min-width: 50px;
@@ -377,8 +321,7 @@ ul{
             
 		}
 
-			.sb-search .sb-search-input
-			{
+			.sb-search .sb-search-input{
 				position: absolute;
 				top: 0;
 				right: 0;
@@ -391,7 +334,7 @@ ul{
 				margin: 0;
 				z-index: 10;
 				padding: 0 65px 0 15px;
-				font-family: inherit;
+				font-family: "Roboto", sans-serif;
 				font-size: 20px;
 				color: #333;
 				
@@ -402,8 +345,7 @@ ul{
 				-webkit-appearance: none;
 			}
 
-		button.formbutton, .sb-search-submit 
-		{
+		button.formbutton, .sb-search-submit{
 			width: 60px;
 			height: 60px;
 			display: block;
@@ -416,8 +358,7 @@ ul{
 			cursor: pointer;
 		}
 
-			.sb-search-submit
-			{
+			.sb-search-submit{
 				background: #FFF; /* IE needs this */
 				-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; /* IE 8 */
 				filter: alpha(opacity=0); /* IE 5-7 */
@@ -428,34 +369,53 @@ ul{
 				z-index: -1;
 			}
 			
-			button.formbutton
-			{
+			button.formbutton{
+				background-color:#ec704e;
+				border-bottom: 1px solid #c5684f;
+				font-family: inherit;
+				font-weight: 100;
+   				font-size: 18px;
 				color: #FFF;
-				background: #ff8533;
-				z-index: 90;
 				border: 0;
 				height: 50px;
+				cursor:pointer
 			}
 			
-			button.formbutton span
-			{
-				font-size: 19px;
+			button.formbutton span{
+				font-size: 18px;
 			}
 			
-				button.formbutton:hover
-				{
+				button.formbutton:hover{
 					background: #ff6700;
+				}
+				
+				button.formbutton:active{
+					border-bottom: 1px solid #ff6700;
+					border-right: 1px solid #ff6700;
+				}
+				
+				button.formbutton:focus{
+					outline:0;
 				}
 			
 #contentTitle{
 	background:#fff;
 	padding:0px 0px;
 	border-bottom: 1px solid #a7a7a7;
+	font-weight: 500;
+    font-size: 25px;
+    color: #403E3C;
 }
+
+#contentTitle h1{
+	font-weight: 500;
+    font-size: 25px;
+    color: #403E3C;
+} 
 	
 #searchBar{
 	background:#eee;
-	padding:30px 0px;
+	padding:10px 0px;
 	
 }
 
@@ -479,7 +439,7 @@ select{
 	border-radius: 0px;
 	width: 100px;
 	vertical-align: middle;
-	font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+	font-family: "Roboto", sans-serif;
 	font-weight: 300;
 	font-size: 15px; 
 }
@@ -509,6 +469,15 @@ select{
 	margin-right: 20px;
 }
 
+#pbiSearchResultsDiv{
+	height:495px;
+	overflow: auto;
+}
+
+.PBI{
+	cursor: pointer;
+}
+
 .twoThirdsWidth{
 	width:67%;
 	Float:left;
@@ -527,19 +496,24 @@ select{
 
 .pbiDetailsForm input{
 	width:150px;
-	font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+	font-family: "Roboto", sans-serif;
 	font-weight: 300;
 	font-size: 15px;
 }
 
 .pbiDetailsForm textarea{
-	font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+	font-family: "Roboto", sans-serif;
 	font-weight: 300;
 	font-size: 15px;
+	width:82%;
+    height:95px;
+    padding:10px;
 }
 
 #createPBI {
+	display:none;
 	opacity: 0;
+	visibility: hidden;
 	-webkit-transiton: opacity 0.25s;
 	-moz-transition: opacity 0.25s;
 	-ms-transition: opacity 0.25s;
@@ -550,7 +524,22 @@ select{
 }
 
 #pbiDetailsButton{
+	display:none;
 	opacity: 0;
+	visibility: hidden;
+	-webkit-transiton: opacity 0.25s;
+	-moz-transition: opacity 0.25s;
+	-ms-transition: opacity 0.25s;
+	-o-transition: opacity 0.25s;
+	transition: opacity 0.25s;
+	/*Important to stop the browser redrawing stuff it doesnt need to*/
+	-webkit-transform: translate3d(0,0,0);
+}
+
+#deletePbiButton{
+	display:none;
+	opacity: 0;
+	visibility: hidden;
 	-webkit-transiton: opacity 0.25s;
 	-moz-transition: opacity 0.25s;
 	-ms-transition: opacity 0.25s;
@@ -586,7 +575,7 @@ select{
 #footer
 {
 	position: relative;
-	font-size: 18px;
+	font-size: 20px;
 	clear:left;
 }
 
@@ -673,7 +662,6 @@ table, th, td {
 	{
 		font-size: 54px;
 		line-height: 54px;
-		letter-spacing: -1.2px;
 	}
 
 		#topcontainer h1 span

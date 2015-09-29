@@ -6,17 +6,39 @@
 
  $(function () {
 	 
-	 //Listen for the update button in the Pbi form to be clicked
+	 //Listen for the update button in the Pbi filter form to be clicked
      $("#showCreatePBIForm").click(function(e) {
-         e.preventDefault();
-		 $('#pbiDetails').velocity({opacity:1}, {duration:200});
-		 $('#createPBI').velocity({opacity:1}, {duration:200});
-		 $('#pbiDetailsButton').velocity({opacity:0}, {duration:50});
+        e.preventDefault();
+		
+		//Show the pbiDetails form and show the create button
+		$('#pbiDetails').velocity({opacity:1}, {duration:200});
+		$('#createPBI').show();
+		$('#createPBI').css("visibility","visible");
+	 	$('#createPBI').velocity({opacity:1}, {duration:0});
+		
+		//Make sure the update and delete button are not shown  
+		$('#pbiDetailsButton').hide();
+		$('#pbiDetailsButton').css("visibility","hidden");
+		$('#pbiDetailsButton').velocity({opacity:0}, {duration:0});
+		$('#deletePbiButton').hide();
+		$('#deletePbiButton').css("visibility","hidden");
+		$('#deletePbiButton').velocity({opacity:0}, {duration:0}); 
+		
+		//Clear the pbi details form so that there is a fresh form to enter a new pbi
+		document.getElementById("pbiID").value = "";
+		document.getElementById("pbiTitle").value = "";
+		document.getElementById("pbiDescription").value = "";
+		document.getElementById("pbiEffort").value = "";
+		document.getElementById("pbiDetailPriority").value = "";
+		document.getElementById("pbiDetailState").value = "";
+		document.getElementById("pbiIteration").value = "";
+		document.getElementById("pbiProject").value = "";
+		
 	 });
 	
 	$("#createPBI").click(function(e) {	
 		e.preventDefault() 
-		// // Variables 
+		//Variables 
 		var updateID = document.getElementById("pbiID").value;
 		var updateTitle = document.getElementById("pbiTitle").value;
 		var updateDesc = document.getElementById("pbiDescription").value;
@@ -26,18 +48,19 @@
 		var updateIteration = document.getElementById("pbiIteration").value;
 		var updateProject = document.getElementById("pbiProject").value;
 		var status = document.getElementById("UpdateStatus");
-	
-		console.log(updateTitle);
-		//Check if the ID field is empty before submitting - if it is then do not submit the data
+
+		//Check if the Title field is empty before submitting - if it is then do not submit the data
 		//And provide a suitable error message
 		if (updateTitle == null || updateTitle == ""){
-			status.innerHTML = "Could not update this PBI, the title field is empty.";
-			$("#UpdateStatus")
-				.velocity({opacity:1}, {duration:200})
-				.velocity("callout.shake")
-				.velocity({opacity:1}, {duration:3000})
-				.velocity({opacity:0}, {duration:1000});
-			$("UpdateStatus").velocity("callout.shake")
+			$("#greyOut").velocity("transition.fadeIn")
+			.velocity({opacity:0.95}, {duration:2000})
+			.velocity("transition.fadeOut");
+			
+			$("#popupContact").html("You can't create a PBI without a Title!")
+			
+			$("#popupContact").velocity("transition.bounceUpIn")
+			.velocity({opacity:1}, {duration:2000})
+			.velocity("transition.fadeOut");
 			return false;
 		}
 		//If the ID isn't Null then submit the update
@@ -58,21 +81,34 @@
 			},
 			success: function(results) {
 				//style a status div to provide feedback on how the update went
-				status.innerHTML = "Pbi successfully created!";
-				$("#UpdateStatus")
-					.velocity({opacity:1}, {duration:200})
-					.velocity({opacity:1}, {duration:3000})
-					.velocity({opacity:0}, {duration:1000});
+				// status.innerHTML = "Pbi successfully created!";
+				// $("#UpdateStatus")
+				// 	.velocity({opacity:1}, {duration:200})
+				// 	.velocity({opacity:1}, {duration:3000})
+				// 	.velocity({opacity:0}, {duration:1000});
+				
+				e.preventDefault();
+				$("#greyOut").velocity("transition.fadeIn")
+				.velocity({opacity:0.95}, {duration:2000})
+				.velocity("transition.fadeOut");
+				
+				$("#popupContact").html("Your PBI was successfully created!")
+				
+				$("#popupContact").velocity("transition.bounceUpIn")
+				.velocity({opacity:1}, {duration:2000})
+				.velocity("transition.fadeOut");
 			},
 			error: function(results) {
 				//style a status div to provide feedback on how the update went	
-				status.innerHTML = "Sorry! Pbi creation was unsuccessful.";
-				$("#UpdateStatus")
-					.velocity({opacity:1}, {duration:200})
-					.velocity("callout.shake")
-					.velocity({opacity:1}, {duration:3000})
-					.velocity({opacity:0}, {duration:1000});
-				$("UpdateStatus").velocity("callout.shake")
+				$("#greyOut").velocity("transition.fadeIn")
+				.velocity({opacity:0.95}, {duration:2000})
+				.velocity("transition.fadeOut");
+				
+				$("#popupContact").html("Sorry we couldn't create your PBI.")
+				
+				$("#popupContact").velocity("transition.bounceUpIn")
+				.velocity({opacity:1}, {duration:2000})
+				.velocity("transition.fadeOut");
 			}
 		});
 	  }

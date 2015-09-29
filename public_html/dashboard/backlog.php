@@ -14,28 +14,22 @@
 
 <link rel="shortcut icon" href="../images/ico/favicon.ico">
 <link rel="stylesheet" href="../chartist-js-master/dist/chartist.min.css">
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 <!--<link rel="stylesheet" href="../chartist-js-master/site/styles/main.scss">-->
 <link rel="stylesheet" href="../css/popupstyle.css">
 <link rel="stylesheet" href="../css/graphstyle.css"></link>
-<link rel="stylesheet" href="../css/signup.css"></link>	 
+<!--<link rel="stylesheet" href="../css/signup.css"></link>	 -->
 <link rel="stylesheet" href="../css/dashboardStyle.css">
 
-    
-<!--<script src="js/scripts.js"></script></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<!--<script src="js/uikit.scrollspy.js"></script>-->
 <script src="../js/scroll.js"></script>
 <script src="../js/ClickOnClass.js"></script>
 <script src="../js/searchPBIs.js"></script>
 <script src="../js/createPBI.js"></script>
+<script src="../js/deletePBI.js"></script>
 <script src="../js/updatePBIs.js"></script>
-<!--<script src="js/ajax.js"></script>-->
 <script src="../js/velocity.js"></script>
 <script src="../js/velocity.ui.js"></script>
-<!--<script src="chartist-js-master/dist/chartist.min.js"></script>-->
-<!--<script src="./js/chartistGraph.js"></script>--> 
-<!--<script src="../js/pbiDataSmall.js"></script>-->
-<!--<script src="./js/all.js"></script>  -->
 
 <!-- Google Analytics code, need to add this to all pages!-->
 <script>
@@ -136,7 +130,7 @@
       	<div class="oneThirdWidth">
           <h1>Results</h1>
           <!--Table of results populated by searching for PBI's based on filters applied from the search bar above-->
-          <div id="test">
+          <div id="pbiSearchResultsDiv">
             <table id="pBIResultstable" style="width:100%;">
               <tr>
                 <th>ID</th>
@@ -164,19 +158,24 @@
             <input id = "pbiEffort">  
             
             <label for="pbiDetailPriority">Priority</label>
-            <input id = "pbiDetailPriority">
+            <select id="pbiDetailPriority">
+            </select>
             
             <label for="pbiDetailState">State</label>
-            <input id = "pbiDetailState">
+            <select id = "pbiDetailState">
+            </select>
             
             <label for="pbiIteration">Iteration</label>
-            <input id = "pbiIteration">
+            <select id = "pbiIteration">
+            </select>
             
             <label for="pbiProject">Project Name</label>
-            <input id = "pbiProject">
+            <select id = "pbiProject">
+            </select>
             
-            <button type="submit" id="createPBI" value="Update" class="formbutton">Create</button>
+            <button type="submit" id="createPBI" value="Create" class="formbutton">Create</button>
             <button type="submit" id="pbiDetailsButton" value="Update" class="formbutton">Update</button>  
+            <button type="button" id="deletePbiButton" value="Delete" class="formbutton">Delete</button>
             <button type="reset" id="pbiDetailsResetButton" value="Cancel" class="formbutton">Cancel</button> 
           </form>
           
@@ -187,10 +186,16 @@
               
       </div>
       
-      
-      
     </div>
     
+    <div id="greyOut">
+    <!-- Popup Div Starts Here -->
+      <div id="popupContact">
+          <!--<img id="close" src="images/ZeusLogo.jpg" style="width:10%;">-->
+          <h2>Status message</h2>
+      </div>
+    <!-- Popup Div Ends Here -->
+    </div>
 
     <div id="footer" class="fullwidth clearfix">
     	<p> footer</div>
