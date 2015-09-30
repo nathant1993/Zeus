@@ -43,7 +43,7 @@ body
 	font-family: "Roboto", sans-serif;
 	font-size: 20px;
 	line-height: 32px;
-	font-weight: 100;
+	font-weight: 300;
 	color: #999;
 	background: #FFF;
 	/*transform: translate3d(0,0,0);*/
@@ -97,11 +97,10 @@ h1, h2, h3
 {
 	line-height: 40px;
 	margin: 0 0 10px 0;
-	font-weight: 100;
+	font-weight: 300;
 	padding-left: 10px;
 	font-size:20px;
 	color: #999;
-	font-weight: 200;
 	display:inline-block;
 	vertical-align:middle;
 }
@@ -177,7 +176,7 @@ h1, h2, h3
 		margin-bottom: 10px;
 		font-size:20px;
 		color: #fff;
-		font-weight: 100;
+		font-weight: 300;
 		display:inline-block;
 		vertical-align:middle;
 		text-transform:none;
@@ -187,7 +186,7 @@ h1, h2, h3
 		{
 			font-size: 20px;
 			line-height: 70px;
-			font-weight: 100;
+			font-weight: 300;
 		}
 
 	#topNav p
@@ -230,7 +229,7 @@ ul{
 	margin-bottom: 10px;
 	font-size:20px;
 	color: #fff;
-	font-weight: 100;
+	font-weight: 300;
 	cursor: pointer;
 	display:inline-block;
 	vertical-align:middle;
@@ -373,7 +372,7 @@ ul{
 				background-color:#ec704e;
 				border-bottom: 1px solid #c5684f;
 				font-family: inherit;
-				font-weight: 100;
+				font-weight: 300;
    				font-size: 18px;
 				color: #FFF;
 				border: 0;
@@ -470,8 +469,9 @@ select{
 }
 
 #pbiSearchResultsDiv{
-	height:495px;
+	max-height:495px;
 	overflow: auto;
+	margin-bottom: 20px;
 }
 
 .PBI{
@@ -784,8 +784,8 @@ table, th, td {
 		padding:0;
 	}
 	
-	#rightNav{
-		display:none;	
+	#rightNav li{
+		display: block;	
 	}
 	
 	#leftNav{
@@ -819,7 +819,7 @@ table, th, td {
 		width: 100%;
 		Float: none;
 		margin: 0 auto;
-		padding: 0 20px;
+		padding: 0 40px;
 	}
 	
 	#projectSearch button{
@@ -895,8 +895,12 @@ table, th, td {
 		padding:0;
 	}
 	
-	#rightNav{
+	/*#rightNav{
 		display:none;	
+	}*/
+	
+	#rightNav li{
+		display: block;	
 	}
 	
 	#leftNav{
@@ -926,7 +930,7 @@ table, th, td {
 		width: 100%;
 		Float: none;
 		margin: 0 auto;
-		padding: 0 20px;
+		padding: 0 40px;
 	}
 
 	.twoThirdsWidth{

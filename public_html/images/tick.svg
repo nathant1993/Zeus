@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#86EF9E;}
+	.st1{display:none;}
+	.st2{display:inline;fill:none;stroke:#ED8F88;stroke-width:10;stroke-miterlimit:10;}
+</style>
+<g id="Layer_1_1_">
+	<g id="XMLID_3_">
+		<path class="st0" d="M251.8,455.8c-113,0-205-92-205-205c0-113,92-205,205-205c113,0,205,92,205,205
+			C456.8,363.8,364.8,455.8,251.8,455.8z M251.8,55.8c-107.5,0-195,87.5-195,195s87.5,195,195,195s195-87.5,195-195
+			S359.3,55.8,251.8,55.8z"/>
+	</g>
+	<g id="XMLID_4_">
+		<g id="XMLID_1_">
+			
+				<rect x="126.5" y="282.8" transform="matrix(0.7066 0.7076 -0.7076 0.7066 256.5079 -42.9906)" class="st0" width="107.3" height="10"/>
+		</g>
+		<g id="XMLID_2_">
+			
+				<rect x="282.3" y="146.6" transform="matrix(0.7072 0.7071 -0.7071 0.7072 260.4952 -130.0526)" class="st0" width="10" height="205.8"/>
+		</g>
+	</g>
+</g>
+<g id="Layer_2" class="st1">
+	<circle id="XMLID_12_" class="st2" cx="251.8" cy="250.8" r="200"/>
+	<line id="XMLID_10_" class="st2" x1="179.5" y1="323.2" x2="325" y2="177.7"/>
+	<line id="XMLID_9_" class="st2" x1="179.5" y1="177.7" x2="325" y2="323.2"/>
+</g>
+</svg>
