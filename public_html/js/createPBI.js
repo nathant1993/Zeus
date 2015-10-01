@@ -53,14 +53,21 @@
 		//And provide a suitable error message
 		if (updateTitle == null || updateTitle == ""){
 			$("#greyOut").velocity("transition.fadeIn")
-			.velocity({opacity:0.95}, {duration:2000})
-			.velocity("transition.fadeOut");
-			
-			$("#popupContact").html("You can't create a PBI without a Title!")
-			
+			.velocity({opacity:0.9});
 			$("#popupContact").velocity("transition.bounceUpIn")
-			.velocity({opacity:1}, {duration:2000})
-			.velocity("transition.fadeOut");
+			.velocity({opacity:1});
+			$("#popupContact").prepend('<img id="msgImg" src="../images/cross.svg" /> <h1 id="msgH1">Your PBI needs a Title!</h1> <br> <a href="#" id="msgClose">Cancel</a>');
+			
+			//Close popup div and remove elements from the div so they don't stack up on each other
+			$("#msgClose").click(function(e) {
+				e.preventDefault();
+				$("#popupContact").velocity("transition.bounceDownOut");
+				$("#greyOut").velocity("transition.fadeOut",{delay:200});
+				$("#msgImg").remove();
+				$("#msgH1").remove();
+				$("#msgClose").remove();			
+			});
+			
 			return false;
 		}
 		//If the ID isn't Null then submit the update
@@ -80,35 +87,41 @@
 				postedProject:updateProject
 			},
 			success: function(results) {
-				//style a status div to provide feedback on how the update went
-				// status.innerHTML = "Pbi successfully created!";
-				// $("#UpdateStatus")
-				// 	.velocity({opacity:1}, {duration:200})
-				// 	.velocity({opacity:1}, {duration:3000})
-				// 	.velocity({opacity:0}, {duration:1000});
-				
-				e.preventDefault();
+				//style and add content to a status div that pops up to provide feedback on how the update went
 				$("#greyOut").velocity("transition.fadeIn")
-				.velocity({opacity:0.95}, {duration:2000})
-				.velocity("transition.fadeOut");
-				
-				$("#popupContact").html("Your PBI was successfully created!")
-				
+				.velocity({opacity:0.9});
 				$("#popupContact").velocity("transition.bounceUpIn")
-				.velocity({opacity:1}, {duration:2000})
-				.velocity("transition.fadeOut");
+				.velocity({opacity:1});
+				$("#popupContact").prepend('<img id="msgImg" src="../images/tick.svg" /> <h1 id="msgH1">Your PBI was successfully created!</h1> <br> <a href="#" id="msgClose">Cancel</a>');
+				
+				//Close popup div and remove elements from the div so they don't stack up on each other
+				$("#msgClose").click(function(e) {
+					e.preventDefault();
+					$("#popupContact").velocity("transition.bounceDownOut");
+					$("#greyOut").velocity("transition.fadeOut",{delay:200});
+					$("#msgImg").remove();
+					$("#msgH1").remove();
+					$("#msgClose").remove();			
+				});
+
 			},
 			error: function(results) {
-				//style a status div to provide feedback on how the update went	
+				//style and add content to a status div that pops up to provide feedback on how the update went
 				$("#greyOut").velocity("transition.fadeIn")
-				.velocity({opacity:0.95}, {duration:2000})
-				.velocity("transition.fadeOut");
-				
-				$("#popupContact").html("Sorry we couldn't create your PBI.")
-				
+				.velocity({opacity:0.9});
 				$("#popupContact").velocity("transition.bounceUpIn")
-				.velocity({opacity:1}, {duration:2000})
-				.velocity("transition.fadeOut");
+				.velocity({opacity:1});
+				$("#popupContact").prepend('<img id="msgImg" src="../images/cross.svg" /> <h1 id="msgH1">Sorry we could not create your PBI.</h1> <br> <a href="#" id="msgClose">Cancel</a>');
+				
+				//Close popup div and remove elements from the div so they don't stack up on each other$("#msgClose").click(function(e) {
+				$("#msgClose").click(function(e) {
+					e.preventDefault();
+					$("#popupContact").velocity("transition.bounceDownOut");
+					$("#greyOut").velocity("transition.fadeOut",{delay:200});
+					$("#msgImg").remove();
+					$("#msgH1").remove();
+					$("#msgClose").remove();			
+				});
 			}
 		});
 	  }

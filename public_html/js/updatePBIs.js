@@ -19,21 +19,25 @@
 	  var updateState = document.getElementById("pbiDetailState").value;
 	  var updateIteration = document.getElementById("pbiIteration").value;
 	  var updateProject = document.getElementById("pbiProject").value;
-	  var status = document.getElementById("UpdateStatus");
 	  
 	  //Check if the ID field is empty before submitting - if it is then do not submit the data
 	  //And provide a suitable error message
 	  if (updateID == null || updateID == ""){
-		  $("#greyOut").velocity("transition.fadeIn")
-			.velocity({opacity:0.95}, {duration:2000})
-			.velocity("transition.fadeOut");
-			
-			$("#popupContact").html("Sorry we could not update this PBI, the ID field is empty.");
-			$("#popupContact").prepend('<img src="../images/cross.svg" />');
-			
+		  	$("#greyOut").velocity("transition.fadeIn")
+			.velocity({opacity:0.9});
 			$("#popupContact").velocity("transition.bounceUpIn")
-			.velocity({opacity:1}, {duration:2000})
-			.velocity("transition.fadeOut");
+			.velocity({opacity:1});
+			$("#popupContact").prepend('<img id="msgImg" src="../images/cross.svg" /> <h1 id="msgH1">Sorry we could not update your PBI.</h1> <br> <a href="#" id="msgClose">Cancel</a>');
+			
+			//Close popup div and remove elements from the div so they don't stack up on each other
+			$("#msgClose").click(function(e) {
+				e.preventDefault();
+				$("#popupContact").velocity("transition.bounceDownOut");
+				$("#greyOut").velocity("transition.fadeOut",{delay:200});
+				$("#msgImg").remove();
+				$("#msgH1").remove();
+				$("#msgClose").remove();			
+			});
 		  return false;
 	  }
 	  //If the ID isn't Null then submit the update
@@ -53,36 +57,40 @@
 				postedProject:updateProject
 			},
 			success: function(results) {
-				//style a status div to provide feedback on how the update went
-				// status.innerHTML = "Pbi successfully updated!";
-				// $("#UpdateStatus")
-				// 	.velocity({opacity:1}, {duration:200})
-				// 	.velocity({opacity:1}, {duration:3000})
-				// 	.velocity({opacity:0}, {duration:1000});
-				
-				e.preventDefault();
+				//style and add content to a status div that pops up to provide feedback on how the update went
 				$("#greyOut").velocity("transition.fadeIn")
-				.velocity({opacity:0.95}, {duration:2000})
-				.velocity("transition.fadeOut");
-				
-				$("#popupContact").html("Your PBI was successfully updated!")
-				
+				.velocity({opacity:0.9});
 				$("#popupContact").velocity("transition.bounceUpIn")
-				.velocity({opacity:1}, {duration:2000})
-				.velocity("transition.fadeOut");
+				.velocity({opacity:1});
+				$("#popupContact").prepend('<img id="msgImg" src="../images/tick.svg" /> <h1 id="msgH1">Your PBI was successfully updated!</h1> <br> <a href="#" id="msgClose">Cancel</a>');
+				
+				//Close popup div and remove elements from the div so they don't stack up on each other
+				$("#msgClose").click(function(e) {
+					e.preventDefault();
+					$("#popupContact").velocity("transition.bounceDownOut");
+					$("#greyOut").velocity("transition.fadeOut",{delay:200});
+					$("#msgImg").remove();
+					$("#msgH1").remove();
+					$("#msgClose").remove();			
+				});
 			},
 			error: function(results) {
-				//style a status div to provide feedback on how the update went	
+				//style and add content to a status div that pops up to provide feedback on how the update went
 				$("#greyOut").velocity("transition.fadeIn")
-				.velocity({opacity:0.95}, {duration:5000})
-				.velocity("transition.fadeOut");
-				
-				$("#popupContact").prepend('<h1>"Sorry we could not update your PBI."</h1>')
-				$("#popupContact").prepend('<img src="../images/cross.svg" />')
-				
+				.velocity({opacity:0.9});
 				$("#popupContact").velocity("transition.bounceUpIn")
-				.velocity({opacity:1}, {duration:5000})
-				.velocity("transition.fadeOut");
+				.velocity({opacity:1});
+				$("#popupContact").prepend('<img id="msgImg" src="../images/cross.svg" /> <h1 id="msgH1">Sorry we could not update your PBI.</h1> <br> <a href="#" id="msgClose">Cancel</a>');
+				
+				//Close popup div and remove elements from the div so they don't stack up on each other$("#msgClose").click(function(e) {
+				$("#msgClose").click(function(e) {
+					e.preventDefault();
+					$("#popupContact").velocity("transition.bounceDownOut");
+					$("#greyOut").velocity("transition.fadeOut",{delay:200});
+					$("#msgImg").remove();
+					$("#msgH1").remove();
+					$("#msgClose").remove();			
+				});
 			}
 		});
 	  }

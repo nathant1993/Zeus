@@ -191,8 +191,6 @@
     <div id="greyOut">
     <!-- Popup Div Starts Here -->
       <div id="popupContact">
-          <!--<img id="close" src="images/ZeusLogo.jpg" style="width:10%;">-->
-          <h2>Status message</h2>
       </div>
     <!-- Popup Div Ends Here -->
     </div>
