@@ -34,7 +34,7 @@ img#close {
     min-width:250px;
     width:100%;
     background-color: #fff;
-    padding-top: 20px;
+    padding:20px 20px 30px 20px;
     left:50%;
     top:17%;
     margin-left:-202px;
@@ -42,6 +42,12 @@ img#close {
     text-align: center;
 }
 
+#popupContact img{
+    height:75%;
+    display:block;
+    vertical-align: middle;
+    margin: 0 auto;
+}
  #pbi_form {
     max-width:500px;
     min-width:250px;
