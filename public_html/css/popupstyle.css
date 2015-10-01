@@ -18,6 +18,7 @@ CSS settings for HTML div Exact Center
     position:fixed;
     background-color:#313131;
     overflow:auto;
+    z-index: 1000;
 }
 
 img#close {
@@ -40,6 +41,8 @@ img#close {
     margin-left:-202px;
     font-family: "Roboto", sans-serif;
     text-align: center;
+    display:none;
+    z-index: 1001;
 }
 
 #popupContact img{

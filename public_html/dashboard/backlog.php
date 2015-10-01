@@ -189,12 +189,13 @@
     </div>
     
     <div id="greyOut">
+    </div>
+
     <!-- Popup Div Starts Here -->
       <div id="popupContact">
       </div>
     <!-- Popup Div Ends Here -->
-    </div>
-
+    
     <div id="footer" class="fullwidth clearfix">
     	<p> footer</div>
     </div>
