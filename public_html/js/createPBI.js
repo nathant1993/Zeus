@@ -54,14 +54,14 @@
 		if (updateTitle == null || updateTitle == ""){
 			$("#greyOut").velocity("transition.fadeIn")
 			.velocity({opacity:0.9});
-			$("#popupContact").velocity("transition.bounceUpIn")
+			$("#popupContact").velocity("transition.bounceDownIn")
 			.velocity({opacity:1});
 			$("#popupContact").prepend('<img id="msgImg" src="../images/cross.svg" /> <h1 id="msgH1">Your PBI needs a Title!</h1> <br> <a href="#" id="msgClose">OK</a>');
 			
 			//Close popup div and remove elements from the div so they don't stack up on each other
 			$("#msgClose").click(function(e) {
 				e.preventDefault();
-				$("#popupContact").velocity("transition.bounceDownOut");
+				$("#popupContact").velocity("transition.bounceUpOut");
 				$("#greyOut").velocity("transition.fadeOut",{delay:200});
 				$("#msgImg").remove();
 				$("#msgH1").remove();
@@ -90,14 +90,14 @@
 				//style and add content to a status div that pops up to provide feedback on how the update went
 				$("#greyOut").velocity("transition.fadeIn")
 				.velocity({opacity:0.9});
-				$("#popupContact").velocity("transition.bounceUpIn")
+				$("#popupContact").velocity("transition.bounceDownIn")
 				.velocity({opacity:1});
 				$("#popupContact").prepend('<img id="msgImg" src="../images/tick.svg" /> <h1 id="msgH1">Your PBI was successfully created!</h1> <br> <a href="#" id="msgClose">OK</a>');
 				
 				//Close popup div and remove elements from the div so they don't stack up on each other
 				$("#msgClose").click(function(e) {
 					e.preventDefault();
-					$("#popupContact").velocity("transition.bounceDownOut");
+					$("#popupContact").velocity("transition.bounceUpOut");
 					$("#greyOut").velocity("transition.fadeOut",{delay:200});
 					$("#msgImg").remove();
 					$("#msgH1").remove();
@@ -109,14 +109,14 @@
 				//style and add content to a status div that pops up to provide feedback on how the update went
 				$("#greyOut").velocity("transition.fadeIn")
 				.velocity({opacity:0.9});
-				$("#popupContact").velocity("transition.bounceUpIn")
+				$("#popupContact").velocity("transition.bounceDownIn")
 				.velocity({opacity:1});
 				$("#popupContact").prepend('<img id="msgImg" src="../images/cross.svg" /> <h1 id="msgH1">Sorry we could not create your PBI.</h1> <br> <a href="#" id="msgClose">OK</a>');
 				
 				//Close popup div and remove elements from the div so they don't stack up on each other$("#msgClose").click(function(e) {
 				$("#msgClose").click(function(e) {
 					e.preventDefault();
-					$("#popupContact").velocity("transition.bounceDownOut");
+					$("#popupContact").velocity("transition.bounceUpOut");
 					$("#greyOut").velocity("transition.fadeOut",{delay:200});
 					$("#msgImg").remove();
 					$("#msgH1").remove();
