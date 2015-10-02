@@ -46,7 +46,7 @@
 			.velocity({opacity:0.9});
 			$("#popupContact").velocity("transition.bounceUpIn")
 			.velocity({opacity:1});
-			$("#popupContact").prepend('<img id="msgImg" src="../images/cross.svg" /> <h1 id="msgH1">Are you sure you want to update this PBI?</h1> <br> <a href="#" id="confirmButton">Yes</a> <a href="#" id="msgClose">No</a>');
+			$("#popupContact").prepend('<img id="msgImg" src="../images/query.svg" /> <h1 id="msgH1">Are you sure you want to update this PBI?</h1> <br> <a href="#" id="confirmButton">Yes</a> <a href="#" id="msgClose">No</a>');
 			
 			$("#msgClose").click(function(e) {
 				e.preventDefault();

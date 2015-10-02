@@ -56,7 +56,7 @@
 			.velocity({opacity:0.9});
 			$("#popupContact").velocity("transition.bounceUpIn")
 			.velocity({opacity:1});
-			$("#popupContact").prepend('<img id="msgImg" src="../images/cross.svg" /> <h1 id="msgH1">Your PBI needs a Title!</h1> <br> <a href="#" id="msgClose">Cancel</a>');
+			$("#popupContact").prepend('<img id="msgImg" src="../images/cross.svg" /> <h1 id="msgH1">Your PBI needs a Title!</h1> <br> <a href="#" id="msgClose">OK</a>');
 			
 			//Close popup div and remove elements from the div so they don't stack up on each other
 			$("#msgClose").click(function(e) {
@@ -92,7 +92,7 @@
 				.velocity({opacity:0.9});
 				$("#popupContact").velocity("transition.bounceUpIn")
 				.velocity({opacity:1});
-				$("#popupContact").prepend('<img id="msgImg" src="../images/tick.svg" /> <h1 id="msgH1">Your PBI was successfully created!</h1> <br> <a href="#" id="msgClose">Cancel</a>');
+				$("#popupContact").prepend('<img id="msgImg" src="../images/tick.svg" /> <h1 id="msgH1">Your PBI was successfully created!</h1> <br> <a href="#" id="msgClose">OK</a>');
 				
 				//Close popup div and remove elements from the div so they don't stack up on each other
 				$("#msgClose").click(function(e) {
@@ -111,7 +111,7 @@
 				.velocity({opacity:0.9});
 				$("#popupContact").velocity("transition.bounceUpIn")
 				.velocity({opacity:1});
-				$("#popupContact").prepend('<img id="msgImg" src="../images/cross.svg" /> <h1 id="msgH1">Sorry we could not create your PBI.</h1> <br> <a href="#" id="msgClose">Cancel</a>');
+				$("#popupContact").prepend('<img id="msgImg" src="../images/cross.svg" /> <h1 id="msgH1">Sorry we could not create your PBI.</h1> <br> <a href="#" id="msgClose">OK</a>');
 				
 				//Close popup div and remove elements from the div so they don't stack up on each other$("#msgClose").click(function(e) {
 				$("#msgClose").click(function(e) {
