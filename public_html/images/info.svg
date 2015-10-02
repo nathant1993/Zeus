@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;}
+	.st1{display:inline;fill:none;stroke:#86EF9E;stroke-width:10;stroke-miterlimit:10;}
+	.st2{display:inline;}
+	.st3{fill:none;stroke:#86EF9E;stroke-width:10;stroke-miterlimit:10;}
+	.st4{display:inline;fill:none;stroke:#ED8F88;stroke-width:10;stroke-miterlimit:10;}
+	.st5{display:inline;fill:#EAB77A;}
+	.st6{font-family:'Roboto-Light';}
+	.st7{font-size:223.2626px;}
+	.st8{display:inline;fill:none;stroke:#EAB77A;stroke-width:10;stroke-miterlimit:10;}
+	.st9{fill:#69A6CD;}
+	.st10{font-family:'Roboto-Regular';}
+	.st11{font-size:210px;}
+	.st12{fill:none;stroke:#69A6CD;stroke-width:10;stroke-miterlimit:10;}
+</style>
+<g id="Layer_1" class="st0">
+	<circle id="XMLID_3_" class="st1" cx="251.8" cy="250.8" r="200"/>
+	<g id="XMLID_1_" class="st2">
+		<line id="XMLID_2_" class="st3" x1="142.2" y1="249.9" x2="218" y2="325.8"/>
+		<line id="XMLID_4_" class="st3" x1="214.5" y1="322.2" x2="360" y2="176.7"/>
+	</g>
+</g>
+<g id="Layer_2" class="st0">
+	<circle id="XMLID_12_" class="st4" cx="251.8" cy="250.8" r="200"/>
+	<line id="XMLID_10_" class="st4" x1="179.5" y1="323.2" x2="325" y2="177.7"/>
+	<line id="XMLID_9_" class="st4" x1="179.5" y1="177.7" x2="325" y2="323.2"/>
+</g>
+<g id="Layer_3" class="st0">
+	<text id="XMLID_11_" transform="matrix(1 0 0 1 202.3325 328.5137)" class="st5 st6 st7">?</text>
+	<circle id="XMLID_13_" class="st8" cx="251.8" cy="251.8" r="200"/>
+</g>
+<g id="Layer_4">
+	<text id="XMLID_15_" transform="matrix(1 0 0 1 225.3325 328.5137)" class="st9 st10 st11">i</text>
+	<circle id="XMLID_14_" class="st12" cx="251.8" cy="251.8" r="200"/>
+</g>
+</svg>
