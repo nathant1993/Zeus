@@ -56,7 +56,6 @@ $(document).ready(function() {
 					'<td>'+pbiEff[i] +'</td>'+
 					'<td>'+priority[i] +'</td>'+
 					'<td>'+state[i] +'</td>'+
-					'<td class="update">update</td>'+
 					'</tr>');
 				};
 				
@@ -67,36 +66,26 @@ $(document).ready(function() {
 /*================================================================================================================*/
 				
 				// Open
-				 $(".update").click(function(e) {
-			         e.preventDefault();
-					 var greyOut = document.getElementById('greyOut');
+				//  $(".update").click(function(e) {
+			    //      e.preventDefault();
+				// 	 var greyOut = document.getElementById('greyOut');
 
-					 $("#greyOut").velocity("transition.fadeIn")
-					 .velocity({opacity:0.9});
-					 $("#popupContact").velocity("transition.bounceUpIn")
-					 .velocity({opacity:1});;
-				 });
+				// 	 $("#greyOut").velocity("transition.fadeIn")
+				// 	 .velocity({opacity:0.9});
+				// 	 $("#popupContact").velocity("transition.bounceUpIn")
+				// 	 .velocity({opacity:1});;
+				//  });
 				 
-				 //Close
-				  $("#close").click(function(e) {
-			         e.preventDefault();
-					 var greyOut = document.getElementById('greyOut');
-					 $("#popupContact").velocity("transition.bounceDownOut");
-					 $("#greyOut").velocity("transition.fadeOut",{delay:200});
+				//  //Close
+				//   $("#close").click(function(e) {
+			    //      e.preventDefault();
+				// 	 var greyOut = document.getElementById('greyOut');
+				// 	 $("#popupContact").velocity("transition.bounceDownOut");
+				// 	 $("#greyOut").velocity("transition.fadeOut",{delay:200});
 					 
-				 });
+				//  });
 				
 			};
-		
-		// bind click event to all internal page anchors	
-		//$("a[href*=#]").bind("click", function(e) {
-        //$("td[class=update]").bind("click", function(e) {
-		// prevent default action and bubbling
-        //e.preventDefault();
-        //e.stopPropagation();
-        // set target to anchor's "href" attribute
-        //var target = $(this).attr("href");
-        //});
 		
 			
 	});	

@@ -9,18 +9,6 @@ $(document).ready(function() {
   
   var lastlink;
   
-  //Testing scrolling
-  $("#cloudicon").click(function scrolltofoot(){
-    
-      $("#footer").velocity("scroll", { 
-      duration: 500,
-      delay: 0,
-      easing: "ease-in-out",
-      mobileHA: false
-      });
-      
-  });
-  
    // bind click event to all internal page anchors
     $("a[href*=#]").bind("click", function(e) {
         // prevent default action and bubbling

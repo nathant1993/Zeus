@@ -53,25 +53,25 @@ body
 
 ::selection
 {
-	background: #ff6700;
+	background: #ec704e;
 	color: #FFF;
 }
 
 ::-moz-selection
 {
-	background: #ff6700;
+	background: #ec704e;
 	color: #FFF;
 }
 
 a
 {
-	color: #ff6700;
+	color: #ec704e;
 	text-decoration: none;
 }
 
 	a:hover
 	{
-		color: #ff6700;
+		color: #c5684f;
 	}
 
 /* ==================================================
@@ -123,7 +123,7 @@ h1, h2, h3
 
 .colour1
 {
-	background: #29abe2;
+	background: #4eabec;
 }
 
 .colour2
@@ -282,7 +282,7 @@ ul{
   transition: 0.2s;
 }
 #rightNav ul li ul li:hover { 
-	border-bottom: 1px solid #ff6700; 
+	border-bottom: 1px solid #c5684f; 
 }
 
 #rightNav ul li:hover ul {
@@ -385,12 +385,12 @@ ul{
 			}
 			
 				button.formbutton:hover{
-					background: #ff6700;
+					background: #ec704e;
 				}
 				
 				button.formbutton:active{
-					border-bottom: 1px solid #ff6700;
-					border-right: 1px solid #ff6700;
+					border-bottom: 1px solid #c5684f;
+					border-right: 1px solid #c5684f;
 				}
 				
 				button.formbutton:focus{
@@ -561,17 +561,6 @@ select{
 	padding: 30px 0;
 }
 
-	#quotecont .owl-theme .owl-controls .owl-page span
-	{
-		background: #CCC;
-	}
-	
-		#quotecont .owl-theme .owl-controls .owl-page.active span,
-		#quotecont .owl-theme .owl-controls.clickable .owl-page:hover span
-		{
-			background: #1ABC9C;
-		}
-
 #footer
 {
 	position: relative;
@@ -599,40 +588,8 @@ select{
 		
 			#footer #socialmedia ul li a:hover
 			{
-				color: #ff6700;
+				color: #c5684f;
 			}
-			
-	#footer p.backtotop
-	{
-		margin: 0 0 40px 0;
-	}
-
-		#footer p.backtotop a
-		{
-			position: relative;
-			display: inline-block;
-			background: #EEE;
-			font-size: 32px;
-			line-height: 32px;
-			color: #999;
-			padding: 5px 12px;
-			
-			-webkit-border-radius: 4px;
-			-moz-border-radius: 4px;
-			border-radius: 4px;
-		}
-		
-			#footer p.backtotop a:hover
-			{
-				background-color: #1ABC9C;
-				color: #FFF;
-				text-decoration: none;
-			}
-			
-				#footer p.backtotop a:active
-				{
-					top: 2px;
-				}
 				
 table, th, td {
    border: 1px solid #B0B0B0;
@@ -669,15 +626,6 @@ table, th, td {
 			font-size: 70px;
 			line-height: 70px;
 		}
-	
-	/*#topNav{
-		padding:0;
-	}
-	
-	#leftNav{
-		float: none;
-		width: 100%
-	}*/
 	
 	#rightNav{
 		padding:0;
@@ -895,10 +843,6 @@ table, th, td {
 		padding:0;
 	}
 	
-	/*#rightNav{
-		display:none;	
-	}*/
-	
 	#rightNav li{
 		display: block;	
 	}
@@ -990,7 +934,6 @@ table, th, td {
 	100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
 }
 
-
 .status
 {
     position: relative;
@@ -1000,14 +943,7 @@ table, th, td {
     overflow: hidden;
     display: inline-block;
 }
-.shake{
-	-webkit-animation-name: thumb;
-	-webkit-animation-duration: 200ms;
-	-webkit-transform-origin:50% 50%;
-	-webkit-animation-iteration-count: 1;
-	-webkit-animation-timing-function: linear;
-	}
-	
+
 /* ==================================================
    Line graph - options
 ================================================== */	

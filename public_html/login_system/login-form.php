@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Zeus - Login</title>
-  <meta name="Description" content="Zeus Agile Project Management Dashboard - Zeus is a cloud based project management tool. Zeus is primarily focussed on agile project management but no matter how you work Zeus can help.">
-  <meta name="keywords" content="Zeus agile project management.">
+  <meta name="Description" content="Zeus Agile Project Management Dashboard - Login Page">
+  <meta name="keywords" content="Zeus agile project management Login">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144.png">

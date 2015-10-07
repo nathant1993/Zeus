@@ -6,12 +6,12 @@
 
 /*Top graph line*/
 .ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-point, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
-	stroke: #29abe2; 
+	stroke: #4eabec; 
 }
 
 /*bottom graph line*/
 .ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-point, .ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
-  stroke: #ff6700;
+  stroke: #ec704e;
   box-shadow: 10px;
 }
 
@@ -46,6 +46,10 @@
 .ct-chart .ct-label.ct-vertical{
 	fill:#666666;
 	color:#666666;
+}
+
+.ct-chart .ct-bar {
+	stroke-width: 15px;
 }
 
 .graph-container{
@@ -99,8 +103,8 @@
   min-width: 5em;
   padding: 0.5em;
   background: #fff;
-  opacity:.8;
-  border:1px solid #29abe2;
+  opacity:.95;
+  border:1px solid #4eabec;
   color: #666;
   font-weight: 700;
   text-align: center;
@@ -120,7 +124,7 @@
     height: 0;
     margin-left: -15px;
     border: 15px solid transparent;
-    border-top-color: #29abe2;
+    border-top-color: inherit;
   }
 
 
