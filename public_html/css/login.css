@@ -195,10 +195,10 @@ a img {
 .login-card a {
   text-decoration: none;
   font-size: 14px;
-  color: #666;
+  color: #ec704e;
   font-weight: 400;
   text-align: center;
-  display: inline-block;
+  display: block;
   opacity: 0.6;
   transition: opacity ease 0.4s;
 }

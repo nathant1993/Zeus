@@ -1,4 +1,6 @@
 <?php
+	ob_start();
+	
 	session_start();
 	
 	$token=$_GET['token'];
@@ -107,7 +109,8 @@
 			$q="UPDATE test_user SET user_password='".md5($pass)."' WHERE user_email='".$email."'";
 			$r=mysql_query($q);
 		
-			if($r)mysql_query("UPDATE tokens SET used=1 WHERE token='".$token."'");//echo "Your password is changed successfully";
+			if($r)mysql_query("UPDATE tokens SET used=1 WHERE token='".$token."'"); 
+			header('Location: ../login_system/password-reset-success.php');
 			if(!$r)echo "An error occurred";
 		}
 		else echo('
