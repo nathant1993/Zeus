@@ -20,6 +20,15 @@ $(function () {
 				  
 				return false;
 			}
+			// else if ($(password).text.length < 7) {
+			// 	status.innerHTML = "Your password is less than 7 characters long";
+			// 	status.style.opacity = 1;
+			// 	status.style.color = "#ff6700";
+			// 	$("#loginForm").velocity("callout.shake");
+		  	// 	$("#success").velocity("callout.shake");
+				  
+			// 	return false;
+			// } 
 			else{
 				form.submit();
 				return true;
