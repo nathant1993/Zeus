@@ -105,7 +105,25 @@
 	
 	if(isset($_POST['password']) && isset($_POST['confirmPassword']) && isset($_SESSION['email']) )
 	{
-		if(($_POST['password']) === ($_POST['confirmPassword'])){
+			if(($_POST['password']) != ($_POST['confirmPassword'])){
+			echo("passwords do not match");	
+		}
+			elseif((strlen($_POST["password"]) < '8')){
+			echo("Your Password Must Contain At Least 8 Characters");
+		}
+			elseif(!preg_match("#[0-9]+#",$pass)){
+        	echo("Your Password Must Contain At Least 1 Number");
+    	}
+			elseif(!preg_match("#[A-Z]+#",$pass)){
+       		echo("Your Password Must Contain At Least 1 Capital Letter");
+   		}
+    		elseif(!preg_match("#[a-z]+#",$pass)){
+       		echo("Your Password Must Contain At Least 1 Lowercase Letter");
+    	}
+		
+		else
+		
+		{
 			$q="UPDATE test_user SET user_password='".md5($pass)."' WHERE user_email='".$email."'";
 			$r=mysql_query($q);
 		
@@ -113,13 +131,13 @@
 			header('Location: ../login_system/password-reset-success.php');
 			if(!$r)echo "An error occurred";
 		}
-		else echo('
-			<form method="post">
-				enter your new password:<input type="password" name="password" />
-				re-enter your new password:<input type="password" name="confirmPassword" />
-				<input type="submit" value="Change Password">
-				</form>
-			<h1>Passwords do not match<h1>');
+		// else echo('
+		// 	<form method="post">
+		// 		enter your new password:<input type="password" name="password" />
+		// 		re-enter your new password:<input type="password" name="confirmPassword" />
+		// 		<input type="submit" value="Change Password">
+		// 		</form>
+		// 	<h1>Passwords do not match<h1>');
 	}
 	
 	
