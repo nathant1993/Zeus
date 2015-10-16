@@ -49,7 +49,7 @@
     <div id="topNav" class="fullwidth clearfix">
       <div id="leftNav">
         <a href ="../dashboard.php">  
-          <span id="cloudicon"><img src="../images/ZeusLogo.jpg" alt="Zeus agile project management logo" ></span>
+          <span id="cloudicon"><img src="../images/full_white_logo.svg" alt="Zeus agile project management logo" ></span>
             <h1>Zeus Dashboard</h1>
         </a>    
       </div>

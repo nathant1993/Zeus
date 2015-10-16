@@ -15,6 +15,7 @@
 <link rel="shortcut icon" href="images/ico/favicon.ico">
 <link rel="stylesheet" href="chartist-js-master/dist/chartist.min.css">
 <link rel="stylesheet" href="chartist-js-master/site/styles/main.scss">
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="css/popupstyle.css">
 <link rel="stylesheet" href="css/graphstyle.css"></link>
 <link rel="stylesheet" href="css/signup.css"></link>	 
@@ -50,7 +51,7 @@
     
     <div id="topNav" class="fullwidth clearfix">
       <div id="leftNav">
-    	<span id="cloudicon"><img src="images/ZeusLogo.jpg" alt="Zeus agile project management logo" ></span>
+    	<span id="cloudicon"><img src="images/full_white_logo.svg" alt="Zeus agile project management logo" ></span>
         <h1>Zeus Dashboard</h1>
       </div>
       <div id="rightNav">
