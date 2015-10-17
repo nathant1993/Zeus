@@ -1,4 +1,6 @@
 <?php
+
+//Display the form for entering user's email address
     if(!isset($_GET['email'])){
     echo
         '<form action="forgotpassword.php">
@@ -9,12 +11,15 @@
         exit();
     }
     
+    //Store the email in a variable
     $email=$_GET['email'];
     
+    //Include connection details
     include("settings.php");
     
     connect();
     
+    //Query to check whether the user exists within the database.
     $q="SELECT user_email FROM test_user WHERE user_email='".$email."'";
     $r=mysql_query($q);
     $n=mysql_num_rows($r);
@@ -24,11 +29,14 @@
         die();
     }
     
+    //Store a random string into a variable
     $token=getRandomString(10);
     
+    //Insert the token and the email into a database table
     $q="INSERT INTO tokens (token,email) VALUES ('".$token."','".$email."')";
     mysql_query($q);
     
+    //Parameters for generating a random string
     function getRandomString($length) {
         $validCharacters = "ABCDEFGHIJKLMNPQRSTUXYVWZ123456789";
         $validCharNumber = strlen($validCharacters);
@@ -39,9 +47,12 @@
             $result .= $validCharacters[$index];
         }
         return $result;}
-        
+    
+    //If the users email does exist in the database then send the following email with a link with the randomly generated token so that only that users email link can reset the password   
     function mailresetlink($to,$token){
+        //Subject line
         $subject = "Forgot Password on zeus.co.uk";
+        //The website that you have requested this for
         $uri = 'http://'. $_SERVER['HTTP_HOST'] ;
         $message = '
             <html>
@@ -55,6 +66,7 @@
             
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
+        //The email address that it was sent from
         $headers .= 'From: Admin<group@wearezeus.co.uk>' . "\r\n";
         
         if(mail($to,$subject,$message,$headers)){
