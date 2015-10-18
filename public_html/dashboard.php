@@ -67,7 +67,7 @@
             <ul>
               <li>Zeus - Sprint 14</li>
               <li>Atlas - Sprint 5</li>
-              <li>All Sprints</li>
+              <li><a href ="../dashboard/sprints.php">All Sprints</a></li>
             </ul>
           </li>  
           <li>Backlog

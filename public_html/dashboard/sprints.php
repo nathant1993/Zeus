@@ -7,8 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Zeus Agile Project Management - Your Backlog</title>
-<meta name="Description" content="Backlog page search for, edit and create new product backlog items">
+<title>Zeus Agile Project Management - Your Sprints</title>
+<meta name="Description" content="The Sprints page allows you to see and manage all your project's sprints">
 <meta name="keywords" content="Zeus agile project management.">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -24,10 +24,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="../js/scroll.js"></script>
 <script src="../js/ClickOnClass.js"></script>
-<script src="../js/searchPBIs.js"></script>
-<script src="../js/createPBI.js"></script>
-<script src="../js/deletePBI.js"></script>
-<script src="../js/updatePBIs.js"></script>
+<script src="../js/displaySprints.js"></script>
 <script src="../js/velocity.js"></script>
 <script src="../js/velocity.ui.js"></script>
 
@@ -91,50 +88,20 @@
     <div id="maincont">
     
       <div id="contentTitle" class="fullwidth clearfix">
-      	<h1>Product Backlog Items</h1>
-      </div>
-      <!-- Bar across the screen that holds four drop down menus to add filters to a search for PBI's-->
-      <div id="searchBar" class="fullwidth clearfix">
-        <form id="projectSearch" method="post" action="../js/searchPBIs">
-
-            <p>Choose a project:</p>
-            <select id="projects">
-              <option value="Any">Any</option>
-            </select>
-            
-            <p>Choose a sprint:</p>
-            <select id="sprints">
-              <option value="Any">Any</option>
-            </select> 
-             
-            <p>Choose a priority:</p>
-            <select id="pbiPriority">
-              <option value="Any">Any</option>
-            </select>
-            
-            <p>Choose a state:</p>
-            <select id="pbiState">
-              <option value="Any">Any</option>
-            </select>
-
-          <button type="submit" id="pbiSearch" value="Update" class="formbutton">Update</button>
-		    </form>
-      </div>
-     
-     <div id ="content1" class="fullwidth clearfix">
-      	<!--<p> content1 </p>-->
-       
+      	<h1>Sprints</h1>
       </div>
       
       <div id="content2" class="fullwidth clearfix">
       	<div class="oneThirdWidth">
-          <h1>Results</h1>
-          <!--Table of results populated by searching for PBI's based on filters applied from the search bar above-->
-          <div id="pbiSearchResultsDiv">
-            <table id="pBIResultstable" style="width:100%;">
+          <!--Table of sprints populated on load-->
+          <div id="sprintsDiv">
+            <div id="currentSprints" class="SprintSelector">Current</div>
+            <div id="previousSprints"class="SprintSelector">Previous</div>
+            <div id="futureSprints"class="SprintSelector">Future</div>
+            
+            <table id="sprintsTable" style="width:100%;">
               <tr>
-                <th>ID</th>
-                <th>PBI Title</th>
+                <th>Sprint Number</th>
               </tr>
             </table>
           </div>
@@ -143,50 +110,17 @@
         <!-- A div containing more in depth information about a selected PBI -->
         <div class = "twoThirdsWidth">
           <h1>PBI Details</h1>
-          <button id ="showCreatePBIForm" class="formbutton">+</button>
-          <form id="pbiDetails" class="pbiDetailsForm" method="post" action="../js/updatePBIs">
-            <label for="pbiID">ID</label>
-            <input id = "pbiID" readonly required>
-            
-            <label for="pbiTitle">Title</label>
-            <input id = "pbiTitle" title="PBI Title">
-            
-            <label for="pbiDescription">Description</label>
-            <textarea id = "pbiDescription"></textarea>
-            
-            <label for="pbiEffort">Effort</label>
-            <input id = "pbiEffort">  
-            
-            <label for="pbiDetailPriority">Priority</label>
-            <select id="pbiDetailPriority">
-            </select>
-            
-            <label for="pbiDetailState">State</label>
-            <select id = "pbiDetailState">
-            </select>
-            
-            <label for="pbiIteration">Iteration</label>
-            <select id = "pbiIteration">
-            </select>
-            
-            <label for="pbiProject">Project Name</label>
-            <select id = "pbiProject">
-            </select>
-            
-            <button type="submit" id="createPBI" value="Create" class="formbutton">Create</button>
-            <button type="submit" id="pbiDetailsButton" value="Update" class="formbutton">Update</button>  
-            <button type="button" id="deletePbiButton" value="Delete" class="formbutton">Delete</button>
-            <button type="reset" id="pbiDetailsResetButton" value="Cancel" class="formbutton">Cancel</button> 
-          </form>
           
-          <div id="UpdateStatus" style="opacity:0;">
-          </div>
+          <!--<div id="UpdateStatus" style="opacity:0;">
+          </div>-->
           
         </div>
               
       </div>
+      <!--closes content2 -->
       
     </div>
+    <!--closes maincont-->
     
     <div id="greyOut">
     </div>

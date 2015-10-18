@@ -400,7 +400,7 @@ ul{
 #contentTitle{
 	background:#fff;
 	padding:0px 0px;
-	border-bottom: 1px solid #a7a7a7;
+	border-bottom: 1px solid #ec704e;
 	font-weight: 500;
     font-size: 25px;
     color: #403E3C;
@@ -472,6 +472,28 @@ select{
 	max-height:495px;
 	overflow: auto;
 	margin-bottom: 20px;
+}
+
+
+.SprintSelector{
+	float:left;
+	width:100px;
+	margin: 0;
+    border-top: 1px solid #A2A1A0;
+    border-left: 1px solid #A2A1A0;
+	padding: 0 10px;
+	color: #ec704e;
+	cursor: pointer;
+}
+
+#futureSprints{
+	border-right: 1px solid #A2A1A0;
+}
+
+.SelectedSprintType{
+	background: #ec704e;
+	color:#fff;
+	cursor: pointer;
 }
 
 .PBI{
