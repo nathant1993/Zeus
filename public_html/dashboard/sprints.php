@@ -20,11 +20,13 @@
 <link rel="stylesheet" href="../css/graphstyle.css"></link>
 <!--<link rel="stylesheet" href="../css/signup.css"></link>	 -->
 <link rel="stylesheet" href="../css/dashboardStyle.css">
+<link rel="stylesheet" href="../css/kanbanStyle.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="../js/scroll.js"></script>
 <script src="../js/ClickOnClass.js"></script>
 <script src="../js/displaySprints.js"></script>
+<script src="../js/KanBan.js"></script>
 <script src="../js/velocity.js"></script>
 <script src="../js/velocity.ui.js"></script>
 
@@ -111,11 +113,108 @@
         <div class = "twoThirdsWidth">
           <h1>PBI Details</h1>
           
+          <div id="board">
+              <div id="PbiTitle" class="title">PBI
+              </div><div id="ToDoTitle" class="title">To Do
+              </div><div id="InProgTitle" class="title">In Progress
+              </div><div id="DoneTitle" class="title">Done</div>
+              
+              <div class="KanbanRow">
+                
+                <div id="PBI" class="kanbanColumn">
+                  
+                    <div id="item0" class="Task">
+                      <div class="cardTitle">
+                          PBI example
+                      </div>
+                  </div>
+                  
+                </div><div id="todo" class="kanbanColumn">
+                  
+                  <div id="item1" class="Task" draggable="true">
+                      <div class="cardTitle">
+                          Learn HTML5
+                      </div>
+                  </div>
+    
+                  <div id="item2" class="Task"draggable="true">
+                      <div class="cardTitle">
+                          Learn CSS3
+                      </div>
+                  </div>
+              </div><div id="inprogress" class="kanbanColumn">
+                
+              </div><div id="done" class="kanbanColumn">
+              </div>
+              
+            </div>
+            <!-- Closes KanbanRow -->
+            
+            <div class="KanbanRow">
+                
+                <div id="PBI" class="kanbanColumn">
+                  
+                    <div id="item0" class="Task">
+                      <div class="cardTitle">
+                          Second PBI example
+                      </div>
+                  </div>
+                  
+                </div><div id="todo" class="kanbanColumn">
+                  
+                  <div id="item3" class="Task" draggable="true">
+                      <div class="cardTitle">
+                          Make Kanban board
+                      </div>
+                  </div>
+    
+                  <div id="item4" class="Task"draggable="true">
+                      <div class="cardTitle">
+                          Fix bugs
+                      </div>
+                  </div>
+              </div><div id="inprogress" class="kanbanColumn">
+                
+              </div><div id="done" class="kanbanColumn">
+              </div>
+              
+            </div>
+            <!-- Closes KanbanRow -->
+            
+            
+            
+            <!--<div id="PBI" class="kanbanColumn">
+              <div class="title">PBI</div>
+            </div><div id="todo" class="kanbanColumn">
+              <div class="title">To Do</div>
+              <div id="item1" class="Task" draggable="true">
+                  <div class="cardTitle">
+                      Learn HTML5
+                  </div>
+              </div>
+
+              <div id="item2" class="Task"draggable="true">
+                  <div class="cardTitle">
+                      Learn CSS3
+                  </div>
+              </div>-->
+              <!--<div id="item3" draggable="true">Make an amazing site</div>
+              <div id="item4" draggable="true">Impress my friends</div>-->
+            <!--</div><div id="inprogress" class="kanbanColumn">
+              <div class="title">In Progress</div>
+            </div><div id="done" class="kanbanColumn">
+              <div class="title">Done</div>
+            </div>-->
+          
           <!--<div id="UpdateStatus" style="opacity:0;">
           </div>-->
           
+          </div>
+          <!-- Closes board -->
+          
         </div>
-              
+        <!-- closes twoThirdsWidth -->  
+            
       </div>
       <!--closes content2 -->
       
