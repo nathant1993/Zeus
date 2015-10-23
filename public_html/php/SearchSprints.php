@@ -13,15 +13,15 @@
   } 
   
   // Inserting these values into the MySQL table
-  $query = "SELECT CONCAT_WS(' - ',e.project_name, b.iteration_name) 'itName', b.iteration_start_date 'itStart', b.iteration_end_date 'itEnd', b.iteration_ID 'itID'
+  $SprintsQuery = "SELECT CONCAT_WS(' - ',e.project_name, b.iteration_name) 'itName', b.iteration_start_date 'itStart', b.iteration_end_date 'itEnd', b.iteration_ID 'itID'
             FROM  iteration b
             inner join releases a on a.release_id = b.release_id
             inner join project e on e.project_id = a.project_id 
             ORDER BY b.iteration_ID";
 
-  $result = $conn->query($query) or exit("Error code ({$conn->errno}): {$conn->error}");
+  $SprintResult = $conn->query($SprintsQuery) or exit("Error code ({$conn->errno}): {$conn->error}");
 
-	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+	while ($row = mysqli_fetch_array($SprintResult, MYSQL_ASSOC)) {
 		$SprintsArray[] = array(
 		//$row
       'itName' => $row['itName'],
@@ -30,8 +30,28 @@
       'itID' => $row['itID']
 		  );
 	}
+  
+  $PbiQuery = "SELECT pbi_id, pbi_title
+            FROM  backlog_items a
+            right outer join iteration b on b.iteration_ID = a.iteration_ID
+            where b.iteration_start_date <= DATE_FORMAT(sysdate(), '%Y-%m-%d') 
+            and b.iteration_end_date >= DATE_FORMAT(sysdate(), '%Y-%m-%d')
+            and a.project_id = 1
+            ORDER BY a.state_id";
+                    
+  $PbiResult = $conn->query($PbiQuery) or exit("Error code ({$conn->errno}): {$conn->error}");
 
-	echo json_encode($SprintsArray);
+	while ($row = mysqli_fetch_array($PbiResult, MYSQL_ASSOC)) {
+		$PbiArray[] = array(
+		//$row
+      'pbiId' => $row['pbi_id'],
+      'pbiTitle' => $row['pbi_title']
+		  );
+	}          
+  
+	$AllResults[] = array ($SprintsArray, $PbiArray);
+  
+	echo json_encode($AllResults);
 
   $conn->close();
 ?>

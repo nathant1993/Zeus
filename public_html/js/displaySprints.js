@@ -27,9 +27,18 @@ function populateSprints(results) {
 		var table = document.getElementById('sprintsTable')
 		var clickedPBIID;
 		var date = new Date();
+		var SprintResults = [];
+		var PbiResults =[];
+		var board = $('#board');
 
 		//Process the results of the query based on the parameters supplied from drop down box
-		$.each(results, function (key, value) {
+		
+		$.each(results, function (key, value){
+					SprintResults = value[0];
+					PbiResults = value[1];
+				});
+		
+		$.each(SprintResults, function (key, value) {
 			var a = value.itID;
 			var b = value.itName;
 			var c = value.itStart;
@@ -47,7 +56,7 @@ function populateSprints(results) {
 		//Show the current sprint in the sprint table when the page is loaded
 		
 		//For every row of results add a row to the results table
-		for (i=0; i<results.length; i++) {
+		for (i=0; i<SprintResults.length; i++) {
 			
 			//Cast the iteration dates from the results of the query to dates
 			var itEndDate = new Date(iterationEnd[i])
@@ -62,9 +71,27 @@ function populateSprints(results) {
 			};
 		};
 		
+		$.each(PbiResults,function(key,value){
+					board.append('<div class="KanbanRow">' +
+					'<div id="PBI" class="kanbanColumn">'+
+						'<div id="'+ value.pbiId + '" class="Task">'+
+						'<div class="cardTitle">'+
+							value.pbiTitle +
+						'</div>'+ 
+						'</div>'+
+						'</div><div id="todo" class="kanbanColumn">'+
+						'</div><div id="inprogress" class="kanbanColumn">'+
+						'</div><div id="done" class="kanbanColumn">'+
+						'</div>'+              
+					'</div>'
+					);
+				});
+		
+		//Wait for the current sprint tab to be clicked and show any current sprints
 		$("#currentSprints").click(function(e) {
         e.preventDefault();	
 		
+			//Tidy up and remove any orange highlighting from a previously selected tab
 			$(".SelectedSprintType").removeClass("SelectedSprintType");
 			$("#currentSprints").addClass("SelectedSprintType");
 				
@@ -81,24 +108,29 @@ function populateSprints(results) {
 			}
 			
 			//For every row of results add a row to the results table
-			for (i=0; i<results.length; i++) {
+			for (i=0; i<SprintResults.length; i++) {
 			
 				var itEndDate = new Date(iterationEnd[i])
 				var itStartDate = new Date(iterationStart[i])
-	
-				if(itEndDate > date && itStartDate < date){
+				
+				//Some data processing on the client side to prevent needing multiple AJAX calls
+				if(itEndDate >= date && itStartDate < date){
 					$("#sprintsTable").append('<tr class="PBI">'+
 					'<td style="display:none">'+ iterationID[i] +'</td>'+
 					'<td>'+ iterationName[i] +'</td>'+
 					'</tr>');
 				};
 			};
+			
+			showSprintData();
 				
 		});
-			
+		
+		//Wait for the previous sprints tab to be clicked and show any previous sprints	
 		$("#previousSprints").click(function(e) {
         e.preventDefault();	
 		
+			//Tidy up and remove any orange highlighting from a previously selected tab
 			$(".SelectedSprintType").removeClass("SelectedSprintType");
 			$("#previousSprints").addClass("SelectedSprintType");
 				
@@ -115,10 +147,11 @@ function populateSprints(results) {
 			}
 			
 			//For every row of results add a row to the results table
-			for (i=0; i<results.length; i++) {
+			for (i=0; i<SprintResults.length; i++) {
 			
 				var itEndDate = new Date(iterationEnd[i])
-	
+				
+				//Some data processing on the client side to prevent needing multiple AJAX calls
 				if(itEndDate < date){
 					$("#sprintsTable").append('<tr class="PBI">'+
 					'<td style="display:none">'+ iterationID[i] +'</td>'+
@@ -126,12 +159,16 @@ function populateSprints(results) {
 					'</tr>');
 				};
 			};
+			
+			showSprintData();
 				
 		});
 		
+		//Wait for the future sprint tab to be clicked and show any future sprints
 		$("#futureSprints").click(function(e) {
         e.preventDefault();	
 		
+			//Tidy up and remove any orange highlighting from a previously selected tab
 			$(".SelectedSprintType").removeClass("SelectedSprintType");
 			$("#futureSprints").addClass("SelectedSprintType");
 				
@@ -148,10 +185,11 @@ function populateSprints(results) {
 			}
 			
 			//For every row of results add a row to the results table
-			for (i=0; i<results.length; i++) {
+			for (i=0; i<SprintResults.length; i++) {
 			
 				var itStartDate = new Date(iterationStart[i])
-	
+				
+				//Some data processing on the client side to prevent needing multiple AJAX calls
 				if(itStartDate > date){
 					$("#sprintsTable").append('<tr class="PBI">'+
 					'<td style="display:none">'+ iterationID[i] +'</td>'+
@@ -159,72 +197,74 @@ function populateSprints(results) {
 					'</tr>');
 				};
 			};
+			
+			showSprintData();
 				
 		});
 		
-		//Wait for a Pbi to be clicked on and when it is get the ID of that PBI so that more details can be shown about that PBI
-		$(".PBI").click(function(e) {
-			e.preventDefault();
+		//function to display PBI's based on selected Sprint
+		function showSprintData(){
 			
-			//This looks at the parent row of the cell being clicked on and gets the first child of that row which will always be the ID
-			clickedPBIID = e.target.parentNode.firstChild.textContent;
-			
-			//Now use the ID found above in where clause of a SQL query to return back more specific information about that PBI
-			$.ajax({
-			type: "POST",
-			url: "../php/PBIDetails.php",
-			data: {
-				postedPBIID:clickedPBIID,
-			},
-			dataType: "json",
-			success: function createPBIDetails (pbiData){
-				PBIDetails(pbiData);			 
-			},
-			error: function() {
-				console.log('error')
-			}
+			//Wait for a sprint to be clicked on and when it is get the ID of that sprint so that more details can be shown about that PBI
+			$(".PBI").click(function(e) {
+				e.preventDefault();
+				
+				//This looks at the parent row of the cell being clicked on and gets the first child of that row which will always be the ID
+				clickedSprintID = e.target.parentNode.firstChild.textContent;
+	
+				//Now use the ID found above in where clause of a SQL query to return back more specific information about that PBI
+				$.ajax({
+				type: "POST",
+				url: "../php/SprintDetails.php",
+				data: {
+					postedSprintID:clickedSprintID,
+				},
+				dataType: "json",
+				success: function load (sprintData){
+					SprintDetails(sprintData);			 
+				},
+				error: function() {
+					console.log('error')
+				}
+				});
+	
 			});
-
-		});
-		return false;
-		
-		//Display the results of the query to the right of the results table called by the success callback of the AJAX request directly above
-		function PBIDetails(results){
-
-			var pbiIDField = document.getElementById("pbiID");
-			var pbiTitleField = document.getElementById("pbiTitle");
-			var pbiDescField = document.getElementById("pbiDescription");
-			var pbiEffortField = document.getElementById("pbiEffort");
-			var pbiPriorityField = document.getElementById("pbiDetailPriority");
-			var pbiStateField = document.getElementById("pbiDetailState");
-			var pbiIterationField = document.getElementById("pbiIteration");
-			var pbiProjectField = document.getElementById("pbiProject");
+			return false;
 			
-			//Show the pbiDetails form and show the update and delete button
-			$('#pbiDetails').velocity({opacity:1}, {duration:200});
-			$('#pbiDetailsButton').show();
-			$('#pbiDetailsButton').css("visibility","visible");
-			$('#pbiDetailsButton').velocity({opacity:1}, {duration:0});
-			$('#deletePbiButton').show();
-			$('#deletePbiButton').css("visibility","visible");
-			$('#deletePbiButton').velocity({opacity:1}, {duration:0});
-			
-			//Make sure the create button is not shown
-			$('#createPBI').hide();
-			$('#createPBI').css("visibility","hidden");
-			$('#createPBI').velocity({opacity:0}, {duration:0});
-			
-			//Apply the results of the query based on the ID selected from above to the fields in the PBI form on the right hand side of the page.
-			$.each(results, function(key,value){
-				pbiIDField.value = value.pbiId;
-				pbiTitleField.value = value.pbiTitle;
-				pbiDescField.value = value.pbiDesc;
-				pbiEffortField.value = value.pbiEff;
-				pbiPriorityField.value = value.priority;
-				pbiStateField.value = value.state;
-				pbiIterationField.value = value.itName;
-				pbiProjectField.value = value.project;
-			})
+			//Display the results of the query to the right of the results table, this function is called by the success callback of the AJAX request directly above
+			function SprintDetails(results){
+				
+				var taskDetails = [];
+				var pbisForSprint =[];
+				
+				//Tidy up the Kanban board and remove any old Kanban rows before displaying the ones that apply to the selected sprint
+				$('.KanbanRow').remove();
+				
+				//result from AJAX request is an array of arrays, this gets each of the individual arrays.
+				$.each(results, function (key, value){
+					taskDetails = value[0];
+					pbisForSprint = value[1];
+				});
+				
+				// console.log(taskDetails);
+				// console.log(pbisForSprint);
+				
+				//For each loop to iterate over each pbi returned and apply a new kanban row to the board.
+				$.each(pbisForSprint,function(key,value){
+					board.append('<div class="KanbanRow">' +
+					'<div id="PBI" class="kanbanColumn">'+
+						'<div id="'+ value.pbiId + '" class="Task">'+
+						'<div class="cardTitle">'+
+							value.pbiTitle +
+						'</div>'+ 
+						'</div>'+
+						'</div><div id="todo" class="kanbanColumn">'+
+						'</div><div id="inprogress" class="kanbanColumn">'+
+						'</div><div id="done" class="kanbanColumn">'+
+						'</div>'+              
+					'</div>'
+					);
+				});
+			};
 		};
-
 };
