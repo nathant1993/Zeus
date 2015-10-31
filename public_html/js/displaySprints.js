@@ -82,9 +82,9 @@ function populateSprints(results) {
 					value.pbiTitle +
 				'</div>'+ 
 				'</div>'+
-				'</div><div id= "todo' + value.pbiId + '" class="kanbanColumn">'+
-				'</div><div id="inprogress' + value.pbiId + '" class="kanbanColumn">'+
-				'</div><div id="done' + value.pbiId + '" class="kanbanColumn">'+
+				'</div><div id= "todo' + value.pbiId + '" class="todo">'+
+				'</div><div id="inprogress' + value.pbiId + '" class="inprogress">'+
+				'</div><div id="done' + value.pbiId + '" class="done">'+
 				'</div>'+              
 			'</div>'
 			);
@@ -290,9 +290,9 @@ function populateSprints(results) {
 							value.pbiTitle +
 						'</div>'+ 
 						'</div>'+
-						'</div><div id= "todo' + value.pbiId + '" class="kanbanColumn">'+
-						'</div><div id="inprogress' + value.pbiId + '" class="kanbanColumn">'+
-						'</div><div id="done' + value.pbiId + '" class="kanbanColumn">'+
+						'</div><div id= "todo' + value.pbiId + '" class="todo">'+
+						'</div><div id="inprogress' + value.pbiId + '" class="inprogress">'+
+						'</div><div id="done' + value.pbiId + '" class="done">'+
 						'</div>'+              
 					'</div>'
 					);
@@ -337,35 +337,102 @@ function dragAndDrop(){
 			//console.log(event.target.getAttribute('id'));  
 		});
 
-		$('.kanbanColumn').on('dragover', function(event) {
+		$('.todo').on('dragover', function(event) {
 			event.preventDefault();
 		});
 		
-		$('Body').on('drop', '.kanbanColumn', function(event) {
+		$('.inprogress').on('dragover', function(event) {
+			event.preventDefault();
+		});
+		
+		$('.done').on('dragover', function(event) {
+			event.preventDefault();
+		});
+		
+		$('Body').on('drop', '.KanbanRow', function(event) {
 	
 			var notecard = event.originalEvent.dataTransfer.getData("text/plain");;
 			
-			if($(event.target).attr('class') === 'kanbanColumn'){
-				event.target.appendChild(document.getElementById(notecard));
+			//if($(event.target).attr('class') === 'todo' || $(event.target).attr('class') === 'inprogress' || $(event.target).attr('class') === 'done'){
 			
+			if($(event.target).attr('class') === 'todo'){
+				event.target.appendChild(document.getElementById(notecard));
+				
+				changeTaskState(7,notecard);
+				console.log('Moved to to do');
+				
 				console.log($(event.target).attr('id'));
-				$(event.target).attr([id *= 'todo'])
-							
-				if($('event.target[id *= "todo"]')){
-					changeTaskState(7,notecard);
-					console.log('Moved to to do');
-				}
-				else if ($('event.target[id *= "inprogress"]')){
+			}			
+				// if($(event.target).attr('class') === 'todo'){
+				// 	changeTaskState(7,notecard);
+				// 	console.log('Moved to to do');
+				// }
+			 else if ($(event.target).attr('class') === 'inprogress'){
+				 	event.target.appendChild(document.getElementById(notecard));
 					changeTaskState(8,notecard);
 					console.log('Moved to in progress');
-				}
-				else if ($('event.target[id *= "done"]')){
+					}
+			else if ($(event.target).attr('class') === 'done'){
+					event.target.appendChild(document.getElementById(notecard));
 					changeTaskState(9,notecard);
 					console.log('Moved to done');
 				}
 				event.preventDefault();
-			}
+			
 		});
+		
+		// $('Body').on('drop', '.inprogress', function(event) {
+	
+		// 	var notecard = event.originalEvent.dataTransfer.getData("text/plain");;
+			
+		// 	if($(event.target).attr('class') === 'inprogress'){
+		// 		event.target.appendChild(document.getElementById(notecard));
+			
+		// 		console.log($(event.target).attr('id'));
+							
+		// 		// if($(event.target).attr('class') === 'todo'){
+		// 		// 	changeTaskState(7,notecard);
+		// 		// 	console.log('Moved to to do');
+		// 		// }
+		// 		// else 
+		// 		if ($(event.target).attr('class') === 'inprogress'){
+		// 			changeTaskState(8,notecard);
+		// 			console.log('Moved to in progress');
+		// 		}
+		// 		// else if ($(event.target).attr('class') === 'done'){
+		// 		// 	changeTaskState(9,notecard);
+		// 		// 	console.log('Moved to done');
+		// 		// }
+		// 		event.preventDefault();
+		// 	}
+		// });
+		
+		// $('Body').on('drop', '.done', function(event) {
+	
+		// 	var notecard = event.originalEvent.dataTransfer.getData("text/plain");;
+			
+		// 	if($(event.target).attr('class') === 'done'){
+		// 		event.target.appendChild(document.getElementById(notecard));
+			
+		// 		console.log($(event.target).attr('id'));
+							
+		// 		// if($(event.target).attr('class') === 'todo'){
+		// 		// 	changeTaskState(7,notecard);
+		// 		// 	console.log('Moved to to do');
+		// 		// }
+		// 		// else 
+		// 		// if ($(event.target).attr('class') === 'inprogress'){
+		// 		// 	changeTaskState(8,notecard);
+		// 		// 	console.log('Moved to in progress');
+		// 		// }
+		// 		// else 
+		// 		if ($(event.target).attr('class') === 'done'){
+		// 			changeTaskState(9,notecard);
+		// 			console.log('Moved to done');
+		// 		}
+		// 		event.preventDefault();
+		// 	}
+		// });
 };
 
 function changeTaskState(stateID,taskName){

@@ -23,8 +23,7 @@
 			border-right: none;
 		}
 		
-		/*#todo, #inprogress, #done*/
-		.kanbanColumn
+		.todo, .inprogress, .done, .kanbanColumn
 		{
 			background-color: #eee;
 			display: inline-block;
