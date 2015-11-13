@@ -340,7 +340,6 @@ function populateSprints(results) {
 
 function dragAndDrop(){
 	$('.Task').on('dragstart', function(event) {
-		//$(document).on('dragstart', '.Task', function(event) {
 			event.originalEvent.dataTransfer.setData("text/plain", event.target.getAttribute('id'));
 			//console.log(event.target.getAttribute('id'));  
 		});

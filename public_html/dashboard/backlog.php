@@ -1,7 +1,7 @@
 <?php
 	//require_once($_SERVER['DOCUMENT_ROOT'] . '/login_system/auth.php' );
   require_once('../login_system/auth.php');
-  include("protect.php");
+  //include("protect.php");
 ?>
 
 <!doctype html>
@@ -81,7 +81,7 @@
             <ul>
                 <li>Atlas - Task 32</li>
                 <li>Zeus - Task 8</li>
-                <li>All Tasks</li>
+                <li><a href ="../dashboard/tasks.php">All Tasks</a></li>
               </ul>
           </li>
         </ul>

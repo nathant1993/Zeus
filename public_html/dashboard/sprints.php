@@ -79,7 +79,7 @@
             <ul>
                 <li>Atlas - Task 32</li>
                 <li>Zeus - Task 8</li>
-                <li>All Tasks</li>
+                <li><a href ="../dashboard/tasks.php">All Tasks</a></li>
               </ul>
           </li>
         </ul>
