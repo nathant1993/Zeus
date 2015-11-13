@@ -25,28 +25,31 @@
 		$('#deletePbiButton').velocity({opacity:0}, {duration:0}); 
 		
 		//Clear the pbi details form so that there is a fresh form to enter a new pbi
-		document.getElementById("pbiID").value = "";
+		document.getElementById("taskID").value = "";
+		document.getElementById("taskTitle").value = "";
 		document.getElementById("pbiTitle").value = "";
-		document.getElementById("pbiDescription").value = "";
-		document.getElementById("pbiEffort").value = "";
-		document.getElementById("pbiDetailPriority").value = "";
-		document.getElementById("pbiDetailState").value = "";
-		document.getElementById("pbiIteration").value = "";
-		document.getElementById("pbiProject").value = "";
-		
+		document.getElementById("assignee").value = "";
+		document.getElementById("taskDescription").value = "";
+		document.getElementById("estimatedTime").value = "";
+		document.getElementById("timeSpent").value = "";
+		document.getElementById("taskDetailState").value = "";
+		document.getElementById("taskIteration").value = "";
+		document.getElementById("taskProject").value = "";
 	 });
 	
 	$("#createPBI").click(function(e) {	
 		e.preventDefault() 
 		//Variables 
-		var updateID = document.getElementById("pbiID").value;
-		var updateTitle = document.getElementById("pbiTitle").value;
-		var updateDesc = document.getElementById("pbiDescription").value;
-		var updateEffort = document.getElementById("pbiEffort").value;
-		var updatePriority = document.getElementById("pbiDetailPriority").value;
-		var updateState = document.getElementById("pbiDetailState").value;
-		var updateIteration = document.getElementById("pbiIteration").value;
-		var updateProject = document.getElementById("pbiProject").value;
+		var updateID = document.getElementById("taskID").value;
+		var updateTitle = document.getElementById("taskTitle").value;
+		var updatePbiTitle = document.getElementById("pbiTitle").value;
+		var updateAssignee = document.getElementById("assignee").value;
+		var updateDesc = document.getElementById("taskDescription").value;
+		var updateEstimatedTime = document.getElementById("estimatedTime").value;
+		var updateTimeSpent = document.getElementById("timeSpent").value;
+		var updateState = document.getElementById("taskDetailState").value;
+		var updateIteration = document.getElementById("taskIteration").value;
+		var updateProject = document.getElementById("taskProject").value;
 		var status = document.getElementById("UpdateStatus");
 
 		//Check if the Title field is empty before submitting - if it is then do not submit the data
@@ -75,13 +78,15 @@
 		//Ajax request to update the current PBI with whatever new value has been entered in to the form
 		$.ajax({
 			type: "POST",
-			url: "../php/CreatePBI.php",
+			url: "../php/CreateTask.php",
 			data: {
 				postedID:updateID,
 				postedTitle:updateTitle,
+				postedPbiTitle:updatePbiTitle,
+				postedAssignee:updateAssignee,
 				postedDesc:updateDesc,
-				postedEffort:updateEffort,
-				postedPriority:updatePriority,
+				postedEstimatedTime:updateEstimatedTime,
+				postedTimeSpent:updateTimeSpent,
 				postedState:updateState,
 				postedIteration:updateIteration,
 				postedProject:updateProject
@@ -103,7 +108,8 @@
 					$("#msgH1").remove();
 					$("#msgClose").remove();			
 				});
-
+				
+				console.log(results);
 			},
 			error: function(results) {
 				//style and add content to a status div that pops up to provide feedback on how the update went
@@ -122,6 +128,7 @@
 					$("#msgH1").remove();
 					$("#msgClose").remove();			
 				});
+				console.log(results);
 			}
 		});
 	  }

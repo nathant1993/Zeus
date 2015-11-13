@@ -20,11 +20,11 @@
      concat_ws(' ', c.user_forename, c.user_surname) 'assignee', d.state_name 'state', b.iteration_name 'itName', 
      e.project_name 'projName', f.pbi_title 'pbi_title'
             FROM  task a
-            right outer join iteration b on b.iteration_ID = a.iteration_ID
-            inner join users c on c.user_id = a.assignee
-            inner join states d on d.state_id = a.state_id
-            inner join project e on e.project_id = a.project_id
-            inner join backlog_items f on f.pbi_id = a.pbi_id 
+            left outer join iteration b on b.iteration_ID = a.iteration_ID
+            left outer join users c on c.user_id = a.assignee
+            left outer join states d on d.state_id = a.state_id
+            left outer join project e on e.project_id = a.project_id
+            left outer join backlog_items f on f.pbi_id = a.pbi_id 
             where  task_id = '$TaskID'";     
   
   $result = $conn->query($query) or exit("Error code ({$conn->errno}): {$conn->error}");

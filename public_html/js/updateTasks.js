@@ -10,19 +10,21 @@
      $("#pbiDetailsButton").click(function(e) {
          e.preventDefault();
 
-      // // Variables 
-      var updateID = document.getElementById("pbiID").value;
-	  var updateTitle = document.getElementById("pbiTitle").value;
-	  var updateDesc = document.getElementById("pbiDescription").value;
-	  var updateEffort = document.getElementById("pbiEffort").value;
-	  var updatePriority = document.getElementById("pbiDetailPriority").value;
-	  var updateState = document.getElementById("pbiDetailState").value;
-	  var updateIteration = document.getElementById("pbiIteration").value;
-	  var updateProject = document.getElementById("pbiProject").value;
-	  
+     // Variables 
+      	var updateID = document.getElementById("taskID").value;
+		var updateTitle = document.getElementById("taskTitle").value;
+		var updatePbiTitle = document.getElementById("pbiTitle").value;
+		var updateAssignee = document.getElementById("assignee").value;
+		var updateDesc = document.getElementById("taskDescription").value;
+		var updateEstimatedTime = document.getElementById("estimatedTime").value;
+		var updateTimeSpent = document.getElementById("timeSpent").value;
+		var updateState = document.getElementById("taskDetailState").value;
+		var updateIteration = document.getElementById("taskIteration").value;
+		var updateProject = document.getElementById("taskProject").value;
+		
 	  //Check if the ID field is empty before submitting - if it is then do not submit the data
 	  //And provide a suitable error message
-	  if (updateID == null || updateID == ""){
+		if (updateID == null || updateID == ""){
 		  	$("#greyOut").velocity("transition.fadeIn")
 			.velocity({opacity:0.9});
 			$("#popupContact").velocity("transition.bounceDownIn")
@@ -39,7 +41,7 @@
 				$("#msgClose").remove();			
 			});
 		  return false;
-	  }
+	  	}
 	  //If the ID isn't Null then submit the update
 	  else{  
 			$("#greyOut").velocity("transition.fadeIn")
@@ -71,14 +73,17 @@
 					data: {
 						postedID:updateID,
 						postedTitle:updateTitle,
+						postedPbiTitle:updatePbiTitle,
+						postedAssignee:updateAssignee,
 						postedDesc:updateDesc,
-						postedEffort:updateEffort,
-						postedPriority:updatePriority,
+						postedEstimatedTime:updateEstimatedTime,
+						postedTimeSpent:updateTimeSpent,
 						postedState:updateState,
 						postedIteration:updateIteration,
 						postedProject:updateProject
 					},
 					success: function(results) {
+						console.log(results);
 						//style and add content to a status div that pops up to provide feedback on how the update went
 						$("#greyOut").velocity("transition.fadeIn")
 						.velocity({opacity:0.9});
@@ -97,6 +102,7 @@
 						});
 					},
 					error: function(results) {
+						console.log(results);
 						//style and add content to a status div that pops up to provide feedback on how the update went
 						$("#greyOut").velocity("transition.fadeIn")
 						.velocity({opacity:0.9});
