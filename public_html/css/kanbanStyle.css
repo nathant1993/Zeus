@@ -52,6 +52,9 @@
 			font-size: 12px;
 		}
 		
+		.lock{
+			background-color:#ec704e;
+		}
 		/**[draggable=true]
 		{
 			min-width: 50px;

@@ -36,10 +36,10 @@ function populateSprints(results) {
 		//Process the results of the query based on the parameters supplied from drop down box
 		
 		$.each(results, function (key, value){
-					SprintResults = value[0];
-					PbiResults = value[1];
-					TaskResults = value[2];
-				});
+			SprintResults = value[0];
+			PbiResults = value[1];
+			TaskResults = value[2];
+		});
 		
 		$.each(SprintResults, function (key, value) {
 			var a = value.itID;
@@ -57,7 +57,6 @@ function populateSprints(results) {
 		$("#currentSprints").addClass("SelectedSprintType");
 		
 		//Show the current sprint in the sprint table when the page is loaded
-		
 		//For every row of results add a row to the results table
 		for (i=0; i<SprintResults.length; i++) {
 			
@@ -75,7 +74,7 @@ function populateSprints(results) {
 		};
 		
 		$.each(PbiResults,function(key,value){
-			board.append('<div class="KanbanRow">' +
+			board.append('<div class="KanbanRow" data-pbiID=' + value.pbiId + '>' +
 			'<div id="PBI' + value.pbiId + '" class="kanbanColumn">'+
 				'<div id="'+ value.pbiId + '" class="Task">'+
 				'<div class="cardTitle">'+
@@ -89,35 +88,39 @@ function populateSprints(results) {
 			'</div>'
 			);
 		});
-	
-		$.each(TaskResults, function (key,value){
-			if(value.stateID == 7){
-				$('#todo' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true">'+
-					'<div class="cardTitle">'+
-						value.taskTitle +
-					'</div>'+
-					'</div>'
-				);
-			}
-			else if(value.stateID == 8){
-				$('#inprogress' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true">'+
-					'<div class="cardTitle">'+
-						value.taskTitle +
-					'</div>'+
-					'</div>'
-				);
-			}
-			else if(value.stateID >= 9){
-				$('#done' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true">'+
-					'<div class="cardTitle">'+
-						value.taskTitle +
-					'</div>'+
-					'</div>'
-				);
-			};	
-			
-		});
 		
+		try{	
+			$.each(TaskResults, function (key,value){
+				if(value.stateID == 7){
+					$('#todo' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+						'<div class="cardTitle">'+
+							value.taskTitle +
+						'</div>'+
+						'</div>'
+					);
+				}
+				else if(value.stateID == 8){
+					$('#inprogress' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+						'<div class="cardTitle">'+
+							value.taskTitle +
+						'</div>'+
+						'</div>'
+					);
+				}
+				else if(value.stateID >= 9){
+					$('#done' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+						'<div class="cardTitle">'+
+							value.taskTitle +
+						'</div>'+
+						'</div>'
+					);
+				};	
+				
+			});
+		} 
+		catch (error) {
+		console.log("caught null array");
+		}
 		//Wait for the current sprint tab to be clicked and show any current sprints
 		$("#currentSprints").click(function(e) {
         e.preventDefault();	
@@ -278,12 +281,12 @@ function populateSprints(results) {
 					pbisForSprint = value[1];
 				});
 				
-				console.log(taskDetails);
+				//console.log(taskDetails);
 				//console.log(pbisForSprint);
 				
 				//For each loop to iterate over each pbi returned and apply a new kanban row to the board.
 				$.each(pbisForSprint,function(key,value){
-					board.append('<div class="KanbanRow">' +
+					board.append('<div class="KanbanRow" data-pbiID=' + value.pbiId + '>' +
 					'<div id="PBI' + value.pbiId + '" class="kanbanColumn">'+
 						'<div id="'+ value.pbiId + '" class="Task">'+
 						'<div class="cardTitle">'+
@@ -298,33 +301,38 @@ function populateSprints(results) {
 					);
 				});
 				
-				$.each(taskDetails, function (key,value){
-					if(value.stateID == 7){
-						$('#todo' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true">'+
-                      		'<div class="cardTitle">'+
-                          		value.taskTitle +
-                      		'</div>'+
-                  			'</div>'
-						);
-					}
-					else if(value.stateID == 8){
-						$('#inprogress' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true">'+
-                      		'<div class="cardTitle">'+
-                          		value.taskTitle +
-                      		'</div>'+
-                  			'</div>'
-						);
-					}
-					else if(value.stateID >= 9){
-						$('#done' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true">'+
-                      		'<div class="cardTitle">'+
-                          		value.taskTitle +
-                      		'</div>'+
-                  			'</div>'
-						);
-					};	
-					
-				});
+				try {
+
+					$.each(taskDetails, function (key,value){
+						if(value.stateID == 7){
+							$('#todo' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+								'<div class="cardTitle">'+
+									value.taskTitle +
+								'</div>'+
+								'</div>'
+							);
+						}
+						else if(value.stateID == 8){
+							$('#inprogress' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+								'<div class="cardTitle">'+
+									value.taskTitle +
+								'</div>'+
+								'</div>'
+							);
+						}
+						else if(value.stateID >= 9){
+							$('#done' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+								'<div class="cardTitle">'+
+									value.taskTitle +
+								'</div>'+
+								'</div>'
+							);
+						};	
+					});
+				} 
+				catch (error) {
+				console.log("caught null array");
+				}
 			};
 		};
 };
@@ -350,35 +358,35 @@ function dragAndDrop(){
 		});
 		
 		$('Body').on('drop', '.KanbanRow', function(event) {
-	
-			var notecard = event.originalEvent.dataTransfer.getData("text/plain");;
+			event.preventDefault();
+			event.stopImmediatePropagation();
 			
-			//if($(event.target).attr('class') === 'todo' || $(event.target).attr('class') === 'inprogress' || $(event.target).attr('class') === 'done'){
+			var notecard = event.originalEvent.dataTransfer.getData("text/plain");
+			var taskPbiID = document.getElementById(notecard).dataset.pbiid;
+			var rowPbiId = event.target.parentNode.dataset.pbiid;
 			
-			if($(event.target).attr('class') === 'todo'){
-				event.target.appendChild(document.getElementById(notecard));
-				
-				changeTaskState(7,notecard);
-				console.log('Moved to to do');
-				
-				console.log($(event.target).attr('id'));
-			}			
-				// if($(event.target).attr('class') === 'todo'){
-				// 	changeTaskState(7,notecard);
-				// 	console.log('Moved to to do');
-				// }
-			 else if ($(event.target).attr('class') === 'inprogress'){
-				 	event.target.appendChild(document.getElementById(notecard));
+			//console.log(event.target.parentNode.dataset.pbiid)
+			//console.log(document.getElementById(notecard).dataset.pbiid)
+			
+			if(taskPbiID == rowPbiId){
+			
+				if($(event.target).attr('class') === 'todo'){
+					event.target.appendChild(document.getElementById(notecard));
+					console.log('Moved to to do');
+					//console.log($(event.target).attr('id'));
+					changeTaskState(7,notecard);
+				}						
+				else if ($(event.target).attr('class') === 'inprogress'){
+					event.target.appendChild(document.getElementById(notecard));
 					changeTaskState(8,notecard);
 					console.log('Moved to in progress');
-					}
-			else if ($(event.target).attr('class') === 'done'){
+				}
+				else if ($(event.target).attr('class') === 'done'){
 					event.target.appendChild(document.getElementById(notecard));
 					changeTaskState(9,notecard);
 					console.log('Moved to done');
 				}
-				event.preventDefault();
-			
+			};
 		});
 		
 		// $('Body').on('drop', '.inprogress', function(event) {
@@ -439,16 +447,24 @@ function changeTaskState(stateID,taskName){
 	$.ajax({
 		type: "POST",
 		url: "../php/ChangeTaskState.php",
+		beforeSend: function(){
+			$('#'+ taskName).addClass("lock");
+			document.getElementById(taskName).setAttribute("draggable", "false");
+		},
 		data: {
 			postedStateID:stateID,
 			postedTaskName:taskName
 		},
 		dataType: "json",
 		success: function() {
-			//dragAndDrop();			 
+							 
 		},
 		error: function(result) {
-			console.log(result)
+			//console.log(result)
+		},
+		complete: function(){
+			$('#'+ taskName).removeClass("lock");
+			document.getElementById(taskName).setAttribute("draggable", "true");
 		}
 	});
 	
