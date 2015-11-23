@@ -42,7 +42,7 @@
       '$taskDesc', 
       '$estTime',
       '$timeSpent', 
-      (select state_id from states where state_name = '$pbiState' and state_type = 'PBI'),
+      (select state_id from states where state_name = '$pbiState' and state_type = 'Tasks'),
       (select iteration_id from iteration where iteration_name = '$pbiIteration'),
       (select project_id from project where project_name = '$pbiProject'),
       (select pbi_id from backlog_items where pbi_title = '$pbiTitle'),

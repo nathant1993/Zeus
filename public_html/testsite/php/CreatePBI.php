@@ -50,7 +50,14 @@
     //Run the query and provide feedback on how the update went
    if ($conn->query($query) === TRUE) {
      // $date = date('Y-m-d H:i:s');
-      $query2 =  "insert into backlog_items_audit2 (time, email_address, action) values (now(), '{$_SESSION['SESS_EMAIL_ADD']}', 'Insert')";
+      $query2 =  "INSERT INTO backlog_items_audit2 (time, email_address, action, pbi_id, new_title, new_description, new_effort, new_priority, new_state, new_iteration, new_project)
+      VALUES (now(), '{$_SESSION['SESS_EMAIL_ADD']}', 'Insert', (select pbi_id from backlog_items where pbi_title = '$pbiTitle'), '$pbiTitle', 
+      '$pbiDesc', 
+      '$pbiEffort', 
+      (select priority_id from priority where description = '$pbiPriority'),
+      (select state_id from states where state_name = '$pbiState' and state_type = 'PBI'),
+      (select iteration_id from iteration where iteration_name = '$pbiIteration'),
+      (select project_id from project where project_name = '$pbiProject'))";
       
       if ($conn->query($query2) === TRUE) {
         //successfully added to audit table

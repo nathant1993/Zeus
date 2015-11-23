@@ -40,7 +40,7 @@
      $stateWhere = " like '%'";
    }
    else{
-     $stateWhere = " = (select state_id from states where state_name = '$state' and state_type = 'Tasks')";
+     $stateWhere = " = (select state_id from states where state_name = '$state' and state_type = 'PBI')";
    }
    
    //dynamic query based on the sql statements formed above that allow for Null entries and 'Any'entries   

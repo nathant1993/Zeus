@@ -9,8 +9,7 @@
 	$("#deletePbiButton").click(function(e) {	
 		e.preventDefault() 
 		//Variables 
-		var updateID = document.getElementById("pbiID").value;
-		var status = document.getElementById("UpdateStatus");
+		var updateID = document.getElementById("taskID").value;
 		
 		//Check if the ID field is empty before submitting - if it is then do not submit the data
 		//And provide a suitable error message
@@ -52,21 +51,22 @@
 			});
 			  
 			$("#confirmButton").click(function(e) {
-			e.preventDefault();
-			$("#msgImg").remove();
-			$("#msgH1").remove();
-			$("#msgClose").remove();
-			$("#confirmButton").remove();
+				e.preventDefault();
+				$("#msgImg").remove();
+				$("#msgH1").remove();
+				$("#msgClose").remove();
+				$("#confirmButton").remove();
 			
 				//Ajax request to update the current PBI with whatever new value has been entered in to the form
 				$.ajax({
 					type: "POST",
-					url: "../php/DeletePBI.php",
+					url: "../php/DeleteTask.php",
 					data: {
 						postedID:updateID,
 					},
 					success: function(results) {
 						//style and add content to a status div that pops up to provide feedback on how the update went
+						console.log(results);
 						$("#greyOut").velocity("transition.fadeIn")
 						.velocity({opacity:0.9});
 						$("#popupContact").velocity("transition.bounceDownIn")

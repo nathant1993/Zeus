@@ -69,7 +69,7 @@
 				//Ajax request to update the current PBI with whatever new value has been entered in to the form
 				$.ajax({
 					type: "POST",
-					url: "../php/UpdatePBI.php",
+					url: "../php/UpdateTask.php",
 					data: {
 						postedID:updateID,
 						postedTitle:updateTitle,

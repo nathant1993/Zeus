@@ -1,19 +1,14 @@
 <?php
 	ob_start();
 	
-	//Start the session
 	session_start();
 	
-	//Obtain the token from the URL
 	$token=$_GET['token'];
 	
-	//The connection settings
 	include("settings.php");
 	
-	//Connect
 	connect();
 	
-	//Check that the token has not been used already.
 	if(!isset($_POST['password'])){
 		$q="SELECT email FROM tokens WHERE token='".$token."' AND used=0";
 		$r=mysql_query($q);
@@ -24,10 +19,8 @@
 			If ($email!=''){
 				$_SESSION['email']=$email;
 			}
-	//If token has been used alreasy then display the following message		
 	else die("Invalid link or Password already changed");}
-
-	//Store the password and email address in the following variables
+	
 	$pass=$_POST['password'];
 	$email=$_SESSION['email'];
 	
@@ -58,8 +51,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>	
 	<link rel="stylesheet" href="../css/signup.css">
 	<link rel="stylesheet" href="../css/login.css">
-	
-	<!-- Include the Javascript files -->
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="../js/resetPassword.js"></script>
 	<script src="../js/velocity.js"></script>
@@ -79,7 +71,6 @@
 	
 	<body>
 	
-	<!-- Form to enter the new password into with a confirm password as well -->
 	<div id="hero">
 			<div class="container clearfix">
 				<div class="copy">
@@ -111,47 +102,24 @@
 		
 	<?php
 		}
-	//Check that password, confirm password and email are set
-	if(isset($_POST['password']) && isset($_POST['confirmPassword']) && isset($_SESSION['email']) )
 	
-	//PHP Validation
+	if(isset($_POST['password']) && isset($_POST['confirmPassword']) && isset($_SESSION['email']) )
 	{
-			if(($_POST['password']) != ($_POST['confirmPassword'])){
-			echo("passwords do not match");	
-		}
-			elseif((strlen($_POST["password"]) < '8')){
-			echo("Your Password Must Contain At Least 8 Characters");
-		}
-			elseif(!preg_match("#[0-9]+#",$pass)){
-        	echo("Your Password Must Contain At Least 1 Number");
-    	}
-			elseif(!preg_match("#[A-Z]+#",$pass)){
-       		echo("Your Password Must Contain At Least 1 Capital Letter");
-   		}
-    		elseif(!preg_match("#[a-z]+#",$pass)){
-       		echo("Your Password Must Contain At Least 1 Lowercase Letter");
-    	}
-		
-		else
-		//If passwords match the criteria then update the password in the database for the related email address
-		{
+		if(($_POST['password']) === ($_POST['confirmPassword'])){
 			$q="UPDATE test_user SET user_password='".md5($pass)."' WHERE user_email='".$email."'";
 			$r=mysql_query($q);
-			
-			//When password is updated successfully then set the token that was used to 1 so that it cannot be used again
+		
 			if($r)mysql_query("UPDATE tokens SET used=1 WHERE token='".$token."'"); 
-			
-			//After password is updated direct the user to the password reset success page
 			header('Location: ../login_system/password-reset-success.php');
 			if(!$r)echo "An error occurred";
 		}
-		// else echo('
-		// 	<form method="post">
-		// 		enter your new password:<input type="password" name="password" />
-		// 		re-enter your new password:<input type="password" name="confirmPassword" />
-		// 		<input type="submit" value="Change Password">
-		// 		</form>
-		// 	<h1>Passwords do not match<h1>');
+		else echo('
+			<form method="post">
+				enter your new password:<input type="password" name="password" />
+				re-enter your new password:<input type="password" name="confirmPassword" />
+				<input type="submit" value="Change Password">
+				</form>
+			<h1>Passwords do not match<h1>');
 	}
 	
 	
