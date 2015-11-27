@@ -55,7 +55,7 @@ $(document).ready(function() {
 					'<td>'+pbiDesc[i] +'</td>'+
 					'<td>'+pbiEff[i] +'</td>'+
 					'<td>'+priority[i] +'</td>'+
-					'<td>'+state[i] +'</td>'+
+					'<td style="border-right:none">'+state[i] +'</td>'+
 					'</tr>');
 				};
 				

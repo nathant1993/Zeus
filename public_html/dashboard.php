@@ -34,6 +34,7 @@
 <script src="chartist-js-master/dist/chartist.min.js"></script>
 <script src="js/chartistGraph.js"></script> 
 <script src="js/pbiData.js"></script>
+<script src="js/chartistPies.js"></script>
 <!--<script src="./js/all.js"></script>  -->
 
 <!-- Google Analytics code, need to add this to all pages!-->
@@ -54,7 +55,7 @@
     <div id="topNav" class="fullwidth clearfix">
       <div id="leftNav">
     	<span id="cloudicon"><img src="images/full_white_logo.svg" alt="Zeus agile project management logo" ></span>
-        <h1>Zeus Dashboard</h1>
+        <h1>Zeus</h1>
       </div>
       <div id="rightNav">
         <ul>
@@ -97,9 +98,9 @@
     
     <div id="maincont">
     
-      <!--<div id="contentTitle" class="fullwidth clearfix">
-      	<p>Dashboard</p>
-      </div>-->
+      <div id="contentTitle" class="fullwidth clearfix">
+      	<p>Zeus Dashboard</p>
+      </div>
       
       <div id ="content1" class="fullwidth clearfix">
       	<!--<p> content1 </p>-->
@@ -114,6 +115,12 @@
       </div>
       
       <div id="content2" class="fullwidth clearfix">
+        <div id="pieContainer1" class="ct-chart pieContainer"></div>
+        <div id="pieContainer2" class="ct-chart pieContainer"></div>
+        <div id="pieContainer3" class="ct-chart pieContainer"></div>
+      </div>
+      
+      <div id="content3" class="fullwidth clearfix">
       	<p> PBI's This Sprint</p> 
         <!--<ul class ="mylist"></ul>-->
         <div id="test">

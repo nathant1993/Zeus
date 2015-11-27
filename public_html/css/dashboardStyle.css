@@ -165,15 +165,19 @@ h1, h2, h3
 #topNav
 {
 	display:inline-block;
-	padding: 0px 30px;
-	border-bottom: 1px solid #eee;
+	padding: 0px;
 	background-color: #ec704e;
+	-webkit-box-shadow: 0px 5px 23px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 5px 23px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 23px 0px rgba(0,0,0,0.2);
+	position:fixed;
+	z-index:1000;
 }
 
 	#topNav h1
 	{
-		padding-left: 10px;
-		margin-bottom: 10px;
+		padding:5px 1px 5px 10px;
+		margin: 0px;
 		font-size:20px;
 		color: #fff;
 		font-weight: 300;
@@ -225,8 +229,8 @@ ul{
 }
 
 #rightNav li{
-	margin-left:30px;
-	margin-bottom: 10px;
+	margin-left:15px;
+	padding: 5px 15px;
 	font-size:20px;
 	color: #fff;
 	font-weight: 300;
@@ -244,7 +248,7 @@ ul{
 }
 
 #rightNav ul li:hover {
-  
+  	background-color: #c5684f;
 }
 
 #rightNav ul li ul {
@@ -271,7 +275,7 @@ ul{
   display: block; 
   color: #505050;
   font-size: 20px;
-  line-height: 40px;
+  line-height: 25px;
   text-align: center;
   margin: 0px;
   border-bottom: 1px solid #eee;
@@ -399,7 +403,7 @@ ul{
 			
 #contentTitle{
 	background:#fff;
-	padding:0px 0px;
+	padding:60px 0px 0px 0px;
 	border-bottom: 1px solid #ec704e;
 	font-weight: 500;
     font-size: 25px;
@@ -411,6 +415,11 @@ ul{
     font-size: 25px;
     color: #403E3C;
 } 
+
+#contentTitle p{
+	margin: 0px;
+	padding: 5px 0px 10px 0px;
+}	
 	
 #searchBar{
 	background:#eee;
@@ -445,15 +454,34 @@ select{
 	
 #content1{
 	background:#fff;
-	border-bottom: 1px solid #eee;
-	padding: 30px 0px 0px 0px;
+	border-bottom: 1px solid #ec704e;
+	padding: 15px 0px 30px 0px;
 }
 
 #content2{
-	
 	background:#fff;
-	border-bottom: 1px solid #eee;
-	padding: 30px 0px 0px 0px;
+	border-bottom: 1px solid #ec704e;
+	padding: 15px 0px 30px 0px;
+}
+
+.pieContainer{
+	width:30%;
+	float: left;
+	height:460px;
+}
+
+#pieContainer1{
+	margin-right:4.9%;
+}
+
+#pieContainer2{
+	margin-right:4.9%;
+}
+
+#content3{
+	background:#fff;
+	border-bottom: 1px solid #ec704e;
+	padding: 15px 0px 30px 0px;
 }
 
 .graph-container{
@@ -462,6 +490,9 @@ select{
 	padding-right: 20px;
 }
 
+#test{
+	border: 1px solid #a2a1a0;
+}
 .oneThirdWidth{
 	width:30%;
 	Float:left;
@@ -473,7 +504,6 @@ select{
 	overflow: auto;
 	margin-bottom: 20px;
 }
-
 
 .SprintSelector{
 	float:left;
@@ -617,16 +647,28 @@ select{
 				color: #c5684f;
 			}
 				
-table, th, td {
-   border: 1px solid #B0B0B0;
+table, th {
+   border-right: 1px solid #eee;
+   border-bottom: 1px solid #a2a1a0;
    padding: 5px;
    font-size: 90%;
 }
 
- th {
-   background-color: #eee;
+td{
+	border-right: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	padding: 5px;
+   	font-size: 90%;
 }
 
+ th {
+   background-color: #ec704e;
+   color: #eee;
+}
+
+tr{
+	text-align: left;
+}
 /* ==================================================
    Responsive Media Queries - Tablets
 ================================================== */
