@@ -500,10 +500,14 @@ select{
 }
 
 #pbiSearchResultsDiv{
-	max-height:495px;
+	max-height:736px;
 	overflow: auto;
 	margin-bottom: 20px;
 }
+	#pbiSearchResultsDiv th{
+		font-size: 100%;
+		padding:2px 5px;
+	}
 
 .SprintSelector{
 	float:left;
