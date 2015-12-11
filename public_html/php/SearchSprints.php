@@ -50,12 +50,13 @@
 	}          
   
   $TaskQuery = 
-     "SELECT task_id, task_title, task_description, task_estimated_duration,task_hours_done, assignee, a.iteration_id 'itID', a.state_id 'stateID', d.state_name 'stateName', a.pbi_id 'pbiID', b.pbi_title 'pbiTitle', b.pbi_description 'pbiDescription', c.description 'priorityDesc'
+     "SELECT task_id, task_title, task_description, task_estimated_duration,task_hours_done, concat_ws(' ', f.user_forename, f.user_surname) 'assignee' , a.iteration_id 'itID', a.state_id 'stateID', d.state_name 'stateName', a.pbi_id 'pbiID', b.pbi_title 'pbiTitle', b.pbi_description 'pbiDescription', c.description 'priorityDesc'
         FROM task a
         inner join backlog_items b on b.pbi_id = a.pbi_id
         inner join priority c on c.priority_id = b.priority_id
         inner join states d on d.state_id = a.state_id
         inner join iteration e on e.iteration_id = a.iteration_id
+        inner join users f on f.user_id = a.assignee
         where e.iteration_start_date <= DATE_FORMAT(sysdate(), '%Y-%m-%d') 
         and e.iteration_end_date >= DATE_FORMAT(sysdate(), '%Y-%m-%d')";     
   

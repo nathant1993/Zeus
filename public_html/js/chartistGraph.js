@@ -27,6 +27,7 @@
 	    function createGraph(phpArray) {
             
             var xlab = [];
+            var xlabBar = [];
             var totalEffort = []; 
             var remainingEffort = [];
             var effortcommitted =[];
@@ -36,6 +37,7 @@
 	        $.each(phpArray, function (key, value) {
 			    var label = value.itName;
                 xlab.push(label); 
+                xlabBar.push(label);
                 noOfSprints++ ;               
 	            });
                 //console.log(xlab);
@@ -358,13 +360,13 @@
             //find out how many labels there are on the x-axis, if there are more than 10 use a different set of options to create the graph
              if(noOfSprints >10){
                 var barchart = new Chartist.Bar('#chart2', {
-                labels: xlab,
+                labels: xlabBar.splice(xlabBar.length -6, 6),
                 series: [effortcommitted]
                 },options, responsiveOptionsForMoreThanTenSprints);  
              }
              else{
                  var barchart = new Chartist.Bar('#chart2', {
-                labels: xlab,
+                labels: xlabBar.splice(xlabBar.length -6, 6),
                 series: [effortcommitted]
                 },options, responsiveOptions); 
              }

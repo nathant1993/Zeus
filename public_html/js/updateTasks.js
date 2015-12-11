@@ -85,11 +85,11 @@
 					success: function(results) {
 						console.log(results);
 						//style and add content to a status div that pops up to provide feedback on how the update went
-						$("#greyOut").velocity("transition.fadeIn")
-						.velocity({opacity:0.9});
-						$("#popupContact").velocity("transition.bounceDownIn")
-						.velocity({opacity:1});
-						$("#popupContact").prepend('<img id="msgImg" src="../images/tick.svg" /> <h1 id="msgH1">Your PBI was successfully updated!</h1> <br> <a href="#" id="msgClose">OK</a>');
+						// $("#greyOut").velocity("transition.fadeIn")
+						// .velocity({opacity:0.9});
+						// $("#popupContact").velocity("transition.fadeIn")
+						// .velocity({opacity:1});
+						$("#popupContact").prepend('<img id="msgImg" src="../images/tick.svg" /> <h1 id="msgH1">Your task was successfully updated!</h1> <br> <a href="#" id="msgClose">OK</a>');
 						
 						//Close popup div and remove elements from the div so they don't stack up on each other
 						$("#msgClose").click(function(e) {
@@ -108,7 +108,7 @@
 						.velocity({opacity:0.9});
 						$("#popupContact").velocity("transition.bounceDownIn")
 						.velocity({opacity:1});
-						$("#popupContact").prepend('<img id="msgImg" src="../images/cross.svg" /> <h1 id="msgH1">Sorry we could not update your PBI.</h1> <br> <a href="#" id="msgClose">OK</a>');
+						$("#popupContact").prepend('<img id="msgImg" src="../images/cross.svg" /> <h1 id="msgH1">Sorry we could not update your task.</h1> <br> <a href="#" id="msgClose">OK</a>');
 						
 						//Close popup div and remove elements from the div so they don't stack up on each other$("#msgClose").click(function(e) {
 						$("#msgClose").click(function(e) {

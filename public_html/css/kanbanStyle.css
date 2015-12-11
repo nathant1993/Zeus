@@ -54,6 +54,11 @@
 			font-size: 12px;
 		}
 		
+		.Task p{
+			margin: 0px;
+			line-height: 25px;
+		}
+		
 		.lock{
 			background-color:#ec704e;
 		}
@@ -70,7 +75,10 @@
 		
 		.cardTitle
 		{
-			font-size:15px;	
+			font-size:14px;
+			max-height:28px;
+			overflow: hidden;
+			font-weight: 500;	
 		}
 
 #sprintsDiv{
@@ -86,4 +94,8 @@
 
 #sprintsTable{
 	border: 1px solid #A2A1A0;
+}
+
+strong{
+	font-weight: 500;
 }

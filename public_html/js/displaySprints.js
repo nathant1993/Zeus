@@ -73,21 +73,26 @@ function populateSprints(results) {
 			};
 		};
 		
-		$.each(PbiResults,function(key,value){
-			board.append('<div class="KanbanRow" data-pbiID=' + value.pbiId + '>' +
-			'<div id="PBI' + value.pbiId + '" class="kanbanColumn">'+
-				'<div id="'+ value.pbiId + '" class="Task">'+
-				'<div class="cardTitle">'+
-					value.pbiTitle +
-				'</div>'+ 
-				'</div>'+
-				'</div><div id= "todo' + value.pbiId + '" class="todo">'+
-				'</div><div id="inprogress' + value.pbiId + '" class="inprogress">'+
-				'</div><div id="done' + value.pbiId + '" class="done">'+
-				'</div>'+              
-			'</div>'
-			);
-		});
+		try{
+			$.each(PbiResults,function(key,value){
+				board.append('<div class="KanbanRow" data-pbiID=' + value.pbiId + '>' +
+				'<div id="PBI' + value.pbiId + '" class="kanbanColumn">'+
+					'<div id="'+ value.pbiId + '" class="Task">'+
+					'<div class="cardTitle">'+
+						value.pbiTitle +
+					'</div>'+ 
+					'</div>'+
+					'</div><div id= "todo' + value.pbiId + '" class="todo">'+
+					'</div><div id="inprogress' + value.pbiId + '" class="inprogress">'+
+					'</div><div id="done' + value.pbiId + '" class="done">'+
+					'</div>'+              
+				'</div>'
+				);
+			});
+		}
+		catch (error) {
+		console.log("caught null array");
+		}
 		
 		try{	
 			$.each(TaskResults, function (key,value){
@@ -96,6 +101,9 @@ function populateSprints(results) {
 						'<div class="cardTitle">'+
 							value.taskTitle +
 						'</div>'+
+						'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+						'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+						'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
 						'</div>'
 					);
 				}
@@ -104,6 +112,9 @@ function populateSprints(results) {
 						'<div class="cardTitle">'+
 							value.taskTitle +
 						'</div>'+
+						'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+						'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+						'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
 						'</div>'
 					);
 				}
@@ -112,6 +123,9 @@ function populateSprints(results) {
 						'<div class="cardTitle">'+
 							value.taskTitle +
 						'</div>'+
+						'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+						'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+						'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
 						'</div>'
 					);
 				};	
@@ -285,21 +299,27 @@ function populateSprints(results) {
 				//console.log(pbisForSprint);
 				
 				//For each loop to iterate over each pbi returned and apply a new kanban row to the board.
-				$.each(pbisForSprint,function(key,value){
-					board.append('<div class="KanbanRow" data-pbiID=' + value.pbiId + '>' +
-					'<div id="PBI' + value.pbiId + '" class="kanbanColumn">'+
-						'<div id="'+ value.pbiId + '" class="Task">'+
-						'<div class="cardTitle">'+
-							value.pbiTitle +
-						'</div>'+ 
-						'</div>'+
-						'</div><div id= "todo' + value.pbiId + '" class="todo">'+
-						'</div><div id="inprogress' + value.pbiId + '" class="inprogress">'+
-						'</div><div id="done' + value.pbiId + '" class="done">'+
-						'</div>'+              
-					'</div>'
-					);
-				});
+				
+				try {
+					$.each(pbisForSprint,function(key,value){
+						board.append('<div class="KanbanRow" data-pbiID=' + value.pbiId + '>' +
+						'<div id="PBI' + value.pbiId + '" class="kanbanColumn">'+
+							'<div id="'+ value.pbiId + '" class="Task">'+
+							'<div class="cardTitle">'+
+								value.pbiTitle +
+							'</div>'+ 
+							'</div>'+
+							'</div><div id= "todo' + value.pbiId + '" class="todo">'+
+							'</div><div id="inprogress' + value.pbiId + '" class="inprogress">'+
+							'</div><div id="done' + value.pbiId + '" class="done">'+
+							'</div>'+              
+						'</div>'
+						);
+					});
+				}
+				catch (error) {
+				console.log("caught null task array");
+				}
 				
 				try {
 
@@ -309,6 +329,9 @@ function populateSprints(results) {
 								'<div class="cardTitle">'+
 									value.taskTitle +
 								'</div>'+
+								'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+								'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+								'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
 								'</div>'
 							);
 						}
@@ -317,6 +340,9 @@ function populateSprints(results) {
 								'<div class="cardTitle">'+
 									value.taskTitle +
 								'</div>'+
+								'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+								'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+								'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
 								'</div>'
 							);
 						}
@@ -325,13 +351,16 @@ function populateSprints(results) {
 								'<div class="cardTitle">'+
 									value.taskTitle +
 								'</div>'+
+								'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+								'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+								'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
 								'</div>'
 							);
 						};	
 					});
 				} 
 				catch (error) {
-				console.log("caught null array");
+				console.log("caught null task array");
 				}
 			};
 		};
@@ -382,7 +411,7 @@ function dragAndDrop(){
 				}
 				else if ($(event.target).attr('class') === 'done'){
 					event.target.appendChild(document.getElementById(notecard));
-					changeTaskState(9,notecard);
+					changeTaskState(10,notecard);
 					console.log('Moved to done');
 				}
 			};

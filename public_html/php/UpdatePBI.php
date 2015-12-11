@@ -37,7 +37,7 @@
       pbi_description = '$pbiDesc',
       pbi_effort = $pbiEffort,
       priority_id = (select priority_id from priority where description = '$pbiPriority'),
-      state_id = (select state_id from states where state_name = '$pbiState' and state_type = 'Tasks'),
+      state_id = (select state_id from states where state_name = '$pbiState' and state_type = 'PBI'),
       iteration_id = (select iteration_id from iteration where iteration_name = '$pbiIteration'),
       project_id = (select project_id from project where project_name = '$pbiProject')
       where pbi_id = '$pbiId'";

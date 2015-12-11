@@ -19,7 +19,7 @@
 				.velocity({opacity:0.9});
 				$("#popupContact").velocity("transition.bounceDownIn")
 				.velocity({opacity:1});
-				$("#popupContact").prepend('<img id="msgImg" src="../images/cross.svg" /> <h1 id="msgH1">We could not delete this PBI, the ID field is empty.</h1> <br> <a href="#" id="msgClose">Cancel</a>');
+				$("#popupContact").prepend('<img id="msgImg" src="../images/cross.svg" /> <h1 id="msgH1">We could not delete this task, the ID field is empty.</h1> <br> <a href="#" id="msgClose">Cancel</a>');
 				
 				//Close popup div and remove elements from the div so they don't stack up on each other$("#msgClose").click(function(e) {
 				$("#msgClose").click(function(e) {
@@ -38,7 +38,7 @@
 			.velocity({opacity:0.9});
 			$("#popupContact").velocity("transition.bounceDownIn")
 			.velocity({opacity:1});
-			$("#popupContact").prepend('<img id="msgImg" src="../images/query.svg" /> <h1 id="msgH1">Are you sure you want to delete this PBI?</h1> <br> <a href="#" id="confirmButton">Yes</a> <a href="#" id="msgClose">No</a>');
+			$("#popupContact").prepend('<img id="msgImg" src="../images/query.svg" /> <h1 id="msgH1">Are you sure you want to delete this task?</h1> <br> <a href="#" id="confirmButton">Yes</a> <a href="#" id="msgClose">No</a>');
 			
 			$("#msgClose").click(function(e) {
 				e.preventDefault();
@@ -71,7 +71,7 @@
 						.velocity({opacity:0.9});
 						$("#popupContact").velocity("transition.bounceDownIn")
 						.velocity({opacity:1});
-						$("#popupContact").prepend('<img id="msgImg" src="../images/tick.svg" /> <h1 id="msgH1">Your PBI was successfully deleted!</h1> <br> <a href="#" id="msgClose">Ok</a>');
+						$("#popupContact").prepend('<img id="msgImg" src="../images/tick.svg" /> <h1 id="msgH1">Your task was successfully deleted!</h1> <br> <a href="#" id="msgClose">Ok</a>');
 						
 						//Close popup div and remove elements from the div so they don't stack up on each other
 						$("#msgClose").click(function(e) {
@@ -85,11 +85,11 @@
 					},
 					error: function(results) {
 						//style and add content to a status div that pops up to provide feedback on how the update went
-						$("#greyOut").velocity("transition.fadeIn")
-						.velocity({opacity:0.9});
-						$("#popupContact").velocity("transition.bounceDownIn")
-						.velocity({opacity:1});
-						$("#popupContact").prepend('<img id="msgImg" src="../images/cross.svg" /> <h1 id="msgH1">Sorry we could not delete your PBI.</h1> <br> <a href="#" id="msgClose">Ok</a>');
+						// $("#greyOut").velocity("transition.fadeIn")
+						// .velocity({opacity:0.9});
+						// $("#popupContact").velocity("transition.bounceDownIn")
+						// .velocity({opacity:1});
+						$("#popupContact").prepend('<img id="msgImg" src="../images/cross.svg" /> <h1 id="msgH1">Sorry we could not delete your task.</h1> <br> <a href="#" id="msgClose">Ok</a>');
 						
 						//Close popup div and remove elements from the div so they don't stack up on each other$("#msgClose").click(function(e) {
 						$("#msgClose").click(function(e) {
