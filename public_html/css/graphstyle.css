@@ -43,6 +43,10 @@
 	color:#666666;
 }
 
+#chart2 .ct-label.ct-horizontal{
+	text-align: center;
+}
+
 .ct-chart .ct-label.ct-vertical{
 	fill:#666666;
 	color:#666666;

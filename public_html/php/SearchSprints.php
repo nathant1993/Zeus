@@ -12,7 +12,9 @@
       die("Connection failed: " . $conn->connect_error);
   } 
   
-  // Inserting these values into the MySQL table
+  $SprintNo = $_POST["postedSprintNoFromURL"];
+  //$SprintNo = 'Sprint 18';
+  //echo $SprintNo;
   $SprintsQuery = "SELECT CONCAT_WS(' - ',e.project_name, b.iteration_name) 'itName', b.iteration_start_date 'itStart', b.iteration_end_date 'itEnd', b.iteration_ID 'itID'
             FROM  iteration b
             inner join releases a on a.release_id = b.release_id
@@ -31,6 +33,7 @@
 		  );
 	}
   
+  if(is_null($SprintNo)){
   $PbiQuery = "SELECT pbi_id, pbi_title
             FROM  backlog_items a
             right outer join iteration b on b.iteration_ID = a.iteration_ID
@@ -40,7 +43,18 @@
             ORDER BY a.state_id";
                     
   $PbiResult = $conn->query($PbiQuery) or exit("Error code ({$conn->errno}): {$conn->error}");
-
+  }
+  else{
+    $PbiQuery = "SELECT pbi_id, pbi_title
+            FROM  backlog_items a
+            right outer join iteration b on b.iteration_ID = a.iteration_ID
+            where iteration_name = '$SprintNo'
+            and a.project_id = 1
+            ORDER BY a.state_id";
+                    
+  $PbiResult = $conn->query($PbiQuery) or exit("Error code ({$conn->errno}): {$conn->error}");
+  }
+  
 	while ($row = mysqli_fetch_array($PbiResult, MYSQL_ASSOC)) {
 		$PbiArray[] = array(
 		//$row
@@ -49,6 +63,7 @@
 		  );
 	}          
   
+  if(is_null($SprintNo)){
   $TaskQuery = 
      "SELECT task_id, task_title, task_description, task_estimated_duration,task_hours_done, concat_ws(' ', f.user_forename, f.user_surname) 'assignee' , a.iteration_id 'itID', a.state_id 'stateID', d.state_name 'stateName', a.pbi_id 'pbiID', b.pbi_title 'pbiTitle', b.pbi_description 'pbiDescription', c.description 'priorityDesc'
         FROM task a
@@ -61,6 +76,20 @@
         and e.iteration_end_date >= DATE_FORMAT(sysdate(), '%Y-%m-%d')";     
   
   $TaskResult = $conn->query($TaskQuery) or exit("Error code ({$conn->errno}): {$conn->error}");
+  }
+  else{
+    $TaskQuery = 
+     "SELECT task_id, task_title, task_description, task_estimated_duration,task_hours_done, concat_ws(' ', f.user_forename, f.user_surname) 'assignee' , a.iteration_id 'itID', a.state_id 'stateID', d.state_name 'stateName', a.pbi_id 'pbiID', b.pbi_title 'pbiTitle', b.pbi_description 'pbiDescription', c.description 'priorityDesc'
+        FROM task a
+        inner join backlog_items b on b.pbi_id = a.pbi_id
+        inner join priority c on c.priority_id = b.priority_id
+        inner join states d on d.state_id = a.state_id
+        inner join iteration e on e.iteration_id = a.iteration_id
+        inner join users f on f.user_id = a.assignee
+        where e.iteration_name = '$SprintNo'";     
+  
+  $TaskResult = $conn->query($TaskQuery) or exit("Error code ({$conn->errno}): {$conn->error}");
+  }
   
   while ($row = mysqli_fetch_array($TaskResult, MYSQL_ASSOC)) {
 		$TaskDetails[] = array(

@@ -5,7 +5,28 @@
 /*================================================================================================================*/
 
 $(document).ready(function() {
-	$.ajax({
+var getUrlParameter = function getUrlParameter(sParam) {
+			var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+				sURLVariables = sPageURL.split('&'),
+				sParameterName,
+				i;
+		
+			for (i = 0; i < sURLVariables.length; i++) {
+				sParameterName = sURLVariables[i].split('=');
+		
+				if (sParameterName[0] === sParam) {
+					return sParameterName[1] === undefined ? true : sParameterName[1];
+				}
+			}
+		};
+	
+	var sprintNoFromURL = getUrlParameter("SprintNo");
+		
+	if (sprintNoFromURL != null){
+		console.log(sprintNoFromURL);
+	
+		$.ajax({
+			data: {postedSprintNoFromURL:sprintNoFromURL},
 			dataType: "json",
 			//This php file returns the options available in the search filter boxes
 			url: "../php/SearchSprints.php",
@@ -16,11 +37,41 @@ $(document).ready(function() {
 				dragAndDrop();
 			}            
 		});
+	}
+	else{
+		$.ajax({
+			dataType: "json",
+			//This php file returns the options available in the search filter boxes
+			url: "../php/SearchSprints.php",
+			//if the ajax call is successful run the function load - 
+			//this contains a parent function for everything else in this JS file
+			success: function normalload (result) {
+				populateSprints(result);
+				dragAndDrop();
+			}            
+		});
+	}
 });
 
 //This function acts as a parent function and is fired on the success call back of the above AJAX request
 function populateSprints(results) {
-
+		
+		var getUrlParameter = function getUrlParameter(sParam) {
+			var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+				sURLVariables = sPageURL.split('&'),
+				sParameterName,
+				i;
+		
+			for (i = 0; i < sURLVariables.length; i++) {
+				sParameterName = sURLVariables[i].split('=');
+		
+				if (sParameterName[0] === sParam) {
+					return sParameterName[1] === undefined ? true : sParameterName[1];
+				}
+			}
+		};
+	
+		var sprintNoFromURL = getUrlParameter("SprintNo");
 		var iterationID = [];
 		var iterationName = [];
 		var iterationStart = [];
@@ -40,6 +91,10 @@ function populateSprints(results) {
 			PbiResults = value[1];
 			TaskResults = value[2];
 		});
+		
+		console.log(SprintResults);
+		console.log(PbiResults);
+		console.log(TaskResults);
 		
 		$.each(SprintResults, function (key, value) {
 			var a = value.itID;
@@ -65,12 +120,14 @@ function populateSprints(results) {
 			var itStartDate = new Date(iterationStart[i])
 			
 			//To show the current sprint find teh sprint date 
-			if(itEndDate >= date && itStartDate <= date){
-				$("#sprintsTable").append('<tr class="PBI">'+
-				'<td style="display:none">'+ iterationID[i] +'</td>'+
-				'<td>'+ iterationName[i] +'</td>'+
-				'</tr>');
-			};
+			//if(sprintNoFromURL == null){
+				if(itEndDate >= date && itStartDate <= date){
+					$("#sprintsTable").append('<tr class="PBI">'+
+					'<td style="display:none">'+ iterationID[i] +'</td>'+
+					'<td>'+ iterationName[i] +'</td>'+
+					'</tr>');
+				};
+			//};
 		};
 		
 		try{
@@ -249,6 +306,24 @@ function populateSprints(results) {
 			showSprintData();
 				
 		});
+		
+		// var getUrlParameter = function getUrlParameter(sParam) {
+		// 	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+		// 		sURLVariables = sPageURL.split('&'),
+		// 		sParameterName,
+		// 		i;
+		
+		// 	for (i = 0; i < sURLVariables.length; i++) {
+		// 		sParameterName = sURLVariables[i].split('=');
+		
+		// 		if (sParameterName[0] === sParam) {
+		// 			return sParameterName[1] === undefined ? true : sParameterName[1];
+		// 		}
+		// 	}
+		// };
+		// if (getUrlParameter("SprintNo") != null){
+		// 	console.log(getUrlParameter("SprintNo"));
+		// }
 		
 		//function to display PBI's based on selected Sprint
 		function showSprintData(){

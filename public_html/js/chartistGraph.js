@@ -93,9 +93,10 @@
 	        // as you saw in the previous example
 	        var options = {
 	            low: 0,
+                //onlyInteger: true
                 axisY: {
-                   onlyInteger: true,
-                  }
+                    onlyInteger: true
+                }
 	        };
             
             //options to use when with smaller screens    
@@ -181,7 +182,6 @@
                 var chart = new Chartist.Line('#chart1', data, options, responsiveOptions);
             }
 	        
-
 	        var seq = 0,
             delays = 10,
             durations = 1500;
@@ -254,49 +254,7 @@
 	                        easing: 'easeOutQuart'
 	                    }
 	                });
-	            } /*else if (data.type === 'grid') {
-	                // Using data.axis we get x or y which we can use to construct our animation definition objects
-	                var pos1Animation = {
-	                    begin: seq * delays,
-	                    dur: durations,
-	                    from: data[data.axis.units.pos + '1'] - 30,
-	                    to: data[data.axis.units.pos + '1'],
-	                    easing: 'easeOutQuart'
-	                };
-
-	                var pos2Animation = {
-	                    begin: seq * delays,
-	                    dur: durations,
-	                    from: data[data.axis.units.pos + '2'] - 100,
-	                    to: data[data.axis.units.pos + '2'],
-	                    easing: 'easeOutQuart'
-	                };
-
-	                var animations = {};
-	               //animations[data.axis.units.pos + '1'] = pos1Animation;
-	               // animations[data.axis.units.pos + '2'] = pos2Animation;
-	                animations['opacity'] = {
-	                    begin: seq * delays,
-	                    dur: durations,
-	                    from: 0,
-	                    to: 1,
-	                    easing: 'easeOutQuart'
-	                };
-
-	                data.element.animate(animations);
-	            }*/
-                //fades in graph lines
-                /*else if (data.type === 'grid') {
-	                var animations = {};
-	                animations['opacity'] = {
-	                    begin: seq * delays,
-	                    dur: durations,
-	                    from: 0,
-	                    to: 1,
-	                    easing: 'easeOutQuart'
-	                };
-	                data.element.animate(animations);
-	            }*/
+	            } 
 	        });
 /*================================================================================================================*/
 /*================================================================================================================*/
@@ -334,6 +292,15 @@
                     seriesName = 'Effort';
                 }
               $toolTip.html(seriesName + '<br>' + value).show();
+              
+              $point.click(function(e){
+                var value = $point.attr('ct:value')
+                var arrayPosition = remainingEffort.indexOf(value)
+                var relatedSprintNo = xlab[arrayPosition]
+                //console.log(relatedSprintNo);
+                //console.log("./dashboard/sprints.php?" + relatedSprintNo);
+                location = "./dashboard/sprints.php?SprintNo=" + relatedSprintNo.trim()
+              })
             });
             
             //when the mouse leaves the dot on the graph hide the tooltip
@@ -350,6 +317,14 @@
                   //  top:35                   
               });
             });
+            
+            // $('.ct-point').click(function(e){
+            //     value = $point.attr('ct:value')
+            //     console.log(value);    
+              
+            //     var arrayPosition = remainingEffort.indexOf(value)
+            //     console.log(arrayPosition);
+            //   })
 /*================================================================================================================*/
 /*================================================================================================================*/
 // Create the Bar Chart
@@ -358,19 +333,13 @@
             
             //create the bar chart for effort done per sprint
             //find out how many labels there are on the x-axis, if there are more than 10 use a different set of options to create the graph
-             if(noOfSprints >10){
+
                 var barchart = new Chartist.Bar('#chart2', {
-                labels: xlabBar.splice(xlabBar.length -6, 6),
-                series: [effortcommitted]
-                },options, responsiveOptionsForMoreThanTenSprints);  
-             }
-             else{
-                 var barchart = new Chartist.Bar('#chart2', {
-                labels: xlabBar.splice(xlabBar.length -6, 6),
-                series: [effortcommitted]
-                },options, responsiveOptions); 
-             }
-            
+                    labels: xlabBar.splice(xlabBar.length -6, 6),
+                    series: [effortcommitted.splice(effortcommitted.length -6, 6)]
+                },
+                options,
+                responsiveOptionsForMoreThanTenSprints);  
 
 	        // Once the chart is fully created we reset the sequence
 	        barchart.on('created', function () {
