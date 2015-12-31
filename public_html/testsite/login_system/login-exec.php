@@ -35,6 +35,8 @@
 	//Sanitize the POST values
 	$user_email = clean($_POST['user_email']);
 	$user_password = clean($_POST['user_password']);
+	$salt = "498#2D83B631%3800EBD!801600D*7E3CC13";
+	$decrypt_pass = hash('sha512', $salt.$user_password);
 	
 	//Input Validations
 	if($user_email == '') {
@@ -55,7 +57,7 @@
 	}
 	
 	//Create query
-	$qry="SELECT * FROM test_user WHERE user_email='$user_email' AND user_password='".md5($_POST['user_password'])."'";
+	$qry="SELECT * FROM users2 WHERE user_email='$user_email' AND user_password='$decrypt_pass'";
 	$result=mysql_query($qry);
 	
 	//Check whether the query was successful or not

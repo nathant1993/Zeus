@@ -1,9 +1,8 @@
 <?php
   
- session_start();
-  
   //PHP file to create a PBI
   
+  session_start();
   // Connecting to the MySQL server
   $host="10.168.1.92";
   $user_name="wearezeu_phpserv";
@@ -32,7 +31,7 @@
     exit("Error: PBI Title is null or empty");
   }
   else{
-  //Query to update a PBI based on the ID of that PBI
+  //Query to insert a PBI
     $query = 
       "Insert into backlog_items
       (pbi_title, pbi_description, pbi_effort, priority_id, state_id, iteration_id, project_id)
@@ -47,9 +46,9 @@
     
     //Insert into backlog_items (pbi_title, pbi_description, pbi_effort, priority_id, state_id, iteration_id, project_id) values ('Test', 'Testing PHP', '10', (select priority_id from priority where description = 'High'), (select state_id from states where state_name = 'New' and state_type = 'PBI'),// (select iteration_id from iteration where iteration_name = 'Sprint 12'), (select project_id from project where project_name = 'Zeus'))
     
-    //Run the query and provide feedback on how the update went
+    //Query to insert the new information into the audit table
    if ($conn->query($query) === TRUE) {
-     // $date = date('Y-m-d H:i:s');
+     
       $query2 =  "INSERT INTO backlog_items_audit2 (time, email_address, action, pbi_id, new_title, new_description, new_effort, new_priority, new_state, new_iteration, new_project)
       VALUES (now(), '{$_SESSION['SESS_EMAIL_ADD']}', 'Insert', (select pbi_id from backlog_items where pbi_title = '$pbiTitle'), '$pbiTitle', 
       '$pbiDesc', 

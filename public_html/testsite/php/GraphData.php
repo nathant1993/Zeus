@@ -19,29 +19,36 @@
   
 
   // Inserting these values into the MySQL table
-  /*$query = "SELECT i.iteration_id 'Sprint ID', 
-i.iteration_name 'Sprint Name', 
-i.starting_effort 'Starting Effort', 
-IFNULL((SELECT sum(pbi_effort) 
-FROM backlog_items 
-WHERE iteration_id <= i.iteration_id
-AND state_id = 4),0) 'Effort Done To Date',
-i.starting_effort - IFNULL((SELECT sum(pbi_effort) 
-FROM backlog_items 
-WHERE iteration_id <= i.iteration_id
-AND state_id = 4),0) 'Remaining Effort'
-FROM iteration i left outer join backlog_items b on i.iteration_id = b.iteration_id
-where b.pbi_effort IS NOT NULL
-AND i.iteration_start_date < CURDATE()
-GROUP BY i.iteration_id
-Order by i.iteration_id"*/
+$query = "SELECT a.iteration_id,
+a.iteration_name,
+a.starting_effort,
+SUM(pbi_effort) 'effort',
+IFNULL((SELECT SUM(pbi_effort) 
+        FROM backlog_items
+        WHERE iteration_id <= a.iteration_id
+        AND project_id = 1
+        AND state_id = 4),0) 'effort_done_to_date',
+a.starting_effort - IFNULL((SELECT SUM(pbi_effort)
+                           FROM backlog_items
+                           WHERE iteration_id <= a.iteration_id
+                           AND project_id = 1
+                           AND state_id = 4),0) 'remaining_effort' 
+FROM iteration a 
+LEFT OUTER JOIN backlog_items b ON b.iteration_id = a.iteration_id
+WHERE b.pbi_effort IS NOT NULL
+AND b.project_id = 1
+AND a.project_id = 1
+AND b.state_id = 4
+AND a.iteration_start_date <= CURDATE()
+GROUP BY a.iteration_id
+Order by a.iteration_id";
   
-  $query = "SELECT b.iteration_id, iteration_name, SUM( PBI_effort ) as 'effort', starting_effort, CalcEffRemaining(b.iteration_id) as 'effort_done_to_date', (starting_effort - CalcEffRemaining(b.iteration_id)) as 'remaining_effort'
+ /* $query = "SELECT b.iteration_id, iteration_name, SUM( PBI_effort ) as 'effort', starting_effort, CalcEffRemaining(b.iteration_id) as 'effort_done_to_date', (starting_effort - CalcEffRemaining(b.iteration_id)) as 'remaining_effort'
 	FROM  backlog_items a
 	right outer join iteration b on b.iteration_ID = a.iteration_ID
     where b.iteration_start_date <= sysdate()
     and a.state_id=4
-	GROUP BY iteration_id, iteration_name, CalcEffRemaining(a.iteration_id), (starting_effort - CalcEffRemaining(a.iteration_id))";
+	GROUP BY iteration_id, iteration_name, CalcEffRemaining(a.iteration_id), (starting_effort - CalcEffRemaining(a.iteration_id))";*/
   
   
   /*

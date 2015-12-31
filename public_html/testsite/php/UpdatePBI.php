@@ -14,16 +14,9 @@
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
   } 
-
-  // Storing form values into PHP variables
-  $pbiId = $_POST["postedID"];
-  $pbiTitle = mysqli_escape_string($conn,$_POST["postedTitle"]);
-  $pbiDesc = mysqli_escape_string($conn,$_POST["postedDesc"]);
-  $pbiEffort = $_POST["postedEffort"];
-  $pbiPriority = $_POST["postedPriority"];
-  $pbiState = $_POST["postedState"];
-  $pbiIteration = $_POST["postedIteration"];
-  $pbiProject = $_POST["postedProject"];
+  
+ 
+ 
   
   //Check for a Null pbiID coming from the front end and throw and error 
   if($pbiId == null || $pbiId == ""){ 
@@ -31,15 +24,22 @@
   }
   else{
   //Query to update a PBI based on the ID of that PBI
-    $query = "UPDATE backlog_items
-	SET pbi_title = '$pbiTitle', pbi_description = '$pbiDesc', pbi_effort = $pbiEffort, priority_id = (select priority_id from priority where description = '$pbiPriority'), state_id = (select state_id from states where state_name = '$pbiState' and state_type = 'PBI'), iteration_id = (select iteration_id from 
-	iteration where iteration_name = '$pbiIteration'), project_id = (select project_id from project where project_name = '$pbiProject') where pbi_id = '$pbiId'";
+    $query = 
+      "update backlog_items
+      SET pbi_title = '$pbiTitle',
+      pbi_description = '$pbiDesc',
+      pbi_effort = $pbiEffort,
+      priority_id = (select priority_id from priority where description = '$pbiPriority'),
+      state_id = (select state_id from states where state_name = '$pbiState' and state_type = 'PBI'),
+      iteration_id = (select iteration_id from iteration where iteration_name = '$pbiIteration'),
+      project_id = (select project_id from project where project_name = '$pbiProject')
+      where pbi_id = '$pbiId'";
     
     //Run the query and provide feedback on how the update went
     if ($conn->query($query) === TRUE) {
-     // $date = date('Y-m-d H:i:s');
-      $query2 = "INSERT INTO backlog_items_audit2 (time, email_address, action, old_title, new_title, old_description, new_description, old_effort, new_effort, old_priority, new_priority, old_state, new_state, old_iteration, new_iteration, old_project, new_project)
-      VALUES (now(), '{$_SESSION['SESS_EMAIL_ADD']}', 'Delete', 'old.$pbiTitle', 'new.$pbiTitle', 'old.$pbiDesc', 'new.$pbiDesc', 'old.$pbiEffort', 'new.$pbiEffort', (select priority_id from priority where description = 'old.$pbiPriority'), (select priority_id from priority where description = 'new.$pbiPriority') ,(select state_id from states where state_name = 'old.$pbiState' and state_type = 'PBI'), (select state_id from states where state_name = 'new.$pbiState' and state_type = 'PBI'), (select iteration_id from iteration where iteration_name = 'old.$pbiIteration'), (select iteration_id from iteration where iteration_name = 'new.$pbiIteration'), (select project_id from project where project_name = 'old.$pbiProject'), (select project_id from iteration where project_name = 'old.$pbiProject'), (select project_id from iteration where project_name = 'new.$pbiProject'))"; 
+     // $date = date('Y-m-d H:i:s')
+      $query2 =  "insert into backlog_items_audit2 (time, email_address, action, pbi_id, new_title, new_description, new_effort, new_priority, new_state, new_iteration, new_project)
+      values (now(), '{$_SESSION['SESS_EMAIL_ADD']}', 'Update', '$pbiId', '$pbiTitle', '$pbiDesc', '$pbiEffort', (select priority_id from priority where description = '$pbiPriority'), (select state_id from states where state_name = '$pbiState' and state_type = 'PBI'), (select iteration_id from iteration where iteration_name = '$pbiIteration'), (select project_id from project where project_name = '$pbiProject'))";
       
       if ($conn->query($query2) === TRUE) {
         //successfully added to audit table

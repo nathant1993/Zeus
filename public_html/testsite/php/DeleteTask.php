@@ -17,31 +17,30 @@
   } 
 
   // Storing form values into PHP variables
-  $pbiId = $_POST["postedID"];
-  $pbiTitle = mysqli_escape_string($conn,$_POST["postedTitle"]);
-  $pbiDesc = mysqli_escape_string($conn,$_POST["postedDesc"]);
-  $pbiEffort = $_POST["postedEffort"];
-  $pbiPriority = $_POST["postedPriority"];
+  $taskId = $_POST["postedID"];
+  $taskTitle = mysqli_escape_string($conn,$_POST["postedTitle"]);
+  $pbiTitle = mysqli_escape_string($conn,$_POST["postedPbiTitle"]);
+  $assignee = $_POST["postedAssignee"];
+  $taskDesc = mysqli_escape_string($conn,$_POST["postedDesc"]);
+  $estTime = $_POST["postedEstimatedTime"];
+  $timeSpent = $_POST["postedTimeSpent"];
   $pbiState = $_POST["postedState"];
   $pbiIteration = $_POST["postedIteration"];
-  $pbiProject = $_POST["postedProject"];
+  $pbiProject = $_POST["postedProject"];  
   
   //Check for a Null pbiID coming from the front end and throw and error 
-  if($pbiId == null || $pbiId == ""){ 
+  if($taskId == null || $taskId == ""){ 
     exit("Error: PBI ID is null or empty");
   }
   else{
   //Query to update a PBI based on the ID of that PBI
     $query = 
-    "INSERT INTO backlog_items_audit2 (time, email_address, action, pbi_id, old_title, old_description, old_effort, old_priority, old_state, old_iteration, old_project)
-      VALUES (now(), '{$_SESSION['SESS_EMAIL_ADD']}', 'Delete', '$pbiId', '$pbiTitle', 
-      '$pbiDesc', 
-      '$pbiEffort', 
-      (select priority_id from priority where description = '$pbiPriority'),
-      (select state_id from states where state_name = '$pbiState' and state_type = 'PBI'),
+      "INSERT INTO task_audit2 (time, email_address, action, task_id, old_title, old_description, old_estimated_duration, old_hours_done, old_assignee, old_state, old_iteration, old_pbi, old_project)
+      VALUES (now(), '{$_SESSION['SESS_EMAIL_ADD']}', 'Delete', '$taskId', '$taskTitle', '$taskDesc', '$estTime', '$timeSpent', (select user_id from test_user where concat_ws(' ', user_forename, user_surname) = '$assignee'),
+	  (select state_id from states where state_name = '$pbiState' and state_type = 'Task'),
       (select iteration_id from iteration where iteration_name = '$pbiIteration'),
+	  (select pbi_id from backlog_items where pbi_title = '$pbiTitle'),
       (select project_id from project where project_name = '$pbiProject'))";
-
     
     //Run the query and provide feedback on how the update went
     if ($conn->query($query) === TRUE) {
@@ -49,9 +48,8 @@
     } else {
     //     echo "Error: " . $query . "<br>" . $conn->error;
     }
-     $query =     
-      "DELETE FROM backlog_items where pbi_id = '$pbiId'";
-      
+    $query = 
+      "DELETE FROM task where task_id = '$taskId'";
     
     //Run the query and provide feedback on how the update went
     if ($conn->query($query) === TRUE) {

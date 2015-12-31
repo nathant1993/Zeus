@@ -30,6 +30,11 @@
 	//Store the password and email address in the following variables
 	$pass=$_POST['password'];
 	$email=$_SESSION['email'];
+	// Create a unique salt. This will never leave PHP unencrypted.
+		$salt = "498#2D83B631%3800EBD!801600D*7E3CC13";
+
+		// Create the unique user password reset key
+		$encrypt_pass = hash('sha512', $salt.$pass);
 	
 	if(!isset($pass)){ 
 	
@@ -135,7 +140,7 @@
 		else
 		//If passwords match the criteria then update the password in the database for the related email address
 		{
-			$q="UPDATE test_user SET user_password='".md5($pass)."' WHERE user_email='".$email."'";
+			$q="UPDATE users2 SET user_password='$encrypt_pass' WHERE user_email='".$email."'";
 			$r=mysql_query($q);
 			
 			//When password is updated successfully then set the token that was used to 1 so that it cannot be used again

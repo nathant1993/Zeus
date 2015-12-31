@@ -20,7 +20,7 @@
     connect();
     
     //Query to check whether the user exists within the database.
-    $q="SELECT user_email FROM test_user WHERE user_email='".$email."'";
+    $q="SELECT user_email FROM users2 WHERE user_email='".$email."'";
     $r=mysql_query($q);
     $n=mysql_num_rows($r);
     
