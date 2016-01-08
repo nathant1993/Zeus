@@ -20,7 +20,23 @@ $(document).ready(function() {
 //This function acts as a parent function and is fired on the success call back of the above AJAX request
 function populateDropDowns(results) {
 	
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+    
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+    
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+    
 	// Variables 
+    var PBIIDFromURL = getUrlParameter("PBIId");
 	var project = $("#projects");
 	var sprint = $("#sprints");
 	var priority = $("#pbiPriority");
@@ -82,6 +98,24 @@ function populateDropDowns(results) {
 		$("#pbiDetailState").append('<option value="'+ value.State +'">' + value.State +'</option>')
 	})
 	
+    if (PBIIDFromURL != null){
+        //Now use the ID found above in where clause of a SQL query to return back more specific information about that PBI
+        $.ajax({
+        type: "POST",
+        url: "../php/PBIDetails.php",
+        data: {
+            postedPBIID:PBIIDFromURL,
+        },
+        dataType: "json",
+        success: function createPBIDetails (pbiData){
+            PBIDetails(pbiData);			 
+        },
+        error: function() {
+            console.log('error')
+        }
+        });
+    };
+    
 	//perform another AJAX request to populate the results table based on parameters in drop down boxes	
     $("#pbiSearch").click(function(e) {
         e.preventDefault();
@@ -167,43 +201,44 @@ function populateDropDowns(results) {
 			});
 			return false;
 			
-			//Display the results of the query to the right of the results table called by the success callback of the AJAX request directly above
-			function PBIDetails(results){
-
-				var pbiIDField = document.getElementById("pbiID");
-				var pbiTitleField = document.getElementById("pbiTitle");
-				var pbiDescField = document.getElementById("pbiDescription");
-				var pbiEffortField = document.getElementById("pbiEffort");
-				var pbiPriorityField = document.getElementById("pbiDetailPriority");
-				var pbiStateField = document.getElementById("pbiDetailState");
-				var pbiIterationField = document.getElementById("pbiIteration");
-				var pbiProjectField = document.getElementById("pbiProject");
-				
-				//Show the pbiDetails form and show the update and delete button
-				$('#pbiDetails').velocity({opacity:1}, {duration:200});
-				$('#pbiDetailsButton').show();
-				$('#pbiDetailsButton').css("visibility","visible");
-				$('#pbiDetailsButton').velocity({opacity:1}, {duration:0});
-				$('#deletePbiButton').show();
-				$('#deletePbiButton').css("visibility","visible");
-				$('#deletePbiButton').velocity({opacity:1}, {duration:0});
-				
-				//Make sure the create button is not shown
-				$('#createPBI').hide();
-				$('#createPBI').css("visibility","hidden");
-	 			$('#createPBI').velocity({opacity:0}, {duration:0});
-				
-				//Apply the results of the query based on the ID selected from above to the fields in the PBI form on the right hand side of the page.
-				$.each(results, function(key,value){
-					pbiIDField.value = value.pbiId;
-					pbiTitleField.value = value.pbiTitle;
-					pbiDescField.value = value.pbiDesc;
-					pbiEffortField.value = value.pbiEff;
-					pbiPriorityField.value = value.priority;
-					pbiStateField.value = value.state;
-					pbiIterationField.value = value.itName;
-					pbiProjectField.value = value.project;
-				})
-			};
 	};
+    
+    //Display the results of the query to the right of the results table called by the success callback of the AJAX request directly above
+    function PBIDetails(results){
+
+        var pbiIDField = document.getElementById("pbiID");
+        var pbiTitleField = document.getElementById("pbiTitle");
+        var pbiDescField = document.getElementById("pbiDescription");
+        var pbiEffortField = document.getElementById("pbiEffort");
+        var pbiPriorityField = document.getElementById("pbiDetailPriority");
+        var pbiStateField = document.getElementById("pbiDetailState");
+        var pbiIterationField = document.getElementById("pbiIteration");
+        var pbiProjectField = document.getElementById("pbiProject");
+        
+        //Show the pbiDetails form and show the update and delete button
+        $('#pbiDetails').velocity({opacity:1}, {duration:200});
+        $('#pbiDetailsButton').show();
+        $('#pbiDetailsButton').css("visibility","visible");
+        $('#pbiDetailsButton').velocity({opacity:1}, {duration:0});
+        $('#deletePbiButton').show();
+        $('#deletePbiButton').css("visibility","visible");
+        $('#deletePbiButton').velocity({opacity:1}, {duration:0});
+        
+        //Make sure the create button is not shown
+        $('#createPBI').hide();
+        $('#createPBI').css("visibility","hidden");
+        $('#createPBI').velocity({opacity:0}, {duration:0});
+        
+        //Apply the results of the query based on the ID selected from above to the fields in the PBI form on the right hand side of the page.
+        $.each(results, function(key,value){
+            pbiIDField.value = value.pbiId;
+            pbiTitleField.value = value.pbiTitle;
+            pbiDescField.value = value.pbiDesc;
+            pbiEffortField.value = value.pbiEff;
+            pbiPriorityField.value = value.priority;
+            pbiStateField.value = value.state;
+            pbiIterationField.value = value.itName;
+            pbiProjectField.value = value.project;
+        })
+    };
 };

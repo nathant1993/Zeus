@@ -52,9 +52,29 @@
 			margin: 20px auto;
 			padding:0px 5px;
 			font-size: 12px;
+            cursor: pointer;
 		}
 		
 		.Task p{
+			margin: 0px;
+			line-height: 25px;
+		}
+        
+         
+        .PBIResult{
+			min-width: 50px;
+			width:77%;
+			min-height: 50px;
+			height:125px;
+			border: 1px solid #A2A1A0;
+			background-color: #fff;
+			margin: 20px auto;
+			padding:0px 5px;
+			font-size: 12px;
+            cursor: pointer;
+		}
+        
+        .PBIResult p{
 			margin: 0px;
 			line-height: 25px;
 		}

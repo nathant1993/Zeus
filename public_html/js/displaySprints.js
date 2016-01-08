@@ -6,26 +6,27 @@
 
 $(document).ready(function() {
 var getUrlParameter = function getUrlParameter(sParam) {
-			var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-				sURLVariables = sPageURL.split('&'),
-				sParameterName,
-				i;
-		
-			for (i = 0; i < sURLVariables.length; i++) {
-				sParameterName = sURLVariables[i].split('=');
-		
-				if (sParameterName[0] === sParam) {
-					return sParameterName[1] === undefined ? true : sParameterName[1];
-				}
-			}
-		};
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
 	
 	var sprintNoFromURL = getUrlParameter("SprintNo");
 		
 	if (sprintNoFromURL != null){
-		console.log(sprintNoFromURL);
+		//console.log(sprintNoFromURL);
 	
 		$.ajax({
+            type: "POST",
 			data: {postedSprintNoFromURL:sprintNoFromURL},
 			dataType: "json",
 			//This php file returns the options available in the search filter boxes
@@ -92,9 +93,9 @@ function populateSprints(results) {
 			TaskResults = value[2];
 		});
 		
-		console.log(SprintResults);
+		//console.log(SprintResults);
 		console.log(PbiResults);
-		console.log(TaskResults);
+		//console.log(TaskResults);
 		
 		$.each(SprintResults, function (key, value) {
 			var a = value.itID;
@@ -108,33 +109,57 @@ function populateSprints(results) {
 			iterationEnd.push(d)            
 		});
 		
-		//The page will load on the current sprints tab of the table so highlight it accordingly
-		$("#currentSprints").addClass("SelectedSprintType");
+        //if no paramter was passed in the URL then show the current sprint
+        if (sprintNoFromURL == null) {
+            //The page will load on the current sprints tab of the table so highlight it accordingly
+            $("#currentSprints").addClass("SelectedSprintType");
 		
-		//Show the current sprint in the sprint table when the page is loaded
-		//For every row of results add a row to the results table
-		for (i=0; i<SprintResults.length; i++) {
+            //Show the current sprint in the sprint table when the page is loaded
+            //For every row of results add a row to the results table
+            for (i = 0; i < SprintResults.length; i++) {
+                
+                //Cast the iteration dates from the results of the query to dates
+                var itEndDate = new Date(iterationEnd[i])
+                var itStartDate = new Date(iterationStart[i])
 			
-			//Cast the iteration dates from the results of the query to dates
-			var itEndDate = new Date(iterationEnd[i])
-			var itStartDate = new Date(iterationStart[i])
-			
-			//To show the current sprint find teh sprint date 
-			//if(sprintNoFromURL == null){
-				if(itEndDate >= date && itStartDate <= date){
-					$("#sprintsTable").append('<tr class="PBI">'+
-					'<td style="display:none">'+ iterationID[i] +'</td>'+
-					'<td>'+ iterationName[i] +'</td>'+
-					'</tr>');
-				};
-			//};
-		};
-		
+                //To show the current sprint find teh sprint date 
+                if (itEndDate >= date && itStartDate <= date) {
+                    $("#sprintsTable").append('<tr class="PBI">' +
+                        '<td style="display:none">' + iterationID[i] + '</td>' +
+                        '<td>' + iterationName[i] + '</td>' +
+                        '</tr>');
+                };
+            };
+        }
+        
+        //If a paramter was passed in the URL then the below needs to happen to show the correct sprint in the left hand sprint table
+        else {
+            // a new array is needed to store sprint names without their project prefix
+            var shortIterationName = [];
+            
+            //for each of the iteration names remove everything before the - in the name
+            for (i = 0; i < iterationName.length; i++) {
+                var str = iterationName[i]
+                str = str.substring(str.indexOf("-") + 2)
+                shortIterationName.push(str);
+            }
+            
+            //Now the sprint name from the URL can be compared to the shorted array of names to find a position within that array
+            var clickedSprintArrayNo = shortIterationName.indexOf(sprintNoFromURL);
+            
+            //This position is used in the original iterationName array to show a properly formatted sprint name in th esprint table
+            $("#sprintsTable").append('<tr class="PBI">' +
+                '<td style="display:none">' + iterationID[clickedSprintArrayNo] + '</td>' +
+                '<td>' + iterationName[clickedSprintArrayNo] + '</td>' +
+                '</tr>');
+        };
+        
+        //Show all of the pbis returned by the query at the beginning
 		try{
 			$.each(PbiResults,function(key,value){
 				board.append('<div class="KanbanRow" data-pbiID=' + value.pbiId + '>' +
 				'<div id="PBI' + value.pbiId + '" class="kanbanColumn">'+
-					'<div id="'+ value.pbiId + '" class="Task">'+
+					'<div id="'+ value.pbiId + '" class="PBIResult">'+
 					'<div class="cardTitle">'+
 						value.pbiTitle +
 					'</div>'+ 
@@ -148,9 +173,10 @@ function populateSprints(results) {
 			});
 		}
 		catch (error) {
-		console.log("caught null array");
+		//console.log("caught null array");
 		}
 		
+        //Show all of the tasks related to the PBIs returned above and place them into their respective columns depending on their state
 		try{	
 			$.each(TaskResults, function (key,value){
 				if(value.stateID == 7){
@@ -190,7 +216,7 @@ function populateSprints(results) {
 			});
 		} 
 		catch (error) {
-		console.log("caught null array");
+		//console.log("caught null array");
 		}
 		//Wait for the current sprint tab to be clicked and show any current sprints
 		$("#currentSprints").click(function(e) {
@@ -307,24 +333,6 @@ function populateSprints(results) {
 				
 		});
 		
-		// var getUrlParameter = function getUrlParameter(sParam) {
-		// 	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-		// 		sURLVariables = sPageURL.split('&'),
-		// 		sParameterName,
-		// 		i;
-		
-		// 	for (i = 0; i < sURLVariables.length; i++) {
-		// 		sParameterName = sURLVariables[i].split('=');
-		
-		// 		if (sParameterName[0] === sParam) {
-		// 			return sParameterName[1] === undefined ? true : sParameterName[1];
-		// 		}
-		// 	}
-		// };
-		// if (getUrlParameter("SprintNo") != null){
-		// 	console.log(getUrlParameter("SprintNo"));
-		// }
-		
 		//function to display PBI's based on selected Sprint
 		function showSprintData(){
 			
@@ -370,16 +378,13 @@ function populateSprints(results) {
 					pbisForSprint = value[1];
 				});
 				
-				//console.log(taskDetails);
-				//console.log(pbisForSprint);
-				
 				//For each loop to iterate over each pbi returned and apply a new kanban row to the board.
 				
 				try {
 					$.each(pbisForSprint,function(key,value){
 						board.append('<div class="KanbanRow" data-pbiID=' + value.pbiId + '>' +
 						'<div id="PBI' + value.pbiId + '" class="kanbanColumn">'+
-							'<div id="'+ value.pbiId + '" class="Task">'+
+							'<div id="'+ value.pbiId + '" class="PBIResult">'+
 							'<div class="cardTitle">'+
 								value.pbiTitle +
 							'</div>'+ 
@@ -393,7 +398,7 @@ function populateSprints(results) {
 					});
 				}
 				catch (error) {
-				console.log("caught null task array");
+				//console.log("caught null task array");
 				}
 				
 				try {
@@ -435,10 +440,26 @@ function populateSprints(results) {
 					});
 				} 
 				catch (error) {
-				console.log("caught null task array");
+				//console.log("caught null task array");
 				}
+                $('.Task').dblclick(function(e){
+            location = "./tasks.php?taskId=" + this.id.substring(4)
+        })
+        
+        $('.PBIResult').dblclick(function(e){
+            location = "./backlog.php?PBIId=" + this.id
+        })
 			};
 		};
+        
+        $('.Task').dblclick(function(e){
+            location = "./tasks.php?taskId=" + this.id.substring(4)
+        })
+        
+        $('.PBIResult').dblclick(function(e){
+            location = "./backlog.php?PBIId=" + this.id
+        })
+        
 };
 
 
@@ -468,9 +489,6 @@ function dragAndDrop(){
 			var taskPbiID = document.getElementById(notecard).dataset.pbiid;
 			var rowPbiId = event.target.parentNode.dataset.pbiid;
 			
-			//console.log(event.target.parentNode.dataset.pbiid)
-			//console.log(document.getElementById(notecard).dataset.pbiid)
-			
 			if(taskPbiID == rowPbiId){
 			
 				if($(event.target).attr('class') === 'todo'){
@@ -491,59 +509,6 @@ function dragAndDrop(){
 				}
 			};
 		});
-		
-		// $('Body').on('drop', '.inprogress', function(event) {
-	
-		// 	var notecard = event.originalEvent.dataTransfer.getData("text/plain");;
-			
-		// 	if($(event.target).attr('class') === 'inprogress'){
-		// 		event.target.appendChild(document.getElementById(notecard));
-			
-		// 		console.log($(event.target).attr('id'));
-							
-		// 		// if($(event.target).attr('class') === 'todo'){
-		// 		// 	changeTaskState(7,notecard);
-		// 		// 	console.log('Moved to to do');
-		// 		// }
-		// 		// else 
-		// 		if ($(event.target).attr('class') === 'inprogress'){
-		// 			changeTaskState(8,notecard);
-		// 			console.log('Moved to in progress');
-		// 		}
-		// 		// else if ($(event.target).attr('class') === 'done'){
-		// 		// 	changeTaskState(9,notecard);
-		// 		// 	console.log('Moved to done');
-		// 		// }
-		// 		event.preventDefault();
-		// 	}
-		// });
-		
-		// $('Body').on('drop', '.done', function(event) {
-	
-		// 	var notecard = event.originalEvent.dataTransfer.getData("text/plain");;
-			
-		// 	if($(event.target).attr('class') === 'done'){
-		// 		event.target.appendChild(document.getElementById(notecard));
-			
-		// 		console.log($(event.target).attr('id'));
-							
-		// 		// if($(event.target).attr('class') === 'todo'){
-		// 		// 	changeTaskState(7,notecard);
-		// 		// 	console.log('Moved to to do');
-		// 		// }
-		// 		// else 
-		// 		// if ($(event.target).attr('class') === 'inprogress'){
-		// 		// 	changeTaskState(8,notecard);
-		// 		// 	console.log('Moved to in progress');
-		// 		// }
-		// 		// else 
-		// 		if ($(event.target).attr('class') === 'done'){
-		// 			changeTaskState(9,notecard);
-		// 			console.log('Moved to done');
-		// 		}
-		// 		event.preventDefault();
-		// 	}
-		// });
 };
 
 function changeTaskState(stateID,taskName){
@@ -572,3 +537,4 @@ function changeTaskState(stateID,taskName){
 	});
 	
 }
+
