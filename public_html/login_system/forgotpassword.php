@@ -34,8 +34,9 @@
                     <div class="login-card">
                         <h1>Reset Password</h1><br>
                         
-                        <form id="loginForm" name="loginForm" method="post" action="forgotpassword.php">
+                        <form id="loginForm" name="loginForm" method="get" action="forgotpassword.php">
                         <input type="text" name="email" id="email" placeholder="Enter Your Email address">
+                        <input type="checkbox" name="checkbox" id="checkbox">
                         <input type="submit" name="login" class="login login-submit" value="Reset My Password">
                         </form>
                         
@@ -49,6 +50,7 @@
         exit();
     }
     
+    if( !isset($_GET['checkbox'])){
     //Store the email in a variable
     $email=$_GET['email'];
     
@@ -58,7 +60,7 @@
     connect();
     
     //Query to check whether the user exists within the database.
-    $q="SELECT user_email FROM test_user WHERE user_email='".$email."'";
+    $q="SELECT user_email FROM users2 WHERE user_email='".$email."'";
     $r=mysql_query($q);
     $n=mysql_num_rows($r);
     
@@ -66,13 +68,6 @@
         echo "If you're registered we will send you an email with instructions on how to reset your password."; 
         die();
     }
-    
-    //Store a random string into a variable
-    $token=getRandomString(10);
-    
-    //Insert the token and the email into a database table
-    $q="INSERT INTO tokens (token,email) VALUES ('".$token."','".$email."')";
-    mysql_query($q);
     
     //Parameters for generating a random string
     function getRandomString($length) {
@@ -84,7 +79,17 @@
             $index = mt_rand(0, $validCharNumber - 1);
             $result .= $validCharacters[$index];
         }
-        return $result;}
+    return $result;
+    }
+    
+    //Store a random string into a variable
+    $token=getRandomString(10);
+    
+    //Insert the token and the email into a database table
+    $q="INSERT INTO tokens (token,email) VALUES ('".$token."','".$email."')";
+    mysql_query($q);
+    
+    
     
     //If the users email does exist in the database then send the following email with a link with the randomly generated token so that only that users email link can reset the password   
     function mailresetlink($to,$token){
@@ -98,7 +103,7 @@
                     <title>Forgot Password For zeus.co.uk</title>
                 </head>
                 <body>
-                    <p>Click on the given link to reset your password <a href="'.$uri.'/testsite/reset.php?token='.$token.'">Reset Password</a></p>
+                    <p>Click on the given link to reset your password <a href="'.$uri.'/login_system/reset.php?token='.$token.'">Reset Password</a></p>
                 </body>
             </html>';
             
@@ -113,4 +118,8 @@
     }
     
     if(isset($_GET['email']))mailresetlink($email,$token);
+    }
+    else{
+        echo "checkbox ticked";
+    }
 ?>

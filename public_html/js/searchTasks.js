@@ -26,6 +26,10 @@ function populateDropDowns(results) {
 	var phpProjectValues = [];
 	var phpSprintValues = [];
 	var phpStateValues = [];
+	var phpPbiTitles = [];
+	var phpAssignees = [];
+	var assigneeArray = [];
+	var pbiTitleArray =[];
 	
 	//The JSON array returned by the php file is an array of arrays this each loop goes through each of
 	//the child arrays and sets the equal to a variable.
@@ -33,6 +37,8 @@ function populateDropDowns(results) {
 		phpProjectValues = value[0];
 		phpSprintValues = value[1];
 		phpStateValues = value[2];
+		phpPbiTitles = value[3];
+		phpAssignees = value[4];
 	});
 	
 	//Get the values out of the child array variables and append the values to the search filter boxes
@@ -67,6 +73,52 @@ function populateDropDowns(results) {
 	$.each(phpStateValues,function(key,value){
 		$("#taskDetailState").append('<option value="'+ value.State +'">' + value.State +'</option>')
 	})
+	
+	$.each(phpAssignees, function(key,value){
+		var assigneeName = value.assigneeResult
+		assigneeArray.push(assigneeName);
+	});
+	
+	$.each(phpPbiTitles, function(key,value){
+		var pbiTitle = value.pbiTitleResult
+		pbiTitleArray.push(pbiTitle);
+	});
+	
+	// constructs the suggestion engine
+	var assignees = new Bloodhound({
+	datumTokenizer: Bloodhound.tokenizers.whitespace,
+	queryTokenizer: Bloodhound.tokenizers.whitespace,
+	// `states` is an array of state names defined in "The Basics"
+	local: assigneeArray
+	});
+	
+	$('#assignee').typeahead({
+	hint: true,
+	highlight: true,
+	minLength: 1
+	},
+	{
+	//name: 'states',
+	source: assignees
+	});
+	
+	// constructs the suggestion engine
+	var pbiTitle = new Bloodhound({
+	datumTokenizer: Bloodhound.tokenizers.whitespace,
+	queryTokenizer: Bloodhound.tokenizers.whitespace,
+	// `states` is an array of state names defined in "The Basics"
+	local: pbiTitleArray
+	});
+	
+	$('#pbiTitle').typeahead({
+	hint: true,
+	highlight: true,
+	minLength: 1
+	},
+	{
+	//name: 'states',
+	source: pbiTitle
+	});
 	
 	//perform another AJAX request to populate the results table based on parameters in drop down boxes	
     $("#pbiSearch").click(function(e) {

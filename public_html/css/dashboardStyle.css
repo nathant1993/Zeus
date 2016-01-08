@@ -569,6 +569,11 @@ select{
     height:95px;
     padding:10px;
 }
+.tt-menu{
+	background-color: #eee;
+	font-size: 15px;
+	color: #505050;	
+}
 
 #createPBI {
 	display:none;

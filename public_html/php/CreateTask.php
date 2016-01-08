@@ -55,7 +55,7 @@
     if ($conn->query($query) === TRUE) {
          echo "PBI Updated successfully";
     } else {
-         echo "Error: " . $query . "<br>" . $conn->error;
+         echo "Error: <br>" . $conn->error;
     }
   }
   $conn->close();

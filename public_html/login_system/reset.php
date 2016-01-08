@@ -24,14 +24,14 @@
 	$pass=$_POST['password'];
 	$email=$_SESSION['email'];
 	
-	if(!isset($pass)){ 
+	// Create a unique salt. This will never leave PHP unencrypted.
+	$salt = "498#2D83B631%3800EBD!801600D*7E3CC13";
+
+	// Create the unique user password reset key
+	$encrypt_pass = hash('sha512', $salt.$pass);
 	
-		// echo 
-		// '<form method="post">
-		// 	enter your new password:<input type="password" name="password" />
-		// 	re-enter your new password:<input type="password" name="confirmPassword" />
-		// 	<input type="submit" value="Change Password">
-		// </form>';
+	if(!isset($pass)){ 
+
 	?>
 	
 	<!DOCTYPE html>
@@ -102,25 +102,39 @@
 		
 	<?php
 		}
-	
+	//Check that password, confirm password and email are set
 	if(isset($_POST['password']) && isset($_POST['confirmPassword']) && isset($_SESSION['email']) )
+	
+	//PHP Validation
 	{
-		if(($_POST['password']) === ($_POST['confirmPassword'])){
-			$q="UPDATE test_user SET user_password='".md5($pass)."' WHERE user_email='".$email."'";
-			$r=mysql_query($q);
+			if(($_POST['password']) != ($_POST['confirmPassword'])){
+			echo("passwords do not match");	
+		}
+			elseif((strlen($_POST["password"]) < '8')){
+			echo("Your Password Must Contain At Least 8 Characters");
+		}
+			elseif(!preg_match("#[0-9]+#",$pass)){
+        	echo("Your Password Must Contain At Least 1 Number");
+    	}
+			elseif(!preg_match("#[A-Z]+#",$pass)){
+       		echo("Your Password Must Contain At Least 1 Capital Letter");
+   		}
+    		elseif(!preg_match("#[a-z]+#",$pass)){
+       		echo("Your Password Must Contain At Least 1 Lowercase Letter");
+    	}
 		
+		else
+		//If passwords match the criteria then update the password in the database for the related email address
+		{
+			$q="UPDATE users2 SET user_password='$encrypt_pass' WHERE user_email='".$email."'";
+			$r=mysql_query($q);
+			
+			//When password is updated successfully then set the token that was used to 1 so that it cannot be used again
 			if($r)mysql_query("UPDATE tokens SET used=1 WHERE token='".$token."'"); 
+			
+			//After password is updated direct the user to the password reset success page
 			header('Location: ../login_system/password-reset-success.php');
 			if(!$r)echo "An error occurred";
 		}
-		else echo('
-			<form method="post">
-				enter your new password:<input type="password" name="password" />
-				re-enter your new password:<input type="password" name="confirmPassword" />
-				<input type="submit" value="Change Password">
-				</form>
-			<h1>Passwords do not match<h1>');
 	}
-	
-	
 ?>

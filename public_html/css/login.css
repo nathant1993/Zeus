@@ -213,6 +213,10 @@ a img {
   font-size: 12px;
 }
 
+#checkbox{
+  display:none;
+}
+
 /* ==================================================
    Responsive Media Queries - Mobiles
 ================================================== */

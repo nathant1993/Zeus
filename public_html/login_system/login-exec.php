@@ -35,6 +35,8 @@
 	//Sanitize the POST values
 	$user_email = clean($_POST['user_email']);
 	$user_password = clean($_POST['user_password']);
+	$salt = "498#2D83B631%3800EBD!801600D*7E3CC13";
+	$decrypt_pass = hash('sha512', $salt.$user_password);
 	
 	//Input Validations
 	if($user_email == '') {
@@ -55,18 +57,20 @@
 	}
 	
 	//Create query
-	$qry="SELECT * FROM test_user WHERE user_email='$user_email' AND user_password='".md5($_POST['user_password'])."'";
+	$qry="SELECT * FROM users2 WHERE user_email='$user_email' AND user_password='$decrypt_pass'";
 	$result=mysql_query($qry);
 	
 	//Check whether the query was successful or not
 	if($result) {
 		if(mysql_num_rows($result) == 1) {
 			//Login Successful
+			//Store variables for the session
 			session_regenerate_id();
 			$member = mysql_fetch_assoc($result);
 			$_SESSION['SESS_MEMBER_ID'] = $member['user_id'];
 			$_SESSION['SESS_FIRST_NAME'] = $member['user_forename'];
 			$_SESSION['SESS_LAST_NAME'] = $member['user_surname'];
+			$_SESSION['SESS_EMAIL_ADD'] = $member['user_email'];
 			session_write_close();
 			header("location: ../dashboard.php");
 			exit();

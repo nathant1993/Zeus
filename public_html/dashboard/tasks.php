@@ -25,10 +25,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="../js/scroll.js"></script>
 <script src="../js/ClickOnClass.js"></script>
-<script src="../js/searchtaks.js"></script>
+<script src="../js/searchTasks.js"></script>
 <script src="../js/createTask.js"></script>
 <script src="../js/deleteTask.js"></script>
 <script src="../js/updateTask.js"></script>
+<script src="../js/typeahead/typeahead.bundle.min.js"></script>
 <script src="../js/velocity.js"></script>
 <script src="../js/velocity.ui.js"></script>
 
@@ -148,10 +149,10 @@
             <input id = "taskTitle" title="task Title">
             
             <label for="pbiTitle">PBI Title</label>
-            <input id = "pbiTitle" title="PBI Title">
+            <input id = "pbiTitle" title="PBI Title"> <!-- class="typeahead" type="text">-->
             
             <label for="assignee">Assignee</label>
-            <input id = "assignee" title="assignee">
+            <input id = "assignee" title="assignee"> <!--class="typeahead" type="text">-->
             
             <label for="taskDescription">Description</label>
             <textarea id = "taskDescription"></textarea>
