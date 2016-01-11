@@ -90,6 +90,52 @@ function populateDropDowns(results) {
 		$("#taskDetailState").append('<option value="'+ value.State +'">' + value.State +'</option>')
 	})
 	
+	$.each(phpAssignees, function(key,value){
+		var assigneeName = value.assigneeResult
+		assigneeArray.push(assigneeName);
+	});
+	
+	$.each(phpPbiTitles, function(key,value){
+		var pbiTitle = value.pbiTitleResult
+		pbiTitleArray.push(pbiTitle);
+	});
+	
+	// constructs the suggestion engine
+	var assignees = new Bloodhound({
+	datumTokenizer: Bloodhound.tokenizers.whitespace,
+	queryTokenizer: Bloodhound.tokenizers.whitespace,
+	// `states` is an array of state names defined in "The Basics"
+	local: assigneeArray
+	});
+	
+	$('#assignee').typeahead({
+	hint: true,
+	highlight: true,
+	minLength: 1
+	},
+	{
+	//name: 'states',
+	source: assignees
+	});
+	
+	// constructs the suggestion engine
+	var pbiTitle = new Bloodhound({
+	datumTokenizer: Bloodhound.tokenizers.whitespace,
+	queryTokenizer: Bloodhound.tokenizers.whitespace,
+	// `states` is an array of state names defined in "The Basics"
+	local: pbiTitleArray
+	});
+	
+	$('#pbiTitle').typeahead({
+	hint: true,
+	highlight: true,
+	minLength: 1
+	},
+	{
+	//name: 'states',
+	source: pbiTitle
+	});
+	
     if (taskIDFromURL != null){
         //Now use the ID found above in where clause of a SQL query to return back more specific information about that PBI
         $.ajax({
@@ -107,6 +153,7 @@ function populateDropDowns(results) {
         }
         });
     };
+    
 
 	//perform another AJAX request to populate the results table based on parameters in drop down boxes	
     $("#pbiSearch").click(function(e) {
