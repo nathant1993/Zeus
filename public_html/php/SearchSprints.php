@@ -33,7 +33,7 @@
 		  );
 	}
   
-  if(is_null($SprintNo)){
+  if(empty($SprintNo)){
   $PbiQuery = "SELECT pbi_id, pbi_title
             FROM  backlog_items a
             right outer join iteration b on b.iteration_ID = a.iteration_ID
@@ -63,7 +63,7 @@
 		  );
 	}          
   
-  if(is_null($SprintNo)){
+  if(empty($SprintNo)){
   $TaskQuery = 
      "SELECT task_id, task_title, task_description, task_estimated_duration,task_hours_done, concat_ws(' ', f.user_forename, f.user_surname) 'assignee' , a.iteration_id 'itID', a.state_id 'stateID', d.state_name 'stateName', a.pbi_id 'pbiID', b.pbi_title 'pbiTitle', b.pbi_description 'pbiDescription', c.description 'priorityDesc'
         FROM task a

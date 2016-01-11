@@ -258,7 +258,7 @@
 	        });
 /*================================================================================================================*/
 /*================================================================================================================*/
-//Add a tooltip to the Graph
+//Add a tooltip to the Graph and make points clickable so that they take you to clicked sprint on the sprints page
 /*================================================================================================================*/
 /*================================================================================================================*/           
 
@@ -293,6 +293,7 @@
                 }
               $toolTip.html(seriesName + '<br>' + value).show();
               
+              //make graph points clickable and link through to the correct sprint on the sprints page
               $point.click(function(e){
                 var value = $point.attr('ct:value')
                 var arrayPosition = remainingEffort.indexOf(value)
