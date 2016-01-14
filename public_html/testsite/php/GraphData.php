@@ -26,18 +26,18 @@ SUM(pbi_effort) 'effort',
 IFNULL((SELECT SUM(pbi_effort) 
         FROM backlog_items
         WHERE iteration_id <= a.iteration_id
-        AND project_id = 1
+        AND project_id = 2
         AND state_id = 4),0) 'effort_done_to_date',
 a.starting_effort - IFNULL((SELECT SUM(pbi_effort)
                            FROM backlog_items
                            WHERE iteration_id <= a.iteration_id
-                           AND project_id = 1
+                           AND project_id = 2
                            AND state_id = 4),0) 'remaining_effort' 
 FROM iteration a 
 LEFT OUTER JOIN backlog_items b ON b.iteration_id = a.iteration_id
 WHERE b.pbi_effort IS NOT NULL
-AND b.project_id = 1
-AND a.project_id = 1
+AND b.project_id = 2
+AND a.project_id = 2
 AND b.state_id = 4
 AND a.iteration_start_date <= CURDATE()
 GROUP BY a.iteration_id
