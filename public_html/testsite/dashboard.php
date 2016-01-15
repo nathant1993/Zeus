@@ -78,7 +78,7 @@
                         unset($id, $name);
                         $id = $row['id'];
                         $name = $row['name']; 
-                        echo '<option value="'.$id.'">'.$name.'</option>';
+                        echo '<a href="#'.$id.'">'.$name.'</a>';
                     echo "</li>";              
             }
 
