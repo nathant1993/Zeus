@@ -3,6 +3,7 @@
   require_once('login_system/auth.php');
 //   $project = 1;
 //   require_once('project-access.php');
+// session_start();
 ?>
 
 <!doctype html>
@@ -59,11 +60,31 @@
       <div id="rightNav">
         <ul>
           <li>Projects
-            <ul>
-              <li>Zeus</li>
+            
+              <!--<li>Zeus</li>
               <li>Project Atlas</li>
-              <li>All Projects</li>
-            </ul>
+              <li>All Projects</li>-->
+              <?php
+                session_start();
+                $conn = new mysqli('10.168.1.92', 'wearezeu_phpserv', '0!ZeusPhP!0', 'wearezeu_test01') 
+                or die ('Cannot connect to db');
+   
+                $result = $conn->query("select a.project_id AS 'id', a.project_name AS 'name' from project a inner join users_projects b where b.project_id = a.project_id and user_id =  '".$_SESSION['SESS_MEMBER_ID']."'");
+    
+                echo "<ul>";
+
+                while ($row = $result->fetch_assoc()) {
+                    echo "<li>";
+                        unset($id, $name);
+                        $id = $row['id'];
+                        $name = $row['name']; 
+                        echo '<option value="'.$id.'">'.$name.'</option>';
+                    echo "</li>";              
+            }
+
+                echo "</ul>";
+              ?>
+            
           </li>  
           <li>Sprints
             <ul>

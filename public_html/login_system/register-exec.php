@@ -38,6 +38,11 @@
 	$user_email = clean($_POST['user_email']);
 	$user_password = clean($_POST['user_password']);
 	$cpassword = clean($_POST['cpassword']);
+    
+    //Create a unique salt. This will never leave PHP unencrypted.
+	$salt = "498#2D83B631%3800EBD!801600D*7E3CC13";
+    //Create the unique user password reset key
+	$encrypt_pass = hash('sha512', $salt.$user_password);
 	
 	//Input Validations
 	if($user_forename == '') {
@@ -67,7 +72,7 @@
 	
 	//Check for duplicate login ID
 	if($login != '') {
-		$qry = "SELECT * FROM test_user WHERE user_email='$user_email'";
+		$qry = "SELECT * FROM users2 WHERE user_email='$user_email'";
 		$result = mysql_query($qry);
 		if($result) {
 			if(mysql_num_rows($result) > 0) {
@@ -90,7 +95,7 @@
 	}
 
 	//Create INSERT query
-	$qry = "INSERT INTO test_user(user_forename, user_surname, user_email, user_password, user_role_id) VALUES('$user_forename','$user_surname','$user_email','".md5($_POST['user_password'])."', '2')";
+	$qry = "INSERT INTO users2(user_forename, user_surname, user_email, user_password, user_role_id) VALUES('$user_forename','$user_surname','$user_email','$encrypt_pass', '2')";
 	$result = @mysql_query($qry);
 	
 	//Check whether the query was successful or not
