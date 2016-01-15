@@ -94,7 +94,7 @@ function populateSprints(results) {
 		});
 		
 		//console.log(SprintResults);
-		console.log(PbiResults);
+		//console.log(PbiResults);
 		//console.log(TaskResults);
 		
 		$.each(SprintResults, function (key, value) {
@@ -160,7 +160,7 @@ function populateSprints(results) {
 				board.append('<div class="KanbanRow" data-pbiID=' + value.pbiId + '>' +
 				'<div id="PBI' + value.pbiId + '" class="kanbanColumn">'+
 					'<div id="'+ value.pbiId + '" class="PBIResult">'+
-					'<div class="cardTitle">'+
+					'<div class="pbiTitle">'+
 						value.pbiTitle +
 					'</div>'+ 
 					'</div>'+
@@ -177,40 +177,83 @@ function populateSprints(results) {
 		}
 		
         //Show all of the tasks related to the PBIs returned above and place them into their respective columns depending on their state
+		//with a thumbnail photo of the person the work is assigned to, also handle there being no photo present.
 		try{	
 			$.each(TaskResults, function (key,value){
 				if(value.stateID == 7){
-					$('#todo' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
-						'<div class="cardTitle">'+
-							value.taskTitle +
-						'</div>'+
-						'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
-						'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
-						'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
-						'</div>'
-					);
+					if(value.photoAddress != null){
+						$('#todo' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+							'<div class="cardTitle">'+
+								value.taskTitle + 
+							'</div>'+
+							'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+							'<img src =' + value.photoAddress + '>' +
+							'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+							'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
+							'</div>'
+						);
+					}
+					else{
+						$('#todo' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+							'<div class="cardTitle">'+
+								value.taskTitle + 
+							'</div>'+
+							'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+							'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+							'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
+							'</div>'
+						);
+					}
 				}
 				else if(value.stateID == 8){
-					$('#inprogress' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
-						'<div class="cardTitle">'+
-							value.taskTitle +
-						'</div>'+
-						'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
-						'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
-						'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
-						'</div>'
-					);
+					if(value.photoAddress != null){
+						$('#inprogress' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+							'<div class="cardTitle">'+
+								value.taskTitle +
+							'</div>'+
+							'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+							'<img src =' + value.photoAddress + '>' +
+							'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+							'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
+							'</div>'
+						);
+					}
+					else{
+						$('#inprogress' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+							'<div class="cardTitle">'+
+								value.taskTitle +
+							'</div>'+
+							'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+							'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+							'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
+							'</div>'
+						);
+					}
 				}
 				else if(value.stateID >= 9){
-					$('#done' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
-						'<div class="cardTitle">'+
-							value.taskTitle +
-						'</div>'+
-						'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
-						'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
-						'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
-						'</div>'
-					);
+					if(value.photoAddress != null){
+						$('#done' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+							'<div class="cardTitle">'+
+								value.taskTitle +
+							'</div>'+
+							'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+							'<img src =' + value.photoAddress + '>' +
+							'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+							'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
+							'</div>'
+						);
+					}
+					else{
+						$('#done' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+							'<div class="cardTitle">'+
+								value.taskTitle +
+							'</div>'+
+							'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+							'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+							'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
+							'</div>'
+						);
+					}
 				};	
 				
 			});
@@ -385,7 +428,7 @@ function populateSprints(results) {
 						board.append('<div class="KanbanRow" data-pbiID=' + value.pbiId + '>' +
 						'<div id="PBI' + value.pbiId + '" class="kanbanColumn">'+
 							'<div id="'+ value.pbiId + '" class="PBIResult">'+
-							'<div class="cardTitle">'+
+							'<div class="pbiTitle">'+
 								value.pbiTitle +
 							'</div>'+ 
 							'</div>'+
@@ -402,40 +445,81 @@ function populateSprints(results) {
 				}
 				
 				try {
-
 					$.each(taskDetails, function (key,value){
 						if(value.stateID == 7){
-							$('#todo' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
-								'<div class="cardTitle">'+
-									value.taskTitle +
-								'</div>'+
-								'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
-								'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
-								'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
-								'</div>'
-							);
+							if(value.photoAddress != null){
+								$('#todo' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+									'<div class="cardTitle">'+
+										value.taskTitle + 
+									'</div>'+
+									'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+									'<img src =' + value.photoAddress + '>' +
+									'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+									'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
+									'</div>'
+								);
+							}
+							else{
+								$('#todo' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+									'<div class="cardTitle">'+
+										value.taskTitle + 
+									'</div>'+
+									'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+									'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+									'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
+									'</div>'
+								);
+							}
 						}
 						else if(value.stateID == 8){
-							$('#inprogress' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
-								'<div class="cardTitle">'+
-									value.taskTitle +
-								'</div>'+
-								'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
-								'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
-								'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
-								'</div>'
-							);
+							if(value.photoAddress != null){
+								$('#inprogress' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+									'<div class="cardTitle">'+
+										value.taskTitle +
+									'</div>'+
+									'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+									'<img src =' + value.photoAddress + '>' +
+									'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+									'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
+									'</div>'
+								);
+							}
+							else{
+								$('#inprogress' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+									'<div class="cardTitle">'+
+										value.taskTitle +
+									'</div>'+
+									'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+									'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+									'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
+									'</div>'
+								);
+							}
 						}
 						else if(value.stateID >= 9){
-							$('#done' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
-								'<div class="cardTitle">'+
-									value.taskTitle +
-								'</div>'+
-								'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
-								'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
-								'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
-								'</div>'
-							);
+							if(value.photoAddress != null){
+								$('#done' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+									'<div class="cardTitle">'+
+										value.taskTitle +
+									'</div>'+
+									'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+									'<img src =' + value.photoAddress + '>' +
+									'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+									'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
+									'</div>'
+								);
+							}
+							else{
+								$('#done' + value.pbiID).append('<div id="Task' + value.taskId +'" class="Task" draggable="true" data-pbiID=' + value.pbiID + '>'+
+									'<div class="cardTitle">'+
+										value.taskTitle +
+									'</div>'+
+									'<p><strong>Priority:</strong> '+ value.priorityDesc +'</p>'+
+									'<p><strong>Assignee:</strong> '+ value.assignee +'</p>'+
+									'<p><strong>Time spent:</strong> '+ value.taskHoursDone +'</p>'+
+									'</div>'
+								);
+							}
 						};	
 					});
 				} 
