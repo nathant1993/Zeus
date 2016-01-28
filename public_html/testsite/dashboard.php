@@ -78,7 +78,7 @@
                         unset($id, $name);
                         $id = $row['id'];
                         $name = $row['name']; 
-                        echo '<a href="#'.$id.'">'.$name.'</a>';
+                        echo '<a href="../testsite/dashboard.php?id='.$id.'">'.$name.'</a>';
                     echo "</li>";              
             }
 
