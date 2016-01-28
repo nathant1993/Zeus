@@ -4,6 +4,7 @@
   $user_name="wearezeu_phpserv";
   $pwd="0!ZeusPhP!0";
   $dbName="wearezeu_test01";
+  session_start();
     
   // Create connection
   $conn = new mysqli($host, $user_name, $pwd, $dbName);
@@ -18,30 +19,34 @@
   //$emailAddress=mysql_real_escape_string($emailAddress);
   
 
-  // Inserting these values into the MySQL table
+  //Inserting these values into the MySQL table
+  //A sub-table of backlog_items is used which in this case is the "small" table. 
+  //Iteration is the "big" table. 
+  //Left outer join brings everything from the big table with only data from the small table where there is a link
+  //Whenever you take data from the small table, IFNULL it to the value you want it to take when there is no link to that table (otherwise nulls come through)
 $query = "SELECT a.iteration_id,
 a.iteration_name,
 a.starting_effort,
-SUM(pbi_effort) 'effort',
-IFNULL((SELECT SUM(pbi_effort) 
-        FROM backlog_items
-        WHERE iteration_id <= a.iteration_id
-        AND project_id = 2
-        AND state_id = 4),0) 'effort_done_to_date',
+IFNULL(SUM(pbi_effort),0) 'effort',
+IFNULL((SELECT SUM(pbi_effort)
+                 FROM backlog_items
+                 WHERE iteration_id <= a.iteration_id
+                 AND project_id = 2
+                 AND state_id = 4),0) 'effort_done_to_date',
 a.starting_effort - IFNULL((SELECT SUM(pbi_effort)
                            FROM backlog_items
                            WHERE iteration_id <= a.iteration_id
                            AND project_id = 2
-                           AND state_id = 4),0) 'remaining_effort' 
-FROM iteration a 
-LEFT OUTER JOIN backlog_items b ON b.iteration_id = a.iteration_id
-WHERE b.pbi_effort IS NOT NULL
-AND b.project_id = 2
+                           AND state_id = 4),0) 'remaining_effort'
+FROM iteration a#
+LEFT OUTER JOIN (SELECT * FROM backlog_items
+                WHERE project_id = 2
+                AND state_id = 4) b ON b.iteration_id = a.iteration_id
+WHERE a.iteration_start_date <= CURDATE()
 AND a.project_id = 2
-AND b.state_id = 4
-AND a.iteration_start_date <= CURDATE()
 GROUP BY a.iteration_id
-Order by a.iteration_id";
+ORDER BY a.iteration_id";
+
   
  /* $query = "SELECT b.iteration_id, iteration_name, SUM( PBI_effort ) as 'effort', starting_effort, CalcEffRemaining(b.iteration_id) as 'effort_done_to_date', (starting_effort - CalcEffRemaining(b.iteration_id)) as 'remaining_effort'
 	FROM  backlog_items a
