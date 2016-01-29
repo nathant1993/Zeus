@@ -17,6 +17,7 @@
 	right outer join iteration b on b.iteration_ID = a.iteration_ID
     where b.iteration_start_date <= sysdate()
     and a.state_id=4
+    and a.project_id = 1
 	GROUP BY iteration_id, iteration_name, CalcEffRemaining(a.iteration_id), (starting_effort - CalcEffRemaining(a.iteration_id))";
   
   $result = $conn->query($query) or exit("Error code ({$conn->errno}): {$conn->error}");
