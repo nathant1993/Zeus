@@ -1,9 +1,43 @@
 <?php
-	//require_once($_SERVER['DOCUMENT_ROOT'] . '/login_system/auth.php' );
+  //Make sure the user is logged in
   require_once('login_system/auth.php');
-//   $project = 1;
-//   require_once('project-access.php');
-// session_start();
+//Start the session
+session_start();
+
+//See if there is an id value passed across from the dropdown menu
+if(isset($_GET["id"]))
+{ 
+    //Set access as false to begin with
+    $access = FALSE;
+    
+    //Connection to the database
+    $conn = new mysqli('10.168.1.92', 'wearezeu_phpserv', '0!ZeusPhP!0', 'wearezeu_test01') 
+    or die ('Cannot connect to db');
+   
+   //Query to make sure that the user is member of a project
+    $result = $conn->query("select a.project_id AS 'id', a.project_name AS 'name' from project a 
+                inner join users_projects b where b.project_id = a.project_id and user_id =  '".$_SESSION['SESS_MEMBER_ID']."'");
+    
+    //Loop to check id values
+    while ($row = $result->fetch_assoc()) {
+            // unset($id, $name);
+        if ($row["id"] === $_GET["id"]) 
+        {
+         
+         //If the user is a member of a project that they have tried to access then store the id value in the session variable
+         $access = TRUE; 
+         $_SESSION["SESS_PROJ_ID"]=$_GET["id"];
+            
+        }         
+    }
+    //If the user is not a member of a project that they have tried to access then null the session variable and redirect them            
+    if ($access == FALSE)
+    {
+        $_SESSION["SESS_PROJ_ID"]=$NULL;
+        header('Location: ../testsite/dashboard.php');
+    }
+    
+}
 ?>
 
 <!doctype html>
@@ -65,23 +99,26 @@
               <li>Project Atlas</li>
               <li>All Projects</li>-->
               <?php
-                session_start();
+                //Connection to the database
                 $conn = new mysqli('10.168.1.92', 'wearezeu_phpserv', '0!ZeusPhP!0', 'wearezeu_test01') 
                 or die ('Cannot connect to db');
-   
-                $result = $conn->query("select a.project_id AS 'id', a.project_name AS 'name' from project a inner join users_projects b where b.project_id = a.project_id and user_id =  '".$_SESSION['SESS_MEMBER_ID']."'");
+                
+                //Query to return project id and name that the logged in user is a member of
+                $result = $conn->query("select a.project_id AS 'id', a.project_name AS 'name' from project a 
+                inner join users_projects b where b.project_id = a.project_id and user_id =  '".$_SESSION['SESS_MEMBER_ID']."'");
     
                 echo "<ul>";
-
+                
+                //Loop to create a dropdown menu of the project names that the user is a member off
                 while ($row = $result->fetch_assoc()) {
                     echo "<li>";
                         unset($id, $name);
                         $id = $row['id'];
                         $name = $row['name']; 
-                        echo '<a href="../testsite/dashboard.php?id='.$id.'">'.$name.'</a>';
+                        echo '<a href="../testsite/dashboard.php'.$id.'">'.$name.'</a>';
                     echo "</li>";              
             }
-
+               
                 echo "</ul>";
               ?>
             
@@ -117,7 +154,10 @@
     </div>-->
     
     <div id="maincont">
-    
+  <?php 
+  //Dump all session variables to see what has been set - used for testing
+  var_dump($_SESSION);
+  ?>
       <!--<div id="contentTitle" class="fullwidth clearfix">
       	<p>Dashboard</p>
       </div>-->
