@@ -1,6 +1,7 @@
 <?php
   //Make sure the user is logged in
   require_once('login_system/auth.php');
+  require_once('config.php');
 //Start the session
 session_start();
 
@@ -10,9 +11,11 @@ if(isset($_GET["id"]))
     //Set access as false to begin with
     $access = FALSE;
     
-    //Connection to the database
-    $conn = new mysqli('10.168.1.92', 'wearezeu_phpserv', '0!ZeusPhP!0', 'wearezeu_test01') 
-    or die ('Cannot connect to db');
+     $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  } 
    
    //Query to make sure that the user is member of a project
     $result = $conn->query("select a.project_id AS 'id', a.project_name AS 'name' from project a 
@@ -99,10 +102,15 @@ if(isset($_GET["id"]))
               <li>Project Atlas</li>
               <li>All Projects</li>-->
               <?php
+                require_once('config.php');
                 //Connection to the database
-                $conn = new mysqli('10.168.1.92', 'wearezeu_phpserv', '0!ZeusPhP!0', 'wearezeu_test01') 
-                or die ('Cannot connect to db');
-                
+                  // Create connection
+                $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                } 
+                                
                 //Query to return project id and name that the logged in user is a member of
                 $result = $conn->query("select a.project_id AS 'id', a.project_name AS 'name' from project a 
                 inner join users_projects b where b.project_id = a.project_id and user_id =  '".$_SESSION['SESS_MEMBER_ID']."'");
