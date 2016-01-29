@@ -77,6 +77,8 @@ function populateSprints(results) {
 		var iterationName = [];
 		var iterationStart = [];
 		var iterationEnd = [];
+		var iterationStartReadable = [];
+		var iterationEndReadable = [];
 		var table = document.getElementById('sprintsTable')
 		var clickedPBIID;
 		var date = new Date();
@@ -102,11 +104,15 @@ function populateSprints(results) {
 			var b = value.itName;
 			var c = value.itStart;
 			var d = value.itEnd;
+			var e = value.itStartReadable;
+			var f = value.itEndReadable;
 				
 			iterationID.push(a);   
 			iterationName.push(b);
 			iterationStart.push(c);
-			iterationEnd.push(d)            
+			iterationEnd.push(d);
+			iterationStartReadable.push(e);
+			iterationEndReadable.push(f);            
 		});
 		
         //if no paramter was passed in the URL then show the current sprint
@@ -119,16 +125,23 @@ function populateSprints(results) {
             for (i = 0; i < SprintResults.length; i++) {
                 
                 //Cast the iteration dates from the results of the query to dates
-                var itEndDate = new Date(iterationEnd[i])
-                var itStartDate = new Date(iterationStart[i])
+                var itStartDate = new Date(iterationStart[i]);
+				var itEndDate = new Date(iterationEnd[i]);
+                var itStartDateTitle = iterationStartReadable[i];
+				var itEndDateTitle = iterationEndReadable[i];
 			
-                //To show the current sprint find teh sprint date 
+                //To show the current sprint find the sprint date 
                 if (itEndDate >= date && itStartDate <= date) {
                     $("#sprintsTable").append('<tr class="PBI">' +
                         '<td style="display:none">' + iterationID[i] + '</td>' +
                         '<td>' + iterationName[i] + '</td>' +
                         '</tr>');
+					$("h1", ".twoThirdsWidth").append(iterationName[i]);
+					//$("h2", ".twoThirdsWidth").append("Sprint Start:" + itStartDate.toDateString() + "     " + "Sprint End:" + itEndDate.toDateString());
+					$("h2", ".twoThirdsWidth").append("Sprint Start: " + itStartDateTitle);	
+					$("h3", ".twoThirdsWidth").append("Sprint End: " + itEndDateTitle);
                 };
+				
             };
         }
         
@@ -254,8 +267,29 @@ function populateSprints(results) {
 							'</div>'
 						);
 					}
-				};	
+				};
 				
+				//add a border to tasks to visually represent the priority of the tasks
+				//if the task is critcal add a pink border		
+				// if(value.priorityId == 1){
+				// 	var task = $("'#task" + value.taskId + "'");
+				// 	console.log(task);
+				// 	task.css({"border-left":"11px solid #69a6cd"});
+				// }
+				// //if the task has a high priority then add a yellow border
+				// else if(value.priorityId == 2){
+					
+				// }
+				// //if the task has a medium priority then add a blue border
+				// else if(value.priorityId == 3){
+				// 	var task = $("'#task" + value.taskId + "'");
+				// 	console.log(task);
+				// 	task.css({"border-left":"11px solid #69a6cd"});
+				// }
+				// //if the task has a low priority then add a green border
+				// else if(value.priorityId == 4){
+					
+				// }	
 			});
 		} 
 		catch (error) {
@@ -409,6 +443,7 @@ function populateSprints(results) {
 			//Display the results of the query to the right of the results table, this function is called by the success callback of the AJAX request directly above
 			function SprintDetails(results){
 				
+				var sprintDetails = [];
 				var taskDetails = [];
 				var pbisForSprint =[];
 				
@@ -417,11 +452,20 @@ function populateSprints(results) {
 				
 				//result from AJAX request is an array of arrays, this gets each of the individual arrays.
 				$.each(results, function (key, value){
-					taskDetails = value[0];
-					pbisForSprint = value[1];
+					sprintDetails = value[0]
+					taskDetails = value[1];
+					pbisForSprint = value[2];
 				});
 				
 				//For each loop to iterate over each pbi returned and apply a new kanban row to the board.
+				try{
+					$.each(sprintDetails, function (key,value){
+						$("h1", ".twoThirdsWidth").empty().append(value.itName);
+						$("h2", ".twoThirdsWidth").empty().append("Sprint Start: " + value.itStartReadable);	
+						$("h3", ".twoThirdsWidth").empty().append("Sprint End: " + value.itEndReadable);
+					})	
+				}
+				catch(error){}
 				
 				try {
 					$.each(pbisForSprint,function(key,value){

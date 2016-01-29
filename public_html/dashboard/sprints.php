@@ -111,7 +111,7 @@
         
         <!-- A div containing more in depth information about a selected PBI -->
         <div class = "twoThirdsWidth">
-          <h1>PBI Details</h1>
+          <h1></h1><h3></h3><h2></h2>
           
           <div id="board">
               <div id="PbiTitle" class="title">PBI

@@ -14,6 +14,23 @@
 
   // Storing form values into PHP variables
   $SprintID = $_POST["postedSprintID"];
+  
+  $SprintsQuery = "SELECT CONCAT_WS(' - ',e.project_name, b.iteration_name) 'itName', b.iteration_start_date 'itStart', b.iteration_end_date 'itEnd'
+            FROM  iteration b
+            inner join releases a on a.release_id = b.release_id
+            inner join project e on e.project_id = a.project_id 
+            where b.iteration_id = '$SprintID'";
+
+  $SprintResult = $conn->query($SprintsQuery) or exit("Error code ({$conn->errno}): {$conn->error}");
+
+	while ($row = mysqli_fetch_array($SprintResult, MYSQL_ASSOC)) {
+		$SprintsArray[] = array(
+		//$row
+      'itName' => $row['itName'],
+      'itStartReadable' => date('d-m-Y',strtotime($row['itStart'])),
+      'itEndReadable' => date('d-m-Y',strtotime($row['itEnd'])),
+		  );
+	}
 
   $TaskQuery = 
      "SELECT task_id, task_title, task_description, task_estimated_duration,task_hours_done, concat_ws(' ', f.user_forename, f.user_surname) 'assignee', concat('../images/',f.user_forename, f.user_surname,'.jpg') 'photoAddress', a.iteration_id 'itID', a.state_id 'stateID', d.state_name 'stateName', a.pbi_id 'pbiID', b.pbi_title 'pbiTitle', b.pbi_description 'pbiDescription', c.description 'priorityDesc'
@@ -62,7 +79,7 @@
 		  );
 	}
   
-  $AllResults[] = array ($TaskDetails, $PBI);
+  $AllResults[] = array ($SprintsArray,$TaskDetails, $PBI);
   
 	echo json_encode($AllResults);
 

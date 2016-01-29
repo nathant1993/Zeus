@@ -5,6 +5,7 @@
 			overflow: auto;
 			margin-bottom: 20px;
 			border:1px solid #A2A1A0;
+			clear: both;
 		}
 		
 		.title
@@ -74,8 +75,9 @@
 			width:77%;
 			min-height: 50px;
 			height:125px;
+			background-color:#ec704e;
+			color: #fff;	
 			border: 1px solid #A2A1A0;
-			background-color: #fff;
 			margin: 20px auto;
 			padding:0px 5px;
 			font-size: 12px;
@@ -119,7 +121,7 @@
 			max-height:41px;
 			overflow: hidden;
 			font-weight: 500;
-			width:79%;
+			width:76%;
 			line-height: normal;
 			padding-top: 8px;
 			padding-bottom:2px;	
@@ -146,4 +148,16 @@
 
 strong{
 	font-weight: 500;
+}
+
+h2{
+	float:right;
+	
+	background-color: none;
+}
+
+h3{
+	float: right;
+	line-height: 38px;
+	padding-left: 35px;
 }
