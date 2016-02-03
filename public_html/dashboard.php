@@ -63,7 +63,7 @@
             <ul>
               <li>Zeus</li>
               <li>Project Atlas</li>
-              <li>All Projects</li>
+              <li><a href ="../dashboard/projects.php">All Projects</a></li>
             </ul>
           </li>  
           <li>Sprints

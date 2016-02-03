@@ -72,7 +72,7 @@
 			$_SESSION['SESS_LAST_NAME'] = $member['user_surname'];
 			$_SESSION['SESS_EMAIL_ADD'] = $member['user_email'];
 			session_write_close();
-			header("location: ../dashboard.php");
+			header("location: ../dashboard/projects.php");
 			exit();
 		}else {
 			//Login failed

@@ -1,7 +1,47 @@
 <?php
-	//require_once($_SERVER['DOCUMENT_ROOT'] . '/login_system/auth.php' );
-  require_once('../login_system/auth.php');
-  //include("protect.php");
+    //Make sure the user is logged in
+    require_once('../login_system/auth.php');
+    require_once('../php/config.php');
+  
+    //Start the session
+    session_start();
+
+    // //See if there is an id value passed across from the dropdown menu
+    // if(isset($_GET["id"]))
+    // { 
+    //     //Set access as false to begin with
+    //     $access = FALSE;
+        
+    //     $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
+    // // Check connection
+    // if ($conn->connect_error) {
+    //     die("Connection failed: " . $conn->connect_error);
+    // } 
+    
+    // //Query to make sure that the user is member of a project
+    //     $result = $conn->query("select a.project_id AS 'id', a.project_name AS 'name' from project a 
+    //                 inner join users_projects b where b.project_id = a.project_id and user_id =  '".$_SESSION['SESS_MEMBER_ID']."'");
+        
+    //     //Loop to check id values
+    //     while ($row = $result->fetch_assoc()) {
+    //             // unset($id, $name);
+    //         if ($row["id"] === $_GET["id"]) 
+    //         {
+            
+    //         //If the user is a member of a project that they have tried to access then store the id value in the session variable
+    //         $access = TRUE; 
+    //         $_SESSION["SESS_PROJ_ID"]=$_GET["id"];
+                
+    //         }         
+    //     }
+    //     If the user is not a member of a project that they have tried to access then null the session variable and redirect them            
+    //         if ($access == FALSE)
+    //         {
+    //             $_SESSION["SESS_PROJ_ID"]=$NULL;
+    //             header('Location: ../testsite/dashboard.php');
+    //         }
+        
+    //     }
 ?>
 
 <!doctype html>
@@ -25,23 +65,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="../js/scroll.js"></script>
 <script src="../js/ClickOnClass.js"></script>
-<script src="../js/searchTasks.js"></script>
-<script src="../js/createTask.js"></script>
-<script src="../js/deleteTask.js"></script>
-<script src="../js/updateTask.js"></script>
-<script src="../js/typeahead/typeahead.bundle.min.js"></script>
+<script src="../js/displayProjects.js"></script>
 <script src="../js/velocity.js"></script>
 <script src="../js/velocity.ui.js"></script>
 
 <!-- Google Analytics code, need to add this to all pages!-->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-60923636-1', 'auto');
-  ga('send', 'pageview');
-</script>
 </head>
 
 <body>
@@ -93,10 +121,10 @@
     <div id="maincont">
     
       <div id="contentTitle" class="fullwidth clearfix">
-      	<h1>Tasks</h1>
+      	<h1>Projects</h1>
       </div>
       <!-- Bar across the screen that holds four drop down menus to add filters to a search for PBI's-->
-      <div id="searchBar" class="fullwidth clearfix">
+      <!--<div id="searchBar" class="fullwidth clearfix">
         <form id="projectSearch" method="post" action="../js/searchPBIs">
 
             <p>Choose a project:</p>
@@ -108,6 +136,11 @@
             <select id="sprints">
               <option value="Any">Any</option>
             </select> 
+             
+            <p>Choose a priority:</p>
+            <select id="pbiPriority">
+              <option value="Any">Any</option>
+            </select>
             
             <p>Choose a state:</p>
             <select id="pbiState">
@@ -116,7 +149,7 @@
 
           <button type="submit" id="pbiSearch" value="Update" class="formbutton">Update</button>
 		    </form>
-      </div>
+      </div>-->
      
      <div id ="content1" class="fullwidth clearfix">
       	<!--<p> content1 </p>-->
@@ -127,11 +160,10 @@
       	<div class="oneThirdWidth">
           <h1>Results</h1>
           <!--Table of results populated by searching for PBI's based on filters applied from the search bar above-->
-          <div id="pbiSearchResultsDiv">
-            <table id="pBIResultstable" style="width:100%;">
+          <div id="projectResultsDiv">
+            <table id="projectResultstable" style="width:100%;">
               <tr>
-                <th>ID</th>
-                <th>Task Title</th>
+                <th>Project Name</th>
               </tr>
             </table>
           </div>
@@ -139,41 +171,36 @@
         
         <!-- A div containing more in depth information about a selected PBI -->
         <div class = "twoThirdsWidth">
-          <h1>Task Details</h1>
-          <button id ="showCreatePBIForm" class="formbutton">+</button>
+          <h1>User Details
+          </h1>
+          <!--<button id ="showCreatePBIForm" class="formbutton">+</button>
           <form id="pbiDetails" class="pbiDetailsForm" method="post" action="../js/updatePBIs">
-            <label for="taskID">ID</label>
-            <input id = "taskID" readonly required>
+            <label for="pbiID">ID</label>
+            <input id = "pbiID" readonly required>
             
-            <label for="taskTitle">Task Title</label>
-            <input id = "taskTitle" title="task Title">
+            <label for="pbiTitle">Title</label>
+            <input id = "pbiTitle" title="PBI Title">
             
-            <label for="pbiTitle">PBI Title</label>
-            <input id = "pbiTitle" title="PBI Title"> <!-- class="typeahead" type="text">-->
+            <label for="pbiDescription">Description</label>
+            <textarea id = "pbiDescription"></textarea>
             
-            <label for="assignee">Assignee</label>
-            <input id = "assignee" title="assignee"> <!--class="typeahead" type="text">-->
+            <label for="pbiEffort">Effort</label>
+            <input id = "pbiEffort">  
             
-            <label for="taskDescription">Description</label>
-            <textarea id = "taskDescription"></textarea>
-            
-            <label for="estimatedTime">Estimated Time</label>
-            <input id = "estimatedTime">  
-            
-            <label for="timeSpent">Time Spent</label>
-            <input id="timeSpent">
-            </input>
-            
-            <label for="taskDetailState">State</label>
-            <select id = "taskDetailState">
+            <label for="pbiDetailPriority">Priority</label>
+            <select id="pbiDetailPriority">
             </select>
             
-            <label for="taskIteration">Iteration</label>
-            <select id = "taskIteration">
+            <label for="pbiDetailState">State</label>
+            <select id = "pbiDetailState">
             </select>
             
-            <label for="taskProject">Project Name</label>
-            <select id = "taskProject">
+            <label for="pbiIteration">Iteration</label>
+            <select id = "pbiIteration">
+            </select>
+            
+            <label for="pbiProject">Project Name</label>
+            <select id = "pbiProject">
             </select>
             
             <button type="submit" id="createPBI" value="Create" class="formbutton">Create</button>
@@ -183,7 +210,7 @@
           </form>
           
           <div id="UpdateStatus" style="opacity:0;">
-          </div>
+          </div>-->
           
         </div>
               
