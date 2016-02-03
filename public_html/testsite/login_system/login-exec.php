@@ -71,6 +71,7 @@
 			$_SESSION['SESS_FIRST_NAME'] = $member['user_forename'];
 			$_SESSION['SESS_LAST_NAME'] = $member['user_surname'];
 			$_SESSION['SESS_EMAIL_ADD'] = $member['user_email'];
+            $_SESSION['SESS_ROLE_ID'] =   $member['user_role_id'];
 			session_write_close();
 			header("location: ../dashboard.php");
 			exit();
