@@ -7,6 +7,9 @@
   $user_name="wearezeu_phpserv";
   $pwd="0!ZeusPhP!0";
   $dbName="wearezeu_test01";
+  
+  //Start session
+  session_start();
     
   // Create connection
   $conn = new mysqli($host, $user_name, $pwd, $dbName);
@@ -16,10 +19,10 @@
   } 
    
   //Query for return Project names
-  $projectQuery = 
-  "Select project_name
-    from project
-    order by project_name";
+  // $projectQuery = 
+  // "Select project_name
+  //   from project
+  //   order by project_name";
   
   //Query for returning Sprints - commented query limits you to seeing the sprints that you are in or are in the past
   //This was removed so you can use Zeus to plan for the future.     
@@ -27,6 +30,7 @@
   "Select Iteration_name 
     from iteration 
     where Iteration_name <> 'Sprint 0'
+    and project_id = '".$_SESSION['SESS_PROJECT_ID']."'
     Order by Iteration_id DESC  
     ";
   
@@ -39,20 +43,20 @@
   
   //Query to return the PBI titles to power the live search in the creation form 
   $pbiTitleQuery =
-   "SELECT pbi_title FROM `backlog_items` where project_id = 1";
+   "SELECT pbi_title FROM `backlog_items` where project_id = '".$_SESSION['SESS_PROJECT_ID']."'";
    
   //Query to return the people tasks can be assigned to
   $assigneeQuery =
-   "SELECT CONCAT_WS(' ', user_forename, user_surname) as assignee_name FROM `test_user`"; 
+   "SELECT CONCAT_WS(' ', user_forename, user_surname) as assignee_name FROM `users2` where user_id in (select user_id from users_projects where users_projects.project_id = '".$_SESSION['SESS_PROJECT_ID']."')"; 
   
   //Run the project query and iterate over each row, adding it to an array
-  $projectResult = $conn->query($projectQuery) or exit("Error code ({$conn->errno}): {$conn->error}");
+  //$projectResult = $conn->query($projectQuery) or exit("Error code ({$conn->errno}): {$conn->error}");
 
-	while ($row = mysqli_fetch_array($projectResult, MYSQL_ASSOC)) {
-		$Projects[] = array(
-			'projectName' => $row['project_name']
-		  );
-	}
+	// while ($row = mysqli_fetch_array($projectResult, MYSQL_ASSOC)) {
+	// 	$Projects[] = array(
+	// 		'projectName' => $row['project_name']
+	// 	  );
+	// }
   
   //Run the sprint query and iterate over each row, adding it to an array
   $sprintResult = $conn->query($sprintQuery) or exit("Error code ({$conn->errno}): {$conn->error}");
@@ -89,7 +93,7 @@
 	}
 
   //Combine all of the arrays generated above into one array to be passed to the JavaScript
-  $AllResults[] = array($Projects, $Sprints, $State, $pbiTitle, $assignee);
+  $AllResults[] = array( $Sprints, $State, $pbiTitle, $assignee);
 
 	echo json_encode($AllResults);
 

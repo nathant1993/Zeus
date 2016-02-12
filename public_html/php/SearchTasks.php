@@ -2,6 +2,9 @@
   
   //PHP file to search for PBIs based on values in drop down filter boxes
   
+  //Start session
+  session_start();
+  
   // Connecting to the MySQL server
   $host="10.168.1.92";
   $user_name="wearezeu_phpserv";
@@ -16,18 +19,18 @@
   } 
 
   // Storing form values into PHP variables
-  $project = $_POST["postedProject"];
+  //$project = $_POST["postedProject"];
   $sprint = $_POST["postedSprint"];
   $state = $_POST["postedState"];
   
   
   //Check if the incoming variables are equal to 'Any' or are empty and form their respective sql where clauses appropriately
-  if ($project == 'Any' || empty($project)){
-    $projectWhere =  " like '%'";
-  }
-  else{
-    $projectWhere = " = (select project_id from project where project_name = '$project')";
-  }
+  // if ($project == 'Any' || empty($project)){
+  //   $projectWhere =  " like '%'";
+  // }
+  // else{
+  //   $projectWhere = " = (select project_id from project where project_name = '$project')";
+  // }
   
    if ($sprint == 'Any' || empty($sprint)){
      $sprintWhere = " like '%'";
@@ -48,7 +51,7 @@
      "Select task_id, 
              task_title 
        from task 
-       where project_id".$projectWhere."
+       where project_id = '".$_SESSION['SESS_PROJECT_ID']."'
        And iteration_id".$sprintWhere."
        And state_id".$stateWhere;    
     

@@ -23,7 +23,7 @@
   $pbiPriority = $_POST["postedPriority"];
   $pbiState = $_POST["postedState"];
   $pbiIteration = $_POST["postedIteration"];
-  $pbiProject = $_POST["postedProject"];
+  //$pbiProject = $_POST["postedProject"];
   
   //Check for a Null pbiID coming from the front end and throw and error 
   if($pbiId == null || $pbiId == ""){ 
@@ -38,8 +38,7 @@
       pbi_effort = $pbiEffort,
       priority_id = (select priority_id from priority where description = '$pbiPriority'),
       state_id = (select state_id from states where state_name = '$pbiState' and state_type = 'PBI'),
-      iteration_id = (select iteration_id from iteration where iteration_name = '$pbiIteration'),
-      project_id = (select project_id from project where project_name = '$pbiProject')
+      iteration_id = (select iteration_id from iteration where iteration_name = '$pbiIteration')
       where pbi_id = '$pbiId'";
     
     //Run the query and provide feedback on how the update went

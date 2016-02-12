@@ -32,7 +32,7 @@
 		document.getElementById("pbiDetailPriority").value = "";
 		document.getElementById("pbiDetailState").value = "";
 		document.getElementById("pbiIteration").value = "";
-		document.getElementById("pbiProject").value = "";
+		//document.getElementById("pbiProject").value = "";
 		
 	 });
 	
@@ -46,7 +46,7 @@
 		var updatePriority = document.getElementById("pbiDetailPriority").value;
 		var updateState = document.getElementById("pbiDetailState").value;
 		var updateIteration = document.getElementById("pbiIteration").value;
-		var updateProject = document.getElementById("pbiProject").value;
+		//var updateProject = document.getElementById("pbiProject").value;
 		var status = document.getElementById("UpdateStatus");
 
 		//Check if the Title field is empty before submitting - if it is then do not submit the data
@@ -84,7 +84,7 @@
 				postedPriority:updatePriority,
 				postedState:updateState,
 				postedIteration:updateIteration,
-				postedProject:updateProject
+				//postedProject:updateProject
 			},
 			success: function(results) {
 				//style and add content to a status div that pops up to provide feedback on how the update went

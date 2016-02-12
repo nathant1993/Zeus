@@ -25,7 +25,7 @@
   $timeSpent = $_POST["postedTimeSpent"];
   $pbiState = $_POST["postedState"];
   $pbiIteration = $_POST["postedIteration"];
-  $pbiProject = $_POST["postedProject"];
+  //$pbiProject = $_POST["postedProject"];
   
   //Check for a Null pbiID coming from the front end and throw and error 
   if($taskTitle == null || $taskTitle == ""){ 
@@ -42,8 +42,7 @@
       assignee = (select user_id from users where concat_ws(' ', user_forename, user_surname) = '$assignee'),
       state_id = (select state_id from states where state_name = '$pbiState' and state_type = 'Tasks'),
       iteration_id = (select iteration_id from iteration where iteration_name = '$pbiIteration'),
-      pbi_id = (select pbi_id from backlog_items where pbi_title = '$pbiTitle'),
-      project_id = (select project_id from project where project_name = '$pbiProject')
+      pbi_id = (select pbi_id from backlog_items where pbi_title = '$pbiTitle')
       where task_id = '$taskId'";
     
     //Run the query and provide feedback on how the update went
