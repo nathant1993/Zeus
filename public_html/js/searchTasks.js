@@ -36,10 +36,10 @@ function populateDropDowns(results) {
 	
 	// Variables 
     var taskIDFromURL = getUrlParameter("taskId");
-	var project = $("#projects");
+	//var project = $("#projects");
 	var sprint = $("#sprints");
 	var state = $("#pbiState");
-	var phpProjectValues = [];
+	//var phpProjectValues = [];
 	var phpSprintValues = [];
 	var phpStateValues = [];
 	var phpPbiTitles = [];
@@ -50,25 +50,24 @@ function populateDropDowns(results) {
 	//The JSON array returned by the php file is an array of arrays this each loop goes through each of
 	//the child arrays and sets the equal to a variable.
 	$.each(results, function (key, value){
-		phpProjectValues = value[0];
-		phpSprintValues = value[1];
-		phpStateValues = value[2];
-		phpPbiTitles = value[3];
-		phpAssignees = value[4];
+		phpSprintValues = value[0];
+		phpStateValues = value[1];
+		phpPbiTitles = value[2];
+		phpAssignees = value[3];
 	});
 	
 	//Get the values out of the child array variables and append the values to the search filter boxes
 	//And to the Pbi detail form to aid user choice when creating a PBI through the Zeus UI
 		
 	//Populate the first child variable with project values
-	$.each(phpProjectValues,function(key,value){
-		project.append('<option value="'+ value.projectName +'">' + value.projectName +'</option>')
-	})
+	// $.each(phpProjectValues,function(key,value){
+	// 	project.append('<option value="'+ value.projectName +'">' + value.projectName +'</option>')
+	// })
 	
-	//Populate the PBI form project drop down with project values
-	$.each(phpProjectValues,function(key,value){
-		$("#taskProject").append('<option value="'+ value.projectName +'">' + value.projectName +'</option>')
-	})
+	// //Populate the PBI form project drop down with project values
+	// $.each(phpProjectValues,function(key,value){
+	// 	$("#taskProject").append('<option value="'+ value.projectName +'">' + value.projectName +'</option>')
+	// })
 	
 	//Populate the second child variable with Sprint name values
 	$.each(phpSprintValues,function(key,value){
@@ -137,7 +136,7 @@ function populateDropDowns(results) {
 	});
 	
     if (taskIDFromURL != null){
-        //Now use the ID found above in where clause of a SQL query to return back more specific information about that PBI
+        //Now use the ID found above in where clause of a SQL query to return back more specific information about that Task
         $.ajax({
         type: "POST",
         url: "../php/TaskDetails.php",
@@ -163,7 +162,7 @@ function populateDropDowns(results) {
 		type: "POST",
 		url: "../php/SearchTasks.php",
 		data: {
-			postedProject:project.val(),
+			//postedProject:project.val(),
 			postedSprint: sprint.val(),
 			postedState:state.val()
 		},
@@ -254,7 +253,7 @@ function populateDropDowns(results) {
         var timeSpentField = document.getElementById("timeSpent");
         var taskStateField = document.getElementById("taskDetailState");
         var taskIterationField = document.getElementById("taskIteration");
-        var taskProjectField = document.getElementById("taskProject");
+        //var taskProjectField = document.getElementById("taskProject");
         
         //Show the pbiDetails form and show the update and delete button
         $('#pbiDetails').velocity({opacity:1}, {duration:200});
@@ -281,7 +280,7 @@ function populateDropDowns(results) {
             timeSpentField.value = value.taskHoursDone;
             taskStateField.value = value.state;
             taskIterationField.value = value.itName;
-            taskProjectField.value = value.project;
+            //taskProjectField.value = value.project;
         })
     };
 };

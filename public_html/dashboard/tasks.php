@@ -99,10 +99,10 @@
       <div id="searchBar" class="fullwidth clearfix">
         <form id="projectSearch" method="post" action="../js/searchPBIs">
 
-            <p>Choose a project:</p>
+            <!--<p>Choose a project:</p>
             <select id="projects">
               <option value="Any">Any</option>
-            </select>
+            </select>-->
             
             <p>Choose a sprint:</p>
             <select id="sprints">
@@ -172,9 +172,9 @@
             <select id = "taskIteration">
             </select>
             
-            <label for="taskProject">Project Name</label>
+            <!--<label for="taskProject">Project Name</label>
             <select id = "taskProject">
-            </select>
+            </select>-->
             
             <button type="submit" id="createPBI" value="Create" class="formbutton">Create</button>
             <button type="submit" id="pbiDetailsButton" value="Update" class="formbutton">Update</button>  

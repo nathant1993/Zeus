@@ -20,7 +20,7 @@
 		var updateTimeSpent = document.getElementById("timeSpent").value;
 		var updateState = document.getElementById("taskDetailState").value;
 		var updateIteration = document.getElementById("taskIteration").value;
-		var updateProject = document.getElementById("taskProject").value;
+		//var updateProject = document.getElementById("taskProject").value;
 		
 	  //Check if the ID field is empty before submitting - if it is then do not submit the data
 	  //And provide a suitable error message
@@ -80,7 +80,7 @@
 						postedTimeSpent:updateTimeSpent,
 						postedState:updateState,
 						postedIteration:updateIteration,
-						postedProject:updateProject
+						//postedProject:updateProject
 					},
 					success: function(results) {
 						console.log(results);

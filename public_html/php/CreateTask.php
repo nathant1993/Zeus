@@ -7,6 +7,9 @@
   $user_name="wearezeu_phpserv";
   $pwd="0!ZeusPhP!0";
   $dbName="wearezeu_test01";
+  
+  //Start session
+  session_start();
     
   // Create connection
   $conn = new mysqli($host, $user_name, $pwd, $dbName);
@@ -25,8 +28,9 @@
   $timeSpent = $_POST["postedTimeSpent"];
   $pbiState = $_POST["postedState"];
   $pbiIteration = $_POST["postedIteration"];
-  $pbiProject = $_POST["postedProject"];
-  
+  //$pbiProject = $_POST["postedProject"];
+  $pbiProject = $_SESSION["SESS_PROJECT_ID"];
+   
   //Check for a Null pbiID coming from the front end and throw and error 
   if($taskTitle == null || $taskTitle == ""){ 
     exit("Error: PBI Title is null or empty");
@@ -43,13 +47,11 @@
       '$estTime',
       '$timeSpent', 
       (select state_id from states where state_name = '$pbiState' and state_type = 'Tasks'),
-      (select iteration_id from iteration where iteration_name = '$pbiIteration'),
-      (select project_id from project where project_name = '$pbiProject'),
+      (select iteration_id from iteration where iteration_name = '$pbiIteration' and project_id = '$pbiProject'),
+      '$pbiProject',
       (select pbi_id from backlog_items where pbi_title = '$pbiTitle'),
       (select user_id from users where concat_ws(' ', user_forename, user_surname) = '$assignee')
       )";
-    
-    //Insert into backlog_items (pbi_title, pbi_description, pbi_effort, priority_id, state_id, iteration_id, project_id) values ('Test', 'Testing PHP', '10', (select priority_id from priority where description = 'High'), (select state_id from states where state_name = 'New' and state_type = 'PBI'),// (select iteration_id from iteration where iteration_name = 'Sprint 12'), (select project_id from project where project_name = 'Zeus'))
     
     //Run the query and provide feedback on how the update went
     if ($conn->query($query) === TRUE) {

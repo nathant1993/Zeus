@@ -21,7 +21,7 @@
   $SprintsQuery = "SELECT CONCAT_WS(' - ',e.project_name, b.iteration_name) 'itName', b.iteration_start_date 'itStart', b.iteration_end_date 'itEnd', b.iteration_ID 'itID'
             FROM  iteration b
             inner join releases a on a.release_id = b.release_id
-            inner join project e on e.project_id = a.project_id 
+            inner join project e on e.project_id = b.project_id 
             where b.project_id = '".$_SESSION['SESS_PROJECT_ID']."'
             ORDER BY b.iteration_ID";
 

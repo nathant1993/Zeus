@@ -4,6 +4,9 @@
   $user_name="wearezeu_phpserv";
   $pwd="0!ZeusPhP!0";
   $dbName="wearezeu_test01";
+  
+  //Start session
+  session_start();
     
   // Create connection
   $conn = new mysqli($host, $user_name, $pwd, $dbName);
@@ -18,7 +21,7 @@
   $SprintsQuery = "SELECT CONCAT_WS(' - ',e.project_name, b.iteration_name) 'itName', b.iteration_start_date 'itStart', b.iteration_end_date 'itEnd'
             FROM  iteration b
             inner join releases a on a.release_id = b.release_id
-            inner join project e on e.project_id = a.project_id 
+            inner join project e on e.project_id = b.project_id 
             where b.iteration_id = '$SprintID'";
 
   $SprintResult = $conn->query($SprintsQuery) or exit("Error code ({$conn->errno}): {$conn->error}");

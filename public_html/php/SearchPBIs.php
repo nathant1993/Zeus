@@ -7,6 +7,9 @@
   $user_name="wearezeu_phpserv";
   $pwd="0!ZeusPhP!0";
   $dbName="wearezeu_test01";
+  
+  //Start session
+  session_start();
     
   // Create connection
   $conn = new mysqli($host, $user_name, $pwd, $dbName);
@@ -16,19 +19,19 @@
   } 
 
   // Storing form values into PHP variables
-  $project = $_POST["postedProject"];
+  //$project = $_POST["postedProject"];
   $sprint = $_POST["postedSprint"];
   $priority = $_POST["postedPriority"];
   $state = $_POST["postedState"];
   
   
   //Check if the incoming variables are equal to 'Any' or are empty and form their respective sql where clauses appropriately
-  if ($project == 'Any' || empty($project)){
-    $projectWhere =  " like '%'";
-  }
-  else{
-    $projectWhere = " = (select project_id from project where project_name = '$project')";
-  }
+  // if ($project == 'Any' || empty($project)){
+  //   $projectWhere =  " like '%'";
+  // }
+  // else{
+  //   $projectWhere = " = (select project_id from project where project_name = '$project')";
+  // }
   
    if ($sprint == 'Any' || empty($sprint)){
      $sprintWhere = " like '%'";
@@ -56,7 +59,7 @@
      "Select pbi_id, 
              pbi_title 
        from backlog_items 
-       where project_id".$projectWhere."
+       where project_id = '".$_SESSION['SESS_PROJECT_ID']."'
        And iteration_id".$sprintWhere."
        And priority_id".$priorityWhere."
        And state_id".$stateWhere;    

@@ -14,15 +14,13 @@
 
   // Storing form values into PHP variables
   $PBIID = $_POST["postedPBIID"];
-  //$PBIID = (int) '1';
-  //echo $PBIID;
+
   $query = 
-     "SELECT pbi_id, pbi_title, pbi_description, pbi_effort, c.description as 'priority', d.state_name 'state', b.iteration_name 'itName', e.project_name 'projName'
+     "SELECT pbi_id, pbi_title, pbi_description, pbi_effort, c.description as 'priority', d.state_name 'state', b.iteration_name 'itName'
             FROM  backlog_items a
             right outer join iteration b on b.iteration_ID = a.iteration_ID
             inner join priority c on c.priority_id = a.priority_id
             inner join states d on d.state_id = a.state_id
-            inner join project e on e.project_id = a.project_id
             where  pbi_id = '$PBIID'";     
     
   // if ($conn->query($query) === TRUE) {
@@ -46,7 +44,7 @@
       'priority'=> $row['priority'],
       'state' => $row['state'],
       'itName' => $row['itName'],
-      'project' => $row['projName'],
+      //'project' => $row['projName'],
 		  );
 	}
 
