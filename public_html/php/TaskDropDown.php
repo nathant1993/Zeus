@@ -3,6 +3,7 @@
   //PHP file to find the values needed to populate the drop down filter boxes
   
   // Connecting to the MySQL server
+<<<<<<< Updated upstream
   $host="10.168.1.92";
   $user_name="wearezeu_phpserv";
   $pwd="0!ZeusPhP!0";
@@ -10,6 +11,14 @@
   
   //Start session
   session_start();
+=======
+//   $host="10.168.1.92";
+//   $user_name="wearezeu_phpserv";
+//   $pwd="0!ZeusPhP!0";
+//   $dbName="wearezeu_test01";
+
+  include('DatabaseCon.php');
+>>>>>>> Stashed changes
     
   // Create connection
   $conn = new mysqli($host, $user_name, $pwd, $dbName);
