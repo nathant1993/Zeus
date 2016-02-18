@@ -253,10 +253,11 @@ ul{
 
 #rightNav ul li ul {
   padding: 0;
+  border: 1px solid #bbb;
   position: absolute;
-  top: 55px;
+  top: 50px;
   left: 0;
-  width: 175px;
+  width: 176px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -270,6 +271,7 @@ ul{
   /*Important to stop the browser redrawing stuff it doesnt need to*/
   -webkit-transform: translate3d(0,0,0); 
 }
+
 #rightNav ul li ul li { 
   background: #eee; 
   display: block; 
@@ -286,12 +288,15 @@ ul{
   transition: 0.2s;
 }
 #rightNav ul li ul li:hover { 
-	border-bottom: 1px solid #c5684f; 
+	background-color: #ccc;; 
 }
 
 #rightNav ul li:hover ul {
   opacity: 1;
   visibility: visible;
+  -webkit-box-shadow: 0px 5px 23px 0px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 5px 23px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 5px 23px 0px rgba(0,0,0,0.2);
 }
 		
 #maincont{
