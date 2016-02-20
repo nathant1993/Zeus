@@ -1,40 +1,44 @@
 <?php
 	ob_start();
 	
+    include('DatabaseCon.php');
 	//Start the session
 	session_start();
 	
 	//Obtain the token from the URL
 	$token=$_GET['token'];
 	
-	//The connection settings
-	include("settings.php");
-	
-	//Connect
-	connect();
+	// Create connection
+    $conn = new mysqli($host, $user_name, $pwd, $dbName);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } 
 	
 	//Check that the token has not been used already.
 	if(!isset($_POST['password'])){
 		$q="SELECT email FROM tokens WHERE token='".$token."' AND used=0";
-		$r=mysql_query($q);
+		$r=mysqli_query($conn, $q);
 		
-		while($row=mysql_fetch_array($r)){
+		while($row=mysqli_fetch_array($r, MYSQL_ASSOC)){
 			$email=$row['email'];
 			}
 			If ($email!=''){
 				$_SESSION['email']=$email;
 			}
 	//If token has been used alreasy then display the following message		
-	else die("Invalid link or Password already changed");}
-
-	//Store the password and email address in the following variables
+	else die("Invalid link or Password already changed");
+    }
+    
+ 	//Store the password and email address in the following variables
 	$pass=$_POST['password'];
 	$email=$_SESSION['email'];
-	// Create a unique salt. This will never leave PHP unencrypted.
-		$salt = "498#2D83B631%3800EBD!801600D*7E3CC13";
+	
+    // Create a unique salt. This will never leave PHP unencrypted.
+    $salt = "498#2D83B631%3800EBD!801600D*7E3CC13";
 
-		// Create the unique user password reset key
-		$encrypt_pass = hash('sha512', $salt.$pass);
+    // Create the unique user password reset key
+    $encrypt_pass = hash('sha512', $salt.$pass);
 	
 	if(!isset($pass)){ 
 	
@@ -141,10 +145,11 @@
 		//If passwords match the criteria then update the password in the database for the related email address
 		{
 			$q="UPDATE users2 SET user_password='$encrypt_pass' WHERE user_email='".$email."'";
-			$r=mysql_query($q);
+			$r=mysqli_query($conn, $q);
 			
 			//When password is updated successfully then set the token that was used to 1 so that it cannot be used again
-			if($r)mysql_query("UPDATE tokens SET used=1 WHERE token='".$token."'"); 
+			$q2 = "UPDATE tokens SET used=1 WHERE token='".$token."'";
+            if($r)mysqli_query($conn, $q2);
 			
 			//After password is updated direct the user to the password reset success page
 			header('Location: ../login_system/password-reset-success.php');
@@ -159,5 +164,6 @@
 		// 	<h1>Passwords do not match<h1>');
 	}
 	
+    $conn->close();
 	
 ?>

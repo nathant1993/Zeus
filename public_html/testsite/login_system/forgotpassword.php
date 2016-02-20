@@ -1,6 +1,6 @@
 <?php
 
-//Display the form for entering user's email address
+//Display the form for entering user's email address if there is no email address
     if(!isset($_GET['email'])){
     echo
         '<!DOCTYPE html>
@@ -62,14 +62,19 @@
     $email=$_GET['email'];
     
     //Include connection details
-    include("settings.php");
+    include('DatabaseCon.php');
     
-    connect();
+    // Create connection
+    $conn = new mysqli($host, $user_name, $pwd, $dbName);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } 
     
     //Query to check whether the user exists within the database.
     $q="SELECT user_email FROM users2 WHERE user_email='".$email."'";
-    $r=mysql_query($q);
-    $n=mysql_num_rows($r);
+    $r=mysqli_query($conn, $q);
+    $n=mysqli_num_rows($r);
     
     if($n==0){
         echo "If you're registered we will send you an email with instructions on how to reset your password."; 
@@ -94,7 +99,7 @@
     
     //Insert the token and the email into a database table
     $q="INSERT INTO tokens (token,email) VALUES ('".$token."','".$email."')";
-    mysql_query($q);
+    mysqli_query($conn, $q);
     
     
     
