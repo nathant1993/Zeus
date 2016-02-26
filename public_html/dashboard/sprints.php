@@ -26,6 +26,7 @@
 <script src="../js/scroll.js"></script>
 <script src="../js/ClickOnClass.js"></script>
 <script src="../js/displaySprints.js"></script>
+<script src="../js/createSprint.js"></script>
 <script src="../js/KanBan.js"></script>
 <script src="../js/velocity.js"></script>
 <script src="../js/velocity.ui.js"></script>
@@ -138,6 +139,34 @@
 
     <!-- Popup Div Starts Here -->
       <div id="popupContact">
+        
+        <!--<div id="feedback"> 
+          <img id="msgImg" src="../images/tick.svg" /> <h1 id="msgH1">Sprint was successfully created!</h1> <br> <a href="#" id="msgClose">OK</a>
+        </div>-->
+        
+        <div id="popupFormContainer">
+          <h1>Create Sprint</h1>
+          <form id="SprintCreateForm" class="pbiDetailsForm" method="post" action="../js/updatePBIs">
+            <div class="createSprintForm">
+              <label for="sprintName">Title</label>
+              <input id = "sprintName" title="sprintName">
+            </div>
+              
+            <div class="createSprintForm">
+              <label for="startDate">Start Date</label>
+              <input id = "startDate" title="startDate" type="date">
+            </div>
+              
+            <div class="createSprintForm">
+              <label for="endDate">End Date</label>
+              <input id = "endDate" title="endDate" type="date">
+            </div>
+          </form>
+          
+          <div class="createSprintForm">
+            <a href="#" id="confirmButton">Yes</a> <a href="#" id="msgClose">No</a>
+          </div>
+        </div>   
       </div>
     <!-- Popup Div Ends Here -->
     

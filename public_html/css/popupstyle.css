@@ -131,16 +131,17 @@ span {
     font-weight:700
 }
 
-/*button {
-    width:10%;
-    height:45px;
-    border-radius:3px;
-    background-color:#cd853f;
-    color:#fff;
-    font-family:"Source Sans Pro", Arial, Helvetica, sans-serif;
-    font-size:18px;
-    cursor:pointer
-}*/
+.createSprintForm{
+    clear:both;
+    float:left;
+    position:relative;
+}
+
+.createSprintForm input{
+    position: absolute;
+    top:0px;
+    left:150px;
+}
 
 /* ==================================================
    Responsive Media Queries - Tablets
