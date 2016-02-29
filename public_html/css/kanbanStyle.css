@@ -1,0 +1,163 @@
+#board
+		{
+			min-height: 100px;
+			max-height: 71vh;
+			overflow: auto;
+			margin-bottom: 20px;
+			border:1px solid #A2A1A0;
+			clear: both;
+		}
+		
+		.title
+		{
+			background-color:#ec704e;	
+			text-align:center;
+			color:white;
+			border-right: 1px solid #fff;
+			border-bottom: 1px solid #A2A1A0;
+			display: inline-block;
+			width:25%;
+			height: 60px;
+			line-height: 60px;
+		}
+		
+		#DoneTitle{
+			border-right: none;
+		}
+		
+		.todo, .inprogress, .done, .kanbanColumn
+		{
+			background-color: #eee;
+			display: inline-block;
+			width: 25%;
+			/*min-height:495px;*/
+			border-right: 1px solid #A2A1A0;
+			border-bottom: 1px solid #A2A1A0;
+			float:left;		
+		}
+		
+		#done{
+			border-right: none;
+		}
+		
+		.KanbanRow{
+			display:flex;
+		}
+		
+		.Task{
+			min-width: 50px;
+			width:77%;
+			min-height: 50px;
+			height:125px;
+			border: 1px solid #A2A1A0;
+			background-color: #fff;
+			margin: 20px auto;
+			padding:0px 5px;
+			font-size: 12px;
+            cursor: pointer;
+			position:relative;
+		}
+		
+		.Task p{
+			margin: 0px;
+			line-height: 25px;
+		}
+        
+        .Task img{
+			position:absolute;
+			top:10px;
+			right:10px;
+			height:30px;
+		} 
+		
+        .PBIResult{
+			min-width: 50px;
+			width:77%;
+			min-height: 50px;
+			height:125px;
+			background-color:#ec704e;
+			color: #fff;	
+			border: 1px solid #A2A1A0;
+			margin: 20px auto;
+			padding:0px 5px;
+			font-size: 12px;
+            cursor: pointer;
+		}
+        
+        .PBIResult p{
+			margin: 0px;
+			line-height: 25px;
+		}
+		
+		.lock{
+			background-color:#ec704e;
+		}
+		/**[draggable=true]
+		{
+			min-width: 50px;
+			width:90%;
+			min-height: 50px;
+			border: 1px solid #A2A1A0;
+			background-color: #fff;
+			margin: 20px auto;
+			font-size: 12px;
+		}*/
+		
+		.pbiTitle
+		{
+			font-size:14px;
+			max-height:75px;
+			overflow: hidden;
+			font-weight: 500;
+			width:79%;
+			line-height: normal;
+			padding-top: 8px;
+			padding-bottom:2px;	
+		}
+		
+		.cardTitle
+		{
+			font-size:14px;
+			max-height:41px;
+			overflow: hidden;
+			font-weight: 500;
+			width:76%;
+			line-height: normal;
+			padding-top: 8px;
+			padding-bottom:2px;	
+		}
+
+#sprintsDiv{
+	margin-top: 17px;
+	/*max-height: 760px;*/
+	overflow: auto;
+}
+	#sprintsDiv th{
+		font-size: 100%;
+		padding:2px 5px;
+		border: 1px solid #A2A1A0;
+		height: 60px;
+		line-height: 60px;
+		padding: 0px 0px  0px 20px;
+		text-align: center;
+	}
+
+#sprintsTable{
+	border: 1px solid #A2A1A0;
+}
+
+strong{
+	font-weight: 500;
+}
+
+h2{
+	float:right;
+	
+	background-color: none;
+}
+
+h3{
+	float: right;
+	line-height: 38px;
+	padding-left: 35px;
+}

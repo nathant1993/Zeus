@@ -1,0 +1,70 @@
+#board
+		{
+			min-height:100px;
+			max-height: 495px;
+			overflow: auto;
+			margin-bottom: 20px;
+			border:1px solid #A2A1A0;
+		}
+		
+		.title
+		{
+			background-color:#ec704e;	
+			text-align:center;
+			color:white;
+			padding: 2px 0px;
+			border-right: 1px solid #fff;
+			border-bottom: 1px solid #A2A1A0;
+			display: inline-block;
+			width:25%;
+		}
+		
+		#DoneTitle{
+			border-right: none;
+		}
+		
+		/*#todo, #inprogress, #done*/
+		.kanbanColumn
+		{
+			background-color: #eee;
+			display: inline-block;
+			width: 25%;
+			/*min-height:495px;*/
+			border-right: 1px solid #A2A1A0;
+			border-bottom: 1px solid #A2A1A0;
+			float:left;		
+		}
+		
+		#done{
+			border-right: none;
+		}
+		
+		.KanbanRow{
+			display:flex;
+		}
+		
+		.Task{
+			min-width: 50px;
+			width:90%;
+			min-height: 50px;
+			border: 1px solid #A2A1A0;
+			background-color: #fff;
+			margin: 20px auto;
+			font-size: 12px;
+		}
+		
+		/**[draggable=true]
+		{
+			min-width: 50px;
+			width:90%;
+			min-height: 50px;
+			border: 1px solid #A2A1A0;
+			background-color: #fff;
+			margin: 20px auto;
+			font-size: 12px;
+		}*/
+		
+		.cardTitle
+		{
+			font-size:14px;	
+		}
