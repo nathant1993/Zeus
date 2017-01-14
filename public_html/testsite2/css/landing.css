@@ -1,0 +1,993 @@
+/* ==================================================
+   Icon Fonts
+================================================== */
+
+@import url("fonts/fontawesome/font-awesome.css");
+
+html, body{
+  height:100%;
+  font-family: "Roboto", sans-serif;
+}
+
+body{
+    position: relative;
+}
+
+header {
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: transparent;
+    -webkit-transition: height 0.3s;
+    -moz-transition: height 0.3s;
+    -ms-transition: height 0.3s;
+    -o-transition: height 0.3s;
+    transition: height 0.3s;
+}
+header h1#logo {
+    display: inline-block;
+    height: 100px;
+    line-height: 100px;
+    float: left;
+    font-family: "Roboto", sans-serif;
+    font-size: 50px;
+    font-weight: 300;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+header h1 a{
+    color:#fff;
+}
+
+header nav {
+    display: inline-block;
+    float: right;
+    font-family: "Roboto", sans-serif;
+}
+header nav a {
+    line-height: 100px;
+    margin-left: 20px;
+    color: white;
+    font-weight: 300;
+    font-size: 18px;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+}
+header nav a:hover {
+    color: #c5684f;
+}
+
+
+header.smaller {
+    height: 50px;
+    background-color: #ec704e;
+    -webkit-box-shadow: 0px 5px 23px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 5px 23px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 23px 0px rgba(0,0,0,0.2);
+}
+header.smaller h1#logo {
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 30px;
+}
+
+header.smaller h1 a{
+    color:white;
+}
+
+header.smaller nav a {
+    line-height: 50px;
+    color: white;
+}
+header.smaller nav a:hover {
+    color: #505050;
+}
+
+
+@media all and (max-width: 660px) {
+    header h1#logo {
+        display: block;
+        float: none;
+        height: 100px;
+        line-height: 100px;
+        text-align: left;
+    }
+    header nav {
+        display: block;
+        float: none;
+        height: 50px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    header nav a {
+        line-height: 50px;
+        margin: 0 10px;
+    }
+    header.smaller {
+        height: 50px;
+    }
+    
+    header.smaller nav {
+        height: 35px;
+    }
+    header.smaller nav a {
+        line-height: 35px;
+    }
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline; }
+
+body {
+  line-height: 1;
+   }
+
+h1, h2, h3, h4, h5, h6 {
+  clear: both;
+  font-weight: normal; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+del {
+  text-decoration: line-through; }
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+a img {
+  border: none; }
+
+/* =Global
+-------------------------------------------------------------- */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body {
+  background-color: white;
+  color: #505050;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.8; }
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+  font-weight: 300; }
+
+a {
+  text-decoration: none;
+  color: #3cb5f9; }
+
+a:hover {
+  color: #0793e2; }
+
+.container {
+  max-width: 980px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 30px; }
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  content: "";
+  clear: both;
+  height: 0; }
+
+.underline{
+  border-bottom: 2px solid #c5684f;
+  padding-bottom: 3px;
+}
+
+#hero{
+    background: url("../images/blue-sky1.jpg") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#hero .container {
+  display: table;
+  height: 100%;
+  max-width:980px;
+  width: 100%;
+  padding: 10px;
+}
+
+#hero .container .copy {
+  display: table-cell;
+  vertical-align: middle;
+ 
+}
+#hero .container h1 {
+  text-align: center;
+  line-height:1.25; 
+  font-size: 3em;
+  font-weight: 500;
+  color: white;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.40);
+  margin-bottom: 30px;
+  font-family: "Roboto", sans-serif;
+}
+#hero .container h2 {
+  text-align: center;
+  line-height:1.25; 
+  font-size: 2em;
+  font-weight: 300;
+  color: white;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.40);
+  margin-bottom: 50px;
+}
+
+#hero .container a {
+  width:150px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  padding: 5px;
+  background-color: #ec704e;
+  border-bottom:1px solid #c5684f; 
+  color: white;
+  font-weight: 400;
+  font-size: 1.2em;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  /*border: none;*/
+}
+#hero .container a:hover {
+  background-color: #c5684f;
+}
+#hero .container img {
+  max-width:150px;
+  padding-bottom: 20px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+#why{
+  height:860px;
+  width: 100%;
+  background-color: white;
+}
+.content{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  max-width:980px;
+  height: 100%;
+}
+
+#why .container h2 {
+  text-align: center;
+  line-height:1.25; 
+  font-size: 1.5em;
+  font-weight: 300;
+  color: #505050;
+  padding-top: 80px;
+  padding-bottom: 30px;
+  font-family: "Roboto", sans-serif;
+}
+#why .container h1 {
+  margin: 0 auto;
+  font-weight: 500;
+  text-align: center;
+  padding-bottom: 30px;
+  font-family: "Roboto", sans-serif;
+  
+  
+}
+#why .container h3 {
+   margin: 0 auto;
+  text-align: center;
+  padding-bottom: 30px;
+  line-height: 1.25;
+  font-family: "Roboto", sans-serif;
+}
+
+img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#cta-1{
+    background: url("../images/startup.jpg") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 200px;
+    max-width: 100%;
+    
+}
+
+
+#cta-1 .container h2 {
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 84px;
+  color: white;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  width:60%;
+  float: left;
+}
+
+#cta-1 .container a {
+  width:150px;
+  text-align: center;
+  display: block;
+  float: right;
+  margin-right: 130px;
+  margin-top: 74px;
+  padding: 5px;
+  background-color: #ec704e;
+  border-bottom:1px solid #c5684f; 
+  color: white;
+  font-weight: 400;
+  font-size: 1.2em;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+#cta-1 .container a:hover {
+  background-color: #c5684f;
+}
+#features{
+  height: 1080px;
+  max-width: 100%;
+  background-color: white;
+}
+#features .container h2 {
+  margin: 0 auto;
+  text-align: center;
+  line-height:1.25; 
+  font-size: 1.5em;
+  font-weight: 300;
+  color: #505050;
+  padding-top: 80px;
+  padding-bottom: 30px;
+  font-family: "Roboto", sans-serif;
+}
+#features .container h1 {
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 30px;
+  color: #505050;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+}
+
+#features .container h3 {
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1.25;
+  font-family: "Roboto", sans-serif;
+}
+
+ul.features {
+  margin: 0 auto;
+  text-align: center;
+}
+ul.features li{
+  font-size: 1.5em;
+  color:#505050;
+  display: inline-block;
+  width: 45%;
+  font-weight: 500;
+  min-height: 100px;
+  font-family: "Roboto", sans-serif;
+}
+ul.features li p{
+  font-size: 0.9em;
+  line-height: 1.25;
+  font-family: "Roboto", sans-serif;
+  padding-bottom:10px;
+  font-weight: 300;
+}
+ul.features li p img{
+  width:75px;
+  padding-top: 60px;
+}
+
+#cta-2{
+    background: url("../images/contact.jpg") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 200px;
+    max-width: 100%;
+   
+}
+
+ul.counters {
+  margin: 0 auto;
+  text-align: center;
+  
+}
+
+ul.counters li{
+  margin-top: 60px;
+  font-size: 1.5em;
+  color:white;
+  display: inline-block;
+  width: 33%;
+  min-height: 100px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+}
+
+ul.counters li p{
+  font-size: 0.9em;
+  line-height: 1.25;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  padding-bottom:10px;
+}
+
+#who{
+  height:1240px;
+  width: 100%;
+  background-color: white;
+}
+
+#who .container h2 {
+  margin: 0 auto;
+  text-align: center;
+  line-height:1.25; 
+  font-size: 1.5em;
+  font-weight: 300;
+  color: #505050;
+  padding-top: 80px;
+  padding-bottom: 30px;
+  font-family: "Roboto", sans-serif;
+}
+#who .container h1 {
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 30px;
+  color: #505050;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+}
+
+#who .container h3 {
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1.25;
+  font-family: "Roboto", sans-serif;
+}
+
+#cta-3{
+    background: url("../images/handshake.jpg") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 200px;
+    max-width: 100%;
+   
+}
+
+#cta-3 .container h2 {
+  margin: 0 auto;
+  text-align: center;
+  line-height:1.25; 
+  font-size: 1.5em;
+  font-weight: 300;
+  color: white;
+  padding-bottom: 30px;
+  font-weight: 300;
+  font-family: "Roboto", sans-serif;
+}
+#cta-3 .container h1 {
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 10px;
+  color: white;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  max-width: 80%;
+}
+#contact{
+  height:500px;
+  width: 100%;
+  background-color: white;
+}
+
+#contact .container{
+   margin: 0 auto;
+  text-align: center;
+}
+
+#contact .container h2 {
+  margin: 0 auto;
+  text-align: center;
+  line-height:1.25; 
+  font-size: 1.5em;
+  font-weight: 300;
+  color: #505050;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  font-family: "Roboto", sans-serif;
+}
+#contact .container h1 {
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 30px;
+  color: #505050;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+}
+
+#contact .container h3 {
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1.25;
+  font-family: "Roboto", sans-serif;
+}
+#contact .container #socialmedia a{
+  color:#ec704e;
+}
+
+#contact .container #socialmedia a:hover{
+  color:#c5684f;
+}
+/* ==================================================
+   Responsive Media Queries - Tablets
+================================================== */
+
+
+  
+  
+/* ==================================================
+   Responsive Media Queries - Landscape Mobiles
+================================================== */
+
+@media screen and (max-width: 768px)
+{
+  
+   #cta-2{
+    height: 520px;
+   }   
+
+   ul.counters li{
+    width: 80%;
+  }  
+  
+  #cta-3{
+    height: 250px;
+  }
+}
+
+
+
+/* ==================================================
+   Responsive Media Queries - Mobiles
+================================================== */
+
+@media screen and (max-width: 667px)
+{	
+  
+  /* ==================================================
+   Hero div
+  ================================================== */
+  
+  #hero{
+    min-height: 670px;
+  }
+  
+  #hero .container {
+    display: table;
+    height: 670px;
+    max-width: 480px;
+    width: 100%;
+    padding: 20px;
+  }
+  
+  #hero .container .copy {
+    display: table-cell;
+    vertical-align: middle;
+    padding-top: 100px;   
+  }
+    
+  #hero .container h1 {
+    text-align: center;
+    line-height:1.25; 
+    font-size: 2em;
+    font-weight: 500;
+    color: white;
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.40);
+    margin-bottom: 30px;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  #hero .container h2 {
+    text-align: center;
+    line-height:1.25; 
+    font-size: 1.25em;
+    font-weight: 300;
+    color: white;
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.40);
+    margin-bottom: 50px;
+  }
+  
+  #hero .container img {
+    max-width:100px;
+    padding-bottom: 20px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  /* ==================================================
+   Why div
+  ================================================== */
+  
+  #why{
+  height:670px;
+  width: 100%;
+  background-color: white;
+  
+  }
+  
+  #why .container h2 {
+    text-align: center;
+    line-height:1.5; 
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #505050;
+    padding-top:50px;
+    padding-bottom: 30px;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  /* ==================================================
+   cta-1 div
+  ================================================== */
+  #cta-1 {
+    text-align: center;
+    display: block;
+    
+  }
+  
+  #cta-1 .container {
+    text-align: center;
+  }
+  
+  #cta-1 .container h2 {
+    margin: 40px auto 30px auto;
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+    color: white;
+    font-family: "Roboto", sans-serif;   
+  }
+  
+  #cta-1 .container a {
+    text-align: center;
+    margin: 0 auto;
+    width: 150px;
+    display: block;
+    float:none;
+    clear:both;
+    margin-top:30px;
+    padding: 5px;
+    background-color: #ec704e;
+    border-bottom:1px solid #c5684f; 
+    color: white;
+    font-weight: 400;
+    font-size: 1.2em;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  /* ==================================================
+   Features div
+  ================================================== */
+  
+  #features{
+  height: 1950px;
+  max-width: 100%;
+  background-color: white;
+  }
+  
+  #features .container h2 {
+    margin: 0 auto;
+    text-align: center;
+    line-height:1.5; 
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #505050;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  #features .container h3 {
+    padding-bottom: 30px;
+    line-height: 1.25;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  ul.features {
+    margin: 0 auto;
+    text-align: center;
+  }
+  ul.features li{
+    font-size: 1.75em;
+    font-weight: 500;
+    color:#505050;
+    display: inline-block;
+    width: 90%;
+    min-height: 100px;
+    font-family: "Roboto", sans-serif;
+  }
+  ul.features li p{
+    font-size: 0.8em;
+    font-weight: 300;
+    line-height: 1.25;
+    font-family: "Roboto", sans-serif;
+    padding-bottom:10px;
+  }
+  ul.features li p img{
+    width:75px;
+    padding-top: 30px;
+  }  
+   
+   /* ==================================================
+   cta-2 div
+  ================================================== */ 
+  
+  #cta-2{
+    background: url("../images/contact.jpg") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 520px;
+    max-width: 100%;
+   
+}
+  ul.counters {
+    margin: 0 auto;
+    text-align: center;
+    
+  }
+  
+  ul.counters li{
+    margin-top: 60px;
+    font-size: 1.5em;
+    color:white;
+    display: inline-block;
+    width: 80%;
+    min-height: 100px;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  ul.counters li p{
+    font-size: 0.9em;
+    line-height: 1.25;
+    font-family: "Roboto", sans-serif;
+    padding-bottom:10px;
+  } 
+     
+
+
+  /* ==================================================
+     cta-3 div
+    ================================================== */ 
+    
+  #cta-3{
+    background: url("../images/handshake.jpg") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 250px;
+    max-width: 100%;
+   
+}
+    
+  #cta-3 .container h1 {
+    font-size: 1.25em;
+    line-height: 1.25;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 10px;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    max-width: 100%;
+  }
+  
+  #cta-3 .container h2 {
+    margin: 0 auto;
+    text-align: center;
+    line-height:1.25; 
+    font-size: 1em;
+    font-weight: 100;
+    color: white;
+    padding-bottom: 30px;
+    font-family: "Roboto", sans-serif;     
+  }
+  
+  /* ==================================================
+       cta-3 div
+      ================================================== */ 
+  #contact{
+    height:570px;
+    width: 100%;
+    background-color: white;
+  }
+
+}
+  
+  .status
+{
+    position: relative;
+    width: 100%;
+    min-width: 50px;
+    height: 50px;
+    overflow: hidden;
+    display: inline-block;
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+}
+
+/* ==================================================
+  Social media link styling
+ ================================================== */
+
+#footercont
+{
+	position: relative;
+	font-size: 18px;
+}
+
+#socialmedia ul
+	{
+		margin: 30px 0 30px 0;
+	}
+
+#socialmedia ul li
+	{
+		display: inline-block;
+		list-style-type: none;
+		margin: 0 10px;
+	}
+
+#socialmedia ul li a
+		{
+			font-size: 36px;
+			color: #fff;
+      transition: 0.4s;
+		}
+		
+ #socialmedia ul li a:hover
+			{
+				color: #c5684f;
+			}
+  
+/* ==================================================
+   Responsive Media Queries - Tablets
+================================================== */
+
+@media screen and (max-width: 1024px)
+{
+	.graph-container{
+		width:50%;
+	}
+		
+	/*Top graph line*/
+	.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
+		stroke-width: 3px;
+	}
+	.ct-chart .ct-point{
+		stroke-width: 8px;
+	}
+
+	/*bottom graph line*/
+	.ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
+		stroke-width: 3px;
+	}
+	
+	.ct-chart .ct-point{
+		stroke-width: 8px;
+	}
+	
+}
+
+/* ==================================================
+   Responsive Media Queries - Mobiles
+================================================== */
+
+@media screen and (max-width: 480px)
+{	
+	.graph-container{
+		width:100%;
+	}
+	
+	.fullwidth{
+		padding:10px 5px;
+	}
+	
+	#contentTitle{
+	padding:10px 5px;
+	}
+	
+	.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
+		stroke-width: 2px;
+	}
+	.ct-chart .ct-point{
+		stroke-width: 8px;
+	}
+
+	/*bottom graph line*/
+	.ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
+		stroke-width: 2px;
+	}
+	
+	.ct-chart .ct-point{
+		stroke-width: 8px;
+	}
+	
+	table, th, td {
+	   border: 1px solid #B0B0B0;
+	   padding: 2px;
+	   font-size: 75%;
+	}
+}
